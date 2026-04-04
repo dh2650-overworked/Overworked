@@ -131,6 +131,21 @@ texture = ExtResource("1_8yxuc")
 22:7/0 = 0
 24:7/size_in_atlas = Vector2i(2, 2)
 24:7/0 = 0
+6:6/size_in_atlas = Vector2i(1, 3)
+6:6/0 = 0
+6:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 24, 8, 16, -8, 16, -8, 24)
+7:6/size_in_atlas = Vector2i(1, 3)
+7:6/0 = 0
+7:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 24, -8, 16, 8, 16, 8, 24)
+8:6/size_in_atlas = Vector2i(1, 3)
+8:6/0 = 0
+8:9/size_in_atlas = Vector2i(1, 3)
+8:9/0 = 0
+9:7/0 = 0
+9:8/0 = 0
+9:10/0 = 0
+9:11/0 = 0
+9:9/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rmur3"]
 resource_name = "tiles"
