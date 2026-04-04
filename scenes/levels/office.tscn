@@ -15,4 +15,4 @@ scale = Vector2(1.5, 1.5)
 
 [node name="TileMapDecor" parent="." unique_id=1352881385 instance=ExtResource("1_xwr5g")]
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAAHAAQAAAAGAAAAAAACAAIAAAAQAAIAAAAOAAEAAAAUAAMAAAA=")
+tile_map_data = PackedByteArray("AAAHAAQAAAAGAAAAAAAOAAEAAAAUAAMAAAA=")
