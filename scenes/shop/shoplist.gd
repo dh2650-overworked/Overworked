@@ -4,7 +4,7 @@ extends ItemList
 var itemlist = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var money = 0 #TODO: Update money to player money
+	money = 2 #TODO: Update money to player money
 	itemlist = get_item_list()
 	for item in itemlist:
 		#print(item.get_icon_path())
@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func get_item_list():
@@ -22,7 +22,6 @@ func get_item_list():
 	var item_rows = str(content).split("\n")
 	if item_rows.size() > 1:
 		var li = item_rows.slice(1, -1)
-		var itemlist = []
 		for item in li:
 			var split_item = item.split(",")
 			for i in range(split_item.size()):
@@ -33,6 +32,6 @@ func get_item_list():
 
 func get_shop_item_from_index(index):
 	return itemlist[index]
-	pass
+
 	
 	

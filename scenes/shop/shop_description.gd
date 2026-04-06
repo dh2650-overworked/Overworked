@@ -8,7 +8,7 @@ func _ready() -> void:
 	parent = get_parent()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var items = get_parent().get_selected_items()
 	var val = ""
 	if !items.is_empty():

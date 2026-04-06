@@ -27,7 +27,6 @@ fixed_column_width = 75
 icon_mode = 0
 fixed_icon_size = Vector2i(75, 75)
 script = ExtResource("1_jp048")
-money = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/ItemList" unique_id=416040693]
 layout_mode = 0
