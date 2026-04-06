@@ -1,0 +1,4 @@
+Name, cost, desc, icon_path, #TODO: Create items, add relevant variables and replace placeholder items. New variables can be added by appending a ","
+TempItem1, 1, testdescript1, res://icon.svg
+TempItem2, 2, testdescript2, res://assets/office_assets/separately_assets/Sprite-0002.png
+TempItem3, 3, testdescript3, res://assets/office_assets/separately_assets/Sprite-0003.png
