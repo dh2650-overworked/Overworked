@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://cmloix88chstb"]
+[gd_scene format=3 uid="uid://pgxtpv3h0107"]
 
 [ext_resource type="Script" uid="uid://ckqlfu6l0ry0b" path="res://scenes/player/player.gd" id="1_gfjak"]
 [ext_resource type="Texture2D" uid="uid://brhypqe3j0mxe" path="res://assets/[Free Asset] Pixel Boy 32x64 Animation/boy-32x64-idle-walk.png" id="1_wr5hl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4kuee"]
-radius = 8.0
-height = 70.0
+radius = 7.0
+height = 14.0
 
 [sub_resource type="Animation" id="Animation_wr5hl"]
 length = 0.001
@@ -68,11 +68,12 @@ y_sort_enabled = true
 script = ExtResource("1_gfjak")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2034307969]
+position = Vector2(-1, -21)
 texture = ExtResource("1_wr5hl")
 hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=189172685]
-position = Vector2(2, 0)
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_4kuee")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1149508780]
