@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TaskData" format=3 uid="uid://bjalxdx4o8d5a"]
+
+[ext_resource type="Script" uid="uid://dd6k082npoxh8" path="res://scripts/resources/task_data.gd" id="1"]
+
+[resource]
+resource_name = "coffee"
+script = ExtResource("1")
+task_id = "coffee"
+task_name = "Coffee Run"
+reward_money = 50
+time_limit = 20.0
+dispatch_mode = 0
+is_starter_task = true
+unlock_time = 10.0
