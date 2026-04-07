@@ -1,6 +1,7 @@
 [gd_resource type="TileSet" format=3 uid="uid://clo05kct0c6bm"]
 
 [ext_resource type="Texture2D" uid="uid://c43bm5qgo7ym5" path="res://assets/tiles/all_assets.png" id="1_8yxuc"]
+[ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/tiles/PoI.tscn" id="2_8yxuc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_td2qb"]
 resource_name = "decor"
@@ -191,7 +192,11 @@ texture = ExtResource("1_8yxuc")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 8, 16, 8, 16, -8, -16, -8)
 12:7/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_krvsx"]
+scenes/1/scene = ExtResource("2_8yxuc")
+
 [resource]
 uv_clipping = true
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_td2qb")
+sources/1 = SubResource("TileSetScenesCollectionSource_krvsx")

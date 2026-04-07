@@ -20,7 +20,7 @@ metadata/_edit_lock_ = true
 
 [node name="TileMapDecor" parent="GameTileMap" unique_id=1422637923 instance=ExtResource("1_xwr5g")]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAANAAgAAAAUAAMAAAAKAAIAAAAYAAIAAAAJAAQAAAAUAAcAAAA=")
+tile_map_data = PackedByteArray("AAANAAgAAAAUAAMAAAAKAAIAAAAYAAIAAAAJAAQAAAAUAAcAAAALAAoAAQAAAAAAAQA=")
 
 [node name="Player" parent="." unique_id=470434658 instance=ExtResource("2_lhigv")]
 y_sort_enabled = false
