@@ -2,10 +2,10 @@ extends Node
 
 ## Demo: task catalog + starters / unlock times come from each TaskData .tres (see TaskManager).
 
-const FILL_FORM := preload("res://assets/tasks/fill_form.tres")
-const RECEPTION := preload("res://assets/tasks/reception.tres")
-const COFFEE := preload("res://assets/tasks/coffee.tres")
-const APPROVE_FILE := preload("res://assets/tasks/approve_file.tres")
+const Whiteboard := preload("res://assets/tasks/whiteboard.tres")
+const Water_cooler := preload("res://assets/tasks/water_cooler.tres")
+const Respond_email := preload("res://assets/tasks/respond_email.tres")
+const Report_Writing := preload("res://assets/tasks/report_writing.tres")
 
 @onready var _time_label: Label = $CanvasLayer/TimeLabel/Bg/Label
 @onready var _money_label: Label = $CanvasLayer/MoneyLabel/Bg/Label
@@ -14,7 +14,7 @@ const APPROVE_FILE := preload("res://assets/tasks/approve_file.tres")
 func _ready() -> void:
 	TaskManager.nav_requested.connect(_on_nav_requested)
 	TaskManager.money_updated.connect(_on_money_updated)
-	TaskManager.register_task_catalog([FILL_FORM, RECEPTION, COFFEE, APPROVE_FILE])
+	TaskManager.register_task_catalog([Whiteboard, Water_cooler, Respond_email, Report_Writing])
 	TaskManager.configure_auto_dispatch(true, 10.0, 20.0)
 	TaskManager.start_level()
 	_on_money_updated(TaskManager.total_money)
@@ -47,7 +47,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		match event.keycode:
 			KEY_R:
-				TaskManager.add_task(RECEPTION)
+				TaskManager.add_task(Whiteboard)
 			KEY_F:
 				var ids: Array = TaskManager.active_tasks.keys()
 				if not ids.is_empty():
