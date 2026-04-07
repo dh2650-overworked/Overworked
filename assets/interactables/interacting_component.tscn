@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://brhsnuvptghtm"]
 
-[ext_resource type="Script" uid="uid://b240bs70mc6se" path="res://assets/interactions/interacting_component.gd" id="1_sp50s"]
+[ext_resource type="Script" uid="uid://b240bs70mc6se" path="res://assets/interactables/interacting_component.gd" id="1_sp50s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sp50s"]
 radius = 16.0

@@ -1,7 +1,9 @@
 [gd_resource type="TileSet" format=3 uid="uid://clo05kct0c6bm"]
 
 [ext_resource type="Texture2D" uid="uid://c43bm5qgo7ym5" path="res://assets/tiles/all_assets.png" id="1_8yxuc"]
-[ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/tiles/PoI.tscn" id="2_8yxuc"]
+[ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="2_krvsx"]
+[ext_resource type="PackedScene" uid="uid://yedxevrud6gv" path="res://assets/interactables/watercooler.tscn" id="3_vthjn"]
+[ext_resource type="PackedScene" uid="uid://bougwiwnr8pt4" path="res://assets/interactables/workstation.tscn" id="4_vthjn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_td2qb"]
 resource_name = "decor"
@@ -193,7 +195,10 @@ texture = ExtResource("1_8yxuc")
 12:7/0 = 0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_krvsx"]
-scenes/1/scene = ExtResource("2_8yxuc")
+resource_name = "PoI"
+scenes/1/scene = ExtResource("2_krvsx")
+scenes/2/scene = ExtResource("3_vthjn")
+scenes/3/scene = ExtResource("4_vthjn")
 
 [resource]
 uv_clipping = true

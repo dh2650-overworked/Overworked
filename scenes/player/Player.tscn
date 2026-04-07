@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ckqlfu6l0ry0b" path="res://scenes/player/player.gd" id="1_gfjak"]
 [ext_resource type="Texture2D" uid="uid://brhypqe3j0mxe" path="res://assets/[Free Asset] Pixel Boy 32x64 Animation/boy-32x64-idle-walk.png" id="1_wr5hl"]
-[ext_resource type="PackedScene" uid="uid://brhsnuvptghtm" path="res://assets/interactions/interacting_component.tscn" id="3_4kuee"]
+[ext_resource type="PackedScene" uid="uid://brhsnuvptghtm" path="res://assets/interactables/interacting_component.tscn" id="3_4kuee"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4kuee"]
 radius = 7.0
