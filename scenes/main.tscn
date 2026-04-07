@@ -6,6 +6,36 @@
 [ext_resource type="Texture2D" uid="uid://b8bk78r1vdoev" path="res://assets/icons/time.png" id="4_time"]
 [ext_resource type="Texture2D" uid="uid://b7kf5aukr8e7" path="res://assets/icons/coin.png" id="5_coin"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 2.0
+bg_color = Color(0.824, 0.706, 0.549, 0.95)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
+bg_color = Color(0.8235294, 0.7058824, 0.54901963, 0.9490196)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.7787141, 0.4484616, 0.23642814, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.78039217, 0.44705883, 0.23529412, 1)
+
 [node name="Main" type="Node" unique_id=2091917942]
 script = ExtResource("1_main")
 
@@ -54,9 +84,113 @@ scale = Vector2(0.4, 0.4)
 [node name="Icon" parent="CanvasLayer/MoneyLabel" index="0"]
 texture = ExtResource("5_coin")
 
+[node name="Bg" parent="CanvasLayer/MoneyLabel" index="1"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
+
 [node name="Label" parent="CanvasLayer/MoneyLabel/Bg" index="0"]
 custom_minimum_size = Vector2(50, 0)
 text = "0"
+
+[node name="LunchBanner" type="PanelContainer" parent="CanvasLayer" unique_id=350565234]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -41.0
+offset_right = 370.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.53876394, 0.54983413)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LunchBanner" unique_id=264877757]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/LunchBanner/VBoxContainer" unique_id=590452834]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Time for lunch! 
+30 seconds to yourself
+grab a coffee  or have a chat with your colleagues :)"
+horizontal_alignment = 1
+
+[node name="ConfirmButton" type="Button" parent="CanvasLayer/LunchBanner/VBoxContainer" unique_id=902731785]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Got it!"
+
+[node name="SummaryPanel" type="PanelContainer" parent="CanvasLayer" unique_id=1566035551]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -91.0
+offset_right = 313.0
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.58349735, 0.5935472)
+theme_override_styles/panel = SubResource("StyleBoxFlat_tefeu")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/SummaryPanel" unique_id=580674808]
+layout_mode = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Title" type="Label" parent="CanvasLayer/SummaryPanel/MarginContainer" unique_id=172651212]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 14
+text = "Daily Summary"
+horizontal_alignment = 1
+
+[node name="Stats" type="VBoxContainer" parent="CanvasLayer/SummaryPanel/MarginContainer" unique_id=1822459968]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SalaryLabel" type="Label" parent="CanvasLayer/SummaryPanel/MarginContainer/Stats" unique_id=1450040442]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Salary:"
+
+[node name="TaskCountLabel" type="Label" parent="CanvasLayer/SummaryPanel/MarginContainer/Stats" unique_id=1672065185]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Tasks Completed:"
+
+[node name="BalanceLabel" type="Label" parent="CanvasLayer/SummaryPanel/MarginContainer/Stats" unique_id=687940454]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Final Balance:"
+
+[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/MarginContainer" unique_id=1750738597]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+
+[node name="NextLevelButton" type="Button" parent="CanvasLayer/SummaryPanel/MarginContainer/Buttons" unique_id=1859751275]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_o6xl0")
+text = "Next Level"
+
+[node name="MainMenuButton" type="Button" parent="CanvasLayer/SummaryPanel/MarginContainer/Buttons" unique_id=216598120]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_tipki")
+text = "Main Menu"
 
 [editable path="CanvasLayer/TimeLabel"]
 [editable path="CanvasLayer/MoneyLabel"]

@@ -9,16 +9,33 @@ const Report_Writing := preload("res://assets/tasks/report_writing.tres")
 
 @onready var _time_label: Label = $CanvasLayer/TimeLabel/Bg/Label
 @onready var _money_label: Label = $CanvasLayer/MoneyLabel/Bg/Label
+@onready var _lunch_banner: PanelContainer = $CanvasLayer/LunchBanner
+@onready var _lunch_banner_label: Label = $CanvasLayer/LunchBanner/VBoxContainer/Label
+@onready var _lunch_confirm_button: Button = $CanvasLayer/LunchBanner/VBoxContainer/ConfirmButton
+@onready var _summary_panel: Control = $CanvasLayer/SummaryPanel
+@onready var _salary_val: Label = $CanvasLayer/SummaryPanel/MarginContainer/Stats/SalaryLabel
+@onready var _task_count_val: Label = $CanvasLayer/SummaryPanel/MarginContainer/Stats/TaskCountLabel
+@onready var _balance_val: Label = $CanvasLayer/SummaryPanel/MarginContainer/Stats/BalanceLabel
+@onready var _next_level_button: Button = $CanvasLayer/SummaryPanel/MarginContainer/Buttons/NextLevelButton
+@onready var _main_menu_button: Button = $CanvasLayer/SummaryPanel/MarginContainer/Buttons/MainMenuButton
 
 
 func _ready() -> void:
 	TaskManager.nav_requested.connect(_on_nav_requested)
 	TaskManager.money_updated.connect(_on_money_updated)
+	TaskManager.lunch_started.connect(_on_lunch_started)
+	TaskManager.lunch_ended.connect(_on_lunch_ended)
+	TaskManager.lunch_acknowledged.connect(_on_lunch_acknowledged)
 	TaskManager.register_task_catalog([Whiteboard, Water_cooler, Respond_email, Report_Writing])
-	TaskManager.configure_auto_dispatch(true, 10.0, 20.0)
+	TaskManager.configure_auto_dispatch(true, 30.0, 40.0)
 	TaskManager.start_level()
 	_on_money_updated(TaskManager.total_money)
 	_update_level_clock()
+	_lunch_banner.visible = false
+	_lunch_confirm_button.pressed.connect(_on_lunch_confirm_pressed)
+	_summary_panel.visible = false
+	_next_level_button.pressed.connect(_on_next_level_pressed)
+	_main_menu_button.pressed.connect(_on_main_menu_pressed)
 
 
 func _process(_delta: float) -> void:
@@ -26,11 +43,14 @@ func _process(_delta: float) -> void:
 
 
 func _update_level_clock() -> void:
-	var secs: int = int(floor(TaskManager.level_time_remaining))
+	var remaining: float = TaskManager.level_time_remaining
+	var secs: int = int(floor(remaining))
 	secs = maxi(secs, 0)
 	var m: int = secs / 60
 	var s: int = secs % 60
 	_time_label.text = "%d:%02d" % [m, s]
+	if remaining <= 0.0 and not _summary_panel.visible:
+		_show_summary()
 
 
 func _on_money_updated(new_total: int) -> void:
@@ -41,6 +61,42 @@ func _on_nav_requested(instance_id: String) -> void:
 	var inst: TaskInstance = TaskManager.get_instance(instance_id)
 	var name := inst.task_name if inst else instance_id
 	print("Navigating to task: ", name, " (", instance_id, ")")
+
+
+func _on_lunch_started() -> void:
+	_lunch_banner.visible = true
+
+
+func _on_lunch_ended() -> void:
+	_lunch_banner.visible = false
+
+
+func _on_lunch_acknowledged() -> void:
+	_lunch_banner.visible = false
+
+
+func _on_lunch_confirm_pressed() -> void:
+	TaskManager.acknowledge_lunch_message()
+	_lunch_banner.visible = false
+
+
+func _show_summary() -> void:
+	_summary_panel.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	get_tree().paused = true
+	_salary_val.text = "Salary: " + str(TaskManager.total_money)
+	_task_count_val.text = "Tasks Completed: " + str(TaskManager.tasks_completed_count)
+	_balance_val.text = "Final Balance: " + str(TaskManager.total_money)
+	_summary_panel.visible = true
+
+
+func _on_next_level_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
+
+func _on_main_menu_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
 
 
 func _unhandled_input(event: InputEvent) -> void:
