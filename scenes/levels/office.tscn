@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://b3te2bf6oruhk"]
+[gd_scene format=4 uid="uid://2hisqf0xy7uj"]
 
 [ext_resource type="PackedScene" uid="uid://bmacq5xie8df5" path="res://assets/tiles/officeTileMap.tscn" id="1_xwr5g"]
 [ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="2_lhigv"]
