@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://pixelabel001"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.824, 0.706, 0.549, 0.95)
+corner_radius_top_left = 0
+corner_radius_top_right = 4
+corner_radius_bottom_left = 0
+corner_radius_bottom_right = 4
+content_margin_left = 6
+content_margin_right = 6
+content_margin_top = 2
+content_margin_bottom = 2
+
+[node name="PixelLabel" type="HBoxContainer"]
+anchors_preset = 0
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Bg" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="Label" type="Label" parent="Bg"]
+layout_mode = 2
+horizontal_alignment = 1
