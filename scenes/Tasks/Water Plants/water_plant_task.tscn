@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://5h2044lco2lx"]
 
-[ext_resource type="Script" uid="uid://cl1h8fwejfaj7" path="res://scenes/Envirnment_tasks/water_plant_task.gd" id="1_5oy37"]
+[ext_resource type="Script" uid="uid://cl1h8fwejfaj7" path="res://scenes/Tasks/Water Plants/water_plant_task.gd" id="1_5oy37"]
 [ext_resource type="Texture2D" uid="uid://bdkwxni51y24h" path="res://assets/tasks/aaaaaa.png" id="2_a7wn5"]
 [ext_resource type="AudioStream" uid="uid://m4lb2rn5qfvp" path="res://assets/music/freesound_community-watering-plants-27218.mp3" id="3_a7wn5"]
-[ext_resource type="Texture2D" uid="uid://cpgwcgqh4wrq2" path="res://scenes/Envirnment_tasks/WaterCan.png" id="4_e11mb"]
+[ext_resource type="Texture2D" uid="uid://ctrut12kcrouc" path="res://scenes/Tasks/Water Plants/Flower Pot 1 - RED.png" id="3_w0kqe"]
+[ext_resource type="Texture2D" uid="uid://cpgwcgqh4wrq2" path="res://scenes/Tasks/Water Plants/WaterCan.png" id="4_e11mb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e11mb"]
 size = Vector2(24.451607, 29.000004)
@@ -32,6 +33,11 @@ vframes = 3
 position = Vector2(1.0322571, 0.108695984)
 shape = SubResource("RectangleShape2D_e11mb")
 
+[node name="Sprite2D" type="Sprite2D" parent="Plant" unique_id=1539720037]
+position = Vector2(3.0967703, 16.695652)
+scale = Vector2(1.1153843, 1)
+texture = ExtResource("3_w0kqe")
+
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=976758036]
 offset_left = 273.0
 offset_top = 72.0
@@ -49,7 +55,6 @@ text = "Exit"
 position = Vector2(238, 130)
 
 [node name="SuccessOverlay" type="Panel" parent="." unique_id=1593458888]
-visible = false
 modulate = Color(0.3084925, 0.6799074, 0.47196037, 1)
 offset_left = 163.0
 offset_top = 97.0
@@ -82,5 +87,4 @@ color = Color(0.105882354, 1, 1, 1)
 [node name="WaterTip" type="Marker2D" parent="WateringCan" unique_id=675712098]
 position = Vector2(-1475.0437, -261.80096)
 
-[connection signal="area_entered" from="Plant/PlantArea" to="." method="_on_plant_area_area_entered"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
