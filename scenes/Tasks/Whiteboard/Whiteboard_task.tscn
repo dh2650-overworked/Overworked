@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://dok8xdoxojdbm"]
 
 [ext_resource type="Script" uid="uid://doq7hk6gddqsj" path="res://scenes/Tasks/Whiteboard/node_2d.gd" id="1_1prki"]
+[ext_resource type="Texture2D" uid="uid://cwnq8y6fjscnp" path="res://icon.svg" id="1_e715p"]
+[ext_resource type="Script" uid="uid://uo6o53tnjspp" path="res://scenes/Tasks/Whiteboard/label.gd" id="3_ncbox"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ncbox"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control" unique_id=502523168]
 layout_mode = 3
@@ -40,12 +45,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport/Control/ColorRect" unique_id=1654414032]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 26.0
+offset_right = 300.0
+offset_bottom = 154.0
+texture = ExtResource("1_e715p")
+
 [node name="Node2D" type="Node2D" parent="SubViewportContainer/SubViewport/Control" unique_id=873773862]
 top_level = true
 script = ExtResource("1_1prki")
 
 [node name="Line2D" type="Line2D" parent="SubViewportContainer/SubViewport/Control/Node2D" unique_id=1460313514]
-position = Vector2(105, 41)
-points = PackedVector2Array(40, 20, 60, 20, 60, 40, 40, 40, 40, 60, 60, 60)
+closed = true
 width = 4.0
 default_color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/Control" unique_id=1993362837]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 60.0
+offset_right = 127.0
+offset_bottom = 131.0
+label_settings = SubResource("LabelSettings_ncbox")
+script = ExtResource("3_ncbox")

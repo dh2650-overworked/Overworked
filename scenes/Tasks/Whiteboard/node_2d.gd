@@ -2,23 +2,35 @@ extends Node2D
 
 @onready var _lines:Node2D = $Line2D
 
-var _pressed: bool = false
+var _pressedright: bool = false
+var _pressedleft: bool = false
 var _current_line: Line2D = null
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			_pressed = event.pressed
-			if _pressed:
+			_pressedleft = event.pressed
+			if _pressedleft:
+				_current_line = Line2D.new()
+				_current_line.default_color = Color.WHITE
+				_current_line.width = 8
+				_lines.add_child(_current_line)
+				_current_line.add_point(event.position)
+	elif event is InputEventMouseMotion and _pressedleft:
+		_current_line.add_point(event.position)
+
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			_pressedright = event.pressed
+			if _pressedright:
 				_current_line = Line2D.new()
 				_current_line.default_color = Color.BLACK
 				_current_line.width = 2
 				_lines.add_child(_current_line)
 				_current_line.add_point(event.position)
-	elif event is InputEventMouseMotion and _pressed:
+	elif event is InputEventMouseMotion and _pressedright:
 		_current_line.add_point(event.position)
-				
-			
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
