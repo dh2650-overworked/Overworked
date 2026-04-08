@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpgwcgqh4wrq2"
-path="res://.godot/imported/WaterCan.png-062be3d794daa685110051201a5d4908.ctex"
+uid="uid://ctrut12kcrouc"
+path="res://.godot/imported/Flower Pot 1 - RED.png-8a65b1bc2b4583dd64ec40853aab560f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Envirnment_tasks/WaterCan.png"
-dest_files=["res://.godot/imported/WaterCan.png-062be3d794daa685110051201a5d4908.ctex"]
+source_file="res://scenes/Tasks/Water Plants/Flower Pot 1 - RED.png"
+dest_files=["res://.godot/imported/Flower Pot 1 - RED.png-8a65b1bc2b4583dd64ec40853aab560f.ctex"]
 
 [params]
 

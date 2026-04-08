@@ -1,9 +1,10 @@
 [gd_scene format=4 uid="uid://2hisqf0xy7uj"]
 
-[ext_resource type="Script" path="res://scenes/levels/music.gd" id="1_dmpnx"]
+[ext_resource type="Script" uid="uid://bm4vdrlj4tc2e" path="res://scenes/levels/music.gd" id="1_dmpnx"]
 [ext_resource type="PackedScene" uid="uid://bmacq5xie8df5" path="res://assets/tiles/officeTileMap.tscn" id="1_xwr5g"]
 [ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="2_dmpnx"]
 [ext_resource type="Texture2D" uid="uid://dxxljiuimmwbr" path="res://assets/interactables/Printer.png" id="4_dmpnx"]
+[ext_resource type="Texture2D" uid="uid://dmhimegnvtpci" path="res://assets/interactables/Whiteboard.png" id="5_uw80i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhigv"]
 size = Vector2(1196, 20)
@@ -38,6 +39,11 @@ height = 40.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tuhfx"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1gkrr"]
+resource_name = "Clear whiteboard"
+radius = 32.0
+height = 64.0
+
 [node name="office" type="Node2D" unique_id=856302002]
 y_sort_enabled = true
 script = ExtResource("1_dmpnx")
@@ -57,7 +63,7 @@ metadata/_edit_lock_ = true
 
 [node name="TileMapDecor" parent="GameTileMap" unique_id=1422637923 instance=ExtResource("1_xwr5g")]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAKAAQAAAAUAAcAAAAOAAgAAAAUAAMAAAAWAAQAAAAMAAAAAAAWAAYAAAAQAAYAAAAWAAkAAAAMAAAAAAAWAAsAAAAQAAYAAAAcAAQAAAAMAAAAAAAcAAYAAAAQAAYAAAAcAAsAAAAQAAYAAAAcAAkAAAAMAAAAAAACAAkAAAAOAAgAAAABAAoAAAAKAAgAAAABAAkAAAALAAoAAAA=")
+tile_map_data = PackedByteArray("AAAKAAQAAAAUAAcAAAAWAAQAAAAMAAAAAAAWAAYAAAAQAAYAAAAWAAkAAAAMAAAAAAAWAAsAAAAQAAYAAAAcAAQAAAAMAAAAAAAcAAYAAAAQAAYAAAAcAAsAAAAQAAYAAAAcAAkAAAAMAAAAAAACAAkAAAAOAAgAAAABAAoAAAAKAAgAAAABAAkAAAALAAoAAAA=")
 metadata/_edit_lock_ = true
 
 [node name="RigidBody2D" type="RigidBody2D" parent="GameTileMap" unique_id=1377822053]
@@ -72,6 +78,7 @@ position = Vector2(592, 66)
 sprite = SubResource("CompressedTexture2D_dmpnx")
 collider = SubResource("RectangleShape2D_uw80i")
 area = SubResource("CapsuleShape2D_ey3sf")
+scene_path = "res://scenes/Tasks/Watercooler/Task_watercooler.tscn"
 interact_name = "Change water"
 
 [node name="Desktop" parent="." unique_id=760676525 instance=ExtResource("2_dmpnx")]
@@ -80,6 +87,7 @@ position = Vector2(912, 284)
 sprite = SubResource("CompressedTexture2D_uw80i")
 collider = SubResource("RectangleShape2D_ey3sf")
 area = SubResource("CapsuleShape2D_uw80i")
+scene_path = "res://scenes/pc/pc_scene.tscn"
 interact_name = "Get to work"
 
 [node name="Water plants" parent="." unique_id=1272471299 instance=ExtResource("2_dmpnx")]
@@ -87,7 +95,7 @@ y_sort_enabled = true
 position = Vector2(111, 303)
 collider = SubResource("RectangleShape2D_1gkrr")
 area = SubResource("CapsuleShape2D_4m8q4")
-scene_path = "res://scenes/Envirnment_tasks/water_plant_task.tscn"
+scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"
 
 [node name="Printer" parent="." unique_id=2082700480 instance=ExtResource("2_dmpnx")]
@@ -96,3 +104,10 @@ position = Vector2(1169, 99)
 sprite = ExtResource("4_dmpnx")
 collider = SubResource("RectangleShape2D_4m8q4")
 area = SubResource("CapsuleShape2D_tuhfx")
+
+[node name="Whiteboard" parent="." unique_id=145681059 instance=ExtResource("2_dmpnx")]
+y_sort_enabled = true
+position = Vector2(464, 257)
+sprite = ExtResource("5_uw80i")
+area = SubResource("CapsuleShape2D_1gkrr")
+interact_name = "Clear whiteboard"
