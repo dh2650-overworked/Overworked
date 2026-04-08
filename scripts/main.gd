@@ -6,6 +6,7 @@ const Whiteboard := preload("res://assets/tasks/whiteboard.tres")
 const Water_cooler := preload("res://assets/tasks/water_cooler.tres")
 const Respond_email := preload("res://assets/tasks/respond_email.tres")
 const Report_Writing := preload("res://assets/tasks/report_writing.tres")
+const Water_Plant := preload("res://assets/tasks/water_plant.tres")
 
 @onready var _time_label: Label = $CanvasLayer/TimeLabel/Bg/Label
 @onready var _money_label: Label = $CanvasLayer/MoneyLabel/Bg/Label
@@ -26,7 +27,7 @@ func _ready() -> void:
 	TaskManager.lunch_started.connect(_on_lunch_started)
 	TaskManager.lunch_ended.connect(_on_lunch_ended)
 	TaskManager.lunch_acknowledged.connect(_on_lunch_acknowledged)
-	TaskManager.register_task_catalog([Whiteboard, Water_cooler, Respond_email, Report_Writing])
+	TaskManager.register_task_catalog([Whiteboard, Water_cooler, Respond_email, Report_Writing, Water_Plant])
 	TaskManager.configure_auto_dispatch(true, 30.0, 40.0)
 	TaskManager.start_level()
 	_on_money_updated(TaskManager.total_money)
@@ -59,8 +60,31 @@ func _on_money_updated(new_total: int) -> void:
 
 func _on_nav_requested(instance_id: String) -> void:
 	var inst: TaskInstance = TaskManager.get_instance(instance_id)
-	var name := inst.task_name if inst else instance_id
-	print("Navigating to task: ", name, " (", instance_id, ")")
+	if not inst: 
+		print("错误：找不到任务实例 ", instance_id)
+		return
+
+	print("尝试为任务查找场景路径: ", inst.task_id)
+
+	var found_path: String = ""
+	for t in TaskManager._task_catalog:
+		if t.task_id == inst.task_id:
+			found_path = t.scene_path
+			break
+	
+	if found_path != "":
+		print("成功找到路径: ", found_path)
+		# 检查文件是否存在
+		if ResourceLoader.exists(found_path):
+			var scene = load(found_path)
+			var task_ui = scene.instantiate()
+			# 直接加到当前场景，或者加到 CanvasLayer
+			add_child(task_ui) 
+			print("界面已弹出！")
+		else:
+			print("错误：路径存在但文件不存在！", found_path)
+	else:
+		print("提示：该任务没有配置 Scene Path，仅执行普通导航。")
 
 
 func _on_lunch_started() -> void:

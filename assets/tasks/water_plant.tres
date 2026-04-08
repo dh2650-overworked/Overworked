@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TaskData" format=3 uid="uid://dkojlevmfae7g"]
+
+[ext_resource type="Script" uid="uid://dd6k082npoxh8" path="res://scripts/resources/task_data.gd" id="1_rc8y3"]
+
+[resource]
+resource_name = "reception"
+script = ExtResource("1_rc8y3")
+task_id = "water_plant"
+task_name = "Water Plant"
+reward_money = 20
+time_limit = 30.0
+scene_path = "res://scenes/Envirnment_tasks/water_plant_task.tscn"
+is_starter_task = true
+unlock_time = 60.0
