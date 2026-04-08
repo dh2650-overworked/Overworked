@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c3volmi6gp13"]
+
+[ext_resource type="Script" uid="uid://mmv6kmxnwcie" path="res://scenes/ui/music_manager.gd" id="1_2wrjd"]
+[ext_resource type="AudioStream" uid="uid://wg0or8xk73bp" path="res://assets/music/Chill.mp3" id="2_ytfm6"]
+[ext_resource type="AudioStream" uid="uid://dbsmiylt4o8iu" path="res://assets/music/Run Amok.mp3" id="3_8pjlf"]
+
+[node name="MusicManager" type="Node" unique_id=1897490011]
+script = ExtResource("1_2wrjd")
+total_time = 10.0
+hurry_at = 5.0
+hurry_pitch = 1.5
+
+[node name="NormalPlayer" type="AudioStreamPlayer" parent="." unique_id=252362470]
+stream = ExtResource("2_ytfm6")
+
+[node name="HurryPlayer" type="AudioStreamPlayer" parent="." unique_id=601478639]
+stream = ExtResource("3_8pjlf")
+volume_db = -80.0

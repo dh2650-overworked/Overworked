@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c4mainscene01"]
 
-[ext_resource type="Script" uid="uid://bvavhhbwea3ud" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://c4todolist001" path="res://scenes/ui/todo_list_ui.tscn" id="2_todo"]
 [ext_resource type="PackedScene" uid="uid://pixelabel001" path="res://scenes/ui/pixel_label.tscn" id="3_pixel"]
 [ext_resource type="Texture2D" uid="uid://b8bk78r1vdoev" path="res://assets/icons/time.png" id="4_time"]
