@@ -38,12 +38,12 @@ content_margin_right = 10.0
 content_margin_bottom = 5.0
 bg_color = Color(0.78039217, 0.44705883, 0.23529412, 1)
 
-[node name="Main" type="Node" unique_id=2091917942]
+[node name="Main" type="Node2D" unique_id=951420025]
+y_sort_enabled = true
 script = ExtResource("1_main")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1593975202]
 layer = 10
-follow_viewport_enabled = true
 
 [node name="TodoListUI" parent="CanvasLayer" unique_id=1378710553 instance=ExtResource("2_todo")]
 offset_left = 14.0
@@ -194,6 +194,15 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_tipki")
 text = "Main Menu"
+
+[node name="office" parent="." unique_id=856302002 instance=ExtResource("6_o6xl0")]
+
+[node name="CharacterBody2D" parent="." unique_id=470434658 instance=ExtResource("7_tipki")]
+position = Vector2(124, 201)
+scale = Vector2(1.5, 1.5)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=828365990]
+position = Vector2(0, -29.333334)
 
 [editable path="CanvasLayer/TimeLabel"]
 [editable path="CanvasLayer/MoneyLabel"]
