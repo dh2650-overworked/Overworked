@@ -1,0 +1,18 @@
+extends Area2D
+
+# Make variable fields available as props
+@export var interact_name: String = ""
+@export var is_interactable: bool = true
+
+# Function to be called for interactions
+var interact: Callable = func():
+	pass
+
+## Called when the node enters the scene tree for the first time.
+#func _ready() -> void:
+	#pass # Replace with function body.
+#
+#
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta: float) -> void:
+	#pass

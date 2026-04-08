@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bougwiwnr8pt4"]
+
+[ext_resource type="Texture2D" uid="uid://ctr03ac0aydsh" path="res://assets/interactables/Workstation.png" id="1_chd18"]
+[ext_resource type="Script" uid="uid://bmjrth6wjv51w" path="res://assets/interactables/workstation.gd" id="1_r22se"]
+[ext_resource type="PackedScene" uid="uid://b05gr53p8mm7s" path="res://assets/interactables/interactable.tscn" id="2_r22se"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c58fi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4eess"]
+radius = 23.0
+height = 50.0
+
+[node name="Workstation" type="StaticBody2D" unique_id=434595194]
+script = ExtResource("1_r22se")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1165812379]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_c58fi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1012449781]
+position = Vector2(0, -10)
+texture = ExtResource("1_chd18")
+
+[node name="Interactable" parent="." unique_id=30413007 instance=ExtResource("2_r22se")]
+position = Vector2(0, -10)
+interact_name = "Sit down at computer"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1692793657]
+shape = SubResource("CapsuleShape2D_4eess")
