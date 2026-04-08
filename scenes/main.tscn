@@ -16,21 +16,22 @@ layer = 10
 follow_viewport_enabled = true
 
 [node name="TodoListUI" parent="CanvasLayer" unique_id=1378710553 instance=ExtResource("2_todo")]
-offset_left = 15.0
-offset_top = 12.0
-offset_right = 465.0
-offset_bottom = 512.0
+offset_left = 14.0
+offset_top = 41.0
+offset_right = 464.0
+offset_bottom = 541.0
 scale = Vector2(0.25, 0.25)
 
 [node name="TimeLabel" parent="CanvasLayer" unique_id=2004680778 instance=ExtResource("3_pixel")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -120.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 44.0
+offset_left = -60.0
+offset_top = 18.0
+offset_right = 44.0
+offset_bottom = 46.0
 grow_horizontal = 0
+scale = Vector2(0.4, 0.4)
 
 [node name="Icon" parent="CanvasLayer/TimeLabel" index="0"]
 texture = ExtResource("4_time")
@@ -45,12 +46,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -120.0
-offset_top = -44.0
-offset_right = -16.0
-offset_bottom = -16.0
+offset_left = -60.0
+offset_top = -27.0
+offset_right = 44.0
+offset_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
+scale = Vector2(0.4, 0.4)
 
 [node name="Icon" parent="CanvasLayer/MoneyLabel" index="0"]
 texture = ExtResource("5_coin")
