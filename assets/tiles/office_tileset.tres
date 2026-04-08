@@ -1,9 +1,6 @@
 [gd_resource type="TileSet" format=3 uid="uid://clo05kct0c6bm"]
 
 [ext_resource type="Texture2D" uid="uid://c43bm5qgo7ym5" path="res://assets/tiles/all_assets.png" id="1_8yxuc"]
-[ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="2_krvsx"]
-[ext_resource type="PackedScene" uid="uid://yedxevrud6gv" path="res://assets/interactables/watercooler.tscn" id="3_vthjn"]
-[ext_resource type="PackedScene" uid="uid://bougwiwnr8pt4" path="res://assets/interactables/workstation.tscn" id="4_vthjn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_td2qb"]
 resource_name = "decor"
@@ -55,7 +52,8 @@ texture = ExtResource("1_8yxuc")
 18:11/0 = 0
 12:0/size_in_atlas = Vector2i(2, 2)
 12:0/0 = 0
-12:0/0/texture_origin = Vector2i(0, 6)
+12:0/0/texture_origin = Vector2i(0, 10)
+12:0/0/y_sort_origin = 8
 6:0/size_in_atlas = Vector2i(5, 3)
 6:0/0 = 0
 6:0/0/texture_origin = Vector2i(0, 16)
@@ -67,6 +65,7 @@ texture = ExtResource("1_8yxuc")
 2:0/size_in_atlas = Vector2i(4, 4)
 2:0/0 = 0
 2:0/0/texture_origin = Vector2i(0, 8)
+2:0/0/y_sort_origin = 8
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(6, 8, -26, 8, -26, -12, 26, -12, 26, 24, 6, 24)
 0:3/size_in_atlas = Vector2i(2, 3)
 0:3/0 = 0
@@ -191,17 +190,11 @@ texture = ExtResource("1_8yxuc")
 0:0/size_in_atlas = Vector2i(2, 3)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 16)
+0:0/0/y_sort_origin = -8
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 8, 16, 8, 16, -8, -16, -8)
 12:7/0 = 0
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_krvsx"]
-resource_name = "PoI"
-scenes/1/scene = ExtResource("2_krvsx")
-scenes/2/scene = ExtResource("3_vthjn")
-scenes/3/scene = ExtResource("4_vthjn")
 
 [resource]
 uv_clipping = true
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_td2qb")
-sources/1 = SubResource("TileSetScenesCollectionSource_krvsx")
