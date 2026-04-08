@@ -4,13 +4,25 @@
 [ext_resource type="Texture2D" uid="uid://d28w4djcw4mic" path="res://assets/interactables/PoI.png" id="1_hyqqt"]
 [ext_resource type="PackedScene" uid="uid://b05gr53p8mm7s" path="res://assets/interactables/interactable.tscn" id="2_0ogqo"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckxil"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v5mal"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ddqs"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_51voe"]
 radius = 17.0
 
 [node name="PoI" type="StaticBody2D" unique_id=1489444515]
+scale = Vector2(2, 2)
 script = ExtResource("1_51voe")
+sprite = ExtResource("1_hyqqt")
+collider = SubResource("RectangleShape2D_ckxil")
+area = SubResource("CapsuleShape2D_v5mal")
+interact_name = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1536286242]
+shape = SubResource("RectangleShape2D_3ddqs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=808716691]
 texture = ExtResource("1_hyqqt")
