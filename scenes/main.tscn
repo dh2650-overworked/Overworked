@@ -203,6 +203,7 @@ scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=828365990]
 position = Vector2(0, -29.333334)
+zoom = Vector2(2, 2)
 
 [editable path="CanvasLayer/TimeLabel"]
 [editable path="CanvasLayer/MoneyLabel"]
