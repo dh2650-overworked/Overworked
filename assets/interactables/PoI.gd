@@ -3,7 +3,9 @@ extends StaticBody2D
 
 @onready var interactable: Area2D = $Interactable
 @onready var sprite_2d: Sprite2D = $Sprite2D
+var scene
 
+# @tool allows setting of exported variables
 @export var sprite: Texture2D = load("res://assets/interactables/PoI.png"):
 	set(value):
 		sprite = value
@@ -22,9 +24,10 @@ extends StaticBody2D
 		if has_node("Interactable/CollisionShape2D"):
 			$Interactable/CollisionShape2D.shape = value
 
-@export var scene: PackedScene:
+@export var scene_path: String = "":
 	set(value):
-		scene = value
+		scene_path = value	
+		scene = load(scene_path)
 
 @export var interact_name: String = "":
 	set(value):
@@ -38,14 +41,14 @@ func _ready() -> void:
 		return # Don't wire up game logic in editor
 	
 	interactable.interact = _on_interact
-	# Apply exported values now that nodes exist
-	#$Sprite2D.texture = sprite
-	#$CollisionShape2D.shape = collider
-	#$Interactable/CollisionShape2D.shape = area
 
 func _on_interact():
-	print(scene)
-	print("Opening task")
+	if scene:
+		print(scene_path)
+		print("Opening:" + interact_name)
+		add_child(scene.instantiate())
+	else:
+		print("Missing scene")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:

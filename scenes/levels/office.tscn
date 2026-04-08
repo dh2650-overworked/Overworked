@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://scenes/levels/music.gd" id="1_dmpnx"]
 [ext_resource type="PackedScene" uid="uid://bmacq5xie8df5" path="res://assets/tiles/officeTileMap.tscn" id="1_xwr5g"]
 [ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="2_dmpnx"]
-[ext_resource type="PackedScene" uid="uid://5h2044lco2lx" path="res://scenes/Envirnment_tasks/water_plant_task.tscn" id="6_ey3sf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhigv"]
 size = Vector2(1196, 20)
@@ -80,5 +79,5 @@ interact_name = "Get to work"
 position = Vector2(111, 303)
 collider = SubResource("RectangleShape2D_1gkrr")
 area = SubResource("CapsuleShape2D_4m8q4")
-scene = ExtResource("6_ey3sf")
+scene_path = "res://scenes/Envirnment_tasks/water_plant_task.tscn"
 interact_name = "Water plants"
