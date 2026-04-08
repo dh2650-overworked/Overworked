@@ -1,30 +1,33 @@
 extends CanvasLayer
 
-# 信号：任务结束，通知主程序
+# Signal to notify the main game when the task ends
 signal task_finished(success)
 
 @export_group("Task Settings")
-@export var grow_speed: float = 35.0   # 浇水增长的速度，数值越大长得越快
-@export var target_row: int = 2        # 目标行索引（2代表第3行）
-@export var h_frames: int = 5          # 你的图片一行有几个小图
+@export var grow_speed: float = 35.0   # How fast the progress bar fills
+@export var target_row: int = 2        # Which row of the sprite sheet to use (0-indexed)
+@export var h_frames: int = 5          # Number of horizontal frames in your sprite sheet
 
-var progress: float = 0.0              # 当前进度 (0-100)
-var is_completed: bool = false         # 任务是否已完成
+var progress: float = 0.0              # Current progress (0 to 100)
+var is_completed: bool = false         # Flag to prevent multiple triggers
 
+# Node references
 @onready var plant = $Plant
 @onready var progress_bar = $ProgressBar
+@onready var success_overlay = $SuccessOverlay
 
 func _ready():
-	# 初始化：将进度条设为0，并将植物设为该行第一个要用的帧
+	# Initialization
 	progress = 0.0
 	progress_bar.value = 0.0
+	success_overlay.visible = false
 	update_plant_visuals()
 
 func _process(delta):
 	if is_completed:
 		return
 
-	# 检测玩家是否按住鼠标左键
+	# Detect if the player is holding the Left Mouse Button
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		water_logic(delta)
 
@@ -33,47 +36,47 @@ func water_logic(delta):
 		progress += grow_speed * delta
 		progress_bar.value = progress
 		
-		# 实时更新植物的样子
+		# Update plant visuals as it grows
 		update_plant_visuals()
 		
-		# 检查是否达标
+		# Check for completion
 		if progress >= 100.0:
 			complete_task()
 
 func update_plant_visuals():
-	# 逻辑：跳过该行第一个（通常是种子），使用剩下的4个
-	# 计算起始帧：(行索引 * 每行帧数) + 1
+	# Logic: Skip the first frame (seed/empty), use the next 4 growth stages
+	# Calculation: (Row Index * Frames per Row) + 1
 	var start_frame = (target_row * h_frames) + 1
 	
-	# 将 0-100 映射到 0, 1, 2, 3 四个偏移量上
-	# 25.1 是为了防止 progress 为 100 时索引越界变成 4
+	# Map 0-100 progress to 0, 1, 2, 3 frame offsets
+	# Using 25.1 to prevent index overflow when progress is exactly 100
 	var offset = int(progress / 25.1)
 	
-	# 设置植物的 Frame
+	# Set the current frame of the Sprite2D
 	plant.frame = start_frame + offset
 
-
-# 如果你添加了退出按钮，可以将它的 pressed 信号连接到这里
-func _on_exit_button_pressed():
-	emit_signal("task_finished", false)
-	queue_free()
-@onready var success_overlay = $SuccessOverlay # 新增：引用完成面板
 func complete_task():
 	is_completed = true
 	
-	# 1. 显示完成面板
+	# 1. Show the success UI
 	success_overlay.visible = true
 	
-	# 2. 可以加个小动画（可选）：让面板从小变大
+	# 2. Add a pop-up animation (Scale from 0 to 1)
+	# Note: Ensure SuccessOverlay's Pivot Offset is centered
 	success_overlay.scale = Vector2.ZERO
 	var tween = create_tween()
 	tween.tween_property(success_overlay, "scale", Vector2.ONE, 0.5).set_trans(Tween.TRANS_BACK)
 
-	print("任务完成！")
+	print("Task Completed: Plant is fully grown!")
 	
-	# 3. 停顿 2 秒，让玩家看清楚“任务完成”
+	# 3. Wait 2 seconds so player can see the feedback
 	await get_tree().create_timer(2.0).timeout
 	
-	# 4. 退出
+	# 4. Notify and remove the task scene
 	emit_signal("task_finished", true)
+	queue_free()
+
+# Connect this function to the "pressed" signal of your ExitButton
+func _on_exit_button_pressed():
+	emit_signal("task_finished", false)
 	queue_free()
