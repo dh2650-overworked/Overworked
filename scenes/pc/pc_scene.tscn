@@ -34,7 +34,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -3.0
 offset_right = -3.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -57,17 +56,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_right = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.21568628, 0.47058824, 1, 1)
 
 [node name="DesktopPanel" type="Panel" parent="." unique_id=152184024]
 layout_mode = 0
-offset_top = 1.0
-offset_right = 1920.0
-offset_bottom = 1020.0
+offset_left = 3.0
+offset_right = 484.0
+offset_bottom = 269.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_6qbwl")
 script = ExtResource("3_rudg7")
 
@@ -78,10 +75,10 @@ anchor_left = 1.572
 anchor_top = 0.25500003
 anchor_right = 1.572
 anchor_bottom = 0.25500003
-offset_left = -1806.24
-offset_top = -179.84503
-offset_right = -1746.24
-offset_bottom = -95.84503
+offset_left = -316.136
+offset_top = -49.59501
+offset_right = -291.136
+offset_bottom = 3.4049911
 theme_override_styles/normal = SubResource("StyleBoxTexture_p0rpn")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_c0lli")
 icon = ExtResource("2_0h78p")
@@ -96,13 +93,13 @@ anchor_left = 0.28100002
 anchor_top = 0.753
 anchor_right = 0.28100002
 anchor_bottom = 0.753
-offset_left = -13.968002
-offset_top = 0.977993
-offset_right = 39.032
-offset_bottom = 23.977993
+offset_left = -21.02501
+offset_top = -12.909
+offset_right = 31.974995
+offset_bottom = 10.091
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 10
 text = "Doc"
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -111,7 +108,7 @@ vertical_alignment = 2
 oversampling_override = 1.0
 title = "Documents"
 initial_position = 1
-size = Vector2i(800, 600)
+size = Vector2i(250, 180)
 exclusive = true
 theme_override_styles/embedded_border = SubResource("StyleBoxTexture_0qnic")
 script = ExtResource("6_nle26")
@@ -120,38 +117,40 @@ script = ExtResource("6_nle26")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_right = 6.0
+offset_top = 8.0
+offset_right = 3.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="DesktopPanel/Document app/DocumentWindow" unique_id=143351591]
-offset_left = 2.0
-offset_top = 3.0
-offset_right = 796.0
-offset_bottom = 598.0
+offset_left = -50.0
+offset_top = 91.0
+offset_right = 744.0
+offset_bottom = 686.0
 
 [node name="TextReport" type="Node2D" parent="DesktopPanel/Document app/DocumentWindow" unique_id=74912274]
+position = Vector2(-103, -156)
 script = ExtResource("8_khb6m")
 
 [node name="TypeText" type="RichTextLabel" parent="DesktopPanel/Document app/DocumentWindow/TextReport" unique_id=1062130218]
-offset_left = 135.0
-offset_top = 192.0
-offset_right = 689.0
-offset_bottom = 578.0
+offset_left = 139.0
+offset_top = 203.0
+offset_right = 327.0
+offset_bottom = 310.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
-text = "I love working for this company! They are like a family to me. "
+text = "Today I have successfully increased shareholder value by replying to a tidal wave of emails, most of which asked me to confirm receipt of things I had already confirmed receiving. I attended a meeting that could have been an email, then attended a pre-meeting for that meeting, followed by a post-meeting recap that introduced three new meetings."
 scroll_active = false
 
 [node name="SuccessOverlay" type="Panel" parent="DesktopPanel/Document app/DocumentWindow" unique_id=1487666895]
-visible = false
 modulate = Color(0.3084925, 0.6799074, 0.47196037, 1)
 z_index = 4096
-offset_left = 572.0
-offset_top = 236.0
-offset_right = 736.0
-offset_bottom = 276.0
+offset_left = 40.0
+offset_top = 10.0
+offset_right = 204.0
+offset_bottom = 50.0
 
 [node name="Label" type="Label" parent="DesktopPanel/Document app/DocumentWindow/SuccessOverlay" unique_id=16615399]
 layout_mode = 0
@@ -163,18 +162,17 @@ text = "TASK COMPLETED!"
 
 [node name="TaskbarPanel" type="Panel" parent="." unique_id=242645272]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 662.0
-offset_right = 1285.0
-offset_bottom = 720.0
+offset_top = 245.0
+offset_right = 480.0
+offset_bottom = 270.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_wsi6r")
 
 [node name="Start button" type="Button" parent="TaskbarPanel" unique_id=51549926]
 layout_mode = 0
-offset_left = 460.0
-offset_top = 5.0
-offset_right = 513.0
-offset_bottom = 47.0
+offset_left = 145.0
+offset_top = 3.0
+offset_right = 160.0
+offset_bottom = 21.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -191,34 +189,31 @@ expand_icon = true
 
 [node name="TimePanel" type="Panel" parent="TaskbarPanel" unique_id=243261286]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -156.0
-offset_top = -50.0
-offset_right = -6.0
-offset_bottom = -8.0
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = -1
+anchor_left = 0.90400004
+anchor_right = 0.90400004
+offset_left = 0.07998657
+offset_right = 45.079987
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_53qcj")
 
 [node name="Label" type="Label" parent="TaskbarPanel/TimePanel" unique_id=185551419]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+anchors_preset = -1
+anchor_left = 0.45200002
+anchor_top = 0.54800004
+anchor_right = 0.45200002
+anchor_bottom = 0.54800004
+offset_left = -15.34
+offset_top = -7.7000074
+offset_right = 20.66
+offset_bottom = 12.299992
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 11
 text = "13:30"
 
 [connection signal="pressed" from="DesktopPanel/Document app" to="DesktopPanel" method="_on_document_app_pressed"]
