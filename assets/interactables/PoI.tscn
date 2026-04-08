@@ -19,13 +19,15 @@ script = ExtResource("1_51voe")
 sprite = ExtResource("1_hyqqt")
 collider = SubResource("RectangleShape2D_ckxil")
 area = SubResource("CapsuleShape2D_v5mal")
-interact_name = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1536286242]
 shape = SubResource("RectangleShape2D_3ddqs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=808716691]
+y_sort_enabled = true
+position = Vector2(0, 16.5)
 texture = ExtResource("1_hyqqt")
+offset = Vector2(0, -16.5)
 
 [node name="Interactable" parent="." unique_id=30413007 instance=ExtResource("2_0ogqo")]
 interact_name = "Open Task"

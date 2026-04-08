@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scenes/levels/music.gd" id="1_dmpnx"]
 [ext_resource type="PackedScene" uid="uid://bmacq5xie8df5" path="res://assets/tiles/officeTileMap.tscn" id="1_xwr5g"]
 [ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="2_dmpnx"]
+[ext_resource type="Texture2D" uid="uid://dxxljiuimmwbr" path="res://assets/interactables/Printer.png" id="4_dmpnx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhigv"]
 size = Vector2(1196, 20)
@@ -33,6 +34,10 @@ size = Vector2(10, 10)
 radius = 16.0
 height = 40.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4m8q4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tuhfx"]
+
 [node name="office" type="Node2D" unique_id=856302002]
 y_sort_enabled = true
 script = ExtResource("1_dmpnx")
@@ -62,22 +67,32 @@ position = Vector2(609, 86)
 shape = SubResource("RectangleShape2D_lhigv")
 
 [node name="Watercooler" parent="." unique_id=1489444515 instance=ExtResource("2_dmpnx")]
+y_sort_enabled = true
 position = Vector2(592, 66)
 sprite = SubResource("CompressedTexture2D_dmpnx")
 collider = SubResource("RectangleShape2D_uw80i")
 area = SubResource("CapsuleShape2D_ey3sf")
-interact_name = "Change"
+interact_name = "Change water"
 
 [node name="Desktop" parent="." unique_id=760676525 instance=ExtResource("2_dmpnx")]
-position = Vector2(912, 296)
+y_sort_enabled = true
+position = Vector2(912, 284)
 sprite = SubResource("CompressedTexture2D_uw80i")
 collider = SubResource("RectangleShape2D_ey3sf")
 area = SubResource("CapsuleShape2D_uw80i")
 interact_name = "Get to work"
 
 [node name="Water plants" parent="." unique_id=1272471299 instance=ExtResource("2_dmpnx")]
+y_sort_enabled = true
 position = Vector2(111, 303)
 collider = SubResource("RectangleShape2D_1gkrr")
 area = SubResource("CapsuleShape2D_4m8q4")
 scene_path = "res://scenes/Envirnment_tasks/water_plant_task.tscn"
 interact_name = "Water plants"
+
+[node name="Printer" parent="." unique_id=2082700480 instance=ExtResource("2_dmpnx")]
+y_sort_enabled = true
+position = Vector2(1169, 99)
+sprite = ExtResource("4_dmpnx")
+collider = SubResource("RectangleShape2D_4m8q4")
+area = SubResource("CapsuleShape2D_tuhfx")
