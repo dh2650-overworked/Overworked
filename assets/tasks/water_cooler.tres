@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TaskData" format=3 uid="uid://bjpbudbkf2d5a"]
+
+[ext_resource type="Script" uid="uid://dd6k082npoxh8" path="res://scripts/resources/task_data.gd" id="1_5ie0v"]
+
+[resource]
+resource_name = "reception"
+script = ExtResource("1_5ie0v")
+task_id = "water_cooler"
+task_name = "Change water cooler"
+reward_money = 150
+time_limit = 90.0
+unlock_time = 60.0

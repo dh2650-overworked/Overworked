@@ -131,6 +131,23 @@ bbcode_enabled = true
 text = "I love working for this company! They are like a family to me. "
 scroll_active = false
 
+[node name="SuccessOverlay" type="Panel" parent="DesktopPanel/Document app/DocumentWindow" unique_id=1487666895]
+visible = false
+modulate = Color(0.3084925, 0.6799074, 0.47196037, 1)
+z_index = 4096
+offset_left = 572.0
+offset_top = 236.0
+offset_right = 736.0
+offset_bottom = 276.0
+
+[node name="Label" type="Label" parent="DesktopPanel/Document app/DocumentWindow/SuccessOverlay" unique_id=16615399]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 154.0
+offset_bottom = 36.0
+text = "TASK COMPLETED!"
+
 [node name="TaskbarPanel" type="Panel" parent="." unique_id=242645272]
 layout_mode = 0
 offset_top = 1021.0

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TaskData" format=3 uid="uid://cc3o3qkjxunhs"]
+
+[ext_resource type="Script" uid="uid://dd6k082npoxh8" path="res://scripts/resources/task_data.gd" id="1_jw5eq"]
+
+[resource]
+resource_name = "fill_form"
+script = ExtResource("1_jw5eq")
+task_id = "respond_email"
+task_name = "Respond email"
+reward_money = 100
+is_starter_task = true
