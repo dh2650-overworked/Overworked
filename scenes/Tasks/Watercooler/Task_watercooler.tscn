@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://ctarcenqwik1a"]
 
 [ext_resource type="Script" uid="uid://li7pvlsa86fo" path="res://scenes/Tasks/Watercooler/sub_viewport.gd" id="2_dntni"]
-[ext_resource type="Texture2D" uid="uid://easnsmmyp6jo" path="res://assets/office_assets/separately_assets/Sprite-0013.png" id="2_grxi8"]
-[ext_resource type="Texture2D" uid="uid://q31t6si0g1rr" path="res://assets/office_assets/Watercooler_tankless.png" id="3_wvor2"]
+[ext_resource type="Texture2D" uid="uid://7blcdbai2v85" path="res://assets/tasks/Watercooler/Watercooler.png" id="2_wvor2"]
+[ext_resource type="Texture2D" uid="uid://6wb2utb3d457" path="res://assets/tasks/Watercooler/FilledTank.png" id="4_akkqv"]
 [ext_resource type="Script" uid="uid://ccpu443t56npi" path="res://scenes/Tasks/Watercooler/watercoolerbutton.gd" id="4_dntni"]
-[ext_resource type="Texture2D" uid="uid://6wb2utb3d457" path="res://assets/office_assets/separately_assets/Sprite-0014.png" id="6_tdbf1"]
-[ext_resource type="Texture2D" uid="uid://dudv3cvqhck1h" path="res://assets/office_assets/separately_assets/Sprite-0015.png" id="7_akkqv"]
+[ext_resource type="Texture2D" uid="uid://dn2vs5qdp048y" path="res://assets/tasks/Watercooler/Placeholder.png" id="4_tdbf1"]
+[ext_resource type="Texture2D" uid="uid://dudv3cvqhck1h" path="res://assets/tasks/Watercooler/EmptyTank.png" id="5_akkqv"]
 [ext_resource type="Script" uid="uid://dvaytjbybdkii" path="res://scenes/Tasks/Watercooler/water_tank_holder.gd" id="7_dntni"]
-[ext_resource type="Texture2D" uid="uid://s6nu7dlfa37o" path="res://assets/office_assets/separately_assets/Sprite-0024.png" id="7_e530o"]
 [ext_resource type="Script" uid="uid://cik23cwlbokdt" path="res://scenes/Tasks/Watercooler/water_tank.gd" id="8_tdbf1"]
 
 [node name="Control" type="Control" unique_id=397977382]
@@ -35,8 +34,7 @@ offset_left = 36.0
 offset_top = 27.0
 offset_right = 68.0
 offset_bottom = 91.0
-texture_normal = ExtResource("2_grxi8")
-texture_pressed = ExtResource("3_wvor2")
+texture_normal = ExtResource("2_wvor2")
 script = ExtResource("4_dntni")
 
 [node name="WaterTank" type="TextureButton" parent="SubViewportContainer/SubViewport" unique_id=1704681429]
@@ -44,7 +42,7 @@ offset_left = 70.0
 offset_top = 57.0
 offset_right = 102.0
 offset_bottom = 89.0
-texture_normal = ExtResource("6_tdbf1")
+texture_normal = ExtResource("4_akkqv")
 script = ExtResource("8_tdbf1")
 
 [node name="WaterTankHolder" type="TextureButton" parent="SubViewportContainer/SubViewport" unique_id=2015420141]
@@ -52,6 +50,6 @@ offset_left = 1.0
 offset_top = 55.0
 offset_right = 33.0
 offset_bottom = 87.0
-texture_normal = ExtResource("7_e530o")
-texture_disabled = ExtResource("7_akkqv")
+texture_normal = ExtResource("4_tdbf1")
+texture_disabled = ExtResource("5_akkqv")
 script = ExtResource("7_dntni")

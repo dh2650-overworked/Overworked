@@ -13,12 +13,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if button_pressed && tank_empty:
-		self.texture_normal = load("res://assets/office_assets/Watercooler_tankless.png")
+		self.texture_normal = load("res://assets/tasks/Watercooler/Watercooler_tankless.png")
 		tank_empty = false
 		no_tank = true
 		get_parent().has_empty_tank = true
 	elif button_pressed && no_tank && get_parent().has_tank:
-		self.texture_normal = load("res://assets/office_assets/separately_assets/Sprite-0013.png") #TODO: replace asset with filled bottle
+		self.texture_normal = load("res://assets/tasks/Watercooler/Watercooler.png") #TODO: replace asset with filled bottle
 		disabled = true
 		#TODO: Make a declaration that the task is complete somehow
 		
