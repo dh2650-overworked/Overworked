@@ -128,10 +128,10 @@ offset_bottom = 40.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=231815546]
 layout_mode = 0
-offset_left = 1281.024
+offset_left = 1210.2855
 offset_top = -1023.78
-offset_right = 2723.6821
-offset_bottom = 293.13086
+offset_right = 2652.9436
+offset_bottom = 179.94934
 rotation = 1.5707964
 
 [node name="TextureRect" type="TextureRect" parent="Control/MarginContainer" unique_id=1109017066]
