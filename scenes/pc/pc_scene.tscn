@@ -1,0 +1,212 @@
+[gd_scene format=3 uid="uid://dgku621g67xcf"]
+
+[ext_resource type="Script" uid="uid://mh8rywwor81" path="res://scenes/pc/pc_scene.gd" id="1_nf6t2"]
+[ext_resource type="Texture2D" uid="uid://chsvpi8ma8kok" path="res://assets/pc_assets/note.png" id="2_0h78p"]
+[ext_resource type="Texture2D" uid="uid://c4fxg5aoki2xv" path="res://assets/pc_assets/hover_effect.png" id="2_wsi6r"]
+[ext_resource type="Script" uid="uid://daj1flfo27h8h" path="res://scenes/pc/DesktopPanel.gd" id="3_rudg7"]
+[ext_resource type="Texture2D" uid="uid://cnf7g2eig3cm5" path="res://assets/pc_assets/Logo_idle.png" id="3_wsi6r"]
+[ext_resource type="Texture2D" uid="uid://bj2dyhdlmur3r" path="res://assets/pc_assets/8_white.png" id="4_2b4ws"]
+[ext_resource type="Script" uid="uid://cew37lw0u7r6a" path="res://scenes/pc/document_window.gd" id="6_nle26"]
+[ext_resource type="Texture2D" uid="uid://c02ls52tu7j50" path="res://assets/pc_assets/Document_bg_place_holder.png" id="7_kmvur"]
+[ext_resource type="Script" uid="uid://ne1euxo8wihp" path="res://scenes/pc/text_report.gd" id="8_khb6m"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6qbwl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p0rpn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c0lli"]
+texture = ExtResource("2_wsi6r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0qnic"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsi6r"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_err2h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wsi6r"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2b4ws"]
+texture = ExtResource("2_wsi6r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_53qcj"]
+
+[node name="PC_scene" type="Control" unique_id=1514691639]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nf6t2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2093197025]
+layer = 128
+
+[node name="MouseCursor" type="Sprite2D" parent="CanvasLayer" unique_id=287946108]
+visible = false
+top_level = true
+z_index = 4096
+position = Vector2(5.351563, 3.349609)
+scale = Vector2(1.3476563, 1.3574219)
+texture = ExtResource("4_2b4ws")
+offset = Vector2(6, 11)
+
+[node name="pc_background" type="ColorRect" parent="." unique_id=451289161]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.21568628, 0.47058824, 1, 1)
+
+[node name="DesktopPanel" type="Panel" parent="." unique_id=152184024]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 1920.0
+offset_bottom = 1020.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_6qbwl")
+script = ExtResource("3_rudg7")
+
+[node name="Document app" type="Button" parent="DesktopPanel" unique_id=982171993]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.572
+anchor_top = 0.25500003
+anchor_right = 1.572
+anchor_bottom = 0.25500003
+offset_left = -1211.24
+offset_top = -127.120026
+offset_right = -1124.24
+offset_bottom = -22.120026
+theme_override_styles/normal = SubResource("StyleBoxTexture_p0rpn")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_c0lli")
+icon = ExtResource("2_0h78p")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="DocTitle" type="Label" parent="DesktopPanel/Document app" unique_id=2087328144]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.28100002
+anchor_top = 0.753
+anchor_right = 0.28100002
+anchor_bottom = 0.753
+offset_left = -7.9680023
+offset_top = 2.9779968
+offset_right = 45.032
+offset_bottom = 25.977997
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 16
+text = "Doc"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="DocumentWindow" type="Window" parent="DesktopPanel/Document app" unique_id=1487198734]
+oversampling_override = 1.0
+title = "Documents"
+initial_position = 1
+size = Vector2i(1280, 900)
+exclusive = true
+theme_override_styles/embedded_border = SubResource("StyleBoxTexture_0qnic")
+script = ExtResource("6_nle26")
+
+[node name="TextureRect" type="TextureRect" parent="DesktopPanel/Document app/DocumentWindow" unique_id=143351591]
+offset_right = 1282.0
+offset_bottom = 899.0
+texture = ExtResource("7_kmvur")
+
+[node name="TextReport" type="Node2D" parent="DesktopPanel/Document app/DocumentWindow" unique_id=74912274]
+script = ExtResource("8_khb6m")
+
+[node name="TypeText" type="RichTextLabel" parent="DesktopPanel/Document app/DocumentWindow/TextReport" unique_id=1062130218]
+offset_left = 360.0
+offset_top = 327.0
+offset_right = 1036.0
+offset_bottom = 816.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "I love working for this company! They are like a family to me. "
+scroll_active = false
+
+[node name="SuccessOverlay" type="Panel" parent="DesktopPanel/Document app/DocumentWindow" unique_id=1487666895]
+visible = false
+modulate = Color(0.3084925, 0.6799074, 0.47196037, 1)
+z_index = 4096
+offset_left = 572.0
+offset_top = 236.0
+offset_right = 736.0
+offset_bottom = 276.0
+
+[node name="Label" type="Label" parent="DesktopPanel/Document app/DocumentWindow/SuccessOverlay" unique_id=16615399]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 154.0
+offset_bottom = 36.0
+text = "TASK COMPLETED!"
+
+[node name="TaskbarPanel" type="Panel" parent="." unique_id=242645272]
+layout_mode = 0
+offset_top = 1021.0
+offset_right = 1920.0
+offset_bottom = 1079.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wsi6r")
+
+[node name="Start button" type="Button" parent="TaskbarPanel" unique_id=51549926]
+layout_mode = 0
+offset_left = 712.0
+offset_top = 6.0
+offset_right = 765.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxTexture_err2h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wsi6r")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2b4ws")
+text = "
+"
+icon = ExtResource("3_wsi6r")
+icon_alignment = 1
+expand_icon = true
+
+[node name="TimePanel" type="Panel" parent="TaskbarPanel" unique_id=243261286]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = -50.0
+offset_right = -7.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_53qcj")
+
+[node name="Label" type="Label" parent="TaskbarPanel/TimePanel" unique_id=185551419]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+theme_override_font_sizes/font_size = 28
+text = "13:30"
+
+[connection signal="pressed" from="DesktopPanel/Document app" to="DesktopPanel" method="_on_document_app_pressed"]
+[connection signal="close_requested" from="DesktopPanel/Document app/DocumentWindow" to="." method="_on_document_window_close_requested"]
+[connection signal="close_requested" from="DesktopPanel/Document app/DocumentWindow" to="DesktopPanel" method="_on_document_window_close_requested"]
