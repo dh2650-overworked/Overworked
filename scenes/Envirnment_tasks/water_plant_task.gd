@@ -101,6 +101,10 @@ func complete_task():
 	
 	# Wait 2 seconds for player to see the result
 	await get_tree().create_timer(2.0).timeout
+
+	# 4. Notify and remove the task scene
+	TaskManager.complete_task_by_type("water_plant")
+
 	emit_signal("task_finished", true)
 	queue_free()
 
