@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://pgxtpv3h0107"]
 
-[ext_resource type="Script" uid="uid://ckqlfu6l0ry0b" path="res://scenes/player/player.gd" id="1_gfjak"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_gfjak"]
 [ext_resource type="Texture2D" uid="uid://brhypqe3j0mxe" path="res://assets/[Free Asset] Pixel Boy 32x64 Animation/boy-32x64-idle-walk.png" id="1_wr5hl"]
 [ext_resource type="PackedScene" uid="uid://brhsnuvptghtm" path="res://assets/interactables/interacting_component.tscn" id="3_4kuee"]
 
