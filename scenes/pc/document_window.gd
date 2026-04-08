@@ -11,20 +11,20 @@ func find_new_active_text(typed_character: String):
 		active_text = $TextReport
 		current_letter_index = 1
 		active_text.set_next_character(current_letter_index)
-		print("New Text!")
+		
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
 		var typed_event = event as InputEventKey
 		var key_typed = PackedByteArray([typed_event.unicode]).get_string_from_utf8()
-		print(key_typed)
+		
 		
 		if active_text == null:
 			find_new_active_text(key_typed)
 		else: 
 			var prompt = active_text.get_prompt()
 			var next_character = prompt.substr(current_letter_index,1)
-			if key_typed == next_character:
+			if key_typed == next_character.to_lower():
 				print("you right")
 				current_letter_index += 1
 				active_text.set_next_character(current_letter_index)
