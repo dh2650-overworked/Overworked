@@ -67,7 +67,7 @@ func _process(delta: float):
 
 # Formats the time into a MM:SS string and sends it to the UI
 func _update_ui_timer():
-	var minutes = int(time_left) / 60
+	var minutes = int(time_left) / 60.0
 	var seconds = int(time_left) % 60
 	var time_string = "%02d:%02d" % [minutes, seconds]
 	time_tick.emit(time_string)
