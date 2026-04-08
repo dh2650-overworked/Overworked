@@ -70,3 +70,13 @@ offset_right = 127.0
 offset_bottom = 131.0
 label_settings = SubResource("LabelSettings_ncbox")
 script = ExtResource("3_ncbox")
+
+[node name="Button" type="Button" parent="SubViewportContainer/SubViewport/Control" unique_id=1554283182]
+top_level = true
+layout_mode = 0
+offset_left = 301.0
+offset_top = 181.0
+offset_right = 392.0
+offset_bottom = 212.0
+scale = Vector2(0.5, 0.5)
+text = "Winbutton"
