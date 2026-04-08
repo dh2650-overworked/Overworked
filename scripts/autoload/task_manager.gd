@@ -8,15 +8,27 @@ signal task_removed(instance_id: String)
 signal money_updated(new_total: int)
 signal nav_requested(instance_id: String)
 
-const LEVEL_DURATION_SECONDS: float = 300.0
+const LEVEL_DURATION_SECONDS: float = 330.0
+const LUNCH_START_AT_SECONDS: float = 150.0
+const LUNCH_DURATION_SECONDS: float = 30.0
+
+signal lunch_started()
+signal lunch_ended()
+signal lunch_acknowledged()
 
 var total_money: int = 0
+var tasks_completed_count: int = 0
 
-## Counts down from 5:00 (300s) toward 0:00 for the HUD.
+## Counts down from 5:30 (330s) toward 0:00 for the HUD.
 var level_time_remaining: float = LEVEL_DURATION_SECONDS
 
 ## Seconds elapsed since start_level() (counts up while the level timer is running).
 var level_time_passed: float = 0.0
+
+var lunch_active: bool = false
+var lunch_time_remaining: float = 0.0
+var lunch_triggered: bool = false
+var lunch_message_needs_ack: bool = false
 
 ## Unique key -> TaskInstance
 var active_tasks: Dictionary = {}
@@ -42,8 +54,26 @@ func _process(delta: float) -> void:
 		level_time_remaining = maxf(level_time_remaining - delta, 0.0)
 		level_time_passed += delta
 		_sync_auto_pool_unlocks()
+
+		if (not lunch_triggered) and level_time_passed >= LUNCH_START_AT_SECONDS:
+			lunch_triggered = true
+			lunch_active = true
+			lunch_time_remaining = LUNCH_DURATION_SECONDS
+			lunch_message_needs_ack = true
+			lunch_started.emit()
+
+		if lunch_active:
+			lunch_time_remaining = maxf(lunch_time_remaining - delta, 0.0)
+			if lunch_time_remaining <= 0.0:
+				lunch_active = false
+				lunch_ended.emit()
+
 	if level_time_remaining <= 0.0:
 		return
+
+	if lunch_active:
+		return
+
 	_tick_task_timers(delta)
 	if _auto_dispatch_enabled:
 		_auto_cooldown -= delta
@@ -105,9 +135,14 @@ func configure_auto_dispatch(
 func start_level() -> void:
 	level_time_remaining = LEVEL_DURATION_SECONDS
 	level_time_passed = 0.0
+	lunch_active = false
+	lunch_time_remaining = 0.0
+	lunch_triggered = false
+	lunch_message_needs_ack = false
 	_next_uid = 0
 	active_tasks.clear()
 	total_money = 0
+	tasks_completed_count = 0
 	_auto_dispatch_pool.clear()
 	_auto_pool_unlocked.clear()
 	money_updated.emit(total_money)
@@ -142,8 +177,10 @@ func _pick_weighted_auto_task() -> TaskData:
 			return t
 	return _auto_dispatch_pool[_auto_dispatch_pool.size() - 1]
 
-
+#添加任务调用 TaskManager.add_task(preload("res://你的任务资源路径.tres"))
 func add_task(data: TaskData) -> void:
+	if lunch_active:
+		return
 	if data == null or data.task_id.is_empty():
 		push_warning("TaskManager.add_task: invalid TaskData")
 		return
@@ -167,13 +204,28 @@ func complete_task(instance_id: String) -> void:
 		return
 	var inst: TaskInstance = active_tasks[instance_id]
 	total_money += inst.reward_money
+	tasks_completed_count += 1
 	money_updated.emit(total_money)
 	remove_task(instance_id)
+	
+# 完成任务调用 TaskManager.complete_task_by_type("whiteboard")
+func complete_task_by_type(target_task_id: String) -> void:
+	for id in active_tasks:
+		var inst = active_tasks[id]
+		if inst.task_id == target_task_id:
+			complete_task(id)
+			return
 
 
 func request_navigation(instance_id: String) -> void:
 	if active_tasks.has(instance_id):
 		nav_requested.emit(instance_id)
+
+
+func acknowledge_lunch_message() -> void:
+	if lunch_message_needs_ack:
+		lunch_message_needs_ack = false
+		lunch_acknowledged.emit()
 
 
 func get_instance(instance_id: String) -> TaskInstance:

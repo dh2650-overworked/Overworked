@@ -9,4 +9,4 @@ task_id = "whiteboard"
 task_name = "Erase whiteboard"
 reward_money = 50
 time_limit = 20.0
-unlock_time = 10.0
+unlock_time = 60.0
