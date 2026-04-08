@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://doq7hk6gddqsj" path="res://scenes/Tasks/Whiteboard/node_2d.gd" id="1_1prki"]
 [ext_resource type="Texture2D" uid="uid://cwnq8y6fjscnp" path="res://icon.svg" id="1_e715p"]
+[ext_resource type="Script" uid="uid://cn4axvydpte5p" path="res://scenes/Tasks/Whiteboard/control.gd" id="1_od77l"]
 [ext_resource type="Script" uid="uid://uo6o53tnjspp" path="res://scenes/Tasks/Whiteboard/label.gd" id="3_ncbox"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ncbox"]
@@ -35,6 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_od77l")
 
 [node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Control" unique_id=1047995722]
 clip_children = 2
