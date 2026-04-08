@@ -5,28 +5,33 @@
 [ext_resource type="PackedScene" uid="uid://pixelabel001" path="res://scenes/ui/pixel_label.tscn" id="3_pixel"]
 [ext_resource type="Texture2D" uid="uid://b8bk78r1vdoev" path="res://assets/icons/time.png" id="4_time"]
 [ext_resource type="Texture2D" uid="uid://b7kf5aukr8e7" path="res://assets/icons/coin.png" id="5_coin"]
+[ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="6_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="7_tipki"]
 
 [node name="Main" type="Node" unique_id=2091917942]
 script = ExtResource("1_main")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1593975202]
 layer = 10
+follow_viewport_enabled = true
 
 [node name="TodoListUI" parent="CanvasLayer" unique_id=1378710553 instance=ExtResource("2_todo")]
-offset_left = 27.0
-offset_top = 101.0
-offset_right = 477.0
-offset_bottom = 601.0
+offset_left = 14.0
+offset_top = 41.0
+offset_right = 464.0
+offset_bottom = 541.0
+scale = Vector2(0.25, 0.25)
 
 [node name="TimeLabel" parent="CanvasLayer" unique_id=2004680778 instance=ExtResource("3_pixel")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -120.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 44.0
+offset_left = -60.0
+offset_top = 18.0
+offset_right = 44.0
+offset_bottom = 46.0
 grow_horizontal = 0
+scale = Vector2(0.4, 0.4)
 
 [node name="Icon" parent="CanvasLayer/TimeLabel" index="0"]
 texture = ExtResource("4_time")
@@ -41,12 +46,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -120.0
-offset_top = -44.0
-offset_right = -16.0
-offset_bottom = -16.0
+offset_left = -60.0
+offset_top = -27.0
+offset_right = 44.0
+offset_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
+scale = Vector2(0.4, 0.4)
 
 [node name="Icon" parent="CanvasLayer/MoneyLabel" index="0"]
 texture = ExtResource("5_coin")
@@ -54,6 +60,16 @@ texture = ExtResource("5_coin")
 [node name="Label" parent="CanvasLayer/MoneyLabel/Bg" index="0"]
 custom_minimum_size = Vector2(50, 0)
 text = "0"
+
+[node name="office" parent="." unique_id=856302002 instance=ExtResource("6_o6xl0")]
+
+[node name="Player" parent="." unique_id=470434658 instance=ExtResource("7_tipki")]
+y_sort_enabled = false
+position = Vector2(123, 182)
+scale = Vector2(1.5, 1.5)
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=673297237]
 
 [editable path="CanvasLayer/TimeLabel"]
 [editable path="CanvasLayer/MoneyLabel"]

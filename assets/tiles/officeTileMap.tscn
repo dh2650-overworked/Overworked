@@ -3,4 +3,5 @@
 [ext_resource type="TileSet" uid="uid://clo05kct0c6bm" path="res://assets/tiles/office_tileset.tres" id="1_jadqb"]
 
 [node name="TileMapLayer" type="TileMapLayer" unique_id=1566331029]
+scale = Vector2(2, 2)
 tile_set = ExtResource("1_jadqb")

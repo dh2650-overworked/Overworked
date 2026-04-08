@@ -32,8 +32,8 @@ var _auto_dispatch_pool: Array[TaskData] = []
 var _auto_pool_unlocked: Dictionary = {}
 
 var _auto_dispatch_enabled: bool = false
-var _auto_interval_min: float = 10.0
-var _auto_interval_max: float = 20.0
+var _auto_interval_min: float = 30.0
+var _auto_interval_max: float = 60.0
 var _auto_cooldown: float = 0.0
 
 
@@ -94,8 +94,8 @@ func register_task_catalog(task_definitions: Array[TaskData]) -> void:
 ## Sets auto-dispatch interval; pool content comes from catalog + unlock_time + AUTO_POOL (not from this call).
 func configure_auto_dispatch(
 	enabled: bool = true,
-	interval_min: float = 10.0,
-	interval_max: float = 20.0,
+	interval_min: float = 30.0,
+	interval_max: float = 60.0,
 ) -> void:
 	_auto_interval_min = maxf(interval_min, 0.1)
 	_auto_interval_max = maxf(interval_max, _auto_interval_min)
