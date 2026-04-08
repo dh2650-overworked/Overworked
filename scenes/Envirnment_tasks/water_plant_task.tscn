@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://5h2044lco2lx"]
+
+[ext_resource type="Script" uid="uid://cl1h8fwejfaj7" path="res://scenes/Envirnment_tasks/water_plant_task.gd" id="1_5oy37"]
+[ext_resource type="Texture2D" uid="uid://bdkwxni51y24h" path="res://assets/tasks/aaaaaa.png" id="2_a7wn5"]
+
+[node name="WaterPlantTask" type="CanvasLayer" unique_id=1096093144]
+script = ExtResource("1_5oy37")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1305859594]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5834499, 0.5834499, 0.5834499, 0.69411767)
+
+[node name="Plant" type="Sprite2D" parent="." unique_id=178838406]
+position = Vector2(235, 116)
+scale = Vector2(1.9375, 1.4375)
+texture = ExtResource("2_a7wn5")
+hframes = 5
+vframes = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=976758036]
+offset_left = 273.0
+offset_top = 72.0
+offset_right = 277.0
+offset_bottom = 134.0
+
+[node name="ExitButton" type="Button" parent="." unique_id=783657638]
+offset_left = 286.0
+offset_top = 103.0
+offset_right = 323.0
+offset_bottom = 134.0
+text = "Exit"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=893781523]
+position = Vector2(238, 130)
+
+[node name="SuccessOverlay" type="Panel" parent="." unique_id=1593458888]
+visible = false
+modulate = Color(0.3084925, 0.6799074, 0.47196037, 1)
+offset_left = 163.0
+offset_top = 97.0
+offset_right = 327.0
+offset_bottom = 137.0
+
+[node name="Label" type="Label" parent="SuccessOverlay" unique_id=72557629]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 154.0
+offset_bottom = 36.0
+text = "TASK COMPLETED!"
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
