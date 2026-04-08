@@ -9,6 +9,6 @@ task_id = "water_plant"
 task_name = "Water Plant"
 reward_money = 20
 time_limit = 30.0
-scene_path = "res://scenes/Envirnment_tasks/water_plant_task.tscn"
+scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 is_starter_task = true
 unlock_time = 60.0
