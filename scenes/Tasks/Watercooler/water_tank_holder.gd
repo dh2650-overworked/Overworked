@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if button_pressed && get_parent().has_empty_tank:
 		get_parent().has_empty_tank = false
 		get_parent().has_placed_empty_tank = true

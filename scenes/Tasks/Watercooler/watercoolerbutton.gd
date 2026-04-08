@@ -20,5 +20,6 @@ func _process(delta: float) -> void:
 	elif button_pressed && no_tank && get_parent().has_tank:
 		self.texture_normal = load("res://assets/tasks/Watercooler/Watercooler.png") #TODO: replace asset with filled bottle
 		disabled = true
+		get_parent().is_completed = true
 		#TODO: Make a declaration that the task is complete somehow
 		
