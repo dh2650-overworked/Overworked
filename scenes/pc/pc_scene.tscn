@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cnf7g2eig3cm5" path="res://assets/pc_assets/Logo_idle.png" id="3_wsi6r"]
 [ext_resource type="Texture2D" uid="uid://bj2dyhdlmur3r" path="res://assets/pc_assets/8_white.png" id="4_2b4ws"]
 [ext_resource type="Script" uid="uid://cew37lw0u7r6a" path="res://scenes/pc/document_window.gd" id="6_nle26"]
-[ext_resource type="Texture2D" uid="uid://c02ls52tu7j50" path="res://assets/pc_assets/Document_bg_place_holder.png" id="7_kmvur"]
 [ext_resource type="Script" uid="uid://ne1euxo8wihp" path="res://scenes/pc/text_report.gd" id="8_khb6m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6qbwl"]
@@ -35,6 +34,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3.0
+offset_right = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nf6t2")
@@ -56,6 +57,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_right = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.21568628, 0.47058824, 1, 1)
@@ -75,10 +78,10 @@ anchor_left = 1.572
 anchor_top = 0.25500003
 anchor_right = 1.572
 anchor_bottom = 0.25500003
-offset_left = -1211.24
-offset_top = -127.120026
-offset_right = -1124.24
-offset_bottom = -22.120026
+offset_left = -1806.24
+offset_top = -179.84503
+offset_right = -1746.24
+offset_bottom = -95.84503
 theme_override_styles/normal = SubResource("StyleBoxTexture_p0rpn")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_c0lli")
 icon = ExtResource("2_0h78p")
@@ -93,10 +96,10 @@ anchor_left = 0.28100002
 anchor_top = 0.753
 anchor_right = 0.28100002
 anchor_bottom = 0.753
-offset_left = -7.9680023
-offset_top = 2.9779968
-offset_right = 45.032
-offset_bottom = 25.977997
+offset_left = -13.968002
+offset_top = 0.977993
+offset_right = 39.032
+offset_bottom = 23.977993
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 16
@@ -108,24 +111,34 @@ vertical_alignment = 2
 oversampling_override = 1.0
 title = "Documents"
 initial_position = 1
-size = Vector2i(1280, 900)
+size = Vector2i(800, 600)
 exclusive = true
 theme_override_styles/embedded_border = SubResource("StyleBoxTexture_0qnic")
 script = ExtResource("6_nle26")
 
+[node name="pc_background" type="ColorRect" parent="DesktopPanel/Document app/DocumentWindow" unique_id=269739373]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_right = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="TextureRect" type="TextureRect" parent="DesktopPanel/Document app/DocumentWindow" unique_id=143351591]
-offset_right = 1282.0
-offset_bottom = 899.0
-texture = ExtResource("7_kmvur")
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 796.0
+offset_bottom = 598.0
 
 [node name="TextReport" type="Node2D" parent="DesktopPanel/Document app/DocumentWindow" unique_id=74912274]
 script = ExtResource("8_khb6m")
 
 [node name="TypeText" type="RichTextLabel" parent="DesktopPanel/Document app/DocumentWindow/TextReport" unique_id=1062130218]
-offset_left = 360.0
-offset_top = 327.0
-offset_right = 1036.0
-offset_bottom = 816.0
+offset_left = 135.0
+offset_top = 192.0
+offset_right = 689.0
+offset_bottom = 578.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "I love working for this company! They are like a family to me. "
@@ -150,17 +163,18 @@ text = "TASK COMPLETED!"
 
 [node name="TaskbarPanel" type="Panel" parent="." unique_id=242645272]
 layout_mode = 0
-offset_top = 1021.0
-offset_right = 1920.0
-offset_bottom = 1079.0
+offset_left = 2.0
+offset_top = 662.0
+offset_right = 1285.0
+offset_bottom = 720.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_wsi6r")
 
 [node name="Start button" type="Button" parent="TaskbarPanel" unique_id=51549926]
 layout_mode = 0
-offset_left = 712.0
-offset_top = 6.0
-offset_right = 765.0
-offset_bottom = 48.0
+offset_left = 460.0
+offset_top = 5.0
+offset_right = 513.0
+offset_bottom = 47.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -184,7 +198,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -156.0
 offset_top = -50.0
-offset_right = -7.0
+offset_right = -6.0
 offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
