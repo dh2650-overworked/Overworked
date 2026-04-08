@@ -110,4 +110,5 @@ y_sort_enabled = true
 position = Vector2(464, 257)
 sprite = ExtResource("5_uw80i")
 area = SubResource("CapsuleShape2D_1gkrr")
+scene_path = "res://scenes/Tasks/Whiteboard/Whiteboard_task.tscn"
 interact_name = "Clear whiteboard"

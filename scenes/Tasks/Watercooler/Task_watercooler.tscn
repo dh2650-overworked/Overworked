@@ -29,6 +29,16 @@ handle_input_locally = false
 render_target_update_mode = 4
 script = ExtResource("2_dntni")
 
+[node name="ColorRect" type="ColorRect" parent="Control/SubViewportContainer/SubViewport" unique_id=1649425457]
+clip_children = 2
+anchors_preset = -1
+anchor_right = 0.238
+anchor_bottom = 0.21100001
+offset_right = 0.14399719
+offset_bottom = -0.03200531
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="TextureButton" type="TextureButton" parent="Control/SubViewportContainer/SubViewport" unique_id=1072019126]
 offset_left = 36.0
 offset_top = 27.0
