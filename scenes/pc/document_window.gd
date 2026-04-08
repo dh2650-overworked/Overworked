@@ -30,5 +30,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				active_text.set_next_character(current_letter_index)
 				if current_letter_index == prompt.length():
 					current_letter_index =-1
+					print("you have won")
 			else: 
 				print("incorrectly typed %s instead of %s" % [key_typed, next_character])

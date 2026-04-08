@@ -39,6 +39,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nf6t2")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2093197025]
+layer = 128
+
+[node name="MouseCursor" type="Sprite2D" parent="CanvasLayer" unique_id=287946108]
+visible = false
+top_level = true
+z_index = 4096
+position = Vector2(5.351563, 3.349609)
+scale = Vector2(1.3476563, 1.3574219)
+texture = ExtResource("4_2b4ws")
+offset = Vector2(6, 11)
+
 [node name="pc_background" type="ColorRect" parent="." unique_id=451289161]
 layout_mode = 1
 anchors_preset = 15
@@ -50,10 +62,9 @@ color = Color(0.21568628, 0.47058824, 1, 1)
 
 [node name="DesktopPanel" type="Panel" parent="." unique_id=152184024]
 layout_mode = 0
-offset_left = 2.0
-offset_top = -4.0
-offset_right = 3360.0
-offset_bottom = 1781.0
+offset_top = 1.0
+offset_right = 1920.0
+offset_bottom = 1020.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_6qbwl")
 script = ExtResource("3_rudg7")
 
@@ -64,10 +75,10 @@ anchor_left = 1.572
 anchor_top = 0.25500003
 anchor_right = 1.572
 anchor_bottom = 0.25500003
-offset_left = -3459.776
-offset_top = -324.17505
-offset_right = -3372.776
-offset_bottom = -219.17505
+offset_left = -1211.24
+offset_top = -127.120026
+offset_right = -1124.24
+offset_bottom = -22.120026
 theme_override_styles/normal = SubResource("StyleBoxTexture_p0rpn")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_c0lli")
 icon = ExtResource("2_0h78p")
@@ -112,9 +123,9 @@ script = ExtResource("8_khb6m")
 
 [node name="TypeText" type="RichTextLabel" parent="DesktopPanel/Document app/DocumentWindow/TextReport" unique_id=1062130218]
 offset_left = 360.0
-offset_top = 322.0
+offset_top = 327.0
 offset_right = 1036.0
-offset_bottom = 811.0
+offset_bottom = 816.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "I love working for this company! They are like a family to me. "
@@ -178,12 +189,6 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 theme_override_font_sizes/font_size = 28
 text = "13:30"
-
-[node name="MouseCursor" type="Sprite2D" parent="." unique_id=287946108]
-visible = false
-top_level = true
-texture = ExtResource("4_2b4ws")
-offset = Vector2(6, 11)
 
 [connection signal="pressed" from="DesktopPanel/Document app" to="DesktopPanel" method="_on_document_app_pressed"]
 [connection signal="close_requested" from="DesktopPanel/Document app/DocumentWindow" to="." method="_on_document_window_close_requested"]

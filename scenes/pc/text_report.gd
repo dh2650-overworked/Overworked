@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var green = Color("#639765")
-@export var red = Color("#a65455")
-@export var blue = Color("#4682b4")
+@export var red = Color("ad2a25ff")
+@export var blue = Color("1d75d9ff")
 
 @onready var document_window: Window = $".."
 @onready var prompt: RichTextLabel = $TypeText
