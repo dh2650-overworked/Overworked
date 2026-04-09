@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cwnq8y6fjscnp" path="res://icon.svg" id="1_e715p"]
 [ext_resource type="Script" uid="uid://cn4axvydpte5p" path="res://scenes/Tasks/Whiteboard/control.gd" id="1_od77l"]
 [ext_resource type="Script" uid="uid://uo6o53tnjspp" path="res://scenes/Tasks/Whiteboard/label.gd" id="3_ncbox"]
+[ext_resource type="Script" uid="uid://laqywbgw8shl" path="res://scenes/Tasks/Whiteboard/button.gd" id="5_usjox"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ncbox"]
 font_color = Color(0, 0, 0, 1)
@@ -82,3 +83,4 @@ offset_right = 392.0
 offset_bottom = 212.0
 scale = Vector2(0.5, 0.5)
 text = "Winbutton"
+script = ExtResource("5_usjox")

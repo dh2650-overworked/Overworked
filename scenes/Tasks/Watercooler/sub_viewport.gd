@@ -18,6 +18,8 @@ func _process(delta: float) -> void:
 		#pass
 		var root_container = _find_canvas_layer(self)
 		
+		await get_tree().create_timer(1).timeout
+		
 		if root_container:
 			root_container.queue_free()
 		else:
