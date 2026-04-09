@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://2hisqf0xy7uj"]
 
-[ext_resource type="Script" path="res://scenes/levels/music.gd" id="1_dmpnx"]
+[ext_resource type="Script" uid="uid://bm4vdrlj4tc2e" path="res://scenes/levels/music.gd" id="1_dmpnx"]
 [ext_resource type="PackedScene" uid="uid://bmacq5xie8df5" path="res://assets/tiles/officeTileMap.tscn" id="1_xwr5g"]
 [ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="2_dmpnx"]
 [ext_resource type="Texture2D" uid="uid://dxxljiuimmwbr" path="res://assets/interactables/Printer.png" id="4_dmpnx"]
@@ -80,6 +80,7 @@ position = Vector2(912, 284)
 sprite = SubResource("CompressedTexture2D_uw80i")
 collider = SubResource("RectangleShape2D_ey3sf")
 area = SubResource("CapsuleShape2D_uw80i")
+scene_path = "res://scenes/pc/pc_scene.tscn"
 interact_name = "Get to work"
 
 [node name="Water plants" parent="." unique_id=1272471299 instance=ExtResource("2_dmpnx")]

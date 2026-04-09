@@ -16,6 +16,7 @@ func _ready() -> void:
 	# Load the texture from your sprite's texture
 	 # Set it as the custom cursor
 	Input.set_custom_mouse_cursor(mouse_cursor)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
