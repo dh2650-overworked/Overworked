@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="2_dmpnx"]
 [ext_resource type="Texture2D" uid="uid://dxxljiuimmwbr" path="res://assets/interactables/Printer.png" id="4_dmpnx"]
 [ext_resource type="Texture2D" uid="uid://dmhimegnvtpci" path="res://assets/interactables/Whiteboard.png" id="5_uw80i"]
-[ext_resource type="Script" uid="uid://yjtvc6coivww" path="res://scenes/levels/SkyGradient.gd" id="6_ey3sf"]
+[ext_resource type="Script" path="res://scenes/levels/SkyGradient.gd" id="6_ey3sf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhigv"]
 size = Vector2(1196, 20)

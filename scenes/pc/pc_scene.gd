@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @onready var mouse_cursor = load("uid://bj2dyhdlmur3r")
 var pc_mouse_pos:Vector2 = Vector2.ZERO
