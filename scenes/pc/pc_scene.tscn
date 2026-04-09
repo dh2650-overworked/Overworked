@@ -148,6 +148,7 @@ text = "Today I have successfully increased shareholder value by replying to a t
 scroll_active = false
 
 [node name="SuccessOverlay" type="Panel" parent="PC_scene/DesktopPanel/Document app/DocumentWindow" unique_id=1487666895]
+visible = false
 modulate = Color(0.3084925, 0.6799074, 0.47196037, 1)
 z_index = 4096
 offset_left = 40.0
