@@ -36,6 +36,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func complete_task():
 	is_completed = true
+	TaskManager.complete_task_by_type("report_writing")
 	
 	# 1. Play success sound
 	#if success_sound:

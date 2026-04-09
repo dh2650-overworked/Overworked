@@ -10,5 +10,6 @@ task_name = "Erase whiteboard"
 reward_money = 50
 time_limit = 50.0
 scene_path = "res://scenes/Tasks/Whiteboard/Whiteboard_task.tscn"
+auto_dispatch_weight = 2.0
 is_starter_task = true
 unlock_time = 60.0
