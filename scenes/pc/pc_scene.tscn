@@ -30,13 +30,7 @@ texture = ExtResource("2_wsi6r")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_53qcj"]
 
-[node name="PC_scene" type="Control" unique_id=1514691639]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PC_scene" type="CanvasLayer" unique_id=1275579978]
 script = ExtResource("1_nf6t2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2093197025]
@@ -52,7 +46,6 @@ texture = ExtResource("4_2b4ws")
 offset = Vector2(6, 11)
 
 [node name="pc_background" type="ColorRect" parent="." unique_id=451289161]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -61,7 +54,6 @@ grow_vertical = 2
 color = Color(0.21568628, 0.47058824, 1, 1)
 
 [node name="DesktopPanel" type="Panel" parent="." unique_id=152184024]
-layout_mode = 0
 offset_top = 1.0
 offset_right = 1920.0
 offset_bottom = 1020.0
@@ -149,7 +141,6 @@ offset_bottom = 36.0
 text = "TASK COMPLETED!"
 
 [node name="TaskbarPanel" type="Panel" parent="." unique_id=242645272]
-layout_mode = 0
 offset_top = 1021.0
 offset_right = 1920.0
 offset_bottom = 1079.0
@@ -208,5 +199,4 @@ theme_override_font_sizes/font_size = 28
 text = "13:30"
 
 [connection signal="pressed" from="DesktopPanel/Document app" to="DesktopPanel" method="_on_document_app_pressed"]
-[connection signal="close_requested" from="DesktopPanel/Document app/DocumentWindow" to="." method="_on_document_window_close_requested"]
 [connection signal="close_requested" from="DesktopPanel/Document app/DocumentWindow" to="DesktopPanel" method="_on_document_window_close_requested"]

@@ -85,8 +85,8 @@ func complete_task():
 	is_completed = true
 	
 	# 1. Play success sound
-	if success_sound:
-		success_sound.play()
+	#if success_sound:
+		#success_sound.play()
 	
 	# 2. Show success UI with animation
 	success_overlay.visible = true

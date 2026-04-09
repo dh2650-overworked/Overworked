@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://5h2044lco2lx"]
+
+[ext_resource type="Script" uid="uid://cl1h8fwejfaj7" path="res://scenes/Tasks/Water Plants/water_plant_task.gd" id="1_5oy37"]
+[ext_resource type="Texture2D" uid="uid://bdkwxni51y24h" path="res://assets/tasks/aaaaaa.png" id="2_a7wn5"]
+[ext_resource type="AudioStream" uid="uid://m4lb2rn5qfvp" path="res://assets/music/freesound_community-watering-plants-27218.mp3" id="3_a7wn5"]
+[ext_resource type="Texture2D" uid="uid://ctrut12kcrouc" path="res://scenes/Tasks/Water Plants/Flower Pot 1 - RED.png" id="3_w0kqe"]
+[ext_resource type="Texture2D" uid="uid://cpgwcgqh4wrq2" path="res://scenes/Tasks/Water Plants/WaterCan.png" id="4_e11mb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e11mb"]
+size = Vector2(24.451607, 29.000004)
+
+[node name="WaterPlantTask" type="CanvasLayer" unique_id=1096093144]
+script = ExtResource("1_5oy37")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1305859594]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5834499, 0.5834499, 0.5834499, 0.69411767)
+
+[node name="Plant" type="Sprite2D" parent="." unique_id=178838406]
+position = Vector2(235, 116)
+scale = Vector2(1.9375, 1.4375)
+texture = ExtResource("2_a7wn5")
+hframes = 5
+vframes = 3
+
+[node name="PlantArea" type="Area2D" parent="Plant" unique_id=828928554]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plant/PlantArea" unique_id=1869801808]
+position = Vector2(1.0322571, 0.108695984)
+shape = SubResource("RectangleShape2D_e11mb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Plant" unique_id=1539720037]
+position = Vector2(3.0967703, 16.695652)
+scale = Vector2(1.1153843, 1)
+texture = ExtResource("3_w0kqe")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=976758036]
+offset_left = 273.0
+offset_top = 72.0
+offset_right = 277.0
+offset_bottom = 134.0
+
+[node name="ExitButton" type="Button" parent="." unique_id=783657638]
+offset_left = 283.0
+offset_top = 105.0
+offset_right = 320.0
+offset_bottom = 136.0
+text = "Exit"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=893781523]
+position = Vector2(238, 130)
+
+[node name="SuccessOverlay" type="Panel" parent="." unique_id=1593458888]
+modulate = Color(0.3084925, 0.6799074, 0.47196037, 1)
+offset_left = 163.0
+offset_top = 97.0
+offset_right = 327.0
+offset_bottom = 137.0
+
+[node name="Label" type="Label" parent="SuccessOverlay" unique_id=72557629]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 154.0
+offset_bottom = 36.0
+text = "TASK COMPLETED!"
+
+[node name="WaterSound" type="AudioStreamPlayer" parent="." unique_id=1535867984]
+stream = ExtResource("3_a7wn5")
+
+[node name="WateringCan" type="Sprite2D" parent="." unique_id=1119100563]
+position = Vector2(336, 85)
+scale = Vector2(0.010169191, 0.011459088)
+texture = ExtResource("4_e11mb")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="WateringCan" unique_id=2093368448]
+position = Vector2(-1475.0437, -261.80096)
+emitting = false
+amount = 20
+spread = 51.57
+color = Color(0.105882354, 1, 1, 1)
+
+[node name="WaterTip" type="Marker2D" parent="WateringCan" unique_id=675712098]
+position = Vector2(-1475.0437, -261.80096)
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
