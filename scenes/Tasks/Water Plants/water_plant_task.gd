@@ -19,7 +19,8 @@ var is_in_range: bool = false
 @onready var success_overlay = $SuccessOverlay
 @onready var watering_can = $WateringCan
 @onready var water_sound = $WaterSound
-@onready var success_sound = $SuccessSound # <-- NEW: Add an AudioStreamPlayer node with this name
+# TODO add to taskManager instead
+#@onready var success_sound = $SuccessSound # <-- NEW: Add an AudioStreamPlayer node with this name
 @onready var water_particles = $WateringCan/CPUParticles2D
 
 func _ready():

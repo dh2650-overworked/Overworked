@@ -11,6 +11,10 @@ size = Vector2(24.451607, 29.000004)
 
 [node name="WaterPlantTask" type="CanvasLayer" unique_id=1096093144]
 script = ExtResource("1_5oy37")
+grow_speed = null
+target_row = null
+h_frames = null
+check_distance = null
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1305859594]
 anchors_preset = 15
