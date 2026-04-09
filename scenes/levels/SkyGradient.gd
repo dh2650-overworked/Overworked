@@ -1,7 +1,8 @@
 extends TextureRect
 
 var Skycolor = GradientTexture1D.new()
-var scrollspeed:float = float(1)/480 #Set this to reasonable value for how fast a day is
+var scrollspeed:float = float(1)/200
+const START_TIME: float = 200.0 #Set this to reasonable value for how fast a day is
 # At 1/480 We get to black background at the end of the day, at 1/540 we have mostly red and 1/600 is orange with a hint of red
 
 # Called when the node enters the scene tree for the first time.
@@ -25,9 +26,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if TaskManager.level_time_passed < START_TIME:
+		return
 	#print(scrollspeed)
 	for point in range(Skycolor.gradient.get_point_count()):
-		if Skycolor.gradient.get_offset(point)+scrollspeed*delta < 1:
-			Skycolor.gradient.set_offset(point, Skycolor.gradient.get_offset(point)+scrollspeed*delta)
+		var current_offset = Skycolor.gradient.get_offset(point)
+		var movement = scrollspeed * delta
+		
+		if current_offset + movement < 1.0:
+			Skycolor.gradient.set_offset(point, current_offset + movement)
 		else:
-			Skycolor.gradient.set_offset(point, Skycolor.gradient.get_offset(point)-1)
+			Skycolor.gradient.set_offset(point, current_offset + movement - 1.0)
