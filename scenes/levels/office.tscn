@@ -26,8 +26,8 @@ load_path = "res://.godot/imported/Workstation.png-4dabca2ddcaea7ccee72298e26a89
 size = Vector2(20, 10)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uw80i"]
-radius = 16.0
-height = 48.0
+radius = 20.0
+height = 64.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gkrr"]
 size = Vector2(10, 10)

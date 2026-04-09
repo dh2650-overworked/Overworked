@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var green = Color("#639765")
+@export var green = Color("#000000")
 @export var red = Color("ad2a25ff")
 @export var blue = Color("1d75d9ff")
 
@@ -33,3 +33,6 @@ func get_bbcode_color_tag(color: Color) -> String:
 
 func get_bbcode_end_color_tag() -> String:
 	return "[/color]"
+
+
+# Today I have successfully increased shareholder value by replying to a tidal wave of emails, most of which asked me to confirm receipt of things I had already confirmed receiving. I attended a meeting that could have been an email, then attended a pre-meeting for that meeting, followed by a post-meeting recap that introduced three new meetings.

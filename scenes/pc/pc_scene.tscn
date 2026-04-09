@@ -144,10 +144,11 @@ offset_bottom = 310.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
-text = "Today I have successfully increased shareholder value by replying to a tidal wave of emails, most of which asked me to confirm receipt of things I had already confirmed receiving. I attended a meeting that could have been an email, then attended a pre-meeting for that meeting, followed by a post-meeting recap that introduced three new meetings."
+text = "We are happy to inform our dear investors that we saw a net profit of 20% last quarter. Further we've projected a profit of at least 10% in Q2."
 scroll_active = false
 
 [node name="SuccessOverlay" type="Panel" parent="PC_scene/DesktopPanel/Document app/DocumentWindow" unique_id=1487666895]
+visible = false
 modulate = Color(0.3084925, 0.6799074, 0.47196037, 1)
 z_index = 4096
 offset_left = 40.0
