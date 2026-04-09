@@ -30,6 +30,7 @@ texture = ExtResource("2_wsi6r")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_53qcj"]
 
+<<<<<<< HEAD
 [node name="CanvasLayer2" type="CanvasLayer" unique_id=519359355]
 
 [node name="PC_scene" type="Control" parent="." unique_id=1514691639]
@@ -40,6 +41,9 @@ anchor_bottom = 1.0
 offset_right = -3.0
 grow_horizontal = 2
 grow_vertical = 2
+=======
+[node name="PC_scene" type="CanvasLayer" unique_id=1275579978]
+>>>>>>> main
 script = ExtResource("1_nf6t2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="PC_scene" unique_id=2093197025]
@@ -54,8 +58,12 @@ scale = Vector2(1.3476563, 1.3574219)
 texture = ExtResource("4_2b4ws")
 offset = Vector2(6, 11)
 
+<<<<<<< HEAD
 [node name="pc_background" type="ColorRect" parent="PC_scene" unique_id=451289161]
 layout_mode = 1
+=======
+[node name="pc_background" type="ColorRect" parent="." unique_id=451289161]
+>>>>>>> main
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -63,11 +71,18 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.21568628, 0.47058824, 1, 1)
 
+<<<<<<< HEAD
 [node name="DesktopPanel" type="Panel" parent="PC_scene" unique_id=152184024]
 layout_mode = 0
 offset_left = 3.0
 offset_right = 484.0
 offset_bottom = 269.0
+=======
+[node name="DesktopPanel" type="Panel" parent="." unique_id=152184024]
+offset_top = 1.0
+offset_right = 1920.0
+offset_bottom = 1020.0
+>>>>>>> main
 theme_override_styles/panel = SubResource("StyleBoxTexture_6qbwl")
 script = ExtResource("3_rudg7")
 
@@ -163,11 +178,18 @@ offset_right = 154.0
 offset_bottom = 36.0
 text = "TASK COMPLETED!"
 
+<<<<<<< HEAD
 [node name="TaskbarPanel" type="Panel" parent="PC_scene" unique_id=242645272]
 layout_mode = 0
 offset_top = 245.0
 offset_right = 480.0
 offset_bottom = 270.0
+=======
+[node name="TaskbarPanel" type="Panel" parent="." unique_id=242645272]
+offset_top = 1021.0
+offset_right = 1920.0
+offset_bottom = 1079.0
+>>>>>>> main
 theme_override_styles/panel = SubResource("StyleBoxFlat_wsi6r")
 
 [node name="Start button" type="Button" parent="PC_scene/TaskbarPanel" unique_id=51549926]
@@ -223,6 +245,11 @@ theme_override_colors/font_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 theme_override_font_sizes/font_size = 11
 text = "13:30"
 
+<<<<<<< HEAD
 [connection signal="pressed" from="PC_scene/DesktopPanel/Document app" to="PC_scene/DesktopPanel" method="_on_document_app_pressed"]
 [connection signal="close_requested" from="PC_scene/DesktopPanel/Document app/DocumentWindow" to="PC_scene" method="_on_document_window_close_requested"]
 [connection signal="close_requested" from="PC_scene/DesktopPanel/Document app/DocumentWindow" to="PC_scene/DesktopPanel" method="_on_document_window_close_requested"]
+=======
+[connection signal="pressed" from="DesktopPanel/Document app" to="DesktopPanel" method="_on_document_app_pressed"]
+[connection signal="close_requested" from="DesktopPanel/Document app/DocumentWindow" to="DesktopPanel" method="_on_document_window_close_requested"]
+>>>>>>> main

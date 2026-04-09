@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bmacq5xie8df5" path="res://assets/tiles/officeTileMap.tscn" id="1_xwr5g"]
 [ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="2_dmpnx"]
 [ext_resource type="Texture2D" uid="uid://dxxljiuimmwbr" path="res://assets/interactables/Printer.png" id="4_dmpnx"]
+[ext_resource type="Texture2D" uid="uid://dmhimegnvtpci" path="res://assets/interactables/Whiteboard.png" id="5_uw80i"]
+[ext_resource type="Script" uid="uid://yjtvc6coivww" path="res://scenes/levels/SkyGradient.gd" id="6_ey3sf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhigv"]
 size = Vector2(1196, 20)
@@ -38,6 +40,18 @@ height = 40.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tuhfx"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1gkrr"]
+resource_name = "Clear whiteboard"
+radius = 32.0
+height = 64.0
+
+[sub_resource type="Gradient" id="Gradient_uw80i"]
+offsets = PackedFloat32Array(0.32530123, 0.40361446, 0.49397588, 0.57831323, 0.76506025, 0.92168677)
+colors = PackedColorArray(0.0052051274, 5.5407636e-05, 0.00014651388, 1, 0.701675, 0.17676753, 0.25424892, 1, 1.072, 0.459, 0.264, 1, 0.2627451, 0.5019608, 0.99215686, 1, 0, 0.5348489, 0.9288872, 1, 0.11014738, 0.3835422, 0.92072624, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ey3sf"]
+gradient = SubResource("Gradient_uw80i")
+
 [node name="office" type="Node2D" unique_id=856302002]
 y_sort_enabled = true
 script = ExtResource("1_dmpnx")
@@ -57,10 +71,10 @@ metadata/_edit_lock_ = true
 
 [node name="TileMapDecor" parent="GameTileMap" unique_id=1422637923 instance=ExtResource("1_xwr5g")]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAKAAQAAAAUAAcAAAAOAAgAAAAUAAMAAAAWAAQAAAAMAAAAAAAWAAYAAAAQAAYAAAAWAAkAAAAMAAAAAAAWAAsAAAAQAAYAAAAcAAQAAAAMAAAAAAAcAAYAAAAQAAYAAAAcAAsAAAAQAAYAAAAcAAkAAAAMAAAAAAACAAkAAAAOAAgAAAABAAoAAAAKAAgAAAABAAkAAAALAAoAAAA=")
+tile_map_data = PackedByteArray("AAAKAAQAAAAUAAcAAAAWAAQAAAAMAAAAAAAWAAYAAAAQAAYAAAAWAAkAAAAMAAAAAAAWAAsAAAAQAAYAAAAcAAQAAAAMAAAAAAAcAAYAAAAQAAYAAAAcAAsAAAAQAAYAAAAcAAkAAAAMAAAAAAACAAkAAAAOAAgAAAABAAoAAAAKAAgAAAABAAkAAAALAAoAAAA=")
 metadata/_edit_lock_ = true
 
-[node name="RigidBody2D" type="RigidBody2D" parent="GameTileMap" unique_id=1377822053]
+[node name="RigidBody2D" type="StaticBody2D" parent="GameTileMap" unique_id=1326930275]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameTileMap/RigidBody2D" unique_id=2036616874]
 position = Vector2(609, 86)
@@ -72,6 +86,7 @@ position = Vector2(592, 66)
 sprite = SubResource("CompressedTexture2D_dmpnx")
 collider = SubResource("RectangleShape2D_uw80i")
 area = SubResource("CapsuleShape2D_ey3sf")
+scene_path = "res://scenes/Tasks/Watercooler/Task_watercooler.tscn"
 interact_name = "Change water"
 
 [node name="Desktop" parent="." unique_id=760676525 instance=ExtResource("2_dmpnx")]
@@ -88,7 +103,7 @@ y_sort_enabled = true
 position = Vector2(111, 303)
 collider = SubResource("RectangleShape2D_1gkrr")
 area = SubResource("CapsuleShape2D_4m8q4")
-scene_path = "res://scenes/Envirnment_tasks/water_plant_task.tscn"
+scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"
 
 [node name="Printer" parent="." unique_id=2082700480 instance=ExtResource("2_dmpnx")]
@@ -97,3 +112,31 @@ position = Vector2(1169, 99)
 sprite = ExtResource("4_dmpnx")
 collider = SubResource("RectangleShape2D_4m8q4")
 area = SubResource("CapsuleShape2D_tuhfx")
+
+[node name="Whiteboard" parent="." unique_id=145681059 instance=ExtResource("2_dmpnx")]
+y_sort_enabled = true
+position = Vector2(464, 257)
+sprite = ExtResource("5_uw80i")
+area = SubResource("CapsuleShape2D_1gkrr")
+scene_path = "res://scenes/Tasks/Whiteboard/Whiteboard_task.tscn"
+interact_name = "Clear whiteboard"
+
+[node name="Control" type="Control" parent="." unique_id=1146814837]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=231815546]
+layout_mode = 0
+offset_left = 1210.2855
+offset_top = -1023.78
+offset_right = 2652.9436
+offset_bottom = 179.94934
+rotation = 1.5707964
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer" unique_id=1109017066]
+z_index = -4096
+layout_mode = 2
+texture = SubResource("GradientTexture1D_ey3sf")
+script = ExtResource("6_ey3sf")

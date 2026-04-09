@@ -9,47 +9,57 @@
 [ext_resource type="Script" uid="uid://dvaytjbybdkii" path="res://scenes/Tasks/Watercooler/water_tank_holder.gd" id="7_dntni"]
 [ext_resource type="Script" uid="uid://cik23cwlbokdt" path="res://scenes/Tasks/Watercooler/water_tank.gd" id="8_tdbf1"]
 
-[node name="Control" type="Control" unique_id=397977382]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CanvasLayer" type="CanvasLayer" unique_id=514069257]
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=121891273]
+[node name="Control" type="Control" parent="." unique_id=2145775955]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 485.0
+offset_bottom = 272.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control" unique_id=121891273]
 layout_mode = 0
 offset_left = 164.0
 offset_top = 50.0
 offset_right = 676.0
 offset_bottom = 562.0
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=188219500]
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer" unique_id=188219500]
 handle_input_locally = false
 render_target_update_mode = 4
 script = ExtResource("2_dntni")
 
-[node name="TextureButton" type="TextureButton" parent="SubViewportContainer/SubViewport" unique_id=1072019126]
-offset_left = 36.0
+[node name="ColorRect" type="ColorRect" parent="Control/SubViewportContainer/SubViewport" unique_id=1649425457]
+clip_children = 2
+anchors_preset = -1
+anchor_right = 0.34
+anchor_bottom = 0.254
+offset_right = -0.08000183
+offset_bottom = -0.04800415
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="Control/SubViewportContainer/SubViewport" unique_id=1072019126]
+offset_left = 50.0
 offset_top = 27.0
-offset_right = 68.0
+offset_right = 82.0
 offset_bottom = 91.0
 texture_normal = ExtResource("2_wvor2")
 script = ExtResource("4_dntni")
 
-[node name="WaterTank" type="TextureButton" parent="SubViewportContainer/SubViewport" unique_id=1704681429]
-offset_left = 70.0
-offset_top = 57.0
-offset_right = 102.0
-offset_bottom = 89.0
+[node name="WaterTank" type="TextureButton" parent="Control/SubViewportContainer/SubViewport" unique_id=1704681429]
+offset_left = 85.0
+offset_top = 24.0
+offset_right = 117.0
+offset_bottom = 56.0
 texture_normal = ExtResource("4_akkqv")
 script = ExtResource("8_tdbf1")
 
-[node name="WaterTankHolder" type="TextureButton" parent="SubViewportContainer/SubViewport" unique_id=2015420141]
-offset_left = 1.0
-offset_top = 55.0
-offset_right = 33.0
-offset_bottom = 87.0
+[node name="WaterTankHolder" type="TextureButton" parent="Control/SubViewportContainer/SubViewport" unique_id=2015420141]
+offset_left = 82.0
+offset_top = 60.0
+offset_right = 114.0
+offset_bottom = 92.0
 texture_normal = ExtResource("4_tdbf1")
 texture_disabled = ExtResource("5_akkqv")
 script = ExtResource("7_dntni")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj2dyhdlmur3r"
-path="res://.godot/imported/8_white.png-ec1ff14f86a493ad5e48d133dcd9d18c.ctex"
+uid="uid://dmhimegnvtpci"
+path="res://.godot/imported/Whiteboard.png-5183a81fab8dca23833e2807d07da225.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/8_white.png"
-dest_files=["res://.godot/imported/8_white.png-ec1ff14f86a493ad5e48d133dcd9d18c.ctex"]
+source_file="res://assets/interactables/Whiteboard.png"
+dest_files=["res://.godot/imported/Whiteboard.png-5183a81fab8dca23833e2807d07da225.ctex"]
 
 [params]
 

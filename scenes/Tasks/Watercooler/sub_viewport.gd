@@ -13,5 +13,24 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_completed:
+		TaskManager.complete_task_by_type("water_cooler")
 		#Todo: Trigger completion and close window automatically
-		pass
+		#pass
+		var root_container = _find_canvas_layer(self)
+		
+		await get_tree().create_timer(1).timeout
+		
+		if root_container:
+			root_container.queue_free()
+		else:
+			queue_free()
+		#queue_free()
+		#pass #Trigger win
+
+func _find_canvas_layer(node: Node) -> Node:
+	var current = node
+	while current != null:
+		if current is CanvasLayer:
+			return current
+		current = current.get_parent()
+	return null

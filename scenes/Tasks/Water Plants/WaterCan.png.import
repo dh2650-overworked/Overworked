@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3fclwtg6a44c"
-path="res://.godot/imported/aaaaaa.png-863421501a2de9bb724f3aa4db248527.ctex"
+uid="uid://cpgwcgqh4wrq2"
+path="res://.godot/imported/WaterCan.png-3b40aab3625b2e3bb0c6b4adf6d63c97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Envirnment_tasks/aaaaaa.png"
-dest_files=["res://.godot/imported/aaaaaa.png-863421501a2de9bb724f3aa4db248527.ctex"]
+source_file="res://scenes/Tasks/Water Plants/WaterCan.png"
+dest_files=["res://.godot/imported/WaterCan.png-3b40aab3625b2e3bb0c6b4adf6d63c97.ctex"]
 
 [params]
 

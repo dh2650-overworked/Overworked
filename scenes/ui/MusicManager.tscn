@@ -6,8 +6,9 @@
 
 [node name="MusicManager" type="Node" unique_id=1897490011]
 script = ExtResource("1_2wrjd")
-total_time = 10.0
-hurry_at = 5.0
+total_time = 300.0
+hurry_at = 280.0
+transition_duration = 10.0
 hurry_pitch = 1.5
 
 [node name="NormalPlayer" type="AudioStreamPlayer" parent="." unique_id=252362470]

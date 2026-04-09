@@ -20,4 +20,20 @@ func _process(delta: float) -> void:
 	#print(float(diff/total))
 	if winpercentage>float(diff/total):
 		print("win")
-		pass #Trigger win
+		TaskManager.complete_task_by_type("whiteboard")
+		var root_container = _find_canvas_layer(self)
+		
+		if root_container:
+			root_container.queue_free()
+		else:
+			queue_free()
+		#queue_free()
+		#pass #Trigger win
+
+func _find_canvas_layer(node: Node) -> Node:
+	var current = node
+	while current != null:
+		if current is CanvasLayer:
+			return current
+		current = current.get_parent()
+	return null

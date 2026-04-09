@@ -46,7 +46,7 @@ func _on_interact():
 	if scene:
 		print(scene_path)
 		print("Opening:" + interact_name)
-		add_child(scene.instantiate())
+		get_tree().root.add_child(scene.instantiate())
 	else:
 		print("Missing scene")
 
