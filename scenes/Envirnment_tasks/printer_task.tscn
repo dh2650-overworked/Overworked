@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bfy61qrc3r64w"]
+
+[node name="PrinterTask" type="CanvasLayer" unique_id=164419893]
+
+[node name="Background" type="ColorRect" parent="." unique_id=250409749]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PrinterBody" type="Sprite2D" parent="." unique_id=331957922]
+
+[node name="Lid" type="Sprite2D" parent="." unique_id=833576733]
+
+[node name="JammedPaper" type="Sprite2D" parent="." unique_id=77488279]
+
+[node name="PaperTray" type="Sprite2D" parent="." unique_id=1821082701]
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1322540778]
+offset_right = 4.0
+offset_bottom = 27.0

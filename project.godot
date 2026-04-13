@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 MusicManager="*uid://c3volmi6gp13"
 TaskManager="*res://scripts/autoload/task_manager.gd"
+PrinterManager="*uid://csfd7whyds6f7"
 
 [display]
 

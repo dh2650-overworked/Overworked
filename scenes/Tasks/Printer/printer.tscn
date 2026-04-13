@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://br60qq68tm24w"]
+
+[ext_resource type="Script" uid="uid://ckp600leg16se" path="res://scenes/Tasks/Printer/printer_task.gd" id="1_ylcbk"]
+[ext_resource type="Texture2D" uid="uid://jsojbvl0oxpc" path="res://assets/tasks/Printer/printer.png" id="2_77d2m"]
+[ext_resource type="Texture2D" uid="uid://bxnu6xrcnb3nr" path="res://assets/tasks/Printer/printer_open.png" id="3_pl8rt"]
+[ext_resource type="Texture2D" uid="uid://djj0o0gsxbon8" path="res://assets/tasks/Printer/paper.png" id="4_n4da6"]
+
+[node name="PrinterTask" type="CanvasLayer" unique_id=741757891]
+script = ExtResource("1_ylcbk")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1479913220]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.23225698, 0.22309208, 0.20456716, 1)
+
+[node name="PrinterClosed" type="Sprite2D" parent="." unique_id=1775830509]
+position = Vector2(214.99998, 138.5)
+scale = Vector2(3, 2.890625)
+texture = ExtResource("2_77d2m")
+
+[node name="PrinterOpen" type="Sprite2D" parent="." unique_id=1380329951]
+position = Vector2(215, 139)
+scale = Vector2(2.96875, 2.90625)
+texture = ExtResource("3_pl8rt")
+
+[node name="JammedPaper" type="Sprite2D" parent="." unique_id=261890060]
+position = Vector2(232.00002, 97)
+scale = Vector2(3.7578123, 3.5468748)
+texture = ExtResource("4_n4da6")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=601519507]
+anchors_preset = -1
+anchor_right = 0.039
+anchor_bottom = 0.074
+offset_left = 72.0
+offset_top = 57.0
+offset_right = 91.28
+offset_bottom = 189.02
+
+[node name="StatusLabel" type="Label" parent="." unique_id=75618991]
+offset_left = 307.0
+offset_top = 116.0
+offset_right = 382.0
+offset_bottom = 139.0
+text = "Printing..."
+
+[node name="ExitButton" type="Button" parent="." unique_id=1064398388]
+anchors_preset = -1
+anchor_left = 0.136
+anchor_top = 0.20600002
+anchor_right = 0.15
+anchor_bottom = 0.25800002
+offset_left = 254.72
+offset_top = -19.620003
+offset_right = 323.0
+offset_bottom = -2.6600037
+text = "Leave"
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

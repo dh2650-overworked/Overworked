@@ -4,8 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://bmacq5xie8df5" path="res://assets/tiles/officeTileMap.tscn" id="1_xwr5g"]
 [ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="2_dmpnx"]
 [ext_resource type="Texture2D" uid="uid://dxxljiuimmwbr" path="res://assets/interactables/Printer.png" id="4_dmpnx"]
+[ext_resource type="Texture2D" uid="uid://bh61mw6svsndb" path="res://assets/tasks/Printer/red_light.png" id="5_4m8q4"]
 [ext_resource type="Texture2D" uid="uid://dmhimegnvtpci" path="res://assets/interactables/Whiteboard.png" id="5_uw80i"]
-[ext_resource type="Script" path="res://scenes/levels/SkyGradient.gd" id="6_ey3sf"]
+[ext_resource type="Script" uid="uid://yjtvc6coivww" path="res://scenes/levels/SkyGradient.gd" id="6_ey3sf"]
+[ext_resource type="Script" uid="uid://ct678p2su0k7r" path="res://scenes/levels/PrinterWarningLightt.gd" id="6_tuhfx"]
+[ext_resource type="Script" uid="uid://dgl84et8t6pi2" path="res://scenes/levels/vibration_controller.gd" id="7_tuhfx"]
+[ext_resource type="AudioStream" uid="uid://dt5yym7yuo6bm" path="res://assets/tasks/Printer/printer_voice.mp3" id="8_3f6fi"]
+[ext_resource type="Script" uid="uid://b680owrtb3nn3" path="res://scenes/levels/work_sound.gd" id="9_d01tv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhigv"]
 size = Vector2(1196, 20)
@@ -112,6 +117,23 @@ position = Vector2(1169, 99)
 sprite = ExtResource("4_dmpnx")
 collider = SubResource("RectangleShape2D_4m8q4")
 area = SubResource("CapsuleShape2D_tuhfx")
+scene_path = "res://scenes/Tasks/Printer/printer.tscn"
+interact_name = "printer"
+
+[node name="WarningLight" type="Sprite2D" parent="Printer" unique_id=1641247093]
+visible = false
+z_index = 1
+position = Vector2(5.5000343, -1.0000019)
+scale = Vector2(1.437502, 1.625)
+texture = ExtResource("5_4m8q4")
+script = ExtResource("6_tuhfx")
+
+[node name="VibrationController" type="Node" parent="Printer" unique_id=1350693244]
+script = ExtResource("7_tuhfx")
+
+[node name="WorkSound" type="AudioStreamPlayer2D" parent="Printer" unique_id=644199127]
+stream = ExtResource("8_3f6fi")
+script = ExtResource("9_d01tv")
 
 [node name="Whiteboard" parent="." unique_id=145681059 instance=ExtResource("2_dmpnx")]
 y_sort_enabled = true
