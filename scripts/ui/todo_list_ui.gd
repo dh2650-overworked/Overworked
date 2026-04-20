@@ -60,4 +60,5 @@ func _on_task_removed(instance_id: String) -> void:
 	if _items.has(instance_id):
 		var node: Node = _items[instance_id]
 		_items.erase(instance_id)
-		node.queue_free()
+		if node.has_method("mark_as_completed"):
+			node.mark_as_completed()

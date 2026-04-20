@@ -13,7 +13,7 @@ content_margin_left = 6.0
 content_margin_top = 2.0
 content_margin_right = 6.0
 content_margin_bottom = 2.0
-bg_color = Color(0.824, 0.706, 0.549, 0.95)
+bg_color = Color(0.99215686, 0.8039216, 0.46666667, 1)
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 
@@ -46,19 +46,20 @@ script = ExtResource("1_main")
 layer = 10
 
 [node name="TodoListUI" parent="CanvasLayer" unique_id=1378710553 instance=ExtResource("2_todo")]
-offset_left = 15.0
-offset_top = 12.0
-offset_right = 465.0
-offset_bottom = 512.0
+offset_left = 12.0
+offset_top = 10.000008
+offset_right = 462.0
+offset_bottom = 510.0
 scale = Vector2(0.45, 0.45)
 
 [node name="Clock" type="Control" parent="CanvasLayer" unique_id=242026522]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 375.0
-offset_top = 8.0
-offset_right = 491.0
-offset_bottom = 77.0
+offset_left = 392.0
+offset_top = 5.0
+offset_right = 508.0
+offset_bottom = 74.0
+scale = Vector2(0.8, 0.8)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Clock" unique_id=1682603234]
 layout_mode = 0
@@ -111,6 +112,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
 
 [node name="Label" parent="CanvasLayer/MoneyLabel/Bg" index="0"]
 custom_minimum_size = Vector2(50, 0)
+theme_override_colors/font_color = Color(0.29411766, 0.29411766, 0.29411766, 1)
 text = "0"
 
 [node name="LunchBanner" type="PanelContainer" parent="CanvasLayer" unique_id=350565234]
