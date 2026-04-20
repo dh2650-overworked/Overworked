@@ -8,7 +8,7 @@ const Respond_email := preload("res://assets/tasks/respond_email.tres")
 const Report_Writing := preload("res://assets/tasks/report_writing.tres")
 const Water_Plant := preload("res://assets/tasks/water_plant.tres")
 
-@onready var _time_label: Label = $CanvasLayer/TimeLabel/Bg/Label
+@onready var _time_label: Label = $CanvasLayer/Clock/TimeLabel
 @onready var _money_label: Label = $CanvasLayer/MoneyLabel/Bg/Label
 @onready var _lunch_banner: PanelContainer = $CanvasLayer/LunchBanner
 @onready var _lunch_banner_label: Label = $CanvasLayer/LunchBanner/VBoxContainer/Label
@@ -44,12 +44,25 @@ func _process(_delta: float) -> void:
 
 
 func _update_level_clock() -> void:
+	var passed: float = TaskManager.level_time_passed # 获取已流逝的时间
 	var remaining: float = TaskManager.level_time_remaining
-	var secs: int = int(floor(remaining))
-	secs = maxi(secs, 0)
-	var m: int = secs / 60
-	var s: int = secs % 60
-	_time_label.text = "%d:%02d" % [m, s]
+	# 计算当前是第几个小时 (每30秒一小时)
+	var hours_passed: int = int(passed / 30.0)
+	# 基础时间是 8 am
+	var current_hour: int = 8 + hours_passed
+	# 格式化显示字符串
+	var time_text: String = ""
+	if current_hour < 12:
+		time_text = str(current_hour) + " am"
+	elif current_hour == 12:
+		time_text = "12 pm"
+	else:
+		# 转换成 12 小时制 (13点变成 1 PM)
+		time_text = str(current_hour - 12) + " pm"
+	
+	_time_label.text = time_text
+	
+	# 游戏结束逻辑
 	if remaining <= 0.0 and not _summary_panel.visible:
 		_show_summary()
 

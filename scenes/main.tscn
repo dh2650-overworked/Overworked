@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bvavhhbwea3ud" path="res://scripts/main.gd" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://c4todolist001" path="res://scenes/ui/todo_list_ui.tscn" id="2_todo"]
 [ext_resource type="PackedScene" uid="uid://pixelabel001" path="res://scenes/ui/pixel_label.tscn" id="3_pixel"]
-[ext_resource type="Texture2D" uid="uid://b8bk78r1vdoev" path="res://assets/icons/time.png" id="4_time"]
+[ext_resource type="Texture2D" uid="uid://c785tn2nk066n" path="res://assets/icons/时钟1.png" id="3_tipki"]
 [ext_resource type="Texture2D" uid="uid://b7kf5aukr8e7" path="res://assets/icons/coin.png" id="5_coin"]
 [ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="7_tipki"]
@@ -46,29 +46,48 @@ script = ExtResource("1_main")
 layer = 10
 
 [node name="TodoListUI" parent="CanvasLayer" unique_id=1378710553 instance=ExtResource("2_todo")]
-offset_left = 14.0
-offset_top = 41.0
-offset_right = 464.0
-offset_bottom = 541.0
+offset_left = 15.0
+offset_top = 12.0
+offset_right = 465.0
+offset_bottom = 512.0
 scale = Vector2(0.45, 0.45)
 
-[node name="TimeLabel" parent="CanvasLayer" unique_id=2004680778 instance=ExtResource("3_pixel")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -60.0
-offset_top = 18.0
-offset_right = 44.0
-offset_bottom = 46.0
-grow_horizontal = 0
-scale = Vector2(0.5, 0.5)
+[node name="Clock" type="Control" parent="CanvasLayer" unique_id=242026522]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 375.0
+offset_top = 8.0
+offset_right = 491.0
+offset_bottom = 77.0
 
-[node name="Icon" parent="CanvasLayer/TimeLabel" index="0"]
-texture = ExtResource("4_time")
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Clock" unique_id=1682603234]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 1.0
+offset_right = 1032.0
+offset_bottom = 839.0
+scale = Vector2(0.085, 0.085)
+texture = ExtResource("3_tipki")
 
-[node name="Label" parent="CanvasLayer/TimeLabel/Bg" index="0"]
-custom_minimum_size = Vector2(50, 0)
-text = "5:00"
+[node name="TimeLabel" type="Label" parent="CanvasLayer/Clock" unique_id=612539043]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 33.0
+offset_right = 92.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0.29219002, 0.29219005, 0.29219002, 1)
+theme_override_font_sizes/font_size = 9
+text = "8 am"
+
+[node name="DayLabel" type="Label" parent="CanvasLayer/Clock" unique_id=1414926423]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 8.0
+offset_right = 89.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0.28240767, 0.28240743, 0.28240746, 1)
+theme_override_font_sizes/font_size = 9
+text = "Mon. 1"
 
 [node name="MoneyLabel" parent="CanvasLayer" unique_id=349442732 instance=ExtResource("3_pixel")]
 anchors_preset = 3
@@ -204,5 +223,4 @@ scale = Vector2(1.5, 1.5)
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=828365990]
 position = Vector2(0, -29.333334)
 
-[editable path="CanvasLayer/TimeLabel"]
 [editable path="CanvasLayer/MoneyLabel"]

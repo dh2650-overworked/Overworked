@@ -8,8 +8,8 @@ signal task_removed(instance_id: String)
 signal money_updated(new_total: int)
 signal nav_requested(instance_id: String)
 
-const LEVEL_DURATION_SECONDS: float = 330.0
-const LUNCH_START_AT_SECONDS: float = 150.0
+const LEVEL_DURATION_SECONDS: float = 270.0
+const LUNCH_START_AT_SECONDS: float = 120.0
 const LUNCH_DURATION_SECONDS: float = 30.0
 
 signal lunch_started()
