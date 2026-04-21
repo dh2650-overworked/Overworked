@@ -5,10 +5,11 @@ extends Node2D
 var _pressedright: bool = false
 var _pressedleft: bool = false
 var _current_line: Line2D = null
+var _eraser: bool = false
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
+		if event.button_index == MOUSE_BUTTON_LEFT and _eraser:
 			_pressedleft = event.pressed
 			if _pressedleft:
 				_current_line = Line2D.new()
@@ -16,7 +17,7 @@ func _input(event: InputEvent) -> void:
 				_current_line.width = 12
 				_lines.add_child(_current_line)
 				_current_line.add_point(event.position)
-	elif event is InputEventMouseMotion and _pressedleft:
+	elif event is InputEventMouseMotion and _pressedleft and _eraser:
 		_current_line.add_point(event.position)
 
 	if event is InputEventMouseButton:
@@ -31,11 +32,11 @@ func _input(event: InputEvent) -> void:
 	elif event is InputEventMouseMotion and _pressedright:
 		_current_line.add_point(event.position)
 	
-# Called when the node enters the scene tree for the first time.
+func has_eraser():
+	_eraser = true
+
 func _ready() -> void:
-	pass # Replace with function body.
+	pass 
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
