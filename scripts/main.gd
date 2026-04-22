@@ -7,8 +7,9 @@ const Water_cooler := preload("res://assets/tasks/water_cooler.tres")
 const Respond_email := preload("res://assets/tasks/respond_email.tres")
 const Report_Writing := preload("res://assets/tasks/report_writing.tres")
 const Water_Plant := preload("res://assets/tasks/water_plant.tres")
+const Print_Document := preload("res://assets/tasks/printer.tres")
 
-@onready var _time_label: Label = $CanvasLayer/TimeLabel/Bg/Label
+@onready var _time_label: Label = $CanvasLayer/Clock/TimeLabel
 @onready var _money_label: Label = $CanvasLayer/MoneyLabel/Bg/Label
 @onready var _lunch_banner: PanelContainer = $CanvasLayer/LunchBanner
 @onready var _lunch_banner_label: Label = $CanvasLayer/LunchBanner/VBoxContainer/Label
@@ -27,8 +28,8 @@ func _ready() -> void:
 	TaskManager.lunch_started.connect(_on_lunch_started)
 	TaskManager.lunch_ended.connect(_on_lunch_ended)
 	TaskManager.lunch_acknowledged.connect(_on_lunch_acknowledged)
-	TaskManager.register_task_catalog([Whiteboard, Water_cooler, Respond_email, Report_Writing, Water_Plant])
-	TaskManager.configure_auto_dispatch(true, 30.0, 40.0)
+	TaskManager.register_task_catalog([Whiteboard, Water_cooler, Respond_email, Report_Writing, Water_Plant, Print_Document])
+	TaskManager.configure_auto_dispatch(true, 150.0, 300.0)
 	TaskManager.start_level()
 	_on_money_updated(TaskManager.total_money)
 	_update_level_clock()
@@ -44,12 +45,25 @@ func _process(_delta: float) -> void:
 
 
 func _update_level_clock() -> void:
+	var passed: float = TaskManager.level_time_passed # 获取已流逝的时间
 	var remaining: float = TaskManager.level_time_remaining
-	var secs: int = int(floor(remaining))
-	secs = maxi(secs, 0)
-	var m: int = secs / 60
-	var s: int = secs % 60
-	_time_label.text = "%d:%02d" % [m, s]
+	# Calculate the current hour (one hour is every 30 seconds).
+	var hours_passed: int = int(passed / 30.0)
+	# starting from 8 am
+	var current_hour: int = 8 + hours_passed
+	
+	var time_text: String = ""
+	if current_hour < 12:
+		time_text = str(current_hour) + " am"
+	elif current_hour == 12:
+		time_text = "12 pm"
+	else:
+		# Convert to a 12-hour clock (show as 1 pm)
+		time_text = str(current_hour - 12) + " pm"
+	
+	_time_label.text = time_text
+	
+	# game ending
 	if remaining <= 0.0 and not _summary_panel.visible:
 		_show_summary()
 

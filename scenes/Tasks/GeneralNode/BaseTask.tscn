@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://odvo8njk2j4j"]
+
+[ext_resource type="Script" uid="uid://c1q1rx6dqc0oo" path="res://scenes/Tasks/GeneralNode/BaseTask.gd" id="1_dxgyo"]
+[ext_resource type="Texture2D" uid="uid://c2t6kol16i3yy" path="res://assets/icons/exit.png" id="2_si8gu"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1648483317]
+script = ExtResource("1_dxgyo")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=455909775]
+offset_left = 81.0
+offset_top = 35.0
+offset_right = 392.0
+offset_bottom = 228.0
+color = Color(0.58431375, 0.58431375, 0.58431375, 0.3372549)
+
+[node name="ExitButton" type="TextureButton" parent="." unique_id=866947072]
+offset_left = 24.0
+offset_top = 5.0
+offset_right = 1139.0
+offset_bottom = 965.0
+scale = Vector2(0.07, 0.07)
+texture_normal = ExtResource("2_si8gu")
+
+[node name="SuccessOverlay" type="Panel" parent="." unique_id=824294777]
+visible = false
+modulate = Color(0.3084925, 0.6799074, 0.47196037, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -20.0
+offset_right = 82.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SuccessOverlay" unique_id=1676266031]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 154.0
+offset_bottom = 36.0
+text = "TASK COMPLETED!"
+
+[node name="GameContent" type="Control" parent="." unique_id=1122288619]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 82.0
+offset_top = 35.0
+offset_right = 392.0
+offset_bottom = 228.0
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

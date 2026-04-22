@@ -45,6 +45,7 @@ func handle_player_click():
 			PrinterManager.fix_jam()
 		PrinterManager.State.FINISHED:
 			# Reset the manager AND close this UI immediately
+			TaskManager.complete_task_by_type("printer")
 			PrinterManager.collect_docs()
 			queue_free()
 

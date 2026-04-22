@@ -11,3 +11,4 @@ reward_money = 100
 time_limit = 300.0
 scene_path = "res://scenes/pc/pc_scene.tscn"
 is_starter_task = true
+unlock_time = 150.0

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="TaskData" format=3 uid="uid://dg7b3po0p6s8l"]
+
+[ext_resource type="Script" uid="uid://dd6k082npoxh8" path="res://scripts/resources/task_data.gd" id="1_tobdf"]
+
+[resource]
+resource_name = "coffee"
+script = ExtResource("1_tobdf")
+task_id = "printer"
+task_name = "Print Document"
+reward_money = 100
+time_limit = 300.0
+scene_path = "res://scenes/Tasks/Printer/printer.tscn"
+dispatch_mode = 0
+auto_dispatch_weight = 2.0
+is_starter_task = true
+unlock_time = 60.0

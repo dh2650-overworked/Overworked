@@ -8,8 +8,8 @@ signal task_removed(instance_id: String)
 signal money_updated(new_total: int)
 signal nav_requested(instance_id: String)
 
-const LEVEL_DURATION_SECONDS: float = 330.0
-const LUNCH_START_AT_SECONDS: float = 150.0
+const LEVEL_DURATION_SECONDS: float = 270.0
+const LUNCH_START_AT_SECONDS: float = 120.0
 const LUNCH_DURATION_SECONDS: float = 30.0
 
 signal lunch_started()
@@ -44,8 +44,8 @@ var _auto_dispatch_pool: Array[TaskData] = []
 var _auto_pool_unlocked: Dictionary = {}
 
 var _auto_dispatch_enabled: bool = false
-var _auto_interval_min: float = 30.0
-var _auto_interval_max: float = 60.0
+var _auto_interval_min: float = 150.0
+var _auto_interval_max: float = 300.0
 var _auto_cooldown: float = 0.0
 
 
@@ -124,8 +124,8 @@ func register_task_catalog(task_definitions: Array[TaskData]) -> void:
 ## Sets auto-dispatch interval; pool content comes from catalog + unlock_time + AUTO_POOL (not from this call).
 func configure_auto_dispatch(
 	enabled: bool = true,
-	interval_min: float = 30.0,
-	interval_max: float = 60.0,
+	interval_min: float = 150.0,
+	interval_max: float = 300.0,
 ) -> void:
 	_auto_interval_min = maxf(interval_min, 0.1)
 	_auto_interval_max = maxf(interval_max, _auto_interval_min)

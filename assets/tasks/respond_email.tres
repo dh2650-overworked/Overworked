@@ -8,4 +8,5 @@ script = ExtResource("1_jw5eq")
 task_id = "respond_email"
 task_name = "Respond email"
 reward_money = 100
+time_limit = 300.0
 dispatch_mode = 0
