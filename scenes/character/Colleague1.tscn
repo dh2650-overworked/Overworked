@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://be44lpdxyrx6b"]
+
+[ext_resource type="Texture2D" uid="uid://brhypqe3j0mxe" path="res://assets/[Free Asset] Pixel Boy 32x64 Animation/boy-32x64-idle-walk.png" id="1_240fq"]
+[ext_resource type="Script" uid="uid://c38s3gpcb8nqt" path="res://scripts/Colleague1/colleague_1.gd" id="1_y4mkt"]
+[ext_resource type="PackedScene" uid="uid://6nwluwbg31or" path="res://scenes/character/DialogueUI.tscn" id="2_ecaep"]
+[ext_resource type="Resource" uid="uid://dkgmvcrtbhocq" path="res://assets/tasks/report_writing.tres" id="3_xh6qv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y4mkt"]
+radius = 15.0
+height = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ecaep"]
+radius = 47.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=791234317]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_y4mkt")
+dialogue_scene = ExtResource("2_ecaep")
+report_task = ExtResource("3_xh6qv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1794810395]
+texture = ExtResource("1_240fq")
+offset = Vector2(-1, -32)
+hframes = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=310609629]
+position = Vector2(0, -27)
+shape = SubResource("CapsuleShape2D_y4mkt")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1401506516]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1162801303]
+position = Vector2(0, -27)
+shape = SubResource("CircleShape2D_ecaep")

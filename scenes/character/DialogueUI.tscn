@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://6nwluwbg31or"]
+
+[ext_resource type="Script" uid="uid://hux4hjmaxtry" path="res://scripts/Colleague1/dialogue_ui.gd" id="1_ql3ii"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqy0j"]
+content_margin_left = 15.0
+content_margin_top = 20.0
+content_margin_right = 15.0
+content_margin_bottom = 10.0
+bg_color = Color(0.9764706, 0.9607843, 0.90588236, 0.9019608)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.23529412)
+shadow_size = 5
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ql3ii"]
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+bg_color = Color(0.81960785, 0.81960785, 0.76862746, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7411765, 0.7254902, 0.6509804, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y76c1"]
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+bg_color = Color(0.72156864, 0.72156864, 0.6627451, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iwa3"]
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+bg_color = Color(0.881699, 0.7664406, 0.55786735, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jrsqd"]
+bg_color = Color(0.9019608, 0.7294118, 0.44313726, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=920773935]
+layer = 10
+script = ExtResource("1_ql3ii")
+
+[node name="Control" type="Control" parent="." unique_id=1547155875]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 481.0
+offset_bottom = 269.0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=650975988]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -147.5
+offset_top = -114.0
+offset_right = 144.5
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer" unique_id=634537919]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yqy0j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/PanelContainer" unique_id=88647204]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ContentText" type="RichTextLabel" parent="Control/MarginContainer/PanelContainer/VBoxContainer" unique_id=1089821522]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.1764706, 0.1882353, 0.2784314, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/normal_font_size = 9
+text = "Hey! I need to submit a report, but I’m about to head out for a wedding... 
+Could you take care of it for me?"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/PanelContainer/VBoxContainer" unique_id=283770497]
+layout_mode = 2
+
+[node name="AcceptBtn" type="Button" parent="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1816209415]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.1882353, 0.2784314, 0.972549)
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_ql3ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y76c1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8iwa3")
+button_mask = 7
+text = "Sure, I'll handle it."
+
+[node name="RejectBtn" type="Button" parent="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1977235310]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.1882353, 0.2784314, 0.972549)
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_ql3ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y76c1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8iwa3")
+button_mask = 7
+text = "Wish I could, but I'm swamped."
+
+[node name="NameTag" type="Label" parent="Control" unique_id=36752045]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -124.5
+offset_top = -122.0
+offset_right = -76.5
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_jrsqd")
+text = "Kevin"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/AcceptBtn" to="." method="_on_accept_btn_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/RejectBtn" to="." method="_on_reject_btn_pressed"]
