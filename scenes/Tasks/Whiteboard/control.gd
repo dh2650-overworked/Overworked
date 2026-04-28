@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	#print(float(diff/total))
 	if winpercentage>float(diff/total):
 		print("win")
-		Input.set_custom_mouse_cursor(load("res://assets/icons/cursor.png"))
+		Input.set_custom_mouse_cursor(load("res://assets/icons/cursor.pngw"))
 		TaskManager.complete_task_by_type("whiteboard")
 		var root_container = _find_canvas_layer(self)
 		
