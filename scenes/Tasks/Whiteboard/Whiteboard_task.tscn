@@ -11,7 +11,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_ncbox"]
 font_color = Color(0, 0, 0, 1)
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1694772369]
+[node name="CanvasLayer2" type="CanvasLayer" unique_id=1694772369]
 layer = 11
 
 [node name="Control" type="Control" parent="." unique_id=1712743211]

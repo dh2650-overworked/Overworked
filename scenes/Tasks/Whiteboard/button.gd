@@ -10,8 +10,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if button_pressed:
 		TaskManager.complete_task_by_type("whiteboard")
-		
 		await get_tree().create_timer(1).timeout
+		Input.set_custom_mouse_cursor(load("res://assets/icons/cursor.pngw"))
 		
 		# TODO fix better lmao
 		$"../../../../..".queue_free()
