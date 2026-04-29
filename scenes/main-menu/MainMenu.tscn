@@ -5,91 +5,101 @@
 [ext_resource type="Script" uid="uid://dv3icns77eg32" path="res://scenes/main-menu/menuOption.gd" id="1_wndw1"]
 [ext_resource type="Script" uid="uid://bxohu187yedjm" path="res://scenes/main-menu/select.gd" id="3_v5846"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5846"]
+bg_color = Color(0.9019608, 0.7294118, 0.44313726, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
 [node name="Control" type="Control" unique_id=1093121372]
 layout_mode = 3
 anchors_preset = 0
+theme = ExtResource("1_jwuok")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=547000196]
+[node name="ColorRect" type="PanelContainer" parent="." unique_id=436675859]
 layout_mode = 0
 offset_right = 480.0
 offset_bottom = 270.0
-color = Color(1, 0.98039216, 0.9019608, 1)
 
-[node name="MainMenu" type="MarginContainer" parent="." unique_id=98088949]
-layout_mode = 0
-offset_top = 1.0
-offset_right = 480.0
-offset_bottom = 271.0
+[node name="MainMenu" type="MarginContainer" parent="ColorRect" unique_id=98088949]
+layout_mode = 2
 theme = ExtResource("1_jwuok")
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu" unique_id=800041212]
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MainMenu" unique_id=800041212]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/HBoxContainer" unique_id=85538493]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MainMenu/HBoxContainer" unique_id=85538493]
 layout_mode = 2
 
-[node name="Overworked!" type="Label" parent="MainMenu/HBoxContainer/VBoxContainer" unique_id=1308501661]
+[node name="Overworked!" type="Label" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer" unique_id=1308501661]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_v5846")
 text = "Overworked!"
 
-[node name="dayselect" type="VBoxContainer" parent="MainMenu/HBoxContainer/VBoxContainer" unique_id=866217496]
+[node name="dayselect" type="VBoxContainer" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer" unique_id=866217496]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="w0thu" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer/dayselect" unique_id=1457962874]
+[node name="w0thu" type="Button" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer/dayselect" unique_id=1457962874]
 layout_mode = 2
 text = "Week 0 - Thursday"
 alignment = 0
 script = ExtResource("1_wndw1")
 scene_path = "res://scenes/days/w0day0.tscn"
 
-[node name="w0fri" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer/dayselect" unique_id=1255995758]
+[node name="w0fri" type="Button" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer/dayselect" unique_id=1255995758]
 layout_mode = 2
 text = "Week 0 - Friday"
 alignment = 0
 script = ExtResource("1_wndw1")
 
-[node name="back" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer/dayselect" unique_id=1575414951]
+[node name="back" type="Button" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer/dayselect" unique_id=1575414951]
 layout_mode = 2
 text = "Back"
 alignment = 0
 script = ExtResource("3_v5846")
 
-[node name="mainmenu" type="VBoxContainer" parent="MainMenu/HBoxContainer/VBoxContainer" unique_id=557297295]
+[node name="mainmenu" type="VBoxContainer" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer" unique_id=557297295]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="New game" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer/mainmenu" unique_id=985689880]
+[node name="New game" type="Button" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer/mainmenu" unique_id=985689880]
 layout_mode = 2
 text = "New game"
 alignment = 0
 script = ExtResource("1_wndw1")
-scene_path = "res://scenes/days/main.tscn"
+scene_path = "res://scenes/days/w0day0.tscn"
 
-[node name="Select" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer/mainmenu" unique_id=1459934182]
+[node name="Select" type="Button" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer/mainmenu" unique_id=1459934182]
 layout_mode = 2
 text = "Select day"
 alignment = 0
 script = ExtResource("3_v5846")
 
-[node name="Info" type="Label" parent="MainMenu/HBoxContainer/VBoxContainer" unique_id=978478348]
+[node name="Info" type="Label" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer" unique_id=978478348]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_v5846")
 text = "Demo for DH2650"
 
-[node name="CenterContainer" type="CenterContainer" parent="MainMenu/HBoxContainer" unique_id=1754553234]
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect/MainMenu/HBoxContainer" unique_id=1754553234]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="MainMenu/HBoxContainer/CenterContainer" unique_id=1551327753]
+[node name="TextureRect" type="TextureRect" parent="ColorRect/MainMenu/HBoxContainer/CenterContainer" unique_id=1551327753]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("1_5s3fp")

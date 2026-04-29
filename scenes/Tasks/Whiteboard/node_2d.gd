@@ -35,8 +35,8 @@ func _input(event: InputEvent) -> void:
 func has_eraser():
 	_eraser = true
 
-func _ready() -> void:
-	pass 
+#func _ready() -> void:
+	#pass 
 
-func _process(delta: float) -> void:
-	pass
+#func _process(delta: float) -> void:
+	#pass
