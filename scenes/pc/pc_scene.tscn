@@ -7,8 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://cnf7g2eig3cm5" path="res://assets/pc_assets/Logo_idle.png" id="3_wsi6r"]
 [ext_resource type="Texture2D" uid="uid://bj2dyhdlmur3r" path="res://assets/pc_assets/8_white.png" id="4_2b4ws"]
 [ext_resource type="Script" uid="uid://cew37lw0u7r6a" path="res://scenes/pc/document_window.gd" id="6_nle26"]
+[ext_resource type="Texture2D" uid="uid://c3nh3fbiy0fpb" path="res://assets/pc_assets/document_app_background.png" id="7_nf6t2"]
 [ext_resource type="Script" uid="uid://ne1euxo8wihp" path="res://scenes/pc/text_report.gd" id="8_khb6m"]
-[ext_resource type="Script" uid="uid://mmbsuuph6u8o" path="res://scenes/pc/start_button.gd" id="9_8ftmv"]
+[ext_resource type="Script" path="res://scenes/pc/start_button.gd" id="9_8ftmv"]
+[ext_resource type="Texture2D" uid="uid://cp62dnbibcn" path="res://assets/pc_assets/email_background.png" id="9_nle26"]
+[ext_resource type="Script" uid="uid://cpf7vkm7q1g7m" path="res://scenes/pc/email.gd" id="11_khb6m"]
+[ext_resource type="Script" uid="uid://ce5e04ua38nwe" path="res://scenes/pc/choices_dialog.gd" id="11_nle26"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6qbwl"]
 
@@ -18,6 +22,24 @@
 texture = ExtResource("2_wsi6r")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0qnic"]
+
+[sub_resource type="FontVariation" id="FontVariation_nf6t2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nle26"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4xpix"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rudg7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nf6t2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_66ub2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_khb6m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66ub2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ynnh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsi6r"]
 
@@ -59,6 +81,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.21568628, 0.47058824, 1, 1)
@@ -66,12 +89,12 @@ color = Color(0.21568628, 0.47058824, 1, 1)
 [node name="DesktopPanel" type="Panel" parent="PC_scene" unique_id=152184024]
 layout_mode = 0
 offset_left = 3.0
-offset_right = 484.0
-offset_bottom = 269.0
+offset_right = 480.0
+offset_bottom = 256.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_6qbwl")
 script = ExtResource("3_rudg7")
 
-[node name="Document app" type="Button" parent="PC_scene/DesktopPanel" unique_id=982171993]
+[node name="DocumentAppIcon" type="Button" parent="PC_scene/DesktopPanel" unique_id=982171993]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.572
@@ -89,7 +112,7 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="DocTitle" type="Label" parent="PC_scene/DesktopPanel/Document app" unique_id=2087328144]
+[node name="DocTitle" type="Label" parent="PC_scene/DesktopPanel/DocumentAppIcon" unique_id=2087328144]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.28100002
@@ -107,47 +130,72 @@ text = "Doc"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="DocumentWindow" type="Window" parent="PC_scene/DesktopPanel/Document app" unique_id=1487198734]
+[node name="DocumentWindow" type="Window" parent="PC_scene/DesktopPanel/DocumentAppIcon" unique_id=1487198734]
 oversampling_override = 1.0
 title = "Documents"
 initial_position = 1
-size = Vector2i(250, 180)
+size = Vector2i(280, 208)
+visible = false
 exclusive = true
+theme_override_colors/title_color = Color(1, 1, 1, 1)
+theme_override_colors/title_outline_modulate = Color(1, 1, 1, 1)
 theme_override_styles/embedded_border = SubResource("StyleBoxTexture_0qnic")
 script = ExtResource("6_nle26")
 
-[node name="pc_background" type="ColorRect" parent="PC_scene/DesktopPanel/Document app/DocumentWindow" unique_id=269739373]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 8.0
-offset_right = 3.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextReportBackground" type="Sprite2D" parent="PC_scene/DesktopPanel/DocumentAppIcon/DocumentWindow" unique_id=608758615]
+texture_filter = 1
+position = Vector2(140, 108)
+texture = ExtResource("7_nf6t2")
 
-[node name="TextureRect" type="TextureRect" parent="PC_scene/DesktopPanel/Document app/DocumentWindow" unique_id=143351591]
-offset_left = -50.0
-offset_top = 91.0
-offset_right = 744.0
-offset_bottom = 686.0
-
-[node name="TextReport" type="Node2D" parent="PC_scene/DesktopPanel/Document app/DocumentWindow" unique_id=74912274]
+[node name="TextReport" type="Node2D" parent="PC_scene/DesktopPanel/DocumentAppIcon/DocumentWindow" unique_id=74912274]
 position = Vector2(-103, -156)
 script = ExtResource("8_khb6m")
 
-[node name="TypeText" type="RichTextLabel" parent="PC_scene/DesktopPanel/Document app/DocumentWindow/TextReport" unique_id=1062130218]
-offset_left = 139.0
-offset_top = 203.0
-offset_right = 327.0
-offset_bottom = 310.0
+[node name="TypeText" type="RichTextLabel" parent="PC_scene/DesktopPanel/DocumentAppIcon/DocumentWindow/TextReport" unique_id=1062130218]
+offset_left = 148.0
+offset_top = 215.0
+offset_right = 345.0
+offset_bottom = 353.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 4
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/normal_font = SubResource("FontVariation_nf6t2")
 theme_override_font_sizes/normal_font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nle26")
 bbcode_enabled = true
 text = "We are happy to inform our dear investors that we saw a net profit of 20% last quarter. Further we've projected a profit of at least 10% in Q2."
 scroll_active = false
+tab_size = 8
 
-[node name="SuccessOverlay" type="Panel" parent="PC_scene/DesktopPanel/Document app/DocumentWindow" unique_id=1487666895]
+[node name="PlayerInput" type="TextEdit" parent="PC_scene/DesktopPanel/DocumentAppIcon/DocumentWindow/TextReport" unique_id=1031581753]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 148.0
+offset_top = 211.0
+offset_right = 345.0
+offset_bottom = 349.0
+theme_override_colors/search_result_color = Color(0, 0, 0, 0)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_background_color = Color(0, 0, 0, 0)
+theme_override_colors/selection_color = Color(0.5019608, 0.5019608, 0.5019608, 0)
+theme_override_colors/font_color = Color(0, 1, 0, 0)
+theme_override_colors/font_placeholder_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_colors/current_line_color = Color(0.2509804, 0.2509804, 0.25882354, 0)
+theme_override_constants/caret_width = 1
+theme_override_constants/line_spacing = 4
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4xpix")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rudg7")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_nf6t2")
+context_menu_enabled = false
+emoji_menu_enabled = false
+wrap_mode = 1
+virtual_keyboard_show_on_focus = false
+caret_blink = true
+
+[node name="SuccessOverlay" type="Panel" parent="PC_scene/DesktopPanel/DocumentAppIcon/DocumentWindow" unique_id=1487666895]
 visible = false
 modulate = Color(0.3084925, 0.6799074, 0.47196037, 1)
 z_index = 4096
@@ -156,7 +204,104 @@ offset_top = 10.0
 offset_right = 204.0
 offset_bottom = 50.0
 
-[node name="Label" type="Label" parent="PC_scene/DesktopPanel/Document app/DocumentWindow/SuccessOverlay" unique_id=16615399]
+[node name="Label" type="Label" parent="PC_scene/DesktopPanel/DocumentAppIcon/DocumentWindow/SuccessOverlay" unique_id=16615399]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 154.0
+offset_bottom = 36.0
+text = "TASK COMPLETED!"
+
+[node name="EmailAppIcon" type="Button" parent="PC_scene/DesktopPanel" unique_id=1339581186]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.572
+anchor_top = 0.25500003
+anchor_right = 1.572
+anchor_bottom = 0.25500003
+offset_left = -316.136
+offset_top = 26.404991
+offset_right = -291.136
+offset_bottom = 79.40499
+theme_override_styles/normal = SubResource("StyleBoxTexture_p0rpn")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_c0lli")
+icon = ExtResource("2_0h78p")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="EmailTitle" type="Label" parent="PC_scene/DesktopPanel/EmailAppIcon" unique_id=969280104]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.28100002
+anchor_top = 0.753
+anchor_right = 0.28100002
+anchor_bottom = 0.753
+offset_left = -21.02501
+offset_top = -12.909
+offset_right = 31.974995
+offset_bottom = 10.091
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "Email"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="EmailWindow" type="Window" parent="PC_scene/DesktopPanel/EmailAppIcon" unique_id=334134870]
+oversampling_override = 1.0
+title = "Email"
+initial_position = 1
+size = Vector2i(280, 208)
+exclusive = true
+theme_override_colors/title_color = Color(1, 1, 1, 1)
+theme_override_colors/title_outline_modulate = Color(1, 1, 1, 1)
+theme_override_styles/embedded_border = SubResource("StyleBoxTexture_0qnic")
+
+[node name="EmailBackground" type="Sprite2D" parent="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow" unique_id=1963171672]
+texture_filter = 1
+position = Vector2(140.00002, 103.99999)
+scale = Vector2(1.0000001, 1)
+texture = ExtResource("9_nle26")
+
+[node name="Email" type="Node2D" parent="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow" unique_id=2113368380]
+script = ExtResource("11_khb6m")
+
+[node name="EmailChoices" type="PanelContainer" parent="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow/Email" unique_id=1567702163]
+offset_left = 8.0
+offset_top = 55.0
+offset_right = 271.0
+offset_bottom = 85.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_66ub2")
+script = ExtResource("11_nle26")
+
+[node name="MarginContainer" type="MarginContainer" parent="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow/Email/EmailChoices" unique_id=803519098]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Choices" type="VBoxContainer" parent="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow/Email/EmailChoices/MarginContainer" unique_id=1170512481]
+layout_mode = 2
+
+[node name="ChoiceButton" type="Button" parent="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow/Email/EmailChoices/MarginContainer/Choices" unique_id=314895382]
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+theme_override_styles/normal = SubResource("StyleBoxEmpty_khb6m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_66ub2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ynnh")
+
+[node name="SuccessOverlay" type="Panel" parent="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow" unique_id=1529281788]
+visible = false
+modulate = Color(0.3084925, 0.6799074, 0.47196037, 1)
+z_index = 4096
+offset_left = 40.0
+offset_top = 10.0
+offset_right = 204.0
+offset_bottom = 50.0
+
+[node name="Label" type="Label" parent="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow/SuccessOverlay" unique_id=385412856]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 5.0
@@ -166,7 +311,7 @@ text = "TASK COMPLETED!"
 
 [node name="TaskbarPanel" type="Panel" parent="PC_scene" unique_id=242645272]
 layout_mode = 0
-offset_top = 245.0
+offset_top = 256.0
 offset_right = 480.0
 offset_bottom = 270.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_wsi6r")
@@ -174,13 +319,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wsi6r")
 [node name="Start button" type="Button" parent="PC_scene/TaskbarPanel" unique_id=51549926]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.93100005
-anchor_top = -6.28
-anchor_right = 0.9620001
-anchor_bottom = -5.5600004
-offset_left = 0.1199646
-offset_right = 0.23995972
-offset_bottom = 1.5258789e-05
+anchor_left = 0.92100006
+anchor_top = -12.929001
+anchor_right = 0.92100006
+anchor_bottom = -12.929001
+offset_left = -0.08001709
+offset_top = 0.006011963
+offset_right = 14.919983
+offset_bottom = 17.006012
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -210,20 +356,20 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_53qcj")
 [node name="Label" type="Label" parent="PC_scene/TaskbarPanel/TimePanel" unique_id=185551419]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.45200002
-anchor_top = 0.54800004
-anchor_right = 0.45200002
-anchor_bottom = 0.54800004
-offset_left = -15.34
-offset_top = -7.7000074
-offset_right = 20.66
-offset_bottom = 12.299992
+anchor_left = 0.356
+anchor_right = 0.356
+offset_left = -0.020000458
+offset_top = 0.9999933
+offset_right = 23.98
+offset_bottom = 13.999993
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
-theme_override_font_sizes/font_size = 11
+theme_override_font_sizes/font_size = 9
 text = "13:30"
 
-[connection signal="pressed" from="PC_scene/DesktopPanel/Document app" to="PC_scene/DesktopPanel" method="_on_document_app_pressed"]
-[connection signal="close_requested" from="PC_scene/DesktopPanel/Document app/DocumentWindow" to="PC_scene" method="_on_document_window_close_requested"]
-[connection signal="close_requested" from="PC_scene/DesktopPanel/Document app/DocumentWindow" to="PC_scene/DesktopPanel" method="_on_document_window_close_requested"]
+[connection signal="pressed" from="PC_scene/DesktopPanel/DocumentAppIcon" to="PC_scene/DesktopPanel" method="_on_document_app_pressed"]
+[connection signal="close_requested" from="PC_scene/DesktopPanel/DocumentAppIcon/DocumentWindow" to="PC_scene" method="_on_document_window_close_requested"]
+[connection signal="close_requested" from="PC_scene/DesktopPanel/DocumentAppIcon/DocumentWindow" to="PC_scene/DesktopPanel" method="_on_document_window_close_requested"]
+[connection signal="pressed" from="PC_scene/DesktopPanel/EmailAppIcon" to="PC_scene/DesktopPanel" method="_on_email_app_pressed"]
+[connection signal="close_requested" from="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow" to="PC_scene/DesktopPanel" method="_on_email_window_close_requested"]

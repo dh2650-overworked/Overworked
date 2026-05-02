@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c02ls52tu7j50"
-path="res://.godot/imported/Document_bg_place_holder.png-b90ee7394e74581dfd524d4f646995e0.ctex"
+uid="uid://cpysodsibgxef"
+path="res://.godot/imported/Simple-email-interface-background.png-7bc9129af63a96b010502c3ec0d4266f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pc_assets/Document_bg_place_holder.png"
-dest_files=["res://.godot/imported/Document_bg_place_holder.png-b90ee7394e74581dfd524d4f646995e0.ctex"]
+source_file="res://assets/pc_assets/Simple-email-interface-background.png"
+dest_files=["res://.godot/imported/Simple-email-interface-background.png-7bc9129af63a96b010502c3ec0d4266f.ctex"]
 
 [params]
 
