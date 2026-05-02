@@ -11,5 +11,5 @@ script = ExtResource("1_day")
 day_id = "w0day1"
 start_tasks = [ExtResource("4_rp"), ExtResource("6_pr"), ExtResource("3_wc"), ExtResource("2_wb")]
 timed_tasks = {
-150: ExtResource("4_rp")
+150: ExtResource("6_pr")
 }
