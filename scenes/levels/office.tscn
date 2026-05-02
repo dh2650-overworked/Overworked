@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://dgl84et8t6pi2" path="res://scenes/levels/vibration_controller.gd" id="7_tuhfx"]
 [ext_resource type="AudioStream" uid="uid://dt5yym7yuo6bm" path="res://assets/tasks/Printer/printer_voice.mp3" id="8_3f6fi"]
 [ext_resource type="Script" uid="uid://b680owrtb3nn3" path="res://scenes/levels/work_sound.gd" id="9_d01tv"]
-[ext_resource type="PackedScene" path="res://scenes/character/Colleague1.tscn" id="12_d01tv"]
+[ext_resource type="PackedScene" uid="uid://be44lpdxyrx6b" path="res://scenes/character/Colleague1.tscn" id="12_d01tv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhigv"]
 size = Vector2(1196, 20)
@@ -34,6 +34,13 @@ size = Vector2(20, 10)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uw80i"]
 radius = 20.0
 height = 64.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wplt"]
+size = Vector2(10, 10)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wplt"]
+radius = 16.0
+height = 40.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4m8q4"]
 
@@ -96,6 +103,14 @@ collider = SubResource("RectangleShape2D_ey3sf")
 area = SubResource("CapsuleShape2D_uw80i")
 scene_path = "res://scenes/pc/pc_scene.tscn"
 interact_name = "Get to work"
+
+[node name="Water plants" parent="." unique_id=1272471299 instance=ExtResource("2_dmpnx")]
+y_sort_enabled = true
+position = Vector2(111, 303)
+collider = SubResource("RectangleShape2D_wplt")
+area = SubResource("CapsuleShape2D_wplt")
+scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
+interact_name = "Water plants"
 
 [node name="Printer" parent="." unique_id=2082700480 instance=ExtResource("2_dmpnx")]
 y_sort_enabled = true

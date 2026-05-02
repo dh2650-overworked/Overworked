@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://b7kf5aukr8e7" path="res://assets/icons/coin.png" id="5_coin"]
 [ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="7_tipki"]
+[ext_resource type="Resource" uid="uid://k5gmh5w4jaa" path="res://assets/days/w0day0.tres" id="8_day1"]
+[ext_resource type="Script" path="res://scripts/ui/summary_scene_button.gd" id="9_sum_btn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
 content_margin_left = 6.0
@@ -41,6 +43,7 @@ bg_color = Color(0.78039217, 0.44705883, 0.23529412, 1)
 [node name="Main" type="Node2D" unique_id=951420025]
 y_sort_enabled = true
 script = ExtResource("1_main")
+day_data = ExtResource("8_day1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1593975202]
 layer = 10
@@ -209,12 +212,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_o6xl0")
 text = "Next Level"
+script = ExtResource("9_sum_btn")
+target_scene_path = "res://scenes/days/w0day1.tscn"
 
 [node name="MainMenuButton" type="Button" parent="CanvasLayer/SummaryPanel/MarginContainer/Buttons" unique_id=216598120]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_tipki")
 text = "Main Menu"
+script = ExtResource("9_sum_btn")
+target_scene_path = "res://scenes/main-menu/MainMenu.tscn"
 
 [node name="office" parent="." unique_id=856302002 instance=ExtResource("6_o6xl0")]
 
