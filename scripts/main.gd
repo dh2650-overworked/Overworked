@@ -30,7 +30,7 @@ func _ready() -> void:
 	TaskManager.lunch_acknowledged.connect(_on_lunch_acknowledged)
 	TaskManager.register_task_catalog([Whiteboard, Water_cooler, Respond_email, Report_Writing, Water_Plant, Print_Document])
 	TaskManager.configure_auto_dispatch(true, 150.0, 300.0)
-	TaskManager.start_level()
+ds	TaskManager.start_level()
 	_on_money_updated(TaskManager.total_money)
 	_update_level_clock()
 	_lunch_banner.visible = false
