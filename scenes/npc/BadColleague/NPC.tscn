@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bt0t7pknkiiw7"]
+
+[ext_resource type="Script" uid="uid://bmh3vdy2nojqq" path="res://scenes/npc/BadColleague/npc.gd" id="1_2frfb"]
+[ext_resource type="Texture2D" uid="uid://brhypqe3j0mxe" path="res://assets/[Free Asset] Pixel Boy 32x64 Animation/boy-32x64-idle-walk.png" id="2_5v42e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rcdv1"]
+radius = 30.0
+height = 84.0
+
+[node name="NPC" type="Area2D" unique_id=415461748]
+script = ExtResource("1_2frfb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1021829639]
+position = Vector2(213, 111)
+texture = ExtResource("2_5v42e")
+hframes = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1444619360]
+position = Vector2(215, 116)
+shape = SubResource("CapsuleShape2D_rcdv1")
+
+[node name="Label" type="Label" parent="." unique_id=1706486341]
+z_index = 10
+offset_left = 203.0
+offset_top = 64.0
+offset_right = 254.0
+offset_bottom = 94.0
+theme_override_font_sizes/font_size = 6
+text = "Get back to work!!!"
+autowrap_mode = 2
