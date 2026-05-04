@@ -9,8 +9,10 @@
 [ext_resource type="Script" uid="uid://cew37lw0u7r6a" path="res://scenes/pc/document_window.gd" id="6_nle26"]
 [ext_resource type="Texture2D" uid="uid://c3nh3fbiy0fpb" path="res://assets/pc_assets/document_app_background.png" id="7_nf6t2"]
 [ext_resource type="Script" uid="uid://ne1euxo8wihp" path="res://scenes/pc/text_report.gd" id="8_khb6m"]
-[ext_resource type="Script" path="res://scenes/pc/start_button.gd" id="9_8ftmv"]
+[ext_resource type="Script" uid="uid://mmbsuuph6u8o" path="res://scenes/pc/start_button.gd" id="9_8ftmv"]
 [ext_resource type="Texture2D" uid="uid://cp62dnbibcn" path="res://assets/pc_assets/email_background.png" id="9_nle26"]
+[ext_resource type="Texture2D" uid="uid://dkqopoa5sr117" path="res://assets/pc_assets/Email_boarder.png" id="11_5ynnh"]
+[ext_resource type="Texture2D" uid="uid://cjfjjd8rs3ups" path="res://assets/pc_assets/Email_choice_boarder.png" id="11_66ub2"]
 [ext_resource type="Script" uid="uid://cpf7vkm7q1g7m" path="res://scenes/pc/email.gd" id="11_khb6m"]
 [ext_resource type="Script" uid="uid://ce5e04ua38nwe" path="res://scenes/pc/choices_dialog.gd" id="11_nle26"]
 
@@ -33,9 +35,11 @@ texture = ExtResource("2_wsi6r")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nf6t2"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_66ub2"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ynnh"]
+texture = ExtResource("11_5ynnh")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_khb6m"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hdhhd"]
+texture = ExtResource("11_66ub2")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66ub2"]
 
@@ -269,10 +273,10 @@ script = ExtResource("11_khb6m")
 
 [node name="EmailChoices" type="PanelContainer" parent="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow/Email" unique_id=1567702163]
 offset_left = 8.0
-offset_top = 55.0
+offset_top = 68.0
 offset_right = 271.0
-offset_bottom = 85.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_66ub2")
+offset_bottom = 98.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_5ynnh")
 script = ExtResource("11_nle26")
 
 [node name="MarginContainer" type="MarginContainer" parent="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow/Email/EmailChoices" unique_id=803519098]
@@ -288,7 +292,7 @@ layout_mode = 2
 [node name="ChoiceButton" type="Button" parent="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow/Email/EmailChoices/MarginContainer/Choices" unique_id=314895382]
 layout_mode = 2
 theme_override_font_sizes/font_size = 7
-theme_override_styles/normal = SubResource("StyleBoxEmpty_khb6m")
+theme_override_styles/normal = SubResource("StyleBoxTexture_hdhhd")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_66ub2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5ynnh")
 
