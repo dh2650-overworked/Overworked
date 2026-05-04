@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://be44lpdxyrx6b"]
+[gd_scene format=3 uid="uid://c3s4dsuc8hluh"]
 
 [ext_resource type="Script" uid="uid://c38s3gpcb8nqt" path="res://scripts/Colleague1/colleague_1.gd" id="1_y4mkt"]
-[ext_resource type="PackedScene" uid="uid://dlhivy8ytf454" path="res://scenes/character/DialogueUI.tscn" id="2_ecaep"]
+[ext_resource type="PackedScene" path="res://scenes/character/DialogueUI.tscn" id="2_ecaep"]
 [ext_resource type="Resource" uid="uid://dkgmvcrtbhocq" path="res://assets/tasks/report_writing.tres" id="3_xh6qv"]
 [ext_resource type="Texture2D" uid="uid://covwnoq825x07" path="res://assets/NPCs/Kevin.png" id="4_xh6qv"]
 
@@ -29,5 +29,12 @@ shape = SubResource("CapsuleShape2D_y4mkt")
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1401506516]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1162801303]
-position = Vector2(0, -27)
+position = Vector2(4, -33.333332)
 shape = SubResource("CircleShape2D_ecaep")
+
+[node name="Label" type="Label" parent="." unique_id=661580629]
+offset_left = -12.0
+offset_top = -78.0
+offset_right = 72.66667
+offset_bottom = -55.0
+theme_override_font_sizes/font_size = 5

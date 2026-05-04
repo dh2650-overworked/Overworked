@@ -1,48 +1,83 @@
-extends Area2D # 或者 CharacterBody2D，取决于你 NPC 的根节点
+extends CharacterBody2D
 
-# --- 1. 对话内容池 ---
+# --- 1. Teammate's Exports ---
+@export var dialogue_scene: PackedScene
+@export var report_task: Resource
+var player_in_range = false
+
+# --- 2. Your Added Logic (Lines & Label) ---
 var lines = [
 	"Deadline is coming, move it!",
 	"Why are you just standing there?",
 	"The boss is watching...",
 	"Did you finish that report?"
 ]
+@onready var dialog_label = $Label # Ensure the Label node exists in the scene!
 
-# --- 2. 节点引用 ---
-@onready var dialog_label = $Label # 确保你 NPC 下面有一个叫 Label 的子节点
-
-func _ready():
-	# 初始状态隐藏对话框
-	dialog_label.visible = false
+func _ready() -> void:
+	# Teammate's signal connections (using the child InteractionArea)
+	$InteractionArea.body_entered.connect(_on_body_entered)
+	$InteractionArea.body_exited.connect(_on_body_exited)
 	
-	# 【核心：放这里】连接打印机大脑的信号
-	# 这样无论玩家在哪，只要打印机卡纸，NPC 就能“听到”
+	# --- Your Logic: Listen to PrinterManager ---
 	PrinterManager.state_changed.connect(_on_printer_changed)
-	
-	# 连接玩家靠近的信号（需要在编辑器里连，或者代码连）
-	self.body_entered.connect(_on_player_entered)
-	self.body_exited.connect(_on_player_exited)
-
-# --- 3. 核心逻辑：打印机卡纸时的反应 ---
-func _on_printer_changed(new_state):
-	# 如果打印机卡纸了 (JAMMED)
-	if new_state == PrinterManager.State.JAMMED:
-		dialog_label.text = "I HEAR THE PRINTER JAMMING! FIX IT NOW!"
-		dialog_label.visible = true
-		# 强制让文字变成红色（可选，增加压力感）
-		dialog_label.modulate = Color.RED 
-	else:
-		# 如果修好了，文字恢复颜色并消失
-		dialog_label.modulate = Color.WHITE
+	if dialog_label:
 		dialog_label.visible = false
 
-# --- 4. 基础逻辑：玩家走近时的随机对话 ---
-func _on_player_entered(body):
-	if body.name == "Player": # 确保你的玩家节点叫 Player
-		if PrinterManager.current_state != PrinterManager.State.JAMMED:
+# --- Your Logic: Handling the Printer Jam ---
+func _on_printer_changed(new_state):
+	if dialog_label:
+		if new_state == PrinterManager.State.JAMMED:
+			dialog_label.text = "I HEAR THE PRINTER JAMMING! FIX IT NOW!"
+			dialog_label.modulate = Color.RED
+			dialog_label.visible = true
+		else:
+			dialog_label.modulate = Color.WHITE
+			dialog_label.visible = false
+
+# --- Combined Logic: Player Entering ---
+func _on_body_entered(body: Node2D) -> void:
+	# Use teammate's group-based check (better than names)
+	if body.is_in_group("player"):
+		player_in_range = true
+		
+		# Your Logic: Show random line when player gets close
+		if dialog_label and PrinterManager.current_state != PrinterManager.State.JAMMED:
 			dialog_label.text = lines.pick_random()
 			dialog_label.visible = true
 
-func _on_player_exited(body):
-	if body.name == "Player":
-		dialog_label.visible = false
+func _on_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		player_in_range = false
+		
+		# Your Logic: Hide label when player walks away
+		if dialog_label:
+			dialog_label.visible = false
+
+# --- Teammate's Logic: Press E to Talk ---
+func _input(event: InputEvent) -> void:
+	if player_in_range and event.is_action_pressed("interact"):
+		if not get_tree().root.has_node("DialogueUI"):
+			start_dialogue()
+
+func start_dialogue():
+	var ui = dialogue_scene.instantiate()
+	ui.name = "DialogueUI"
+	get_tree().root.add_child(ui)
+	
+	# Connect to teammate's UI signals (keep their system working)
+	if ui.has_signal("choice_accepted"):
+		ui.choice_accepted.connect(func(): _on_task_accepted(ui))
+	if ui.has_signal("choice_rejected"):
+		ui.choice_rejected.connect(func(): _on_task_rejected(ui))
+
+# --- Keep teammate's task functions at the bottom ---
+func _on_task_accepted(ui):
+	if report_task is TaskData:
+		TaskManager.add_task(report_task as TaskData, true)
+	ui.show_feedback("Thank you! See you after the wedding!")
+	await ui.tree_exited
+	queue_free()
+
+func _on_task_rejected(ui):
+	ui.show_feedback("Oh, I see... I'll have to cancel my plans.")

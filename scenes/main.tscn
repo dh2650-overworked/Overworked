@@ -9,7 +9,7 @@
 [ext_resource type="FontFile" uid="uid://cjxkjihewqeic" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="7_choun"]
 [ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="7_tipki"]
 [ext_resource type="Resource" uid="uid://k5gmh5w4jaa" path="res://assets/days/w0day0.tres" id="8_day1"]
-[ext_resource type="Script" uid="uid://bpbwpugqdkjfe" path="res://scripts/ui/summary_scene_button.gd" id="9_sum_btn"]
+[ext_resource type="Script" path="res://scripts/ui/summary_scene_button.gd" id="9_sum_btn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
 content_margin_left = 6.0
