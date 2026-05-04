@@ -1,0 +1,334 @@
+[gd_scene format=3 uid="uid://klovn62vnl6r"]
+
+[ext_resource type="Script" uid="uid://bvavhhbwea3ud" path="res://scripts/main.gd" id="1_r1e1b"]
+[ext_resource type="PackedScene" uid="uid://c4todolist001" path="res://scenes/ui/todo_list_ui.tscn" id="2_edciq"]
+[ext_resource type="Texture2D" uid="uid://c785tn2nk066n" path="res://assets/icons/clock.png" id="3_k6mv6"]
+[ext_resource type="PackedScene" uid="uid://pixelabel001" path="res://scenes/ui/pixel_label.tscn" id="4_w0u41"]
+[ext_resource type="Texture2D" uid="uid://b7kf5aukr8e7" path="res://assets/icons/coin.png" id="5_bpcqj"]
+[ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="6_bg066"]
+[ext_resource type="FontFile" uid="uid://cjxkjihewqeic" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="7_w0u41"]
+[ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="7_x70sf"]
+[ext_resource type="Resource" uid="uid://k5gmh5w4jaa" path="res://assets/days/w0day0.tres" id="8_day"]
+[ext_resource type="Script" uid="uid://bpbwpugqdkjfe" path="res://scripts/ui/summary_scene_button.gd" id="9_sum_btn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 2.0
+bg_color = Color(0.99215686, 0.8039216, 0.46666667, 1)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpcqj"]
+content_margin_left = 15.0
+content_margin_top = 20.0
+content_margin_right = 15.0
+content_margin_bottom = 10.0
+bg_color = Color(0.9764706, 0.9607843, 0.90588236, 0.9019608)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.23529412)
+shadow_size = 5
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg066"]
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+bg_color = Color(0.81960785, 0.81960785, 0.76862746, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7411765, 0.7254902, 0.6509804, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x70sf"]
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+bg_color = Color(0.72156864, 0.72156864, 0.6627451, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jiod"]
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+bg_color = Color(0.881699, 0.7664406, 0.55786735, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0u41"]
+bg_color = Color(0.8235294, 0.7058824, 0.54901963, 0.9490196)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qulo"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.83931255, 0.50088376, 0.19967389, 0.65882355)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nq5eb"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.70980394, 0.39607844, 0.12941177, 0.65882355)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_du24m"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.9098039, 0.5764706, 0.27058825, 0.65882355)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Main" type="Node2D" unique_id=951420025]
+y_sort_enabled = true
+script = ExtResource("1_r1e1b")
+day_data = ExtResource("8_day")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1593975202]
+layer = 10
+
+[node name="TodoListUI" parent="CanvasLayer" unique_id=1378710553 instance=ExtResource("2_edciq")]
+offset_left = 12.0
+offset_top = 10.000008
+offset_right = 462.0
+offset_bottom = 510.0
+scale = Vector2(0.45, 0.45)
+
+[node name="Clock" type="Control" parent="CanvasLayer" unique_id=242026522]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 392.0
+offset_top = 5.0
+offset_right = 508.0
+offset_bottom = 74.0
+scale = Vector2(0.8, 0.8)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Clock" unique_id=1682603234]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 1.0
+offset_right = 1032.0
+offset_bottom = 839.0
+scale = Vector2(0.085, 0.085)
+texture = ExtResource("3_k6mv6")
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer/Clock" unique_id=612539043]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 33.0
+offset_right = 92.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0.29219002, 0.29219005, 0.29219002, 1)
+theme_override_font_sizes/font_size = 9
+text = "8 am"
+
+[node name="DayLabel" type="Label" parent="CanvasLayer/Clock" unique_id=1414926423]
+layout_mode = 0
+offset_left = 41.5
+offset_top = 9.250001
+offset_right = 89.5
+offset_bottom = 32.25
+theme_override_colors/font_color = Color(0.28240767, 0.28240743, 0.28240746, 1)
+theme_override_font_sizes/font_size = 8
+text = "Thu, 7 May"
+
+[node name="MoneyLabel" parent="CanvasLayer" unique_id=349442732 instance=ExtResource("4_w0u41")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -27.0
+offset_right = 44.0
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+
+[node name="Icon" parent="CanvasLayer/MoneyLabel" index="0"]
+texture = ExtResource("5_bpcqj")
+
+[node name="Bg" parent="CanvasLayer/MoneyLabel" index="1"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
+
+[node name="Label" parent="CanvasLayer/MoneyLabel/Bg" index="0"]
+custom_minimum_size = Vector2(50, 0)
+theme_override_colors/font_color = Color(0.29411766, 0.29411766, 0.29411766, 1)
+text = "0"
+
+[node name="LunchBanner" type="PanelContainer" parent="CanvasLayer" unique_id=19836783]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.5
+offset_top = -41.0
+offset_right = 371.5
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.53876394, 0.54983413)
+theme_override_styles/panel = SubResource("StyleBoxFlat_bpcqj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LunchBanner" unique_id=1155194412]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="CanvasLayer/LunchBanner/VBoxContainer" unique_id=1446690376]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.1764706, 0.1882353, 0.2784314, 0.972549)
+theme_override_fonts/font = ExtResource("7_w0u41")
+text = "Time for lunch! 
+30 seconds to yourself
+grab a coffee  or have a chat with your colleagues :)"
+horizontal_alignment = 1
+
+[node name="ConfirmButton" type="Button" parent="CanvasLayer/LunchBanner/VBoxContainer" unique_id=739379634]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.1764706, 0.1882353, 0.2784314, 0.972549)
+theme_override_fonts/font = ExtResource("7_w0u41")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bg066")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x70sf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2jiod")
+text = "Got it!"
+
+[node name="SummaryPanel" type="PanelContainer" parent="CanvasLayer" unique_id=983902928]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -91.0
+offset_right = 313.0
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.58349735, 0.5935472)
+theme_override_styles/panel = SubResource("StyleBoxFlat_w0u41")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/SummaryPanel" unique_id=1581218689]
+layout_mode = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Title" type="Label" parent="CanvasLayer/SummaryPanel/MarginContainer" unique_id=1705533940]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("7_w0u41")
+theme_override_font_sizes/font_size = 18
+text = "Daily Summary"
+horizontal_alignment = 1
+
+[node name="Stats" type="VBoxContainer" parent="CanvasLayer/SummaryPanel/MarginContainer" unique_id=1894685975]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SalaryLabel" type="Label" parent="CanvasLayer/SummaryPanel/MarginContainer/Stats" unique_id=1026377464]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_w0u41")
+theme_override_font_sizes/font_size = 18
+text = "Salary:"
+
+[node name="TaskCountLabel" type="Label" parent="CanvasLayer/SummaryPanel/MarginContainer/Stats" unique_id=110779476]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_w0u41")
+theme_override_font_sizes/font_size = 18
+text = "Tasks Completed:"
+
+[node name="BalanceLabel" type="Label" parent="CanvasLayer/SummaryPanel/MarginContainer/Stats" unique_id=1377625334]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_w0u41")
+theme_override_font_sizes/font_size = 18
+text = "Final Balance:"
+
+[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/MarginContainer" unique_id=1156098876]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+
+[node name="NextLevelButton" type="Button" parent="CanvasLayer/SummaryPanel/MarginContainer/Buttons" unique_id=918255154]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_w0u41")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_1qulo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nq5eb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_du24m")
+text = "Next Level"
+script = ExtResource("9_sum_btn")
+target_scene_path = "res://scenes/days/w0day1.tscn"
+
+[node name="MainMenuButton" type="Button" parent="CanvasLayer/SummaryPanel/MarginContainer/Buttons" unique_id=956773592]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_w0u41")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_1qulo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nq5eb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_du24m")
+text = "Main Menu"
+script = ExtResource("9_sum_btn")
+target_scene_path = "res://scenes/main-menu/MainMenu.tscn"
+
+[node name="office" parent="." unique_id=856302002 instance=ExtResource("6_bg066")]
+
+[node name="CharacterBody2D" parent="." unique_id=470434658 instance=ExtResource("7_x70sf")]
+position = Vector2(124, 201)
+scale = Vector2(1.5, 1.5)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=828365990]
+position = Vector2(0, -29.333334)
+
+[editable path="CanvasLayer/MoneyLabel"]

@@ -8,7 +8,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var size: Vector2 = get_global_rect().size
 	var offset: Vector2 = get_global_rect().position
 	var img: Image = get_parent().get_texture().get_image()

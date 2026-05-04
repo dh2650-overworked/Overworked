@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if button_pressed && tank_empty:
 		self.texture_normal = load("res://assets/tasks/Watercooler/Watercooler_tankless.png")
 		tank_empty = false

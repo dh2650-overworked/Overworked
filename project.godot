@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Overwork"
-run/main_scene="uid://c4mainscene01"
+run/main_scene="uid://b2rlkngs31aoj"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -36,6 +36,10 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="Overwork"
+
+[global_group]
+
+player=""
 
 [input]
 

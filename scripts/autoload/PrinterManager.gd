@@ -51,3 +51,9 @@ func collect_docs():
 	# Reset the printer to IDLE
 	change_state(State.IDLE)
 	progress = 0.0
+
+
+func reset_for_new_game() -> void:
+	progress = 0.0
+	change_state(State.IDLE)
+	progress_updated.emit(progress)
