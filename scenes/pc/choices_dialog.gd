@@ -25,7 +25,8 @@ func init_button():
 		btn.text = choices[i]
 		
 		# Clear any colors from previous rounds
-		btn.remove_theme_color_override("font_color")
+		btn.add_theme_color_override("font_color", Color.BLACK)
+		btn.add_theme_color_override("font_hover_color", Color.BLACK)
 		
 		# Connect signal (ensuring no duplicates)
 		if btn.pressed.is_connected(on_choice):

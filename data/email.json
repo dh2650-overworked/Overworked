@@ -1,18 +1,18 @@
 {
   "Monday_Week_1": {
-    "options": [
-      "Can you send me the balance sheet for this month?",
-      "what's up?",
+	"options": [
+	  "Can you send me the balance sheet for this month?",
+	  "what's up?",
       "Fetch me some coffee to my desk"
-    ],
-    "correct_answer": "Can you send me the balance sheet for this month?"
+	],
+	"correct_answer": "Can you send me the balance sheet for this month?"
   },
   "Tuesday_Week_1": {
-    "options": [
-      "The report is ready.",
-      "I forgot to do it.",
+	"options": [
+	  "The report is ready.",
+	  "I forgot to do it.",
       "What report?"
-    ],
-    "correct_answer": "The report is ready."
+	],
+	"correct_answer": "The report is ready."
   }
 }
