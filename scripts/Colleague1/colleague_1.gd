@@ -25,17 +25,19 @@ func start_dialogue():
 	var ui = dialogue_scene.instantiate()
 	ui.name = "DialogueUI"
 	get_tree().root.add_child(ui)
-	ui.setup_dialogue("Kevin", "Hey! Hey! I need to submit a report, but I’m about to head out for a wedding... 
+	ui.setup_dialogue("Kevin", "Hey! I need to submit a report, but I’m about to head out for a wedding... 
 Could you take care of it for me?")
 	
 	ui.choice_accepted.connect(func(): _on_task_accepted(ui))
 	ui.choice_rejected.connect(func(): _on_task_rejected(ui))
 
 func _on_task_accepted(ui):
-	# Call TaskManager function to add tasks
-	if report_task:
-		TaskManager.add_task(report_task)
+	# NPC-granted tasks must bypass lunch guard (add_task normally no-ops while lunch_active).
+	if report_task is TaskData:
+		TaskManager.add_task(report_task as TaskData, true)
 		print("System: Task 'report_writing' has been added to the to-do list.")
+	elif report_task != null:
+		push_error("Colleague report_task must be TaskData; got %s" % report_task.get_class())
 	else:
 		push_error("No task resources specified")
 		

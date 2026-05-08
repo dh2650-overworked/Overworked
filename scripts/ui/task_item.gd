@@ -3,6 +3,7 @@ extends HBoxContainer
 ## Single task row (develoment §4). Completion display only.
 
 const INK_COLOR := Color(0.0, 0.1, 0.4, 1.0)
+const INHERITED_COLOR := Color(0.85, 0.15, 0.12, 1.0)
 const RULE_COLOR := Color(0.6, 0.7, 0.9, 0.5)
 const COMPLETED_COLOR := Color(0.35, 0.42, 0.62, 0.62)
 const STRIKE_COLOR := Color(0.35, 0.42, 0.62, 0.9)
@@ -23,11 +24,13 @@ func _ready() -> void:
 
 func setup(inst: TaskInstance) -> void:
 	_instance = inst
+	_is_completed = false
 	_name_label.text = inst.task_name
 	_name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_name_label.add_theme_color_override("font_color", INK_COLOR)
+	var ink: Color = INHERITED_COLOR if inst.is_inherited else INK_COLOR
+	_name_label.add_theme_color_override("font_color", ink)
 	_money_label.text = str(inst.reward_money)
-	_money_label.add_theme_color_override("font_color", INK_COLOR)
+	_money_label.add_theme_color_override("font_color", ink)
 	_update_rule_line()
 
 

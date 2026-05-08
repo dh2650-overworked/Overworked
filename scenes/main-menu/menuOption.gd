@@ -2,6 +2,8 @@ extends Button
 
 var scene
 
+@export var reset_progress_on_press: bool = false
+
 @export var scene_path: String = "":
 	set(value):
 		scene_path = value	
@@ -15,6 +17,9 @@ func _ready():
 
 
 func _button_pressed():
+	if reset_progress_on_press:
+		TaskManager.reset_for_new_game()
+		PrinterManager.reset_for_new_game()
 	if scene:
 		print("Opening: " + scene_path)
 		get_tree().change_scene_to_node(scene.instantiate())

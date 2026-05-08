@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://be44lpdxyrx6b"]
 
-[ext_resource type="Texture2D" uid="uid://brhypqe3j0mxe" path="res://assets/[Free Asset] Pixel Boy 32x64 Animation/boy-32x64-idle-walk.png" id="1_240fq"]
 [ext_resource type="Script" uid="uid://c38s3gpcb8nqt" path="res://scripts/Colleague1/colleague_1.gd" id="1_y4mkt"]
-[ext_resource type="PackedScene" uid="uid://6nwluwbg31or" path="res://scenes/character/DialogueUI.tscn" id="2_ecaep"]
+[ext_resource type="PackedScene" uid="uid://dlhivy8ytf454" path="res://scenes/character/DialogueUI.tscn" id="2_ecaep"]
 [ext_resource type="Resource" uid="uid://dkgmvcrtbhocq" path="res://assets/tasks/report_writing.tres" id="3_xh6qv"]
+[ext_resource type="Texture2D" uid="uid://covwnoq825x07" path="res://assets/NPCs/Kevin.png" id="4_xh6qv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y4mkt"]
 radius = 15.0
@@ -18,10 +18,9 @@ script = ExtResource("1_y4mkt")
 dialogue_scene = ExtResource("2_ecaep")
 report_task = ExtResource("3_xh6qv")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1794810395]
-texture = ExtResource("1_240fq")
-offset = Vector2(-1, -32)
-hframes = 10
+[node name="Kevin" type="Sprite2D" parent="." unique_id=39933371]
+position = Vector2(0.6666666, -29.333334)
+texture = ExtResource("4_xh6qv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=310609629]
 position = Vector2(0, -27)
