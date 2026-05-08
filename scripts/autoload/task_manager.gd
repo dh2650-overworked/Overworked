@@ -19,6 +19,23 @@ signal lunch_started()
 signal lunch_ended()
 signal lunch_acknowledged()
 
+# Firedrill code is mostly a copy of Lunch code, 
+# TODO: change trigger to specific day, refine popup visuals, add text for label and for button //Erik O
+const FIREDRILL_START_AT_SECONDS: float = 230.0
+const FIREDRILL_DURATION_SECONDS: float = 20.0
+const DAY_HAS_FIREDRILL: bool = true
+
+signal firedrill_started()
+signal firedrill_ended()
+signal firedrill_acknowledged()
+signal create_firedrill()
+
+var firedrill_created: bool = false
+var firedrill_active: bool = false
+var firedrill_time_remaining: float = 0.0
+var firedrill_triggered: bool = false
+var firedrill_message_needs_ack: bool = false
+
 var total_money: int = 0
 var daily_money: int = 0
 var daily_completed_count: int = 0
@@ -38,7 +55,6 @@ var _current_day_id: String = ""
 var _timed_tasks: Dictionary = {}
 var _timed_fired: Dictionary = {}
 
-
 func _process(delta: float) -> void:
 	if level_time_remaining > 0.0:
 		level_time_remaining = maxf(level_time_remaining - delta, 0.0)
@@ -57,10 +73,16 @@ func _process(delta: float) -> void:
 			if lunch_time_remaining <= 0.0:
 				lunch_active = false
 				lunch_ended.emit()
+		
+		if DAY_HAS_FIREDRILL:
+			if !firedrill_created and create_firedrill.has_connections():
+				create_firedrill.emit()
+				firedrill_created = !firedrill_created
+			_check_firedrill(delta)
 
 	if level_time_remaining <= 0.0:
 		return
-
+	
 	if lunch_active:
 		return
 
@@ -281,7 +303,6 @@ func complete_task_by_type(target_task_id: String) -> void:
 			complete_task(id)
 			return
 
-
 func request_navigation(instance_id: String) -> void:
 	if active_tasks.has(instance_id):
 		nav_requested.emit(instance_id)
@@ -292,6 +313,24 @@ func acknowledge_lunch_message() -> void:
 		lunch_message_needs_ack = false
 		lunch_acknowledged.emit()
 
+func _check_firedrill(delta: float) -> void:
+	if (not firedrill_triggered) and level_time_passed >= FIREDRILL_START_AT_SECONDS:
+			firedrill_triggered = true
+			firedrill_active = true
+			firedrill_time_remaining = FIREDRILL_DURATION_SECONDS
+			firedrill_message_needs_ack = true
+			firedrill_started.emit()
+
+	if firedrill_active:
+		firedrill_time_remaining = maxf(firedrill_time_remaining - delta, 0.0)
+		if firedrill_time_remaining <= 0.0:
+			firedrill_active = false
+			firedrill_ended.emit()
+
+func acknowledge_firedrill_message() -> void:
+	if firedrill_message_needs_ack:
+		firedrill_message_needs_ack = false
+		firedrill_acknowledged.emit()
 
 func get_instance(instance_id: String) -> TaskInstance:
 	return active_tasks.get(instance_id, null)

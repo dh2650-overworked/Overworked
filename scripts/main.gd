@@ -12,6 +12,9 @@ const _DAY_DATA_SCRIPT_PATH := "res://scripts/resources/day_data.gd"
 @onready var _lunch_banner: PanelContainer = $CanvasLayer/LunchBanner
 @onready var _lunch_banner_label: Label = $CanvasLayer/LunchBanner/VBoxContainer/Label
 @onready var _lunch_confirm_button: Button = $CanvasLayer/LunchBanner/VBoxContainer/ConfirmButton
+@onready var _firedrill_banner: PanelContainer
+@onready var _firedrill_banner_label: Label
+@onready var _firedrill_confirm_button: Button
 @onready var _summary_panel: Control = $CanvasLayer/SummaryPanel
 @onready var _salary_val: Label = $CanvasLayer/SummaryPanel/MarginContainer/Stats/SalaryLabel
 @onready var _task_count_val: Label = $CanvasLayer/SummaryPanel/MarginContainer/Stats/TaskCountLabel
@@ -45,6 +48,12 @@ func _ready() -> void:
 		push_warning("Main: day_data must be a DayData resource (.tres).")
 	else:
 		push_warning("Main: day_data is not set; no tasks will be scheduled.")
+	
+	# Todo , move firedrill to weekly resource objects
+	# TaskManager.create_firedrill.connect(_on_create_firedrill)
+	# TaskManager.firedrill_started.connect(_on_firedrill_started)
+	# TaskManager.firedrill_ended.connect(_on_firedrill_ended)
+	# TaskManager.firedrill_acknowledged.connect(_on_firedrill_acknowledged)
 	_on_money_updated(TaskManager.total_money)
 	_update_level_clock()
 	_lunch_banner.visible = false
@@ -118,6 +127,50 @@ func _on_lunch_confirm_pressed() -> void:
 	TaskManager.acknowledge_lunch_message()
 	_lunch_banner.visible = false
 
+# Firedrill
+func _on_create_firedrill() -> void:
+	_firedrill_banner = PanelContainer.new()
+	var _firedrill_vbox: VBoxContainer = VBoxContainer.new()
+	_firedrill_banner_label = Label.new()
+	_firedrill_confirm_button = Button.new()
+	
+	var C_Layer: CanvasLayer = $CanvasLayer
+	C_Layer.add_child(_firedrill_banner)
+	_firedrill_banner.add_child(_firedrill_vbox)
+	_firedrill_vbox.add_child(_firedrill_banner_label)
+	_firedrill_vbox.add_child(_firedrill_confirm_button)
+	_firedrill_banner.visible = false
+	_firedrill_confirm_button.pressed.connect(_on_firedrill_confirm_pressed)
+	
+	_firedrill_banner.size = Vector2(300, 150)
+	_firedrill_banner.set_position(Vector2(100, 55))
+	
+	_firedrill_vbox.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	_firedrill_vbox.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	
+	_firedrill_banner_label.text = "FiredrillText"
+	_firedrill_banner_label.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	_firedrill_banner_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	
+	_firedrill_confirm_button.text = "Buttontext"
+	
+	
+
+func _on_firedrill_started() -> void:
+	_firedrill_banner.visible = true
+
+
+func _on_firedrill_ended() -> void:
+	_firedrill_banner.visible = false
+
+
+func _on_firedrill_acknowledged() -> void:
+	_firedrill_banner.visible = false
+
+
+func _on_firedrill_confirm_pressed() -> void:
+	TaskManager.acknowledge_firedrill_message()
+	_firedrill_banner.visible = false
 
 func _show_summary() -> void:
 	_summary_panel.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
