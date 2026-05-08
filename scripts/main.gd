@@ -149,3 +149,8 @@ func _unhandled_input(event: InputEvent) -> void:
 						TaskManager.active_tasks.size(),
 					]
 				)
+
+
+func _on_yes_button_pressed() -> void:
+	$CanvasLayer/ConfirmOverlay.hide()
+	_show_summary()
