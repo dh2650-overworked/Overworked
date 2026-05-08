@@ -26,3 +26,7 @@ func _ready() -> void:
 	
 func update_cursor_pos(): 
 	mouse_cursor.position = pc_mouse_pos 
+
+
+func _on_email_app_icon_pressed() -> void:
+	pass # Replace with function body.

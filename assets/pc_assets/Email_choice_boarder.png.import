@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c02ls52tu7j50"
-path="res://.godot/imported/Document_bg_place_holder.png-b90ee7394e74581dfd524d4f646995e0.ctex"
+uid="uid://cjfjjd8rs3ups"
+path="res://.godot/imported/Email_choice_boarder.png-b6b161299f12f00c55fc84393dd1084f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pc_assets/Document_bg_place_holder.png"
-dest_files=["res://.godot/imported/Document_bg_place_holder.png-b90ee7394e74581dfd524d4f646995e0.ctex"]
+source_file="res://assets/pc_assets/Email_choice_boarder.png"
+dest_files=["res://.godot/imported/Email_choice_boarder.png-b6b161299f12f00c55fc84393dd1084f.ctex"]
 
 [params]
 

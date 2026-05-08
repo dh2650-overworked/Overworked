@@ -1,38 +1,63 @@
 extends Node2D
 
-@export var green = Color("#000000")
-@export var red = Color("ad2a25ff")
-@export var blue = Color("1d75d9ff")
+signal report_finished
 
-@onready var document_window: Window = $".."
+@export var green = Color("#00FF00")
+@export var blue = Color("#1d75d9")
+@export var red = Color("#ad2a25")
+@export var gray = Color("#666666")
+
 @onready var prompt: RichTextLabel = $TypeText
-@onready var prompt_text = prompt.text
+@onready var input_field: TextEdit = $PlayerInput 
+@onready var prompt_text: String = prompt.text
 
-func get_prompt() -> String:
-	return prompt_text
+func _ready():
+	# TextEdit signal is just 'text_changed', it doesn't pass the text string
+	input_field.text_changed.connect(_on_text_changed)
+	
+	# Match the TextEdit size to the RichTextLabel size for perfect wrapping
+	input_field.custom_minimum_size = prompt.get_size()
+	
+	input_field.grab_focus()
+	update_display(0)
 
+func _on_text_changed():
+	var new_text = input_field.text
+	
+	# Check if input is correct
+	if prompt_text.begins_with(new_text):
+		update_display(new_text.length())
+		
+		if new_text == prompt_text:
+			report_finished.emit()
+	else:
+		# If mistake: revert text and keep cursor at the end
+		input_field.text = new_text.substr(0, new_text.length() - 1)
+		input_field.set_caret_column(input_field.text.length())
+		# Optional: Add a 'Screen Shake' or 'Buzzer' sound here
 
-func set_next_character(next_character_index: int):
-	var green_text = get_bbcode_color_tag(green) + prompt_text.substr(0, next_character_index) + get_bbcode_end_color_tag()
-	var blue_text = get_bbcode_color_tag(blue) + prompt_text.substr(next_character_index, 1) + get_bbcode_end_color_tag()
-	var red_text = ""
+func update_display(index: int):
+	var green_part = get_tag(green) + prompt_text.substr(0, index) + "[/color]"
+	
+	var blue_part = ""
+	var red_part = ""
+	var gray_part = ""
+	
+	if index < prompt_text.length():
+		# The Blue 'Cursor' Character
+		blue_part = get_tag(blue) + prompt_text.substr(index, 1) + "[/color]"
+		
+		var rest = prompt_text.substr(index + 1)
+		var space_pos = rest.find(" ")
+		
+		if space_pos == -1:
+			red_part = get_tag(red) + rest + "[/color]"
+		else:
+			# Red for the current word, Gray for the future
+			red_part = get_tag(red) + rest.substr(0, space_pos) + "[/color]"
+			gray_part = get_tag(gray) + rest.substr(space_pos) + "[/color]"
 
-	if next_character_index != prompt_text.length():
-		red_text = get_bbcode_color_tag(red) + prompt_text.substr(next_character_index + 1, prompt_text.length() - next_character_index + 1) + get_bbcode_end_color_tag()
+	prompt.text = green_part + blue_part + red_part + gray_part
 
-	prompt.parse_bbcode(set_center_tags(green_text + blue_text + red_text))
-
-
-func set_center_tags(string_to_center: String):
-	return  string_to_center
-
-
-func get_bbcode_color_tag(color: Color) -> String:
-	return "[color=#" + color.to_html(false) + "]"
-
-
-func get_bbcode_end_color_tag() -> String:
-	return "[/color]"
-
-
-# Today I have successfully increased shareholder value by replying to a tidal wave of emails, most of which asked me to confirm receipt of things I had already confirmed receiving. I attended a meeting that could have been an email, then attended a pre-meeting for that meeting, followed by a post-meeting recap that introduced three new meetings.
+func get_tag(c: Color) -> String:
+	return "[color=#" + c.to_html(false) + "]"
