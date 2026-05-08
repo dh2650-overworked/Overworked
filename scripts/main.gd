@@ -77,7 +77,8 @@ func _update_level_clock() -> void:
 
 
 func _on_money_updated(new_total: int) -> void:
-	_money_label.text = str(new_total)
+	var quota = 300
+	_money_label.text = str(TaskManager.daily_money) + " / " + str(quota) + " $"
 
 
 func _on_nav_requested(instance_id: String) -> void:

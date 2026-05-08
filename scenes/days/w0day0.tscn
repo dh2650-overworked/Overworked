@@ -4,23 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://c4todolist001" path="res://scenes/ui/todo_list_ui.tscn" id="2_edciq"]
 [ext_resource type="Texture2D" uid="uid://c785tn2nk066n" path="res://assets/icons/clock.png" id="3_k6mv6"]
 [ext_resource type="PackedScene" uid="uid://pixelabel001" path="res://scenes/ui/pixel_label.tscn" id="4_w0u41"]
-[ext_resource type="Texture2D" uid="uid://b7kf5aukr8e7" path="res://assets/icons/coin.png" id="5_bpcqj"]
 [ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="6_bg066"]
+[ext_resource type="Texture2D" uid="uid://bs6krvrn6cfq2" path="res://assets/icons/revenue.png" id="6_x70sf"]
 [ext_resource type="FontFile" uid="uid://cjxkjihewqeic" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="7_w0u41"]
 [ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="7_x70sf"]
 [ext_resource type="Resource" uid="uid://k5gmh5w4jaa" path="res://assets/days/w0day0.tres" id="8_day"]
 [ext_resource type="Texture2D" uid="uid://u0ji6s7s7uws" path="res://assets/icons/briefcase.png" id="9_bpcqj"]
 [ext_resource type="Script" uid="uid://bpbwpugqdkjfe" path="res://scripts/ui/summary_scene_button.gd" id="9_sum_btn"]
 [ext_resource type="Script" uid="uid://b48qfc7bvlqr2" path="res://scripts/ui/End_day.gd" id="10_bg066"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
-content_margin_left = 6.0
-content_margin_top = 2.0
-content_margin_right = 6.0
-content_margin_bottom = 2.0
-bg_color = Color(0.99215686, 0.8039216, 0.46666667, 1)
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpcqj"]
 content_margin_left = 15.0
@@ -81,6 +72,15 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lpbe"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 2.0
+bg_color = Color(0.99215686, 0.8039216, 0.46666667, 1)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0u41"]
 bg_color = Color(0.8235294, 0.7058824, 0.54901963, 0.9490196)
@@ -221,31 +221,6 @@ theme_override_colors/font_color = Color(0.28240767, 0.28240743, 0.28240746, 1)
 theme_override_font_sizes/font_size = 8
 text = "Thu, 7 May"
 
-[node name="MoneyLabel" parent="CanvasLayer" unique_id=349442732 instance=ExtResource("4_w0u41")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -60.0
-offset_top = -27.0
-offset_right = 44.0
-offset_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.5, 0.5)
-
-[node name="Icon" parent="CanvasLayer/MoneyLabel" index="0"]
-texture = ExtResource("5_bpcqj")
-
-[node name="Bg" parent="CanvasLayer/MoneyLabel" index="1"]
-theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
-
-[node name="Label" parent="CanvasLayer/MoneyLabel/Bg" index="0"]
-custom_minimum_size = Vector2(50, 0)
-theme_override_colors/font_color = Color(0.29411766, 0.29411766, 0.29411766, 1)
-text = "0"
-
 [node name="LunchBanner" type="PanelContainer" parent="CanvasLayer" unique_id=19836783]
 visible = false
 anchors_preset = 8
@@ -288,6 +263,33 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_bg066")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_x70sf")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2jiod")
 text = "Got it!"
+
+[node name="MoneyLabel" parent="CanvasLayer" unique_id=117234896 instance=ExtResource("4_w0u41")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -83.0
+offset_top = -27.0
+offset_right = 51.0
+offset_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+alignment = 2
+
+[node name="Icon" parent="CanvasLayer/MoneyLabel" index="0"]
+custom_minimum_size = Vector2(29, 29)
+texture = ExtResource("6_x70sf")
+
+[node name="Bg" parent="CanvasLayer/MoneyLabel" index="1"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_1lpbe")
+
+[node name="Label" parent="CanvasLayer/MoneyLabel/Bg" index="0"]
+custom_minimum_size = Vector2(50, 0)
+theme_override_colors/font_color = Color(0.29411766, 0.29411766, 0.29411766, 1)
+text = "0"
 
 [node name="SummaryPanel" type="PanelContainer" parent="CanvasLayer" unique_id=983902928]
 visible = false

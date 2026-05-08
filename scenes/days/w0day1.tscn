@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://be44lpdxyrx6b" path="res://scenes/character/Colleague1.tscn" id="3_4l1h4"]
 [ext_resource type="Texture2D" uid="uid://c785tn2nk066n" path="res://assets/icons/clock.png" id="3_hmv1l"]
 [ext_resource type="PackedScene" uid="uid://pixelabel001" path="res://scenes/ui/pixel_label.tscn" id="4_4l1h4"]
-[ext_resource type="Texture2D" uid="uid://b7kf5aukr8e7" path="res://assets/icons/coin.png" id="5_5brvx"]
 [ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="6_wu5er"]
 [ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="7_cjfph"]
+[ext_resource type="Texture2D" uid="uid://bs6krvrn6cfq2" path="res://assets/icons/revenue.png" id="7_vp4os"]
 [ext_resource type="FontFile" uid="uid://cjxkjihewqeic" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="8_5brvx"]
 [ext_resource type="Resource" uid="uid://bw0day1data02" path="res://assets/days/w0day1.tres" id="8_day"]
 [ext_resource type="Script" uid="uid://bpbwpugqdkjfe" path="res://scripts/ui/summary_scene_button.gd" id="9_sum_btn"]
@@ -245,16 +245,18 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -60.0
+offset_left = -83.0
 offset_top = -27.0
-offset_right = 44.0
-offset_bottom = 1.0
+offset_right = 51.0
+offset_bottom = 2.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
+alignment = 2
 
 [node name="Icon" parent="CanvasLayer/MoneyLabel" index="0"]
-texture = ExtResource("5_5brvx")
+custom_minimum_size = Vector2(29, 29)
+texture = ExtResource("7_vp4os")
 
 [node name="Bg" parent="CanvasLayer/MoneyLabel" index="1"]
 theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
