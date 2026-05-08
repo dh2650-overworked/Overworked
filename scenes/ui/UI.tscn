@@ -1,15 +1,11 @@
-[gd_scene format=3 uid="uid://c4mainscene01"]
+[gd_scene format=3 uid="uid://csfsy27pqc5fn"]
 
-[ext_resource type="Script" uid="uid://bvavhhbwea3ud" path="res://scripts/main.gd" id="1_main"]
-[ext_resource type="PackedScene" uid="uid://c4todolist001" path="res://scenes/ui/todo_list_ui.tscn" id="2_todo"]
-[ext_resource type="PackedScene" uid="uid://pixelabel001" path="res://scenes/ui/pixel_label.tscn" id="3_pixel"]
-[ext_resource type="Texture2D" uid="uid://c785tn2nk066n" path="res://assets/icons/clock.png" id="3_tipki"]
-[ext_resource type="Texture2D" uid="uid://b7kf5aukr8e7" path="res://assets/icons/coin.png" id="5_coin"]
-[ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="6_o6xl0"]
-[ext_resource type="FontFile" uid="uid://cjxkjihewqeic" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="7_choun"]
-[ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="7_tipki"]
-[ext_resource type="Resource" uid="uid://k5gmh5w4jaa" path="res://assets/days/w0day0.tres" id="8_day1"]
-[ext_resource type="Script" path="res://scripts/ui/summary_scene_button.gd" id="9_sum_btn"]
+[ext_resource type="PackedScene" uid="uid://c4todolist001" path="res://scenes/ui/todo_list_ui.tscn" id="1_tnv4l"]
+[ext_resource type="Texture2D" uid="uid://c785tn2nk066n" path="res://assets/icons/clock.png" id="2_j3nm3"]
+[ext_resource type="PackedScene" uid="uid://pixelabel001" path="res://scenes/ui/pixel_label.tscn" id="3_p6rkd"]
+[ext_resource type="Texture2D" uid="uid://b7kf5aukr8e7" path="res://assets/icons/coin.png" id="4_bcuxr"]
+[ext_resource type="FontFile" uid="uid://cjxkjihewqeic" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="5_q5jec"]
+[ext_resource type="Script" uid="uid://bpbwpugqdkjfe" path="res://scripts/ui/summary_scene_button.gd" id="6_htlhs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
 content_margin_left = 6.0
@@ -120,15 +116,10 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="Main" type="Node2D" unique_id=951420025]
-y_sort_enabled = true
-script = ExtResource("1_main")
-day_data = ExtResource("8_day1")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1593975202]
+[node name="UI" type="CanvasLayer" unique_id=547110877]
 layer = 10
 
-[node name="TodoListUI" parent="CanvasLayer" unique_id=1378710553 instance=ExtResource("2_todo")]
+[node name="TodoListUI" parent="." unique_id=2078725028 instance=ExtResource("1_tnv4l")]
 offset_left = 12.0
 offset_top = 10.000008
 offset_right = 462.0
@@ -136,7 +127,7 @@ offset_bottom = 510.0
 scale = Vector2(0.45, 0.45)
 mouse_filter = 2
 
-[node name="Clock" type="Control" parent="CanvasLayer" unique_id=242026522]
+[node name="Clock" type="Control" parent="." unique_id=1114893867]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 392.0
@@ -145,16 +136,16 @@ offset_right = 508.0
 offset_bottom = 74.0
 scale = Vector2(0.8, 0.8)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Clock" unique_id=1682603234]
+[node name="TextureRect" type="TextureRect" parent="Clock" unique_id=814425453]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 1.0
 offset_right = 1032.0
 offset_bottom = 839.0
 scale = Vector2(0.085, 0.085)
-texture = ExtResource("3_tipki")
+texture = ExtResource("2_j3nm3")
 
-[node name="TimeLabel" type="Label" parent="CanvasLayer/Clock" unique_id=612539043]
+[node name="TimeLabel" type="Label" parent="Clock" unique_id=1523132408]
 layout_mode = 0
 offset_left = 52.0
 offset_top = 33.0
@@ -164,7 +155,7 @@ theme_override_colors/font_color = Color(0.29219002, 0.29219005, 0.29219002, 1)
 theme_override_font_sizes/font_size = 9
 text = "8 am"
 
-[node name="DayLabel" type="Label" parent="CanvasLayer/Clock" unique_id=1414926423]
+[node name="DayLabel" type="Label" parent="Clock" unique_id=976317621]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 8.0
@@ -174,7 +165,7 @@ theme_override_colors/font_color = Color(0.28240767, 0.28240743, 0.28240746, 1)
 theme_override_font_sizes/font_size = 9
 text = "Mon. 1"
 
-[node name="MoneyLabel" parent="CanvasLayer" unique_id=349442732 instance=ExtResource("3_pixel")]
+[node name="MoneyLabel" parent="." unique_id=781772415 instance=ExtResource("3_p6rkd")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -188,18 +179,18 @@ grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
 
-[node name="Icon" parent="CanvasLayer/MoneyLabel" index="0"]
-texture = ExtResource("5_coin")
+[node name="Icon" parent="MoneyLabel" index="0"]
+texture = ExtResource("4_bcuxr")
 
-[node name="Bg" parent="CanvasLayer/MoneyLabel" index="1"]
+[node name="Bg" parent="MoneyLabel" index="1"]
 theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
 
-[node name="Label" parent="CanvasLayer/MoneyLabel/Bg" index="0"]
+[node name="Label" parent="MoneyLabel/Bg" index="0"]
 custom_minimum_size = Vector2(50, 0)
 theme_override_colors/font_color = Color(0.29411766, 0.29411766, 0.29411766, 1)
 text = "0"
 
-[node name="LunchBanner" type="PanelContainer" parent="CanvasLayer" unique_id=350565234]
+[node name="LunchBanner" type="PanelContainer" parent="." unique_id=1667937301]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -215,34 +206,34 @@ grow_vertical = 2
 scale = Vector2(0.53876394, 0.54983413)
 theme_override_styles/panel = SubResource("StyleBoxFlat_yqy0j")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LunchBanner" unique_id=264877757]
+[node name="VBoxContainer" type="VBoxContainer" parent="LunchBanner" unique_id=1182013657]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 15
 
-[node name="Label" type="Label" parent="CanvasLayer/LunchBanner/VBoxContainer" unique_id=590452834]
+[node name="Label" type="Label" parent="LunchBanner/VBoxContainer" unique_id=1564658034]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.1764706, 0.1882353, 0.2784314, 0.972549)
-theme_override_fonts/font = ExtResource("7_choun")
+theme_override_fonts/font = ExtResource("5_q5jec")
 text = "Time for lunch! 
 30 seconds to yourself
 grab a coffee  or have a chat with your colleagues :)"
 horizontal_alignment = 1
 
-[node name="ConfirmButton" type="Button" parent="CanvasLayer/LunchBanner/VBoxContainer" unique_id=902731785]
+[node name="ConfirmButton" type="Button" parent="LunchBanner/VBoxContainer" unique_id=1944439099]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.1764706, 0.1882353, 0.2784314, 0.972549)
-theme_override_fonts/font = ExtResource("7_choun")
+theme_override_fonts/font = ExtResource("5_q5jec")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ql3ii")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_y76c1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8iwa3")
 text = "Got it!"
 
-[node name="SummaryPanel" type="PanelContainer" parent="CanvasLayer" unique_id=1566035551]
+[node name="SummaryPanel" type="PanelContainer" parent="." unique_id=1185459964]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -257,79 +248,69 @@ grow_vertical = 2
 scale = Vector2(0.58349735, 0.5935472)
 theme_override_styles/panel = SubResource("StyleBoxFlat_tefeu")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/SummaryPanel" unique_id=580674808]
+[node name="MarginContainer" type="MarginContainer" parent="SummaryPanel" unique_id=1825632757]
 layout_mode = 2
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="Title" type="Label" parent="CanvasLayer/SummaryPanel/MarginContainer" unique_id=172651212]
+[node name="Title" type="Label" parent="SummaryPanel/MarginContainer" unique_id=122108608]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("7_choun")
+theme_override_fonts/font = ExtResource("5_q5jec")
 theme_override_font_sizes/font_size = 18
 text = "Daily Summary"
 horizontal_alignment = 1
 
-[node name="Stats" type="VBoxContainer" parent="CanvasLayer/SummaryPanel/MarginContainer" unique_id=1822459968]
+[node name="Stats" type="VBoxContainer" parent="SummaryPanel/MarginContainer" unique_id=355781024]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="SalaryLabel" type="Label" parent="CanvasLayer/SummaryPanel/MarginContainer/Stats" unique_id=1450040442]
+[node name="SalaryLabel" type="Label" parent="SummaryPanel/MarginContainer/Stats" unique_id=80088856]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_choun")
+theme_override_fonts/font = ExtResource("5_q5jec")
 theme_override_font_sizes/font_size = 18
 text = "Salary:"
 
-[node name="TaskCountLabel" type="Label" parent="CanvasLayer/SummaryPanel/MarginContainer/Stats" unique_id=1672065185]
+[node name="TaskCountLabel" type="Label" parent="SummaryPanel/MarginContainer/Stats" unique_id=766625919]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_choun")
+theme_override_fonts/font = ExtResource("5_q5jec")
 theme_override_font_sizes/font_size = 18
 text = "Tasks Completed:"
 
-[node name="BalanceLabel" type="Label" parent="CanvasLayer/SummaryPanel/MarginContainer/Stats" unique_id=687940454]
+[node name="BalanceLabel" type="Label" parent="SummaryPanel/MarginContainer/Stats" unique_id=1484430285]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_choun")
+theme_override_fonts/font = ExtResource("5_q5jec")
 theme_override_font_sizes/font_size = 18
 text = "Final Balance:"
 
-[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/MarginContainer" unique_id=1750738597]
+[node name="Buttons" type="HBoxContainer" parent="SummaryPanel/MarginContainer" unique_id=831800320]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 20
 
-[node name="NextLevelButton" type="Button" parent="CanvasLayer/SummaryPanel/MarginContainer/Buttons" unique_id=1859751275]
+[node name="NextLevelButton" type="Button" parent="SummaryPanel/MarginContainer/Buttons" unique_id=1845145518]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_choun")
+theme_override_fonts/font = ExtResource("5_q5jec")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_tipki")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_choun")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o6xl0")
 text = "Next Level"
-script = ExtResource("9_sum_btn")
+script = ExtResource("6_htlhs")
 target_scene_path = "res://scenes/days/w0day1.tscn"
 
-[node name="MainMenuButton" type="Button" parent="CanvasLayer/SummaryPanel/MarginContainer/Buttons" unique_id=216598120]
+[node name="MainMenuButton" type="Button" parent="SummaryPanel/MarginContainer/Buttons" unique_id=612110403]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_choun")
+theme_override_fonts/font = ExtResource("5_q5jec")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_tipki")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_choun")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o6xl0")
 text = "Main Menu"
-script = ExtResource("9_sum_btn")
+script = ExtResource("6_htlhs")
 target_scene_path = "res://scenes/main-menu/MainMenu.tscn"
 
-[node name="office" parent="." unique_id=856302002 instance=ExtResource("6_o6xl0")]
-position = Vector2(-26, 0)
-
-[node name="Player" parent="." unique_id=470434658 instance=ExtResource("7_tipki")]
-position = Vector2(124, 201)
-scale = Vector2(1.5, 1.5)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=828365990]
-position = Vector2(0, -29.333334)
-
-[editable path="CanvasLayer/MoneyLabel"]
+[editable path="MoneyLabel"]

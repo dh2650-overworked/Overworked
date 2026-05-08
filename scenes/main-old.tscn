@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c4mainscene01"]
+
+[ext_resource type="Script" uid="uid://bvavhhbwea3ud" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://csfsy27pqc5fn" path="res://scenes/ui/UI.tscn" id="3_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="6_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="7_tipki"]
+[ext_resource type="Resource" uid="uid://k5gmh5w4jaa" path="res://assets/days/w0day0.tres" id="8_day1"]
+
+[node name="Main" type="Node2D" unique_id=951420025]
+y_sort_enabled = true
+script = ExtResource("1_main")
+day_data = ExtResource("8_day1")
+
+[node name="UI" parent="." unique_id=547110877 instance=ExtResource("3_tbgi4")]
+
+[node name="office" parent="." unique_id=856302002 instance=ExtResource("6_o6xl0")]
+position = Vector2(-26, 0)
+
+[node name="Player" parent="." unique_id=470434658 instance=ExtResource("7_tipki")]
+position = Vector2(124, 201)
+scale = Vector2(1.5, 1.5)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=828365990]
+position = Vector2(0, -29.333334)

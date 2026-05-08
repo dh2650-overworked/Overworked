@@ -7,18 +7,18 @@ const _DAY_DATA_SCRIPT_PATH := "res://scripts/resources/day_data.gd"
 
 @export var day_data: Resource
 
-@onready var _time_label: Label = $CanvasLayer/Clock/TimeLabel
-@onready var _money_label: Label = $CanvasLayer/MoneyLabel/Bg/Label
-@onready var _lunch_banner: PanelContainer = $CanvasLayer/LunchBanner
-@onready var _lunch_banner_label: Label = $CanvasLayer/LunchBanner/VBoxContainer/Label
-@onready var _lunch_confirm_button: Button = $CanvasLayer/LunchBanner/VBoxContainer/ConfirmButton
+@onready var _time_label: Label = $UI/Clock/TimeLabel
+@onready var _money_label: Label = $UI/MoneyLabel/Bg/Label
+@onready var _lunch_banner: PanelContainer = $UI/LunchBanner
+@onready var _lunch_banner_label: Label = $UI/LunchBanner/VBoxContainer/Label
+@onready var _lunch_confirm_button: Button = $UI/LunchBanner/VBoxContainer/ConfirmButton
 @onready var _firedrill_banner: PanelContainer
 @onready var _firedrill_banner_label: Label
 @onready var _firedrill_confirm_button: Button
-@onready var _summary_panel: Control = $CanvasLayer/SummaryPanel
-@onready var _salary_val: Label = $CanvasLayer/SummaryPanel/MarginContainer/Stats/SalaryLabel
-@onready var _task_count_val: Label = $CanvasLayer/SummaryPanel/MarginContainer/Stats/TaskCountLabel
-@onready var _balance_val: Label = $CanvasLayer/SummaryPanel/MarginContainer/Stats/BalanceLabel
+@onready var _summary_panel: Control = $UI/SummaryPanel
+@onready var _salary_val: Label = $UI/SummaryPanel/MarginContainer/Stats/SalaryLabel
+@onready var _task_count_val: Label = $UI/SummaryPanel/MarginContainer/Stats/TaskCountLabel
+@onready var _balance_val: Label = $UI/SummaryPanel/MarginContainer/Stats/BalanceLabel
 
 
 func _is_day_data_resource(res: Resource) -> bool:
@@ -140,7 +140,7 @@ func _on_create_firedrill() -> void:
 	_firedrill_banner_label = Label.new()
 	_firedrill_confirm_button = Button.new()
 	
-	var C_Layer: CanvasLayer = $CanvasLayer
+	var C_Layer: CanvasLayer = $UI
 	C_Layer.add_child(_firedrill_banner)
 	_firedrill_banner.add_child(_firedrill_vbox)
 	_firedrill_vbox.add_child(_firedrill_banner_label)
