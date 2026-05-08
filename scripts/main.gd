@@ -42,12 +42,18 @@ func _ready() -> void:
 	TaskManager.lunch_started.connect(_on_lunch_started)
 	TaskManager.lunch_ended.connect(_on_lunch_ended)
 	TaskManager.lunch_acknowledged.connect(_on_lunch_acknowledged)
+# Use the teammate's new resource-based logic
 	if day_data != null and _is_day_data_resource(day_data):
 		TaskManager.start_level(day_data)
 	elif day_data != null:
 		push_warning("Main: day_data must be a DayData resource (.tres).")
 	else:
 		push_warning("Main: day_data is not set; no tasks will be scheduled.")
+		# EMERGENCY FALLBACK: If day_data is not assigned, load Day 0 manually
+		# This ensures the game still runs even if you haven't assigned the resource yet.
+		var fallback_day = load("res://assets/days/w0day0.tres")
+		TaskManager.start_level(fallback_day)
+		push_warning("Main: day_data was not set, using w0day0 fallback.")
 	
 	# Todo , move firedrill to weekly resource objects
 	# TaskManager.create_firedrill.connect(_on_create_firedrill)
