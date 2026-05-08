@@ -6,16 +6,24 @@ signal task_completed(success: bool)
 @export var task_id: String = "" # Corresponding to the Task ID in .tres
 
 @onready var success_overlay = $SuccessOverlay
+@onready var tutorial_control = $TutorialControl
+@onready var tutorial_overlay = $TutorialControl/TutorialOverlay
+@onready var tutorial_label = $TutorialControl/TutorialOverlay/Label
+@onready var tutorial_text: String = ""
+@onready var task = load("res://scenes/Tasks/Watercooler/Task_watercooler.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	success_overlay.visible = false
-
+	var temp: Node = task.instantiate()
+	$GameContent.add_child(task.instantiate().get_child(0, true))
+	print(temp.get_child(0))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 	
+
 	
 func complete_task():
 	success_overlay.visible = true
@@ -31,6 +39,16 @@ func complete_task():
 	task_completed.emit(true) 
 	queue_free()
 
+func get_tutorial_text() -> String:
+	tutorial_text = "Missing tutorial text"
+	return tutorial_text
+	
 func _on_exit_button_pressed():
 	task_completed.emit(false) 
 	queue_free()
+
+
+func _on_tutorial_button_pressed() -> void:
+	tutorial_label.text = get_tutorial_text()
+	tutorial_overlay.visible = true
+	
