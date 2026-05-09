@@ -78,7 +78,7 @@ z_index = 4096
 position = Vector2(5.351563, 3.349609)
 scale = Vector2(1.3476563, 1.3574219)
 texture = ExtResource("4_2b4ws")
-offset = Vector2(6, 11)
+offset = Vector2(5, 9)
 
 [node name="pc_background" type="ColorRect" parent="PC_scene" unique_id=451289161]
 layout_mode = 1
@@ -104,34 +104,16 @@ anchor_left = 1.572
 anchor_top = 0.25500003
 anchor_right = 1.572
 anchor_bottom = 0.25500003
-offset_left = -746.844
-offset_top = -40.280006
-offset_right = -721.844
-offset_bottom = 12.719994
+offset_left = -560.56
+offset_top = 152.72
+offset_right = -538.56
+offset_bottom = 176.72
 theme_override_styles/normal = SubResource("StyleBoxTexture_p0rpn")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_c0lli")
 icon = ExtResource("2_0h78p")
 flat = true
 icon_alignment = 1
 expand_icon = true
-
-[node name="DocTitle" type="Label" parent="PC_scene/DesktopPanel/DocumentAppIcon" unique_id=2087328144]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.28100002
-anchor_top = 0.753
-anchor_right = 0.28100002
-anchor_bottom = 0.753
-offset_left = -21.02501
-offset_top = -12.909
-offset_right = 31.974995
-offset_bottom = 10.091
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 10
-text = "Doc"
-horizontal_alignment = 1
-vertical_alignment = 2
 
 [node name="DocumentWindow" type="Window" parent="PC_scene/DesktopPanel/DocumentAppIcon" unique_id=1487198734]
 oversampling_override = 1.0
@@ -222,10 +204,10 @@ anchor_left = 1.572
 anchor_top = 0.25500003
 anchor_right = 1.572
 anchor_bottom = 0.25500003
-offset_left = -746.844
-offset_top = 2.7199936
-offset_right = -721.844
-offset_bottom = 55.719994
+offset_left = -523.56
+offset_top = 153.72
+offset_right = -501.844
+offset_bottom = 175.72
 theme_override_styles/normal = SubResource("StyleBoxTexture_p0rpn")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_c0lli")
 icon = ExtResource("2_0h78p")
@@ -233,29 +215,12 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="EmailTitle" type="Label" parent="PC_scene/DesktopPanel/EmailAppIcon" unique_id=969280104]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.28100002
-anchor_top = 0.753
-anchor_right = 0.28100002
-anchor_bottom = 0.753
-offset_left = -21.02501
-offset_top = -12.909
-offset_right = 31.974995
-offset_bottom = 10.091
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 10
-text = "Email"
-horizontal_alignment = 1
-vertical_alignment = 2
-
 [node name="EmailWindow" type="Window" parent="PC_scene/DesktopPanel/EmailAppIcon" unique_id=334134870]
 oversampling_override = 1.0
 title = "Email"
 initial_position = 1
 size = Vector2i(280, 208)
+visible = false
 exclusive = true
 theme_override_colors/title_color = Color(1, 1, 1, 1)
 theme_override_colors/title_outline_modulate = Color(1, 1, 1, 1)
@@ -312,6 +277,42 @@ offset_right = 154.0
 offset_bottom = 36.0
 text = "TASK COMPLETED!"
 
+[node name="DocTitle" type="Label" parent="PC_scene/DesktopPanel" unique_id=2087328144]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.28100002
+anchor_top = 0.753
+anchor_right = 0.28100002
+anchor_bottom = 0.753
+offset_left = 59.119995
+offset_top = 47.231995
+offset_right = 81.04019
+offset_bottom = 61.231995
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "Doc"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="EmailTitle" type="Label" parent="PC_scene/DesktopPanel" unique_id=969280104]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.28100002
+anchor_top = 0.753
+anchor_right = 0.28100002
+anchor_bottom = 0.753
+offset_left = 92.119995
+offset_top = 47.231995
+offset_right = 119.119995
+offset_bottom = 61.231995
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "Email"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="TaskbarPanel" type="Panel" parent="PC_scene" unique_id=242645272]
 layout_mode = 0
 offset_top = 256.0
@@ -326,10 +327,10 @@ anchor_left = 0.92100006
 anchor_top = -12.929001
 anchor_right = 0.92100006
 anchor_bottom = -12.929001
-offset_left = -429.08002
-offset_top = 53.006012
-offset_right = -414.08002
-offset_bottom = 70.00601
+offset_left = -171.08002
+offset_top = 147.00601
+offset_right = -156.08002
+offset_bottom = 164.00601
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -350,7 +351,7 @@ offset_left = -5.0
 offset_top = 16.0
 offset_right = 21.0
 offset_bottom = 32.0
-theme_override_font_sizes/font_size = 11
+theme_override_font_sizes/font_size = 10
 text = "Start"
 horizontal_alignment = 1
 vertical_alignment = 2
