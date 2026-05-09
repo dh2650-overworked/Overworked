@@ -12,9 +12,12 @@ const _DAY_DATA_SCRIPT_PATH := "res://scripts/resources/day_data.gd"
 @onready var _lunch_banner: PanelContainer = $UI/LunchBanner
 @onready var _lunch_banner_label: Label = $UI/LunchBanner/VBoxContainer/Label
 @onready var _lunch_confirm_button: Button = $UI/LunchBanner/VBoxContainer/ConfirmButton
-@onready var _firedrill_banner: PanelContainer
-@onready var _firedrill_banner_label: Label
-@onready var _firedrill_confirm_button: Button
+
+# Firedrill UI nodes (created dynamically in _on_create_firedrill)
+var _firedrill_banner: PanelContainer
+var _firedrill_banner_label: Label
+var _firedrill_confirm_button: Button
+
 @onready var _summary_panel: Control = $UI/SummaryPanel
 @onready var _salary_val: Label = $UI/SummaryPanel/MarginContainer/Stats/SalaryLabel
 @onready var _task_count_val: Label = $UI/SummaryPanel/MarginContainer/Stats/TaskCountLabel
@@ -29,37 +32,30 @@ func _is_day_data_resource(res: Resource) -> bool:
 
 
 func _ready() -> void:
-	# region agent log
-	var _ds: Script = day_data.get_script() as Script if day_data != null else null
-	TaskManager.agent_debug_log("A", "main.gd:_ready", "enter_main_ready", {
-		"day_data_null": day_data == null,
-		"script_path": _ds.resource_path if _ds != null else "",
-		"path_match": _ds.resource_path == _DAY_DATA_SCRIPT_PATH if _ds != null else false,
-	})
-	# endregion
+	# --- 1. Basic TaskManager connections ---
 	TaskManager.nav_requested.connect(_on_nav_requested)
 	TaskManager.money_updated.connect(_on_money_updated)
 	TaskManager.lunch_started.connect(_on_lunch_started)
 	TaskManager.lunch_ended.connect(_on_lunch_ended)
 	TaskManager.lunch_acknowledged.connect(_on_lunch_acknowledged)
-# Use the teammate's new resource-based logic
+
+	# --- 2. NEW: FireManager Integration ---
+	if Engine.has_singleton("FireManager"):
+		# Connect your FireManager signals to teammate's UI functions
+		FireManager.fire_started.connect(_on_firedrill_started)
+		FireManager.fire_ended.connect(_on_firedrill_ended)
+		# Build the UI nodes so they exist when needed
+		_on_create_firedrill()
+
+	# --- 3. Level Loading Logic ---
 	if day_data != null and _is_day_data_resource(day_data):
 		TaskManager.start_level(day_data)
-	elif day_data != null:
-		push_warning("Main: day_data must be a DayData resource (.tres).")
 	else:
-		push_warning("Main: day_data is not set; no tasks will be scheduled.")
-		# EMERGENCY FALLBACK: If day_data is not assigned, load Day 0 manually
-		# This ensures the game still runs even if you haven't assigned the resource yet.
 		var fallback_day = load("res://assets/days/w0day0.tres")
-		TaskManager.start_level(fallback_day)
-		push_warning("Main: day_data was not set, using w0day0 fallback.")
+		if fallback_day:
+			TaskManager.start_level(fallback_day)
 	
-	# Todo , move firedrill to weekly resource objects
-	# TaskManager.create_firedrill.connect(_on_create_firedrill)
-	# TaskManager.firedrill_started.connect(_on_firedrill_started)
-	# TaskManager.firedrill_ended.connect(_on_firedrill_ended)
-	# TaskManager.firedrill_acknowledged.connect(_on_firedrill_acknowledged)
+	# Initial UI updates
 	_on_money_updated(TaskManager.total_money)
 	_update_level_clock()
 	_lunch_banner.visible = false
@@ -69,6 +65,11 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	_update_level_clock()
+	
+	# --- 4. NEW: Automatic Fire Drill Trigger (For Demo) ---
+	# We trigger the fire drill at 2:00 PM (180 seconds passed)
+	if TaskManager.level_time_passed >= 10 and FireManager.current_state == FireManager.FireState.NORMAL:
+		FireManager.trigger_fire_drill()
 
 
 func _update_level_clock() -> void:
@@ -97,86 +98,70 @@ func _on_money_updated(new_total: int) -> void:
 
 func _on_nav_requested(instance_id: String) -> void:
 	var inst: TaskInstance = TaskManager.get_instance(instance_id)
-	if not inst:
-		print("错误：找不到任务实例 ", instance_id)
-		return
-
+	if not inst: return
 	var found_path: String = inst.scene_path
-	print("尝试为任务查找场景路径: ", inst.task_id)
-
-	if found_path != "":
-		print("成功找到路径: ", found_path)
-		if ResourceLoader.exists(found_path):
-			var scene = load(found_path)
-			var task_ui = scene.instantiate()
-			add_child(task_ui)
-			print("界面已弹出！")
-		else:
-			print("错误：路径存在但文件不存在！", found_path)
-	else:
-		print("提示：该任务没有配置 Scene Path，仅执行普通导航。")
+	if found_path != "" and ResourceLoader.exists(found_path):
+		var scene = load(found_path)
+		var task_ui = scene.instantiate()
+		add_child(task_ui)
 
 
 func _on_lunch_started() -> void:
 	_lunch_banner.visible = true
 
-
 func _on_lunch_ended() -> void:
 	_lunch_banner.visible = false
 
-
 func _on_lunch_acknowledged() -> void:
 	_lunch_banner.visible = false
-
 
 func _on_lunch_confirm_pressed() -> void:
 	TaskManager.acknowledge_lunch_message()
 	_lunch_banner.visible = false
 
-# Firedrill
+
+# --- Firedrill UI Logic (Teammate's original code with minor fixes) ---
 func _on_create_firedrill() -> void:
 	_firedrill_banner = PanelContainer.new()
 	var _firedrill_vbox: VBoxContainer = VBoxContainer.new()
 	_firedrill_banner_label = Label.new()
 	_firedrill_confirm_button = Button.new()
 	
-	var C_Layer: CanvasLayer = $UI
-	C_Layer.add_child(_firedrill_banner)
-	_firedrill_banner.add_child(_firedrill_vbox)
-	_firedrill_vbox.add_child(_firedrill_banner_label)
-	_firedrill_vbox.add_child(_firedrill_confirm_button)
-	_firedrill_banner.visible = false
-	_firedrill_confirm_button.pressed.connect(_on_firedrill_confirm_pressed)
-	
-	_firedrill_banner.size = Vector2(300, 150)
-	_firedrill_banner.set_position(Vector2(100, 55))
-	
-	_firedrill_vbox.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	_firedrill_vbox.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	
-	_firedrill_banner_label.text = "FiredrillText"
-	_firedrill_banner_label.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	_firedrill_banner_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	
-	_firedrill_confirm_button.text = "Buttontext"
-	
-	
+	# Important: Ensure the UI node ($UI) exists in your scene tree!
+	var C_Layer = get_node_or_null("UI")
+	if C_Layer:
+		C_Layer.add_child(_firedrill_banner)
+		_firedrill_banner.add_child(_firedrill_vbox)
+		_firedrill_vbox.add_child(_firedrill_banner_label)
+		_firedrill_vbox.add_child(_firedrill_confirm_button)
+		
+		# Initial State
+		_firedrill_banner.visible = false
+		_firedrill_confirm_button.pressed.connect(_on_firedrill_confirm_pressed)
+		
+		# Visual styling for the popup
+		_firedrill_banner.custom_minimum_size = Vector2(400, 150)
+		_firedrill_banner.set_position(Vector2(440, 280)) # Roughly centered
+		_firedrill_banner_label.text = "!!! EMERGENCY: FIRE DRILL !!!\nPLEASE EVACUATE THE BUILDING!"
+		_firedrill_confirm_button.text = "OK (EVACUATE)"
 
 func _on_firedrill_started() -> void:
-	_firedrill_banner.visible = true
-
+	if _firedrill_banner:
+		_firedrill_banner.visible = true
 
 func _on_firedrill_ended() -> void:
-	_firedrill_banner.visible = false
-
+	if _firedrill_banner:
+		_firedrill_banner.visible = false
 
 func _on_firedrill_acknowledged() -> void:
-	_firedrill_banner.visible = false
-
+	if _firedrill_banner:
+		_firedrill_banner.visible = false
 
 func _on_firedrill_confirm_pressed() -> void:
-	TaskManager.acknowledge_firedrill_message()
+	# Call stop_fire to return everything to normal
+	FireManager.stop_fire()
 	_firedrill_banner.visible = false
+
 
 func _show_summary() -> void:
 	_summary_panel.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
@@ -193,18 +178,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_R:
 				TaskManager.add_task(Whiteboard)
 			KEY_F:
-				var ids: Array = TaskManager.active_tasks.keys()
-				if not ids.is_empty():
-					TaskManager.complete_task(ids[0])
-			KEY_T:
-				print(
-					"level_remaining=%.1f passed=%.1f total_money=%d daily_money=%d daily_done=%d active=%d"
-					% [
-						TaskManager.level_time_remaining,
-						TaskManager.level_time_passed,
-						TaskManager.total_money,
-						TaskManager.daily_money,
-						TaskManager.daily_completed_count,
-						TaskManager.active_tasks.size(),
-					]
-				)
+				# DEBUG: Manual trigger for the demo
+				FireManager.trigger_fire_drill()
+			KEY_G:
+				# DEBUG: Manual stop
+				FireManager.stop_fire()
