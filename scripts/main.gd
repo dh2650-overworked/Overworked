@@ -10,19 +10,20 @@ const _DAY_DATA_SCRIPT_PATH := "res://scripts/resources/day_data.gd"
 @onready var _time_label: Label = $UI/Clock/TimeLabel
 @onready var _money_label: Label = $UI/MoneyLabel/Bg/Label
 @onready var _lunch_banner: PanelContainer = $UI/LunchBanner
+@onready var _firedrill_banner: PanelContainer = $UI/FireBanner
 @onready var _lunch_banner_label: Label = $UI/LunchBanner/VBoxContainer/Label
 @onready var _lunch_confirm_button: Button = $UI/LunchBanner/VBoxContainer/ConfirmButton
 
-# Firedrill UI nodes (created dynamically in _on_create_firedrill)
-var _firedrill_banner: PanelContainer
-var _firedrill_banner_label: Label
-var _firedrill_confirm_button: Button
+# --- NEW: Reference to your Fire Drill Button ---
+@onready var _firedrill_button: Button = $UI/FireBanner/VBoxContainer/ConfirmButton
 
 @onready var _summary_panel: Control = $UI/SummaryPanel
 @onready var _salary_val: Label = $UI/SummaryPanel/MarginContainer/Stats/SalaryLabel
 @onready var _task_count_val: Label = $UI/SummaryPanel/MarginContainer/Stats/TaskCountLabel
 @onready var _balance_val: Label = $UI/SummaryPanel/MarginContainer/Stats/BalanceLabel
 
+# To prevent the fire from re-triggering every frame after you close it
+var fire_drill_triggered_today: bool = false 
 
 func _is_day_data_resource(res: Resource) -> bool:
 	if res == null:
@@ -39,15 +40,16 @@ func _ready() -> void:
 	TaskManager.lunch_ended.connect(_on_lunch_ended)
 	TaskManager.lunch_acknowledged.connect(_on_lunch_acknowledged)
 
-	# --- 2. NEW: FireManager Integration ---
+	# --- 2. FireManager Integration ---
 	if Engine.has_singleton("FireManager"):
-		# Connect your FireManager signals to teammate's UI functions
 		FireManager.fire_started.connect(_on_firedrill_started)
 		FireManager.fire_ended.connect(_on_firedrill_ended)
-		# Build the UI nodes so they exist when needed
-		_on_create_firedrill()
+		
+	# --- 3. NEW: Connect the Fire Button signal ---
+	if _firedrill_button:
+		_firedrill_button.pressed.connect(_on_firedrill_confirm_pressed)
 
-	# --- 3. Level Loading Logic ---
+	# --- 4. Level Loading Logic ---
 	if day_data != null and _is_day_data_resource(day_data):
 		TaskManager.start_level(day_data)
 	else:
@@ -61,16 +63,17 @@ func _ready() -> void:
 	_lunch_banner.visible = false
 	_lunch_confirm_button.pressed.connect(_on_lunch_confirm_pressed)
 	_summary_panel.visible = false
-
+	_firedrill_banner.visible = false
 
 func _process(_delta: float) -> void:
 	_update_level_clock()
 	
-	# --- 4. NEW: Automatic Fire Drill Trigger (For Demo) ---
-	# We trigger the fire drill at 2:00 PM (180 seconds passed)
-	if TaskManager.level_time_passed >= 10 and FireManager.current_state == FireManager.FireState.NORMAL:
-		FireManager.trigger_fire_drill()
-
+	# --- 5. Automatic Fire Drill Trigger (Only trigger ONCE) ---
+	if not fire_drill_triggered_today and TaskManager.level_time_passed >= 10:
+		if FireManager.current_state == FireManager.FireState.NORMAL:
+			fire_drill_triggered_today = true # Mark as done so it doesn't loop
+			FireManager.trigger_fire_drill()
+			_firedrill_banner.visible = true
 
 func _update_level_clock() -> void:
 	var passed: float = TaskManager.level_time_passed
@@ -120,30 +123,7 @@ func _on_lunch_confirm_pressed() -> void:
 	_lunch_banner.visible = false
 
 
-# --- Firedrill UI Logic (Teammate's original code with minor fixes) ---
-func _on_create_firedrill() -> void:
-	_firedrill_banner = PanelContainer.new()
-	var _firedrill_vbox: VBoxContainer = VBoxContainer.new()
-	_firedrill_banner_label = Label.new()
-	_firedrill_confirm_button = Button.new()
-	
-	# Important: Ensure the UI node ($UI) exists in your scene tree!
-	var C_Layer = get_node_or_null("UI")
-	if C_Layer:
-		C_Layer.add_child(_firedrill_banner)
-		_firedrill_banner.add_child(_firedrill_vbox)
-		_firedrill_vbox.add_child(_firedrill_banner_label)
-		_firedrill_vbox.add_child(_firedrill_confirm_button)
-		
-		# Initial State
-		_firedrill_banner.visible = false
-		_firedrill_confirm_button.pressed.connect(_on_firedrill_confirm_pressed)
-		
-		# Visual styling for the popup
-		_firedrill_banner.custom_minimum_size = Vector2(400, 150)
-		_firedrill_banner.set_position(Vector2(440, 280)) # Roughly centered
-		_firedrill_banner_label.text = "!!! EMERGENCY: FIRE DRILL !!!\nPLEASE EVACUATE THE BUILDING!"
-		_firedrill_confirm_button.text = "OK (EVACUATE)"
+# --- Firedrill UI Logic ---
 
 func _on_firedrill_started() -> void:
 	if _firedrill_banner:
@@ -158,9 +138,11 @@ func _on_firedrill_acknowledged() -> void:
 		_firedrill_banner.visible = false
 
 func _on_firedrill_confirm_pressed() -> void:
-	# Call stop_fire to return everything to normal
-	FireManager.stop_fire()
+	# 1. Stop the alarm and red modulation
+	#FireManager.stop_fire()
+	# 2. Hide the banner
 	_firedrill_banner.visible = false
+	print("Firedrill UI closed by player.")
 
 
 func _show_summary() -> void:

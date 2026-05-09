@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://pixelabel001" path="res://scenes/ui/pixel_label.tscn" id="3_p6rkd"]
 [ext_resource type="Texture2D" uid="uid://b7kf5aukr8e7" path="res://assets/icons/coin.png" id="4_bcuxr"]
 [ext_resource type="FontFile" uid="uid://cjxkjihewqeic" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="5_q5jec"]
-[ext_resource type="Script" uid="uid://bpbwpugqdkjfe" path="res://scripts/ui/summary_scene_button.gd" id="6_htlhs"]
+[ext_resource type="Script" path="res://scripts/ui/summary_scene_button.gd" id="6_htlhs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
 content_margin_left = 6.0
@@ -312,5 +312,47 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_o6xl0")
 text = "Main Menu"
 script = ExtResource("6_htlhs")
 target_scene_path = "res://scenes/main-menu/MainMenu.tscn"
+
+[node name="FireBanner" type="PanelContainer" parent="." unique_id=648526794]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -41.0
+offset_right = 370.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.53876394, 0.54983413)
+theme_override_styles/panel = SubResource("StyleBoxFlat_yqy0j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FireBanner" unique_id=1263751483]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="FireBanner/VBoxContainer" unique_id=1373569224]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.1764706, 0.1882353, 0.2784314, 0.972549)
+theme_override_fonts/font = ExtResource("5_q5jec")
+text = "Time for firedrill! Run!
+"
+horizontal_alignment = 1
+
+[node name="ConfirmButton" type="Button" parent="FireBanner/VBoxContainer" unique_id=1564612092]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.1764706, 0.1882353, 0.2784314, 0.972549)
+theme_override_fonts/font = ExtResource("5_q5jec")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ql3ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y76c1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8iwa3")
+text = "Got it!"
 
 [editable path="MoneyLabel"]
