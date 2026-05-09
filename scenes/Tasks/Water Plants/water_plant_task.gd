@@ -8,6 +8,7 @@ signal task_finished(success)
 @export var target_row: int = 2           # Row in sprite sheet (2 = 3rd row)
 @export var h_frames: int = 5             # Frames per row
 @export var check_distance: float = 40.0 # Interaction range (Note: 30 was likely too small)
+@export var _tutorialtext: String = "Press and hold left click on the plants to water the plants"
 
 var progress: float = 0.0
 var is_completed: bool = false
@@ -65,6 +66,9 @@ func _process(delta):
 			water_sound.stop()
 		if water_particles.emitting: 
 			water_particles.emitting = false
+
+func get_tutorial_text():
+	return _tutorialtext
 
 func water_logic(delta):
 	if progress < 100.0:

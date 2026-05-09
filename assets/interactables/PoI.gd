@@ -46,7 +46,12 @@ func _on_interact():
 	if scene:
 		print(scene_path)
 		print("Opening:" + interact_name)
-		get_tree().root.add_child(scene.instantiate())
+		if scene_path == "res://scenes/pc/pc_scene.tscn":
+			get_tree().root.add_child(scene.instantiate())
+		else:
+			var basetask: BaseTask = load("res://scenes/Tasks/GeneralNode/BaseTask.tscn").instantiate()
+			basetask.open_task(scene_path)
+			get_tree().root.add_child(basetask)
 	else:
 		print("Missing scene")
 
