@@ -2,24 +2,80 @@
 
 [ext_resource type="Script" uid="uid://c1q1rx6dqc0oo" path="res://scenes/Tasks/GeneralNode/BaseTask.gd" id="1_dxgyo"]
 [ext_resource type="Texture2D" uid="uid://c2t6kol16i3yy" path="res://assets/icons/exit.png" id="2_si8gu"]
+[ext_resource type="Texture2D" uid="uid://d28w4djcw4mic" path="res://assets/interactables/PoI.png" id="3_2kv7r"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1648483317]
+layer = 11
 script = ExtResource("1_dxgyo")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=455909775]
-offset_left = 81.0
-offset_top = 35.0
-offset_right = 392.0
-offset_bottom = 228.0
+visible = false
+offset_left = 67.0
+offset_top = 38.0
+offset_right = 417.0
+offset_bottom = 238.0
 color = Color(0.58431375, 0.58431375, 0.58431375, 0.3372549)
 
 [node name="ExitButton" type="TextureButton" parent="." unique_id=866947072]
-offset_left = 24.0
-offset_top = 5.0
-offset_right = 1139.0
-offset_bottom = 965.0
+offset_left = 40.0
+offset_top = 32.0
+offset_right = 397.14282
+offset_bottom = 403.42856
 scale = Vector2(0.07, 0.07)
 texture_normal = ExtResource("2_si8gu")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="TutorialButton" type="TextureButton" parent="." unique_id=925675341]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -71.0
+offset_right = 198.0
+offset_bottom = 329.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.07, 0.07)
+texture_normal = ExtResource("3_2kv7r")
+stretch_mode = 0
+
+[node name="TutorialControl" type="Control" parent="." unique_id=1086080755]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 120.0
+offset_top = 80.0
+offset_right = 360.0
+offset_bottom = 190.0
+
+[node name="TutorialOverlay" type="Panel" parent="TutorialControl" unique_id=1435403997]
+visible = false
+modulate = Color(2.3796406, 2.3693688, 2.4618137, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -55.0
+offset_right = 120.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="TutorialControl/TutorialOverlay" unique_id=1516120084]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 222.0
+offset_bottom = 115.0
+theme_override_font_sizes/font_size = 8
+text = "Error"
+autowrap_mode = 2
 
 [node name="SuccessOverlay" type="Panel" parent="." unique_id=824294777]
 visible = false
@@ -47,9 +103,10 @@ text = "TASK COMPLETED!"
 [node name="GameContent" type="Control" parent="." unique_id=1122288619]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 82.0
-offset_top = 35.0
-offset_right = 392.0
-offset_bottom = 228.0
+offset_left = 67.0
+offset_top = 38.0
+offset_right = 417.0
+offset_bottom = 238.0
 
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]

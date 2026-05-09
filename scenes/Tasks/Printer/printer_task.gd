@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@export var _tutorialtext: String = "Click to start the printer. Beware of eventuall errors and dont leave the printer unsupervized."
+
 # Variable to store the starting position to prevent the sprite from drifting
 var original_p_pos: Vector2
 
@@ -30,6 +32,9 @@ func _process(_delta):
 		# Reset to the exact center when not printing or when jammed
 		p_closed.position = original_p_pos
 
+func get_tutorial_text():
+	return _tutorialtext
+
 func _input(event):
 	# Handle mouse interaction on the UI
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -47,7 +52,10 @@ func handle_player_click():
 			# Reset the manager AND close this UI immediately
 			TaskManager.complete_task_by_type("printer")
 			PrinterManager.collect_docs()
-			queue_free()
+			if get_parent() == get_tree().root: 
+				queue_free()
+			elif get_parent().get_parent() is CanvasLayer:
+				get_parent().get_parent().queue_free()
 
 func _on_status_changed(new_state):
 	# Update visibility and text based on the manager state
@@ -69,4 +77,7 @@ func _on_status_changed(new_state):
 			label.text = "DONE! COLLECT DOCUMENTS"
 
 func _on_exit_button_pressed():
-	queue_free()
+	if get_parent() == get_tree().root: 
+		queue_free()
+	elif get_parent().get_parent() is CanvasLayer:
+		get_parent().get_parent().queue_free()

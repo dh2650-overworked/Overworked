@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ctarcenqwik1a"]
 
+[ext_resource type="Script" uid="uid://dyaxnw6vls8bl" path="res://scenes/Tasks/Watercooler/task_watercooler.gd" id="1_e530o"]
 [ext_resource type="Texture2D" uid="uid://b3fclwtg6a44c" path="res://scenes/Tasks/Water Plants/aaaaaa.png" id="2_akkqv"]
 [ext_resource type="Script" uid="uid://li7pvlsa86fo" path="res://scenes/Tasks/Watercooler/sub_viewport.gd" id="2_dntni"]
 [ext_resource type="Texture2D" uid="uid://7blcdbai2v85" path="res://assets/tasks/Watercooler/Watercooler.png" id="2_wvor2"]
@@ -12,19 +13,20 @@
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=514069257]
 layer = 11
+script = ExtResource("1_e530o")
 
 [node name="Control" type="Control" parent="." unique_id=2145775955]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 485.0
-offset_bottom = 272.0
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Control" unique_id=121891273]
-layout_mode = 0
 offset_left = 67.0
 offset_top = 38.0
 offset_right = 417.0
 offset_bottom = 238.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control" unique_id=121891273]
+layout_mode = 1
+offset_right = 350.0
+offset_bottom = 200.0
 
 [node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer" unique_id=188219500]
 handle_input_locally = false
@@ -37,8 +39,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 200.0
-offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -48,8 +48,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -200.0
-offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
 
