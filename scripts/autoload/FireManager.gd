@@ -11,7 +11,11 @@ signal fire_ended()
 
 # Function to trigger the event from anywhere
 func trigger_fire_drill():
+	current_state = FireState.ACTIVE 
 	fire_started.emit()
+	print("MANAGER: Global state set to ACTIVE")
+
 
 func stop_fire():
+	current_state = FireState.NORMAL 
 	fire_ended.emit()
