@@ -355,4 +355,23 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_y76c1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8iwa3")
 text = "Got it!"
 
+[node name="EvacUI" type="PanelContainer" parent="." unique_id=1825164348]
+visible = false
+anchors_preset = -1
+anchor_right = 0.020000001
+offset_left = 155.0
+offset_top = 76.0
+offset_right = 324.4
+offset_bottom = 139.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EvacUI" unique_id=153287005]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EvacUI/VBoxContainer" unique_id=2001648362]
+layout_mode = 2
+text = "Evacuating..."
+
+[node name="ProgressBar" type="ProgressBar" parent="EvacUI/VBoxContainer" unique_id=1132560540]
+layout_mode = 2
+
 [editable path="MoneyLabel"]
