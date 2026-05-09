@@ -42,10 +42,11 @@ func open_task(path: String):
 	$GameContent.add_child(load(path).instantiate())
 
 func get_tutorial_text() -> String:
-	if $GameContent.get_child(0).has_method("get_tutorial_text"):
-		tutorial_text = $GameContent.get_child(0).get_tutorial_text()
-	else:
-		tutorial_text = "Missing tutorial text"
+	if $GameContent.get_child_count():
+		if $GameContent.get_child(0).has_method("get_tutorial_text"):
+			tutorial_text = $GameContent.get_child(0).get_tutorial_text()
+		else:
+			tutorial_text = "Missing tutorial text"
 	return tutorial_text
 	
 func _on_exit_button_pressed():

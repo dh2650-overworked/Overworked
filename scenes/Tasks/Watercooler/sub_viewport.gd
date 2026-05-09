@@ -21,9 +21,13 @@ func _process(_delta: float) -> void:
 		await get_tree().create_timer(1).timeout
 		
 		if root_container:
-			root_container.queue_free()
+			if root_container.get_parent() == root_container.get_tree().root: 
+				root_container.queue_free()
+			elif root_container.get_parent().get_parent() is CanvasLayer:
+				root_container.get_parent().get_parent().queue_free()
 		else:
 			queue_free()
+		
 		#queue_free()
 		#pass #Trigger win
 

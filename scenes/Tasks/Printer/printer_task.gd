@@ -52,7 +52,10 @@ func handle_player_click():
 			# Reset the manager AND close this UI immediately
 			TaskManager.complete_task_by_type("printer")
 			PrinterManager.collect_docs()
-			queue_free()
+			if get_parent() == get_tree().root: 
+				queue_free()
+			elif get_parent().get_parent() is CanvasLayer:
+				get_parent().get_parent().queue_free()
 
 func _on_status_changed(new_state):
 	# Update visibility and text based on the manager state
@@ -74,4 +77,7 @@ func _on_status_changed(new_state):
 			label.text = "DONE! COLLECT DOCUMENTS"
 
 func _on_exit_button_pressed():
-	queue_free()
+	if get_parent() == get_tree().root: 
+		queue_free()
+	elif get_parent().get_parent() is CanvasLayer:
+		get_parent().get_parent().queue_free()

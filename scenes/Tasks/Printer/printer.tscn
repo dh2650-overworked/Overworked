@@ -6,14 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://djj0o0gsxbon8" path="res://assets/tasks/Printer/paper.png" id="4_n4da6"]
 
 [node name="PrinterTask" type="CanvasLayer" unique_id=741757891]
+layer = 11
 script = ExtResource("1_ylcbk")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1479913220]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1.0
-offset_bottom = 1.0
+offset_left = 67.0
+offset_top = 30.0
+offset_right = -63.0
+offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.23225698, 0.22309208, 0.20456716, 1)

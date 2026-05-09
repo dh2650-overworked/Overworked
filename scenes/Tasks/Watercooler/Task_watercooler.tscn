@@ -18,9 +18,9 @@ script = ExtResource("1_e530o")
 [node name="Control" type="Control" parent="." unique_id=2145775955]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 66.0
+offset_left = 67.0
 offset_top = 38.0
-offset_right = 416.0
+offset_right = 417.0
 offset_bottom = 238.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Control" unique_id=121891273]

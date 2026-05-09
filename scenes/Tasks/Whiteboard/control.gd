@@ -21,13 +21,16 @@ func _process(_delta: float) -> void:
 				diff +=1
 	#print(float(diff/total))
 	if winpercentage>float(diff/total):
-		print("win")
+		#print("win")
 		Input.set_custom_mouse_cursor(load("res://assets/icons/cursor.pngw"))
 		TaskManager.complete_task_by_type("whiteboard")
 		var root_container = _find_canvas_layer(self)
 		
 		if root_container:
-			root_container.queue_free()
+			if root_container.get_parent() == root_container.get_tree().root: 
+				root_container.queue_free()
+			elif root_container.get_parent().get_parent() is CanvasLayer:
+				root_container.get_parent().get_parent().queue_free()
 		else:
 			queue_free()
 		#queue_free()

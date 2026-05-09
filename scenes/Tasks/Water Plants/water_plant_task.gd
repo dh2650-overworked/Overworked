@@ -110,9 +110,15 @@ func complete_task():
 	# 4. Notify and remove the task scene
 	TaskManager.complete_task_by_type("water_plant")
 
-	emit_signal("task_finished", true)
-	queue_free()
+	emit_signal("task_finished", false)
+	if get_parent() == get_tree().root: 
+		queue_free()
+	elif get_parent().get_parent() is CanvasLayer:
+		get_parent().get_parent().queue_free()
 
 func _on_exit_button_pressed():
 	emit_signal("task_finished", false)
-	queue_free()
+	if get_parent() == get_tree().root: 
+		queue_free()
+	elif get_parent().get_parent() is CanvasLayer:
+		get_parent().get_parent().queue_free()
