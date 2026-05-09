@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dt5yym7yuo6bm" path="res://assets/tasks/Printer/printer_voice.mp3" id="8_3f6fi"]
 [ext_resource type="Script" uid="uid://b680owrtb3nn3" path="res://scenes/levels/work_sound.gd" id="9_d01tv"]
 [ext_resource type="PackedScene" uid="uid://c3s4dsuc8hluh" path="res://scenes/character/Colleague1.tscn" id="13_a576x"]
+[ext_resource type="AudioStream" uid="uid://hptjsn3gj04x" path="res://assets/music/FiredrillSoundeffect.mp3" id="13_jbvgb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhigv"]
 size = Vector2(1196, 20)
@@ -166,3 +167,8 @@ script = ExtResource("6_ey3sf")
 
 [node name="CharacterBody2D" parent="." unique_id=791234317 instance=ExtResource("13_a576x")]
 position = Vector2(563, 396)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=291721537]
+
+[node name="AlarmSound" type="AudioStreamPlayer" parent="." unique_id=273409529]
+stream = ExtResource("13_jbvgb")

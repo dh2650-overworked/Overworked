@@ -8,15 +8,15 @@
 [node name="PrinterTask" type="CanvasLayer" unique_id=741757891]
 script = ExtResource("1_ylcbk")
 
-[node name="Background" type="ColorRect" parent="." unique_id=1479913220]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=339649106]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1.0
-offset_bottom = 1.0
+offset_right = 1.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.23225698, 0.22309208, 0.20456716, 1)
+color = Color(0.5834499, 0.5834499, 0.5834499, 0.69411767)
 
 [node name="PrinterClosed" type="Sprite2D" parent="." unique_id=1775830509]
 position = Vector2(214.99998, 138.5)

@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://dknlmp52ouibu"]
+
+[ext_resource type="Script" uid="uid://bdq43u5n1f5xv" path="res://scenes/npc/Boss/boss.gd" id="1_53akf"]
+[ext_resource type="Texture2D" uid="uid://brhypqe3j0mxe" path="res://assets/[Free Asset] Pixel Boy 32x64 Animation/boy-32x64-idle-walk.png" id="1_hwije"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4kuee"]
+radius = 11.0
+height = 38.0
+
+[sub_resource type="Animation" id="Animation_wr5hl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_gfjak"]
+resource_name = "idle"
+length = 0.56666666
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_4kuee"]
+resource_name = "walk"
+length = 0.6333333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_524rm"]
+_data = {
+&"RESET": SubResource("Animation_wr5hl"),
+&"idle": SubResource("Animation_gfjak"),
+&"walk": SubResource("Animation_4kuee")
+}
+
+[node name="Boss" type="CharacterBody2D" unique_id=470434658 groups=["player"]]
+y_sort_enabled = true
+collision_layer = 4
+script = ExtResource("1_53akf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2034307969]
+modulate = Color(0.5292831, 0.0002006571, 0.5292795, 1)
+position = Vector2(-1.21875, 0)
+scale = Vector2(1.28125, 1.09375)
+texture = ExtResource("1_hwije")
+offset = Vector2(-1, -32)
+hframes = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=189172685]
+position = Vector2(0, -28)
+shape = SubResource("CapsuleShape2D_4kuee")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1149508780]
+libraries/ = SubResource("AnimationLibrary_524rm")
+
+[node name="Label" type="Label" parent="." unique_id=2124550879]
+offset_left = -42.0
+offset_top = -86.0
+offset_right = 64.0
+offset_bottom = -63.0
