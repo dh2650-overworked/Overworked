@@ -35,6 +35,7 @@ var evac_progress: float = 0.0             # 当前的撤离进度 (0-100)
 var fire_drill_triggered_today: bool = false 
 var waiting_to_reach_exit: bool = false # 是否正在等待玩家去门口
 var player_in_safe_zone: bool = false   # 玩家是否正站在圈里
+
 func _is_day_data_resource(res: Resource) -> bool:
 	if res == null:
 		return false
@@ -126,7 +127,8 @@ func _update_level_clock() -> void:
 
 
 func _on_money_updated(new_total: int) -> void:
-	_money_label.text = str(new_total)
+	var quota = 300
+	_money_label.text = str(TaskManager.daily_money) + " / " + str(quota) + " $"
 
 
 func _on_nav_requested(instance_id: String) -> void:
@@ -195,6 +197,23 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_G:
 				# DEBUG: Manual stop
 				FireManager.stop_fire()
+			KEY_V:
+			# DEBUG: Finish first unfinished task
+				var ids: Array = TaskManager.active_tasks.keys()
+				if not ids.is_empty():
+					TaskManager.complete_task(ids[0])
+			KEY_T:
+				print(
+					"level_remaining=%.1f passed=%.1f total_money=%d daily_money=%d daily_done=%d active=%d"
+					% [
+						TaskManager.level_time_remaining,
+						TaskManager.level_time_passed,
+						TaskManager.total_money,
+						TaskManager.daily_money,
+						TaskManager.daily_completed_count,
+						TaskManager.active_tasks.size(),
+					]
+				)
 				
 func _on_safe_zone_entered(body):
 	# 检查是不是玩家进来了，且当前是否正在等待撤离
@@ -222,3 +241,8 @@ func _finish_fire_event():
 	# 核心：通过大脑关闭全局火灾状态（红光、音乐、NPC逃跑都会停止）
 	if Engine.has_singleton("FireManager"):
 		FireManager.stop_fire()
+
+
+func _on_yes_button_pressed() -> void:
+	$UI/ConfirmOverlay.hide()
+	_show_summary()

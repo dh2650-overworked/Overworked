@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cw8e64v4aygca"]
 
 [ext_resource type="Script" uid="uid://bvavhhbwea3ud" path="res://scripts/main.gd" id="1_5ey56"]
-[ext_resource type="PackedScene" uid="uid://c3s4dsuc8hluh" path="res://scenes/character/Colleague1.tscn" id="3_4l1h4"]
-[ext_resource type="PackedScene" uid="uid://csfsy27pqc5fn" path="res://scenes/ui/UI.tscn" id="4_8myrj"]
+[ext_resource type="PackedScene" uid="uid://be44lpdxyrx6b" path="res://scenes/character/Colleague1.tscn" id="3_4l1h4"]
+[ext_resource type="PackedScene" path="res://scenes/ui/UI.tscn" id="4_8myrj"]
 [ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="6_wu5er"]
 [ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="7_cjfph"]
 [ext_resource type="Resource" uid="uid://bw0day1data02" path="res://assets/days/w0day1.tres" id="8_day"]

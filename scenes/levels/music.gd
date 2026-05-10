@@ -8,7 +8,8 @@ func _ready():
 	# Connect to the manager
 	FireManager.fire_started.connect(_on_fire_started)
 	FireManager.fire_ended.connect(_on_fire_ended)
-	MusicManager.start_work()
+#	TODO? Should the sims music be in the music manager or an audio stream player?
+	#MusicManager.start_work()
 # --- SIMPLE TRIGGER: Press F to start fire, G to stop ---
 func _input(event):
 	if event is InputEventKey and event.pressed:

@@ -11,10 +11,11 @@
 [ext_resource type="Script" uid="uid://dgl84et8t6pi2" path="res://scenes/levels/vibration_controller.gd" id="7_tuhfx"]
 [ext_resource type="AudioStream" uid="uid://dt5yym7yuo6bm" path="res://assets/tasks/Printer/printer_voice.mp3" id="8_3f6fi"]
 [ext_resource type="Script" uid="uid://b680owrtb3nn3" path="res://scenes/levels/work_sound.gd" id="9_d01tv"]
-[ext_resource type="PackedScene" uid="uid://c3s4dsuc8hluh" path="res://scenes/character/Colleague1.tscn" id="13_a576x"]
+[ext_resource type="AudioStream" uid="uid://dq0puqlkocngo" path="res://assets/music/background music.wav" id="12_d01tv"]
+[ext_resource type="PackedScene" uid="uid://be44lpdxyrx6b" path="res://scenes/character/Colleague1.tscn" id="13_a576x"]
 [ext_resource type="AudioStream" uid="uid://hptjsn3gj04x" path="res://assets/music/FiredrillSoundeffect.mp3" id="13_jbvgb"]
 [ext_resource type="PackedScene" uid="uid://dlhivy8ytf454" path="res://scenes/character/DialogueUI.tscn" id="13_l0kex"]
-[ext_resource type="Resource" uid="uid://b1xy1q1fx2ocu" path="res://assets/tasks/approve_file.tres" id="14_lin3j"]
+[ext_resource type="Resource" path="res://assets/tasks/approve_file.tres" id="14_lin3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhigv"]
 size = Vector2(1196, 20)
@@ -186,3 +187,8 @@ position = Vector2(103, 105)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZone" unique_id=792323117]
 position = Vector2(372, 359)
 shape = SubResource("RectangleShape2D_a576x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=390349545]
+stream = ExtResource("12_d01tv")
+volume_db = -5.0
+autoplay = true
