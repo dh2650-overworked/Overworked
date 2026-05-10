@@ -1,20 +1,14 @@
-[gd_scene format=3 uid="uid://csfsy27pqc5fn"]
+[gd_scene format=3 uid="uid://1jnrp1jmclbh"]
 
 [ext_resource type="PackedScene" uid="uid://c4todolist001" path="res://scenes/ui/todo_list_ui.tscn" id="1_tnv4l"]
 [ext_resource type="Texture2D" uid="uid://c785tn2nk066n" path="res://assets/icons/clock.png" id="2_j3nm3"]
 [ext_resource type="PackedScene" uid="uid://pixelabel001" path="res://scenes/ui/pixel_label.tscn" id="3_p6rkd"]
-[ext_resource type="Texture2D" uid="uid://b7kf5aukr8e7" path="res://assets/icons/coin.png" id="4_bcuxr"]
+[ext_resource type="Texture2D" uid="uid://bs6krvrn6cfq2" path="res://assets/icons/revenue.png" id="5_p6rkd"]
 [ext_resource type="FontFile" uid="uid://cjxkjihewqeic" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="5_q5jec"]
-[ext_resource type="Script" path="res://scripts/ui/summary_scene_button.gd" id="6_htlhs"]
+[ext_resource type="Script" uid="uid://bpbwpugqdkjfe" path="res://scripts/ui/summary_scene_button.gd" id="6_htlhs"]
+[ext_resource type="Texture2D" uid="uid://u0ji6s7s7uws" path="res://assets/icons/briefcase.png" id="7_bcuxr"]
+[ext_resource type="Script" uid="uid://b48qfc7bvlqr2" path="res://scripts/ui/End_day.gd" id="8_q5jec"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
-content_margin_left = 6.0
-content_margin_top = 2.0
-content_margin_right = 6.0
-content_margin_bottom = 2.0
-bg_color = Color(0.99215686, 0.8039216, 0.46666667, 1)
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqy0j"]
 content_margin_left = 15.0
@@ -76,6 +70,15 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lpbe"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 2.0
+bg_color = Color(0.99215686, 0.8039216, 0.46666667, 1)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
 bg_color = Color(0.8235294, 0.7058824, 0.54901963, 0.9490196)
 corner_radius_top_left = 30
@@ -111,6 +114,52 @@ content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
 bg_color = Color(0.9098039, 0.5764706, 0.27058825, 0.65882355)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpm2x"]
+content_margin_left = 12.0
+content_margin_top = 5.0
+content_margin_right = 12.0
+content_margin_bottom = 5.0
+bg_color = Color(0.81960785, 0.81960785, 0.76862746, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7411765, 0.7254902, 0.6509804, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvqi8"]
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+bg_color = Color(0.72156864, 0.72156864, 0.6627451, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfjoh"]
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+bg_color = Color(0.881699, 0.7664406, 0.55786735, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -155,40 +204,15 @@ theme_override_colors/font_color = Color(0.29219002, 0.29219005, 0.29219002, 1)
 theme_override_font_sizes/font_size = 9
 text = "8 am"
 
-[node name="DayLabel" type="Label" parent="Clock" unique_id=976317621]
+[node name="DayLabel" type="Label" parent="Clock" unique_id=547124749]
 layout_mode = 0
-offset_left = 49.0
-offset_top = 8.0
-offset_right = 89.0
-offset_bottom = 31.0
+offset_left = 41.5
+offset_top = 9.250001
+offset_right = 89.5
+offset_bottom = 32.25
 theme_override_colors/font_color = Color(0.28240767, 0.28240743, 0.28240746, 1)
-theme_override_font_sizes/font_size = 9
-text = "Mon. 1"
-
-[node name="MoneyLabel" parent="." unique_id=781772415 instance=ExtResource("3_p6rkd")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -60.0
-offset_top = -27.0
-offset_right = 44.0
-offset_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.5, 0.5)
-
-[node name="Icon" parent="MoneyLabel" index="0"]
-texture = ExtResource("4_bcuxr")
-
-[node name="Bg" parent="MoneyLabel" index="1"]
-theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
-
-[node name="Label" parent="MoneyLabel/Bg" index="0"]
-custom_minimum_size = Vector2(50, 0)
-theme_override_colors/font_color = Color(0.29411766, 0.29411766, 0.29411766, 1)
-text = "0"
+theme_override_font_sizes/font_size = 8
+text = "Thu, 7 May"
 
 [node name="LunchBanner" type="PanelContainer" parent="." unique_id=1667937301]
 visible = false
@@ -197,9 +221,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -154.0
+offset_left = -155.5
 offset_top = -41.0
-offset_right = 370.0
+offset_right = 371.5
 offset_bottom = 99.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -233,7 +257,35 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_y76c1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8iwa3")
 text = "Got it!"
 
+[node name="MoneyLabel" parent="." unique_id=516460681 instance=ExtResource("3_p6rkd")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -83.0
+offset_top = -27.0
+offset_right = 51.0
+offset_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+alignment = 2
+
+[node name="Icon" parent="MoneyLabel" index="0"]
+custom_minimum_size = Vector2(29, 29)
+texture = ExtResource("5_p6rkd")
+
+[node name="Bg" parent="MoneyLabel" index="1"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_1lpbe")
+
+[node name="Label" parent="MoneyLabel/Bg" index="0"]
+custom_minimum_size = Vector2(50, 0)
+theme_override_colors/font_color = Color(0.29411766, 0.29411766, 0.29411766, 1)
+text = "0"
+
 [node name="SummaryPanel" type="PanelContainer" parent="." unique_id=1185459964]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -312,6 +364,93 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_o6xl0")
 text = "Main Menu"
 script = ExtResource("6_htlhs")
 target_scene_path = "res://scenes/main-menu/MainMenu.tscn"
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1438226891]
+offset_left = 12.0
+offset_top = 243.0
+offset_right = 30.0
+offset_bottom = 261.0
+texture_normal = ExtResource("7_bcuxr")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("8_q5jec")
+
+[node name="Label" type="Label" parent="TextureButton" unique_id=1642575284]
+visible = false
+layout_mode = 0
+offset_left = -2.0
+offset_top = -15.0
+offset_right = 76.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("5_q5jec")
+theme_override_font_sizes/font_size = 10
+text = "Leave Early"
+
+[node name="ConfirmOverlay" type="PanelContainer" parent="." unique_id=385140158]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.5
+offset_top = -41.0
+offset_right = 371.5
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.53876394, 0.54983413)
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_yqy0j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConfirmOverlay" unique_id=398820355]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="ConfirmOverlay/VBoxContainer" unique_id=1267380215]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.1764706, 0.1882353, 0.2784314, 0.972549)
+theme_override_fonts/font = ExtResource("5_q5jec")
+theme_override_font_sizes/font_size = 15
+text = "Clock out now? 
+Unfinished work will be added to your schedule tomorrow."
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ConfirmOverlay/VBoxContainer" unique_id=725341935]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 50
+
+[node name="YesButton" type="Button" parent="ConfirmOverlay/VBoxContainer/HBoxContainer" unique_id=1811102840]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.1882353, 0.2784314, 0.972549)
+theme_override_fonts/font = ExtResource("5_q5jec")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_fpm2x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lvqi8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hfjoh")
+button_mask = 7
+text = "Confirm"
+
+[node name="NoButton" type="Button" parent="ConfirmOverlay/VBoxContainer/HBoxContainer" unique_id=534394507]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.1882353, 0.2784314, 0.972549)
+theme_override_fonts/font = ExtResource("5_q5jec")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_fpm2x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lvqi8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hfjoh")
+button_mask = 7
+text = "Cancel"
+
+[connection signal="mouse_entered" from="TextureButton" to="TextureButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton" to="TextureButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
+[connection signal="pressed" from="ConfirmOverlay/VBoxContainer/HBoxContainer/NoButton" to="TextureButton" method="_on_no_button_pressed"]
 
 [node name="FireBanner" type="PanelContainer" parent="." unique_id=648526794]
 visible = false
