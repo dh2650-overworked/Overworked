@@ -14,6 +14,9 @@ func _on_pressed() -> void:
 	$"../ConfirmOverlay".show() 
 	get_tree().paused = true
 
+func _on_yes_button_pressed() -> void:
+	$"../ConfirmOverlay".hide()
+	TaskManager.summary_requested.emit()
 
 func _on_no_button_pressed() -> void:
 	$"../ConfirmOverlay".hide() 

@@ -50,6 +50,7 @@ func _ready() -> void:
 	TaskManager.lunch_started.connect(_on_lunch_started)
 	TaskManager.lunch_ended.connect(_on_lunch_ended)
 	TaskManager.lunch_acknowledged.connect(_on_lunch_acknowledged)
+	TaskManager.summary_requested.connect(_show_summary)
 
 	# --- 2. FireManager Integration ---
 	if Engine.has_singleton("FireManager"):
@@ -241,8 +242,3 @@ func _finish_fire_event():
 	# 核心：通过大脑关闭全局火灾状态（红光、音乐、NPC逃跑都会停止）
 	if Engine.has_singleton("FireManager"):
 		FireManager.stop_fire()
-
-
-func _on_yes_button_pressed() -> void:
-	$UI/ConfirmOverlay.hide()
-	_show_summary()

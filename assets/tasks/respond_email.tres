@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dd6k082npoxh8" path="res://scripts/resources/task_data.gd" id="1_jw5eq"]
 
 [resource]
-resource_name = "fill_form"
+resource_name = "respond_email"
 script = ExtResource("1_jw5eq")
 task_id = "respond_email"
 task_name = "Respond email"
-reward_money = 100
+reward_money = 50

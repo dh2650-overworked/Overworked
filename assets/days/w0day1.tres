@@ -5,11 +5,12 @@
 [ext_resource type="Resource" uid="uid://bjpbudbkf2d5a" path="res://assets/tasks/water_cooler.tres" id="3_wc"]
 [ext_resource type="Resource" uid="uid://dkgmvcrtbhocq" path="res://assets/tasks/report_writing.tres" id="4_rp"]
 [ext_resource type="Resource" uid="uid://dg7b3po0p6s8l" path="res://assets/tasks/printer.tres" id="6_pr"]
+[ext_resource type="Resource" uid="uid://cc3o3qkjxunhs" path="res://assets/tasks/respond_email.tres" id="6_yjc12"]
 
 [resource]
 script = ExtResource("1_day")
 day_id = "w0day1"
-start_tasks = [ExtResource("4_rp"), ExtResource("6_pr"), ExtResource("3_wc"), ExtResource("2_wb")]
+start_tasks = [ExtResource("4_rp"), ExtResource("6_pr"), ExtResource("3_wc"), ExtResource("2_wb"), ExtResource("6_yjc12")]
 timed_tasks = {
 150: ExtResource("6_pr")
 }

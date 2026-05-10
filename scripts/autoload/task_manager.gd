@@ -18,6 +18,7 @@ const LUNCH_DURATION_SECONDS: float = 30.0
 signal lunch_started()
 signal lunch_ended()
 signal lunch_acknowledged()
+signal summary_requested
 
 # Firedrill code is mostly a copy of Lunch code, 
 # TODO: change trigger to specific day, refine popup visuals, add text for label and for button //Erik O

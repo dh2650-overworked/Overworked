@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dd6k082npoxh8" path="res://scripts/resources/task_data.gd" id="1_l0237"]
 
 [resource]
-resource_name = "coffee"
+resource_name = "whiteboard"
 script = ExtResource("1_l0237")
 task_id = "whiteboard"
 task_name = "Erase whiteboard"

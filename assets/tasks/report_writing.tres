@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dd6k082npoxh8" path="res://scripts/resources/task_data.gd" id="1_lkgy3"]
 
 [resource]
-resource_name = "approve_file"
+resource_name = "report_writing"
 script = ExtResource("1_lkgy3")
 task_id = "report_writing"
 task_name = "Report writing"

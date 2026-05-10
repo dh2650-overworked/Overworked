@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dd6k082npoxh8" path="res://scripts/resources/task_data.gd" id="1_tobdf"]
 
 [resource]
-resource_name = "coffee"
+resource_name = "printer"
 script = ExtResource("1_tobdf")
 task_id = "printer"
 task_name = "Print Document"

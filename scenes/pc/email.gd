@@ -42,5 +42,6 @@ func load_email_day(day_key: String):
 func _on_email_choice_selected(index: int):
 	if index == email_choices.correct_choice_index:
 		print("Correct! Points added.")
+		TaskManager.complete_task_by_type("respond_email")
 	else:
 		print("Wrong choice.")

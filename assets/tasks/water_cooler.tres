@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dd6k082npoxh8" path="res://scripts/resources/task_data.gd" id="1_5ie0v"]
 
 [resource]
-resource_name = "reception"
+resource_name = "water_cooler"
 script = ExtResource("1_5ie0v")
 task_id = "water_cooler"
 task_name = "Change water cooler"
