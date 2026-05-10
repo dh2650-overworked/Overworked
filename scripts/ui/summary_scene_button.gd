@@ -2,6 +2,7 @@ extends Button
 
 ## Assign a .tscn in the inspector. Empty = reload current scene (dev fallback).
 
+# TODO surface to UI root node
 @export_file("*.tscn") var target_scene_path: String = ""
 
 
