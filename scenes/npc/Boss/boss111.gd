@@ -48,11 +48,15 @@ func _ready() -> void:
 		print("NPC: FIRE SIGNALS CONNECTED!")
 
 func _on_fire_started():
+	self.collision_layer = 0
+	self.collision_mask = 0
 	print("NPC: Received fire signal! Running now!")
 	start_fleeing(Vector2(500, 500)) 
 
 func _on_fire_ended():
 	self.visible = true  
+	self.collision_layer = 1
+	self.collision_mask = 1
 	is_fleeing = false
 	is_returning = true 
 	print("NPC: Fire drill over, bouncing back home.")
@@ -177,11 +181,11 @@ func trigger_boss_confrontation():
 
 
 
-func _input(event):
-	if is_fleeing or is_returning: return
-	if player_in_range and event.is_action_pressed("interact"):
-		if not get_tree().root.has_node("DialogueUI"):
-			start_dialogue()
+#func _input(event):
+	#if is_fleeing or is_returning: return
+	#if player_in_range and event.is_action_pressed("interact"):
+		#if not get_tree().root.has_node("DialogueUI"):
+			#start_dialogue()
 
 func start_dialogue():
 	var ui = dialogue_scene.instantiate()

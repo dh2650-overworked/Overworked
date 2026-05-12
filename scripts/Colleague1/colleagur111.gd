@@ -45,10 +45,14 @@ func _ready() -> void:
 		print("NPC: FIRE SIGNALS CONNECTED!")
 
 func _on_fire_started():
+	self.collision_layer = 0
+	self.collision_mask = 0
 	print("NPC: Received fire signal! Running now!")
 	start_fleeing(Vector2(500, 500)) 
 
 func _on_fire_ended():
+	self.collision_layer = 1
+	self.collision_mask = 1
 	self.visible = true  
 	is_fleeing = false
 	is_returning = true 
