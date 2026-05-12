@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c3s4dsuc8hluh"]
 
-[ext_resource type="Script" uid="uid://c38s3gpcb8nqt" path="res://scripts/Colleague1/colleague_1.gd" id="1_y4mkt"]
+[ext_resource type="Script" uid="uid://1nuqt5hjl27x" path="res://scripts/Colleague1/colleagur111.gd" id="1_ecaep"]
 [ext_resource type="Resource" uid="uid://dkgmvcrtbhocq" path="res://assets/tasks/report_writing.tres" id="2_ecaep"]
 [ext_resource type="Texture2D" uid="uid://covwnoq825x07" path="res://assets/NPCs/Kevin.png" id="4_xh6qv"]
 
@@ -13,7 +13,7 @@ radius = 47.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=791234317]
 scale = Vector2(1.5, 1.5)
-script = ExtResource("1_y4mkt")
+script = ExtResource("1_ecaep")
 report_task = ExtResource("2_ecaep")
 
 [node name="Kevin" type="Sprite2D" parent="." unique_id=39933371]

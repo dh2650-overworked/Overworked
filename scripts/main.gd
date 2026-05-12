@@ -89,7 +89,7 @@ func _process(delta: float) -> void:
 	_update_level_clock()
 	
 	# --- 5. Automatic Fire Drill Trigger (Only trigger ONCE) ---
-	if not fire_drill_triggered_today and TaskManager.level_time_passed >= 20:
+	if not fire_drill_triggered_today and TaskManager.level_time_passed >= 3:
 		if FireManager.current_state == FireManager.FireState.NORMAL:
 			fire_drill_triggered_today = true # Mark as done so it doesn't loop
 			FireManager.trigger_fire_drill()
@@ -103,7 +103,7 @@ func _process(delta: float) -> void:
 		if _evac_label:
 			_evac_label.text = "Evacuating... " + str(int(evac_progress)) + "%"
 		
-		if evac_progress >= 99.0:
+		if evac_progress >= 97.0:
 			print("Firedrill end")
 			_finish_fire_event()
 			
@@ -238,7 +238,4 @@ func _finish_fire_event():
 	has_acknowledged_fire = false # 重置状态
 	_evac_ui.visible = false
 	evac_progress = 0.0
-	
-	# 核心：通过大脑关闭全局火灾状态（红光、音乐、NPC逃跑都会停止）
-	if Engine.has_singleton("FireManager"):
-		FireManager.stop_fire()
+	FireManager.stop_fire()
