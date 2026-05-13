@@ -24,7 +24,7 @@ config/icon="res://icon.svg"
 MusicManager="*uid://c3volmi6gp13"
 TaskManager="*res://scripts/autoload/task_manager.gd"
 PrinterManager="*uid://csfd7whyds6f7"
-FireManager="*uid://cdvn4m0y46ssa"
+FireManager="*res://scripts/autoload/FireManager.gd"
 
 [display]
 

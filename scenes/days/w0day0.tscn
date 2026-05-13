@@ -2,9 +2,17 @@
 
 [ext_resource type="Script" uid="uid://bvavhhbwea3ud" path="res://scripts/main.gd" id="1_r1e1b"]
 [ext_resource type="PackedScene" uid="uid://1jnrp1jmclbh" path="res://scenes/ui/UI.tscn" id="3_73x1o"]
+[ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="6_1lk6l"]
 [ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="6_bg066"]
 [ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="7_x70sf"]
 [ext_resource type="Resource" uid="uid://k5gmh5w4jaa" path="res://assets/days/w0day0.tres" id="8_day"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r1e1b"]
+size = Vector2(10, 10)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_edciq"]
+radius = 16.0
+height = 40.0
 
 [node name="Main" type="Node2D" unique_id=951420025]
 y_sort_enabled = true
@@ -22,3 +30,11 @@ scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=828365990]
 position = Vector2(0, -29.333334)
+
+[node name="Water plants" parent="." unique_id=1489444515 instance=ExtResource("6_1lk6l")]
+y_sort_enabled = true
+position = Vector2(111, 303)
+collider = SubResource("RectangleShape2D_r1e1b")
+area = SubResource("CapsuleShape2D_edciq")
+scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
+interact_name = "Water plants"

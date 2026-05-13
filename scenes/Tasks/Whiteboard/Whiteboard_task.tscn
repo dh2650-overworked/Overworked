@@ -1,16 +1,12 @@
 [gd_scene format=3 uid="uid://dok8xdoxojdbm"]
 
 [ext_resource type="Script" uid="uid://doq7hk6gddqsj" path="res://scenes/Tasks/Whiteboard/node_2d.gd" id="1_1prki"]
-[ext_resource type="Texture2D" uid="uid://cwnq8y6fjscnp" path="res://icon.svg" id="1_e715p"]
 [ext_resource type="Script" uid="uid://cn4axvydpte5p" path="res://scenes/Tasks/Whiteboard/control.gd" id="1_od77l"]
-[ext_resource type="Script" uid="uid://e8oe55ymwucp" path="res://scenes/Tasks/Whiteboard/whiteboard_task.gd" id="1_qkuyd"]
-[ext_resource type="Script" uid="uid://uo6o53tnjspp" path="res://scenes/Tasks/Whiteboard/label.gd" id="3_ncbox"]
+[ext_resource type="Script" path="res://scenes/Tasks/Whiteboard/whiteboard_task.gd" id="1_qkuyd"]
+[ext_resource type="Texture2D" uid="uid://b2wq47m5yqxcw" path="res://assets/tasks/Whiteboard/Whiteboard.png" id="3_c6swj"]
 [ext_resource type="Script" uid="uid://laqywbgw8shl" path="res://scenes/Tasks/Whiteboard/button.gd" id="5_usjox"]
 [ext_resource type="Texture2D" uid="uid://dcw34jd8snlcm" path="res://assets/tasks/Whiteboard/EraserSmall.png" id="6_sjj4x"]
 [ext_resource type="Script" uid="uid://biw5m4l77lajk" path="res://scenes/Tasks/Whiteboard/eraser_button.gd" id="7_c6swj"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ncbox"]
-font_color = Color(0, 0, 0, 1)
 
 [node name="CanvasLayer2" type="CanvasLayer" unique_id=1694772369]
 layer = 11
@@ -55,32 +51,25 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="Control/SubViewportContainer/SubViewport/Control2/ColorRect" unique_id=1654414032]
 layout_mode = 0
-offset_left = 172.0
-offset_top = 26.0
-offset_right = 300.0
-offset_bottom = 154.0
+offset_left = 16.0
+offset_top = 4.0
+offset_right = 336.0
+offset_bottom = 196.0
 mouse_filter = 2
-texture = ExtResource("1_e715p")
-
-[node name="Label" type="Label" parent="Control/SubViewportContainer/SubViewport/Control2/ColorRect" unique_id=1993362837]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 60.0
-offset_right = 127.0
-offset_bottom = 131.0
-label_settings = SubResource("LabelSettings_ncbox")
-script = ExtResource("3_ncbox")
+texture = ExtResource("3_c6swj")
 
 [node name="Node2D" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Control2" unique_id=873773862]
 top_level = true
 script = ExtResource("1_1prki")
 
 [node name="Line2D" type="Line2D" parent="Control/SubViewportContainer/SubViewport/Control2/Node2D" unique_id=1460313514]
+points = PackedVector2Array(138, 83)
 closed = true
 width = 4.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="Button" type="Button" parent="Control/SubViewportContainer/SubViewport/Control2" unique_id=1554283182]
+visible = false
 top_level = true
 layout_mode = 0
 offset_left = 301.0
