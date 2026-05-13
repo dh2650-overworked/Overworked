@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DayData" format=3 uid="uid://k5gmh5w4jaa"]
+
+[ext_resource type="Script" uid="uid://cudkkttwasmr0" path="res://scripts/resources/day_data.gd" id="1_ew28r"]
+[ext_resource type="Resource" uid="uid://dkgmvcrtbhocq" path="res://assets/tasks/report_writing.tres" id="2_syp7t"]
+[ext_resource type="Resource" uid="uid://dg7b3po0p6s8l" path="res://assets/tasks/printer.tres" id="3_dd1nt"]
+[ext_resource type="Resource" uid="uid://bjpbudbkf2d5a" path="res://assets/tasks/water_cooler.tres" id="4_grcla"]
+[ext_resource type="Resource" uid="uid://dkojlevmfae7g" path="res://assets/tasks/water_plant.tres" id="5_w4g5p"]
+[ext_resource type="Resource" uid="uid://bjalxdx4o8d5a" path="res://assets/tasks/whiteboard.tres" id="6_lmuua"]
+[ext_resource type="Resource" uid="uid://cc3o3qkjxunhs" path="res://assets/tasks/respond_email.tres" id="7_syp7t"]
+
+[resource]
+script = ExtResource("1_ew28r")
+day_id = "w0day0"
+start_tasks = [ExtResource("2_syp7t"), ExtResource("3_dd1nt"), ExtResource("4_grcla"), ExtResource("5_w4g5p"), ExtResource("6_lmuua"), ExtResource("7_syp7t")]
