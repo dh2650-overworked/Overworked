@@ -19,3 +19,4 @@ func trigger_fire_drill():
 func stop_fire():
 	current_state = FireState.NORMAL 
 	fire_ended.emit()
+	print("MANAGER: Global state set to NORMAL")

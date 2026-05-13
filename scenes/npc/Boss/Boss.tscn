@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dknlmp52ouibu"]
 
-[ext_resource type="Script" uid="uid://c38s3gpcb8nqt" path="res://scripts/Colleague1/colleague_1.gd" id="1_53akf"]
 [ext_resource type="Texture2D" uid="uid://covwnoq825x07" path="res://assets/NPCs/Kevin.png" id="2_ln0m0"]
+[ext_resource type="PackedScene" uid="uid://dgi3jxd7wtj62" path="res://scenes/character/BossDialogueUI.tscn" id="2_nhrrn"]
+[ext_resource type="Script" uid="uid://bi53rjcgjafy4" path="res://scenes/npc/Boss/boss111.gd" id="3_ln0m0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y4mkt"]
 radius = 15.0
@@ -13,7 +14,8 @@ radius = 47.0
 [node name="Boss" type="CharacterBody2D" unique_id=791234317]
 position = Vector2(88, 47)
 scale = Vector2(1.5, 1.5)
-script = ExtResource("1_53akf")
+script = ExtResource("3_ln0m0")
+dialogue_scene = ExtResource("2_nhrrn")
 
 [node name="Boss" type="Sprite2D" parent="." unique_id=39933371]
 position = Vector2(0.6666666, -29.333334)
