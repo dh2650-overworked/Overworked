@@ -12,6 +12,10 @@ signal money_updated(new_total: int)
 signal nav_requested(instance_id: String)
 
 const LEVEL_DURATION_SECONDS: float = 270.0
+const DAY_START_HOUR: int = 8
+const SECONDS_PER_GAME_HOUR: float = 30.0
+## 8:00 + 16h → 24:00 (midnight); hard end of playable day during overtime.
+const MIDNIGHT_PASSED_SECONDS: float = float(24 - DAY_START_HOUR) * SECONDS_PER_GAME_HOUR
 const LUNCH_START_AT_SECONDS: float = 120.0
 const LUNCH_DURATION_SECONDS: float = 30.0
 
@@ -45,6 +49,7 @@ var level_time_remaining: float = LEVEL_DURATION_SECONDS
 var level_time_passed: float = 0.0
 
 var is_timer_active: bool = false
+var is_overtime: bool = false
 
 var lunch_active: bool = false
 var lunch_time_remaining: float = 0.0
@@ -61,7 +66,11 @@ var _timed_fired: Dictionary = {}
 func _process(delta: float) -> void:
 	if not is_timer_active:
 		return
-	
+
+	if is_overtime:
+		level_time_passed = minf(level_time_passed + delta, MIDNIGHT_PASSED_SECONDS)
+		return
+
 	if level_time_remaining > 0.0:
 		level_time_remaining = maxf(level_time_remaining - delta, 0.0)
 		level_time_passed += delta
@@ -203,6 +212,7 @@ func _day_timed_tasks(day_data: Resource) -> Dictionary:
 func _reset_level_timer_and_lunch() -> void:
 	level_time_remaining = LEVEL_DURATION_SECONDS
 	level_time_passed = 0.0
+	is_overtime = false
 	lunch_active = false
 	lunch_time_remaining = 0.0
 	lunch_triggered = false

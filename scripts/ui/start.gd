@@ -43,6 +43,11 @@ func show_overtime_prompt() -> void:
 	else:
 		push_error("UI: didn't find OvertimePanel！")
 
+
+func hide_overtime_prompt() -> void:
+	if _overtime_panel:
+		_overtime_panel.visible = false
+
 func _on_overtime_yes_button_pressed() -> void:
 	_overtime_panel.visible = false
 	overtime_choice_made.emit(true)

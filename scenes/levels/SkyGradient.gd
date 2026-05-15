@@ -20,20 +20,18 @@ func _ready() -> void:
 	texture = Skycolor
 
 
-
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if TaskManager.level_time_passed < START_TIME:
 		return
-	#print(scrollspeed)
+
+	var all_at_end := true
 	for point in range(Skycolor.gradient.get_point_count()):
-		var current_offset = Skycolor.gradient.get_offset(point)
-		var movement = scrollspeed * delta
-		
-		if current_offset + movement < 1.0:
-			Skycolor.gradient.set_offset(point, current_offset + movement)
-		else:
-			Skycolor.gradient.set_offset(point, current_offset + movement - 1.0)
+		var current_offset: float = Skycolor.gradient.get_offset(point)
+		if current_offset >= 1.0:
+			continue
+		all_at_end = false
+		Skycolor.gradient.set_offset(point, minf(current_offset + scrollspeed * delta, 1.0))
+
+	if all_at_end:
+		set_process(false)
