@@ -85,6 +85,13 @@ func _ready() -> void:
 		print("SUCCESS: Connected to SafeZone via code!")
 	else:
 		push_error("ERROR: Could not find SafeZone node in the scene!")
+		
+	var ui_node = $UI 
+	if ui_node:
+		ui_node.play_start_of_day_cinematic()
+		await ui_node.cinematic_finished     
+		TaskManager.is_timer_active = true
+		
 func _process(delta: float) -> void:
 	_update_level_clock()
 	
