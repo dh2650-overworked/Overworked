@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://c3s4dsuc8hluh" path="res://scenes/character/Colleague1.tscn" id="13_a576x"]
 [ext_resource type="AudioStream" uid="uid://hptjsn3gj04x" path="res://assets/music/FiredrillSoundeffect.mp3" id="13_jbvgb"]
 [ext_resource type="PackedScene" uid="uid://dlhivy8ytf454" path="res://scenes/character/DialogueUI.tscn" id="13_l0kex"]
+[ext_resource type="Texture2D" uid="uid://cyfuh4uekuwh" path="res://assets/interactables/doors.png" id="15_k1nkb"]
+[ext_resource type="Script" uid="uid://dcrpi5l1gf12m" path="res://scenes/levels/emergency_door.gd" id="16_8kfeh"]
 [ext_resource type="PackedScene" uid="uid://dknlmp52ouibu" path="res://scenes/npc/Boss/Boss.tscn" id="16_lin3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhigv"]
@@ -57,6 +59,84 @@ gradient = SubResource("Gradient_uw80i")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a576x"]
 size = Vector2(116, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1nkb"]
+atlas = ExtResource("15_k1nkb")
+region = Rect2(0, 4, 65, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kfeh"]
+atlas = ExtResource("15_k1nkb")
+region = Rect2(0, 36, 65, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbt4i"]
+atlas = ExtResource("15_k1nkb")
+region = Rect2(0, 68, 65, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gevld"]
+atlas = ExtResource("15_k1nkb")
+region = Rect2(0, 100, 65, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvpxu"]
+atlas = ExtResource("15_k1nkb")
+region = Rect2(0, 132, 65, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5xel"]
+atlas = ExtResource("15_k1nkb")
+region = Rect2(0, 164, 65, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3ean"]
+atlas = ExtResource("15_k1nkb")
+region = Rect2(0, 196, 65, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsf0h"]
+atlas = ExtResource("15_k1nkb")
+region = Rect2(0, 228, 65, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uaapg"]
+atlas = ExtResource("15_k1nkb")
+region = Rect2(0, 260, 65, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pu1qt"]
+atlas = ExtResource("15_k1nkb")
+region = Rect2(0, 292, 65, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ao5u7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1nkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kfeh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbt4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gevld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvpxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5xel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3ean")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsf0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uaapg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pu1qt")
+}],
+"loop": true,
+"name": &"open",
+"speed": 15.0
+}]
 
 [node name="office" type="Node2D" unique_id=856302002]
 y_sort_enabled = true
@@ -164,6 +244,7 @@ dialogue_scene = ExtResource("13_l0kex")
 
 [node name="AlarmSound" type="AudioStreamPlayer" parent="." unique_id=273409529]
 stream = ExtResource("13_jbvgb")
+volume_db = -15.822
 
 [node name="SafeZone" type="Area2D" parent="." unique_id=955411409]
 position = Vector2(103, 105)
@@ -171,6 +252,14 @@ position = Vector2(103, 105)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZone" unique_id=792323117]
 position = Vector2(372, 359)
 shape = SubResource("RectangleShape2D_a576x")
+
+[node name="EmergencyDoor" type="AnimatedSprite2D" parent="SafeZone" unique_id=2012123950]
+z_index = 1
+position = Vector2(367, 384.5)
+scale = Vector2(2.9576924, 3.0937507)
+sprite_frames = SubResource("SpriteFrames_ao5u7")
+animation = &"open"
+script = ExtResource("16_8kfeh")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=390349545]
 stream = ExtResource("12_d01tv")

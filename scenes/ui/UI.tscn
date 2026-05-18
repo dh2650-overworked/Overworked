@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://cjxkjihewqeic" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="5_q5jec"]
 [ext_resource type="Script" uid="uid://bpbwpugqdkjfe" path="res://scripts/ui/summary_scene_button.gd" id="6_htlhs"]
 [ext_resource type="Texture2D" uid="uid://u0ji6s7s7uws" path="res://assets/icons/briefcase.png" id="7_bcuxr"]
-[ext_resource type="Script" uid="uid://b48qfc7bvlqr2" path="res://scripts/ui/End_day.gd" id="8_q5jec"]
+[ext_resource type="Script" path="res://scripts/ui/End_day.gd" id="8_q5jec"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqy0j"]
 content_margin_left = 15.0
