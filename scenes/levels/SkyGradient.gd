@@ -1,26 +1,24 @@
 extends TextureRect
 
 var Skycolor = GradientTexture1D.new()
-var scrollspeed:float = float(1)/(TaskManager.LEVEL_DURATION_SECONDS * 2)
+var scrollspeed:float = float(1)/(TaskManager.LEVEL_DURATION_SECONDS*2)
 const START_TIME: float = 0 #Set this to reasonable value for how fast a day is
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Skycolor.gradient = Gradient.new()
 	Skycolor.gradient.set_color(0, Color.BLACK)
-	Skycolor.gradient.set_offset(0, 0)
+	Skycolor.gradient.set_offset(0, 0.2)
 	Skycolor.gradient.set_color(1, Color(0.702, 0.177, 0.254))
-	Skycolor.gradient.set_offset(1, 0.15)
-	Skycolor.gradient.add_point(0.25, Color(1.072, 0.459, 0.264))
-	Skycolor.gradient.add_point(0.35, Color(0.263, 0.502, 0.992))
+	Skycolor.gradient.set_offset(1, 0.25)
+	Skycolor.gradient.add_point(0.30, Color(1.072, 0.459, 0.264))
+	Skycolor.gradient.add_point(0.45, Color(0.263, 0.502, 0.992))
 	Skycolor.gradient.add_point(0.65, Color(0.0, 0.535, 0.929))
-	Skycolor.gradient.add_point(0.7, Color(0.11, 0.384, 0.921))
-	Skycolor.gradient.add_point(0.75, Color(1.072, 0.459, 0.264))
-	Skycolor.gradient.add_point(0.8, Color(0.702, 0.177, 0.254))
-	Skycolor.gradient.add_point(0.95, Color.BLACK)
+	Skycolor.gradient.add_point(0.8, Color(0.11, 0.384, 0.921))
+	Skycolor.gradient.add_point(0.88, Color(1.072, 0.459, 0.264))
+	Skycolor.gradient.add_point(0.95, Color(0.702, 0.177, 0.254))
+	Skycolor.gradient.add_point(0.99, Color.BLACK)
 	texture = Skycolor
-
-
 
 	pass # Replace with function body.
 

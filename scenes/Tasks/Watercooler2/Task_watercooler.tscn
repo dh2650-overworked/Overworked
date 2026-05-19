@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bxh6xnbft7lom"]
+
+[ext_resource type="Script" uid="uid://dyaxnw6vls8bl" path="res://scenes/Tasks/Watercooler/task_watercooler.gd" id="1_4680r"]
+[ext_resource type="Texture2D" uid="uid://7blcdbai2v85" path="res://assets/tasks/Watercooler/Watercooler.png" id="2_x2xnc"]
+
+[node name="TaskWatercooler" type="CanvasLayer" unique_id=1442503454]
+script = ExtResource("1_4680r")
+
+[node name="Control" type="Control" parent="." unique_id=650918098]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 67.0
+offset_top = 38.0
+offset_right = 417.0
+offset_bottom = 238.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=1920406806]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/PanelContainer" unique_id=891331304]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Replace the watertank"
+
+[node name="TextureButton" type="TextureButton" parent="Control/PanelContainer" unique_id=928986685]
+layout_mode = 2
+texture_normal = ExtResource("2_x2xnc")
+stretch_mode = 5
+
+[connection signal="pressed" from="Control/PanelContainer/TextureButton" to="." method="_on_texture_button_pressed"]

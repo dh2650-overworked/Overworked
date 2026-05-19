@@ -49,8 +49,8 @@ radius = 32.0
 height = 64.0
 
 [sub_resource type="Gradient" id="Gradient_uw80i"]
-offsets = PackedFloat32Array(0.32530123, 0.40361446, 0.49397588, 0.57831323, 0.76506025, 0.92168677)
-colors = PackedColorArray(0.0052051274, 5.5407636e-05, 0.00014651388, 1, 0.701675, 0.17676753, 0.25424892, 1, 1.072, 0.459, 0.264, 1, 0.2627451, 0.5019608, 0.99215686, 1, 0, 0.5348489, 0.9288872, 1, 0.11014738, 0.3835422, 0.92072624, 1)
+offsets = PackedFloat32Array(0, 0.12650603, 0.21686748, 0.3554217, 0.4939759, 0.61445785, 0.7409639, 0.82530123, 0.93373495)
+colors = PackedColorArray(0.0052051274, 5.5407636e-05, 0.00014651388, 1, 0.701675, 0.17676753, 0.25424892, 1, 1.072, 0.459, 0.264, 1, 0.2627451, 0.5019608, 0.99215686, 1, 0, 0.5348489, 0.9288872, 1, 0.11014738, 0.3835422, 0.92072624, 1, 0.68430775, 0.30625352, 0.16575694, 1, 0.76640743, 0.18198419, 0.23442161, 1, 0.006760598, 0.00042961203, 0.0003013378, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ey3sf"]
 gradient = SubResource("Gradient_uw80i")
@@ -144,10 +144,10 @@ offset_bottom = 40.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=231815546]
 layout_mode = 0
-offset_left = 1210.2855
-offset_top = -1023.78
-offset_right = 2652.9436
-offset_bottom = 179.94934
+offset_left = 1210.286
+offset_top = -2423.78
+offset_right = 4092.9429
+offset_bottom = -1220.051
 rotation = 1.5707964
 
 [node name="TextureRect" type="TextureRect" parent="Control/MarginContainer" unique_id=1109017066]
