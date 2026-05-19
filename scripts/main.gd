@@ -89,11 +89,14 @@ func _process(delta: float) -> void:
 	_update_level_clock()
 	
 	# --- 5. Automatic Fire Drill Trigger (Only trigger ONCE) ---
-	if not fire_drill_triggered_today and TaskManager.level_time_passed >= 30:
-		if FireManager.current_state == FireManager.FireState.NORMAL:
-			fire_drill_triggered_today = true # Mark as done so it doesn't loop
-			FireManager.trigger_fire_drill()
-			_firedrill_banner.visible = true
+	if not fire_drill_triggered_today and TaskManager.level_time_passed >= 3:
+		if day_data:
+			print("Current Day ID: ", day_data.day_id)
+		if day_data.day_id == "w0day1":
+			if FireManager.current_state == FireManager.FireState.NORMAL:
+				fire_drill_triggered_today = true # Mark as done so it doesn't loop
+				FireManager.trigger_fire_drill()
+				_firedrill_banner.visible = true
 			
 	if is_currently_evacuating:
 		evac_progress += evac_speed * delta
