@@ -58,7 +58,7 @@ theme_override_font_sizes/font_size = 12
 text = "Week 0 - Thursday"
 alignment = 0
 script = ExtResource("1_wndw1")
-scene_path = "res://scenes/days/w0day0.tscn"
+scene_path = "res://scenes/days/w0d4-thursday.tscn"
 
 [node name="w0fri" type="Button" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer/dayselect" unique_id=1255995758]
 layout_mode = 2
@@ -66,7 +66,7 @@ theme_override_font_sizes/font_size = 12
 text = "Week 0 - Friday"
 alignment = 0
 script = ExtResource("1_wndw1")
-scene_path = "res://scenes/days/w0day1.tscn"
+scene_path = "res://scenes/days/w0d5-friday.tscn"
 
 [node name="w1d1mon" type="Button" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer/dayselect" unique_id=714238133]
 layout_mode = 2
@@ -102,7 +102,7 @@ text = "New game"
 alignment = 0
 script = ExtResource("1_wndw1")
 reset_progress_on_press = true
-scene_path = "res://scenes/days/w0day0.tscn"
+scene_path = "res://scenes/days/w0d4-thursday.tscn"
 
 [node name="Select" type="Button" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer/mainmenu" unique_id=1459934182]
 layout_mode = 2
