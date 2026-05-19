@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://1jnrp1jmclbh" path="res://scenes/ui/UI.tscn" id="4_8myrj"]
 [ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="6_wu5er"]
 [ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="7_cjfph"]
-[ext_resource type="Resource" uid="uid://bw0day1data02" path="res://assets/days/w0day1.tres" id="8_day"]
+[ext_resource type="Resource" path="res://assets/days/w0day5-friday.tres" id="8_day"]
 
 [node name="Main3" type="Node2D" unique_id=951420025]
 y_sort_enabled = true

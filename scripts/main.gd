@@ -97,7 +97,11 @@ func _ready() -> void:
 	if ui_node:
 		if ui_node.has_signal("overtime_choice_made"):
 			ui_node.overtime_choice_made.connect(_on_overtime_choice_made)
-		ui_node.play_start_of_day_cinematic()
+			
+		var day_label := ""
+		if day_data:
+			day_label = str(day_data.get("day_label"))
+		ui_node.play_start_of_day_cinematic(day_label)
 		await ui_node.cinematic_finished
 		TaskManager.is_timer_active = true
 		
@@ -131,13 +135,8 @@ func _game_hour_from_passed(passed: float) -> int:
 
 
 func _format_clock_text(current_hour: int) -> String:
-	if current_hour >= MIDNIGHT_HOUR:
-		return "12 am"
-	if current_hour < 12:
-		return str(current_hour) + " am"
-	if current_hour == 12:
-		return "12 pm"
-	return str(current_hour - 12) + " pm"
+	var hour = current_hour % 24
+	return "%02d:00" % hour
 
 
 func _force_midnight_summary() -> void:
@@ -248,6 +247,8 @@ func _show_summary() -> void:
 	_task_count_val.text = "Tasks Completed: " + str(TaskManager.daily_completed_count)
 	_balance_val.text = "Final Balance: " + str(TaskManager.total_money)
 	_summary_panel.visible = true
+	if day_data:
+		_ui.set_meta("next_level_path", day_data.next_day_scene_path)
 
 
 func _unhandled_input(event: InputEvent) -> void:

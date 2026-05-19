@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DayData" format=3 uid="uid://bw0day1data02"]
+[gd_resource type="Resource" script_class="DayData" format=3 uid="uid://ddcdknwoi6syl"]
 
 [ext_resource type="Script" uid="uid://cudkkttwasmr0" path="res://scripts/resources/day_data.gd" id="1_day"]
 [ext_resource type="Resource" uid="uid://bjalxdx4o8d5a" path="res://assets/tasks/whiteboard.tres" id="2_wb"]
@@ -10,7 +10,9 @@
 [resource]
 script = ExtResource("1_day")
 day_id = "w1day5"
+day_label = "Friday, May 29th"
 start_tasks = [ExtResource("4_rp"), ExtResource("6_pr"), ExtResource("3_wc"), ExtResource("2_wb"), ExtResource("6_yjc12")]
 timed_tasks = {
 150: ExtResource("6_pr")
 }
+next_day_scene_path = "res://scenes/main-menu/MainMenu.tscn"

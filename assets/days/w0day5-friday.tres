@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DayData" format=3 uid="uid://obrmf44a361f"]
+
+[ext_resource type="Script" uid="uid://cudkkttwasmr0" path="res://scripts/resources/day_data.gd" id="1_m1hyy"]
+[ext_resource type="Resource" uid="uid://dkgmvcrtbhocq" path="res://assets/tasks/report_writing.tres" id="2_15l8o"]
+[ext_resource type="Resource" uid="uid://dg7b3po0p6s8l" path="res://assets/tasks/printer.tres" id="3_gfaev"]
+[ext_resource type="Resource" uid="uid://bjpbudbkf2d5a" path="res://assets/tasks/water_cooler.tres" id="4_r2u8s"]
+[ext_resource type="Resource" uid="uid://bjalxdx4o8d5a" path="res://assets/tasks/whiteboard.tres" id="5_0jxpb"]
+[ext_resource type="Resource" uid="uid://cc3o3qkjxunhs" path="res://assets/tasks/respond_email.tres" id="6_jdw4a"]
+
+[resource]
+script = ExtResource("1_m1hyy")
+day_id = "w0day5"
+day_label = "Friday, May 22nd"
+start_tasks = [ExtResource("2_15l8o"), ExtResource("3_gfaev"), ExtResource("4_r2u8s"), ExtResource("5_0jxpb"), ExtResource("6_jdw4a")]
+timed_tasks = {
+150: ExtResource("3_gfaev")
+}
+next_day_scene_path = "res://scenes/days/w1d1-monday.tscn"
