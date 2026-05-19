@@ -54,6 +54,7 @@ alignment = 1
 
 [node name="w0thu" type="Button" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer/dayselect" unique_id=1457962874]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 text = "Week 0 - Thursday"
 alignment = 0
 script = ExtResource("1_wndw1")
@@ -61,13 +62,31 @@ scene_path = "res://scenes/days/w0day0.tscn"
 
 [node name="w0fri" type="Button" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer/dayselect" unique_id=1255995758]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 text = "Week 0 - Friday"
 alignment = 0
 script = ExtResource("1_wndw1")
 scene_path = "res://scenes/days/w0day1.tscn"
 
+[node name="w1d1mon" type="Button" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer/dayselect" unique_id=714238133]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Week 1 - Monday"
+alignment = 0
+script = ExtResource("1_wndw1")
+scene_path = "res://scenes/days/w1d1-monday.tscn"
+
+[node name="w1d5fri" type="Button" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer/dayselect" unique_id=910760480]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Week 1 - Friday"
+alignment = 0
+script = ExtResource("1_wndw1")
+scene_path = "res://scenes/days/w1d5-friday.tscn"
+
 [node name="back" type="Button" parent="ColorRect/MainMenu/HBoxContainer/VBoxContainer/dayselect" unique_id=1575414951]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 text = "Back"
 alignment = 0
 script = ExtResource("3_v5846")
