@@ -5,12 +5,8 @@ extends CanvasLayer
 4. Place replacment on watercooler"
 # Called when the node enters the scene tree for the first time.
 
-enum State { FRESH, TANKREMOVED, TANKFOUND}
-
-var current_state = State.FRESH
-
 func _ready() -> void:
-	$Control/PanelContainer/Label.text = "Remove the watertank"
+	_match_current_state(WatercoolerManager.current_state)
 	pass # Replace with function body.
 
 func get_tutorial_text():
@@ -19,29 +15,30 @@ func get_tutorial_text():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#TODO: Add a listener to a node in the scene that updates the state from TANKREMOVED to TANKFOUND
-	match current_state:
-		State.TANKREMOVED:
-			current_state = State.TANKFOUND
+	match WatercoolerManager.current_state:
+		WatercoolerManager.State.TANKREMOVED:
+			WatercoolerManager.current_state = WatercoolerManager.State.TANKFOUND
 			$Control/PanelContainer/TextureButton.disabled = false
 			$Control/PanelContainer/Label.text = "Place the watertank"
 	pass
 
 func _on_texture_button_pressed() -> void:
-	match current_state:
-		State.FRESH:
+	match WatercoolerManager.current_state:
+		WatercoolerManager.State.FRESH:
 			$Control/PanelContainer/TextureButton.texture_normal = load("res://assets/tasks/Watercooler/Watercooler_tankless.png")
 			$Control/PanelContainer/TextureButton.disabled = true
 			$Control/PanelContainer/Label.text = "Find a new watertank"
-			current_state = State.TANKREMOVED
-		State.TANKFOUND:
+			WatercoolerManager.current_state = WatercoolerManager.State.TANKREMOVED
+		WatercoolerManager.State.TANKFOUND:
 			$Control/PanelContainer/TextureButton.texture_normal = load("res://assets/tasks/Watercooler/Watercooler.png")
 			$Control/PanelContainer/TextureButton.disabled = true
 			TaskManager.complete_task_by_type("water_cooler")
 		
 			#Trigger completion and close window automatically
 			var root_container = _find_canvas_layer(self)
-			
 			await get_tree().create_timer(1).timeout
+			
+			WatercoolerManager.current_state = WatercoolerManager.State.FRESH
 			
 			if root_container:
 				if root_container.get_parent() == root_container.get_tree().root: 
@@ -53,6 +50,22 @@ func _on_texture_button_pressed() -> void:
 			
 	pass # Replace with function body.
 	
+func _match_current_state(current_state):
+	match current_state:
+		WatercoolerManager.State.FRESH:
+			$Control/PanelContainer/Label.text = "Remove the watertank"
+			$Control/PanelContainer/TextureButton.texture_normal = load("res://assets/tasks/Watercooler/Watercooler.png")
+			$Control/PanelContainer/TextureButton.disabled = false
+		WatercoolerManager.State.TANKREMOVED:
+			$Control/PanelContainer/TextureButton.texture_normal = load("res://assets/tasks/Watercooler/Watercooler_tankless.png")
+			$Control/PanelContainer/TextureButton.disabled = true
+			$Control/PanelContainer/Label.text = "Find a new watertank"
+		WatercoolerManager.State.TANKFOUND:
+			$Control/PanelContainer/TextureButton.texture_normal = load("res://assets/tasks/Watercooler/Watercooler_tankless.png")
+			$Control/PanelContainer/TextureButton.disabled = false
+			$Control/PanelContainer/Label.text = "Place the watertank"
+	
+
 func _find_canvas_layer(node: Node) -> Node:
 	var current = node
 	while current != null:
