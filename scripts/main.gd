@@ -90,8 +90,8 @@ func _process(delta: float) -> void:
 	
 	# --- 5. Automatic Fire Drill Trigger (Only trigger ONCE) ---
 	if not fire_drill_triggered_today and TaskManager.level_time_passed >= 3:
-		if day_data:
-			print("Current Day ID: ", day_data.day_id)
+		# if day_data:
+			# print("Current Day ID: ", day_data.day_id)
 		if day_data.day_id == "w0day1":
 			if FireManager.current_state == FireManager.FireState.NORMAL:
 				fire_drill_triggered_today = true # Mark as done so it doesn't loop
