@@ -4,7 +4,7 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	WatercoolerManager.current_state = WatercoolerManager.State.TANKREMOVED	
+	#WatercoolerManager.current_state = WatercoolerManager.State.TANKREMOVED	
 	match WatercoolerManager.current_state:
 		WatercoolerManager.State.FRESH:
 			$Control/PanelContainer/Label.text = "You need to remove the old watertank\nfrom the watercooler first"
