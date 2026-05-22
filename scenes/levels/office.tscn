@@ -193,7 +193,6 @@ scene_path = "res://scenes/Tasks/Whiteboard/Whiteboard_task.tscn"
 interact_name = "Clear whiteboard"
 
 [node name="Control" type="Control" parent="." unique_id=1146814837]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
