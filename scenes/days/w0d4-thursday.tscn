@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="6_1lk6l"]
 [ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="6_bg066"]
 [ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="7_x70sf"]
-[ext_resource type="Resource" uid="uid://k5gmh5w4jaa" path="res://assets/days/w0day0.tres" id="8_day"]
+[ext_resource type="Resource" uid="uid://dgah6l6blwuxj" path="res://assets/days/w0d4-thursday.tres" id="8_day"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r1e1b"]
 size = Vector2(10, 10)
@@ -18,7 +18,6 @@ height = 40.0
 y_sort_enabled = true
 script = ExtResource("1_r1e1b")
 day_data = ExtResource("8_day")
-evac_speed = null
 
 [node name="UI" parent="." unique_id=547110877 instance=ExtResource("3_73x1o")]
 
