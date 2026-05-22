@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://doq7hk6gddqsj" path="res://scenes/Tasks/Whiteboard/node_2d.gd" id="1_1prki"]
 [ext_resource type="Script" uid="uid://cn4axvydpte5p" path="res://scenes/Tasks/Whiteboard/control.gd" id="1_od77l"]
-[ext_resource type="Script" path="res://scenes/Tasks/Whiteboard/whiteboard_task.gd" id="1_qkuyd"]
+[ext_resource type="Script" uid="uid://e8oe55ymwucp" path="res://scenes/Tasks/Whiteboard/whiteboard_task.gd" id="1_qkuyd"]
 [ext_resource type="Texture2D" uid="uid://b2wq47m5yqxcw" path="res://assets/tasks/Whiteboard/Whiteboard.png" id="3_c6swj"]
 [ext_resource type="Script" uid="uid://laqywbgw8shl" path="res://scenes/Tasks/Whiteboard/button.gd" id="5_usjox"]
 [ext_resource type="Texture2D" uid="uid://dcw34jd8snlcm" path="res://assets/tasks/Whiteboard/EraserSmall.png" id="6_sjj4x"]

@@ -25,6 +25,7 @@ MusicManager="*uid://c3volmi6gp13"
 TaskManager="*res://scripts/autoload/task_manager.gd"
 PrinterManager="*uid://csfd7whyds6f7"
 FireManager="*res://scripts/autoload/FireManager.gd"
+WatercoolerManager="*uid://c6ebybhbnnnmx"
 
 [display]
 
