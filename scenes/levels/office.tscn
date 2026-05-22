@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bm4vdrlj4tc2e" path="res://scenes/levels/music.gd" id="1_dmpnx"]
 [ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="2_dmpnx"]
-[ext_resource type="PackedScene" uid="uid://dqm2tr3dapst2" path="res://scenes/levels/game_tile_map.tscn" id="2_k1nkb"]
+[ext_resource type="PackedScene" uid="uid://doto3wp3o76o3" path="res://scenes/levels/game_tile_map.tscn" id="2_k1nkb"]
 [ext_resource type="Texture2D" uid="uid://dxxljiuimmwbr" path="res://assets/interactables/Printer.png" id="4_dmpnx"]
 [ext_resource type="Texture2D" uid="uid://bh61mw6svsndb" path="res://assets/tasks/Printer/red_light.png" id="5_4m8q4"]
 [ext_resource type="Texture2D" uid="uid://dmhimegnvtpci" path="res://assets/interactables/Whiteboard.png" id="5_uw80i"]
@@ -16,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://hptjsn3gj04x" path="res://assets/music/FiredrillSoundeffect.mp3" id="13_jbvgb"]
 [ext_resource type="PackedScene" uid="uid://dlhivy8ytf454" path="res://scenes/character/DialogueUI.tscn" id="13_l0kex"]
 [ext_resource type="Texture2D" uid="uid://cyfuh4uekuwh" path="res://assets/interactables/doors.png" id="15_k1nkb"]
-[ext_resource type="Script" uid="uid://dcrpi5l1gf12m" path="res://scenes/levels/emergency_door.gd" id="16_8kfeh"]
+[ext_resource type="Script" path="res://scenes/levels/emergency_door.gd" id="16_8kfeh"]
 [ext_resource type="PackedScene" uid="uid://dknlmp52ouibu" path="res://scenes/npc/Boss/Boss.tscn" id="16_lin3j"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dmpnx"]
@@ -152,7 +152,7 @@ interact_name = "Change water"
 
 [node name="Desktop" parent="." unique_id=760676525 instance=ExtResource("2_dmpnx")]
 y_sort_enabled = true
-position = Vector2(912, 284)
+position = Vector2(976, 317)
 sprite = SubResource("CompressedTexture2D_uw80i")
 collider = SubResource("RectangleShape2D_ey3sf")
 area = SubResource("CapsuleShape2D_uw80i")
@@ -192,6 +192,7 @@ scene_path = "res://scenes/Tasks/Whiteboard/Whiteboard_task.tscn"
 interact_name = "Clear whiteboard"
 
 [node name="Control" type="Control" parent="." unique_id=1146814837]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
