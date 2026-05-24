@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://baabwjdj1y8io"]
+
+[ext_resource type="Script" uid="uid://4t5vlsfujqd0" path="res://scripts/npc/lunch_npc.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b7myljw2na8gl" path="res://assets/NPCs/Peter/Idle.png" id="2_idle"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0"]
+atlas = ExtResource("2_idle")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1"]
+atlas = ExtResource("2_idle")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2"]
+atlas = ExtResource("2_idle")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3"]
+atlas = ExtResource("2_idle")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4"]
+atlas = ExtResource("2_idle")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5"]
+atlas = ExtResource("2_idle")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_idle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
+radius = 16.666666
+height = 78.666664
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_interact"]
+radius = 47.0
+
+[node name="Peter" type="CharacterBody2D" unique_id=302291116]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_script")
+npc_id = "peter"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=137582699]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_idle")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=258726673]
+position = Vector2(-5.3333335, -1.333333)
+shape = SubResource("CapsuleShape2D_body")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=263977918]
+position = Vector2(-5.9999986, 29.333336)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1553881068]
+position = Vector2(2.6666653, -32.666668)
+shape = SubResource("CircleShape2D_interact")
+
+[node name="Label" type="Label" parent="." unique_id=1629911520]
+visible = false
+z_index = 10
+offset_left = -40.666668
+offset_top = -49.999996
+offset_right = 44.000004
+offset_bottom = -26.999996
+theme_override_font_sizes/font_size = 5
+text = "Talk"
+horizontal_alignment = 1

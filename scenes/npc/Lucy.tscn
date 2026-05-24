@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://pwqrvv5ffdf8"]
+
+[ext_resource type="Script" uid="uid://4t5vlsfujqd0" path="res://scripts/npc/lunch_npc.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://ctcia6ho1uoyv" path="res://assets/NPCs/Lucy/Idle.png" id="2_idle"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0"]
+atlas = ExtResource("2_idle")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1"]
+atlas = ExtResource("2_idle")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2"]
+atlas = ExtResource("2_idle")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3"]
+atlas = ExtResource("2_idle")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4"]
+atlas = ExtResource("2_idle")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5"]
+atlas = ExtResource("2_idle")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_idle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
+radius = 17.333336
+height = 72.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_interact"]
+radius = 47.0
+
+[node name="Lucy" type="CharacterBody2D" unique_id=1348097852]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_script")
+npc_id = "lucy"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=508736632]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_idle")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1807492274]
+position = Vector2(-7.333333, 0.66666675)
+shape = SubResource("CapsuleShape2D_body")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=259133175]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1046252205]
+position = Vector2(-5.333334, -2.6666641)
+shape = SubResource("CircleShape2D_interact")
+
+[node name="Label" type="Label" parent="." unique_id=984938921]
+visible = false
+z_index = 10
+offset_left = -40.666668
+offset_top = -49.999996
+offset_right = 44.000004
+offset_bottom = -26.999996
+theme_override_font_sizes/font_size = 5
+text = "Talk"
+horizontal_alignment = 1

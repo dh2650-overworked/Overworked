@@ -82,7 +82,7 @@ offset_bottom = 269.0
 mouse_filter = 2
 theme = ExtResource("2_y76c1")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=650975988]
+[node name="DialogueRoot" type="Control" parent="Control"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -94,31 +94,47 @@ offset_top = -114.0
 offset_right = 144.5
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/DialogueRoot" unique_id=650975988]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -104.0
+grow_horizontal = 2
+grow_vertical = 0
 mouse_filter = 0
 theme_override_constants/margin_bottom = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer" unique_id=634537919]
+[node name="PanelContainer" type="PanelContainer" parent="Control/DialogueRoot/MarginContainer" unique_id=634537919]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_yqy0j")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/PanelContainer" unique_id=88647204]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/DialogueRoot/MarginContainer/PanelContainer" unique_id=88647204]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/separation = 10
 
-[node name="ContentText" type="RichTextLabel" parent="Control/MarginContainer/PanelContainer/VBoxContainer" unique_id=1089821522]
+[node name="ContentText" type="RichTextLabel" parent="Control/DialogueRoot/MarginContainer/PanelContainer/VBoxContainer" unique_id=1089821522]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_colors/default_color = Color(0.1764706, 0.1882353, 0.2784314, 1)
 theme_override_constants/line_separation = 1
 theme_override_font_sizes/normal_font_size = 9
-text = "Hey! I need to submit a report, but I’m about to head out for a wedding... 
+text = "Hey! I need to submit a report, but I'm about to head out for a wedding... 
 Could you take care of it for me?"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/PanelContainer/VBoxContainer" unique_id=283770497]
+[node name="HBoxRow" type="HBoxContainer" parent="Control/DialogueRoot/MarginContainer/PanelContainer/VBoxContainer" unique_id=283770497]
 layout_mode = 2
+size_flags_vertical = 0
 
-[node name="AcceptBtn" type="Button" parent="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1816209415]
+[node name="AcceptBtn" type="Button" parent="Control/DialogueRoot/MarginContainer/PanelContainer/VBoxContainer/HBoxRow" unique_id=1816209415]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.1764706, 0.1882353, 0.2784314, 0.972549)
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxFlat_ql3ii")
@@ -127,8 +143,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8iwa3")
 button_mask = 7
 text = "Sure, I'll handle it."
 
-[node name="RejectBtn" type="Button" parent="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1977235310]
+[node name="RejectBtn" type="Button" parent="Control/DialogueRoot/MarginContainer/PanelContainer/VBoxContainer/HBoxRow" unique_id=1977235310]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.1764706, 0.1882353, 0.2784314, 0.972549)
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxFlat_ql3ii")
@@ -137,24 +154,27 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8iwa3")
 button_mask = 7
 text = "Wish I could, but I'm swamped."
 
-[node name="NameTag" type="Label" parent="Control" unique_id=36752045]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -124.5
-offset_top = -122.0
-offset_right = -76.5
-offset_bottom = -101.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="VBoxColumn" type="VBoxContainer" parent="Control/DialogueRoot/MarginContainer/PanelContainer/VBoxContainer" unique_id=424919851]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 6
+
+[node name="NameTag" type="Label" parent="Control/DialogueRoot" unique_id=36752045]
+z_index = 1
+layout_mode = 0
+offset_left = 21.0
+offset_top = -8.0
+offset_right = 69.0
+offset_bottom = 13.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
 theme_override_styles/normal = SubResource("StyleBoxFlat_jrsqd")
 text = "Kevin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/AcceptBtn" to="." method="_on_accept_btn_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/RejectBtn" to="." method="_on_reject_btn_pressed"]
+[connection signal="pressed" from="Control/DialogueRoot/MarginContainer/PanelContainer/VBoxContainer/HBoxRow/AcceptBtn" to="." method="_on_accept_btn_pressed"]
+[connection signal="pressed" from="Control/DialogueRoot/MarginContainer/PanelContainer/VBoxContainer/HBoxRow/RejectBtn" to="." method="_on_reject_btn_pressed"]

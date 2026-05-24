@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LunchDialogueData" format=3 uid="uid://cex5r2iftkhot"]
+
+[ext_resource type="Script" uid="uid://cfiljbox47ovp" path="res://scripts/resources/lunch_dialogue_data.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+speaker_name = "John"
+opening_text = "You know, if you stay here long enough, you'll realize the work never ends. Don't push yourself too hard. Learning how to sneak a break here. You know that storage room behind the roof vent? The manager never goes there."
+choice_a_text = "Are you saying... that's the perfect hiding spot?"
+choice_b_text = "I think I'll just try to get my work done."
+choice_a_feedback = "Shh, I didn't say anything. Just don't tell Peter. That guy can't keep a secret."
+choice_b_feedback = "Suit yourself. But when you figure out that hard work doesn't pay off, come find me."

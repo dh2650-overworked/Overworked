@@ -16,9 +16,12 @@
 [ext_resource type="AudioStream" uid="uid://hptjsn3gj04x" path="res://assets/music/FiredrillSoundeffect.mp3" id="13_jbvgb"]
 [ext_resource type="PackedScene" uid="uid://dlhivy8ytf454" path="res://scenes/character/DialogueUI.tscn" id="13_l0kex"]
 [ext_resource type="Texture2D" uid="uid://cyfuh4uekuwh" path="res://assets/interactables/doors.png" id="15_k1nkb"]
-[ext_resource type="Script" uid="uid://dcrpi5l1gf12m" path="res://scenes/levels/emergency_door.gd" id="16_8kfeh"]
+[ext_resource type="Script" path="res://scenes/levels/emergency_door.gd" id="16_8kfeh"]
 [ext_resource type="PackedScene" uid="uid://dknlmp52ouibu" path="res://scenes/npc/Boss/Boss.tscn" id="16_lin3j"]
+[ext_resource type="PackedScene" uid="uid://baabwjdj1y8io" path="res://scenes/npc/Peter.tscn" id="17_peter"]
+[ext_resource type="PackedScene" uid="uid://pwqrvv5ffdf8" path="res://scenes/npc/Lucy.tscn" id="18_lucy"]
 [ext_resource type="Texture2D" uid="uid://m7bf3px6fbxe" path="res://assets/office_assets/separately_assets/Sprite-0023.png" id="19_8kfeh"]
+[ext_resource type="PackedScene" uid="uid://bvadnd38pdkel" path="res://scenes/npc/John.tscn" id="19_john"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dmpnx"]
 load_path = "res://.godot/imported/Watercooler.png-aa30e7955def19804796b2dd53587a3b.ctex"
@@ -215,6 +218,21 @@ script = ExtResource("6_ey3sf")
 [node name="CharacterBody2D" parent="." unique_id=791234317 instance=ExtResource("13_a576x")]
 position = Vector2(563, 396)
 dialogue_scene = ExtResource("13_l0kex")
+
+[node name="Peter" parent="." unique_id=2145077286 instance=ExtResource("17_peter")]
+y_sort_enabled = true
+position = Vector2(-104, 370)
+scale = Vector2(1.2, 1.2)
+
+[node name="Lucy" parent="." unique_id=1306481612 instance=ExtResource("18_lucy")]
+y_sort_enabled = true
+position = Vector2(48.000015, 376)
+scale = Vector2(1.2, 1.2)
+
+[node name="John" parent="." unique_id=1513150389 instance=ExtResource("19_john")]
+y_sort_enabled = true
+position = Vector2(336, 380)
+scale = Vector2(1.2, 1.2)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=291721537]
 

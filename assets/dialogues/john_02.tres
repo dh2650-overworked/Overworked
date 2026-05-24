@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LunchDialogueData" format=3 uid="uid://2bedc0oxl1vr"]
+
+[ext_resource type="Script" uid="uid://cfiljbox47ovp" path="res://scripts/resources/lunch_dialogue_data.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+speaker_name = "John"
+opening_text = "You've noticed this, right? The office lights run at 50 hertz. Work under that long enough, and it actually slows down your thinking. Don't you ever feel kind of trapped in here?"
+choice_a_text = "Yeah, honestly. I've been feeling kind of foggy."
+choice_b_text = "Not really. I actually find it pretty easy to focus here."
+choice_a_feedback = "See? I knew it. You should try switching things up."
+choice_b_feedback = "You are actually blocking all of that out. That's... actually kind of impressive."
