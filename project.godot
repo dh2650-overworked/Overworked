@@ -42,6 +42,7 @@ project/assembly_name="Overwork"
 [global_group]
 
 player=""
+npc=""
 
 [input]
 

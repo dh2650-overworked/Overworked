@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c3s4dsuc8hluh" path="res://scenes/character/Colleague1.tscn" id="13_a576x"]
 [ext_resource type="AudioStream" uid="uid://hptjsn3gj04x" path="res://assets/music/FiredrillSoundeffect.mp3" id="13_jbvgb"]
 [ext_resource type="PackedScene" uid="uid://dlhivy8ytf454" path="res://scenes/character/DialogueUI.tscn" id="13_l0kex"]
+[ext_resource type="PackedScene" uid="uid://uxs1jv2nooey" path="res://scenes/npc/Friendlynpc/Friendlynpc.tscn" id="14_sbt4i"]
 [ext_resource type="Texture2D" uid="uid://cyfuh4uekuwh" path="res://assets/interactables/doors.png" id="15_k1nkb"]
 [ext_resource type="Script" uid="uid://dcrpi5l1gf12m" path="res://scenes/levels/emergency_door.gd" id="16_8kfeh"]
 [ext_resource type="PackedScene" uid="uid://dknlmp52ouibu" path="res://scenes/npc/Boss/Boss.tscn" id="16_lin3j"]
@@ -213,8 +214,11 @@ texture = SubResource("GradientTexture1D_ey3sf")
 script = ExtResource("6_ey3sf")
 
 [node name="CharacterBody2D" parent="." unique_id=791234317 instance=ExtResource("13_a576x")]
-position = Vector2(563, 396)
+position = Vector2(578, 412.00003)
 dialogue_scene = ExtResource("13_l0kex")
+
+[node name="NewNPC" parent="CharacterBody2D" unique_id=236055752 instance=ExtResource("14_sbt4i")]
+position = Vector2(-122, -56.666687)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=291721537]
 
