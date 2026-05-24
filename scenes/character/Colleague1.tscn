@@ -5,13 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://covwnoq825x07" path="res://assets/NPCs/Kevin.png" id="4_xh6qv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y4mkt"]
-radius = 15.0
-height = 60.0
+height = 24.666666
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ecaep"]
 radius = 47.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=791234317]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=791234317 groups=["npc"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_ecaep")
 report_task = ExtResource("2_ecaep")

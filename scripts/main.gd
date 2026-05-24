@@ -1,7 +1,8 @@
 extends Node2D
 
 ## Each day scene: assign a DayData .tres in the inspector (Resource slot).
-
+signal lunch_started(pos)
+signal lunch_ended
 const Whiteboard := preload("res://assets/tasks/whiteboard.tres")
 const _DAY_DATA_SCRIPT_PATH := "res://scripts/resources/day_data.gd"
 
@@ -221,10 +222,11 @@ func _on_nav_requested(instance_id: String) -> void:
 
 func _on_lunch_started() -> void:
 	_lunch_banner.visible = true
-
+	get_tree().call_group("npc", "start_lunch", Vector2(-5, 412)) 
+	
 func _on_lunch_ended() -> void:
 	_lunch_banner.visible = false
-
+	get_tree().call_group("npc", "end_lunch")
 func _on_lunch_acknowledged() -> void:
 	_lunch_banner.visible = false
 

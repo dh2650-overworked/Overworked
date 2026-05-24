@@ -11,7 +11,8 @@ var is_fleeing: bool = false
 var is_returning: bool = false
 var original_pos: Vector2       
 var exit_target: Vector2 = Vector2.ZERO
-
+var is_going_to_lunch: bool = false
+var lunch_target: Vector2 = Vector2.ZERO
 
 var bounce_tween: Tween
 var rotate_tween: Tween
@@ -43,6 +44,11 @@ func _ready() -> void:
 		fm.fire_started.connect(_on_fire_started)
 		fm.fire_ended.connect(_on_fire_ended)
 		print("NPC: FIRE SIGNALS CONNECTED!")
+		
+	var main_node = get_node_or_null("/root/Main") # 路径取决于你的主场景名字
+	if main_node:
+		main_node.lunch_started.connect(start_lunch)
+		main_node.lunch_ended.connect(end_lunch)
 
 func _on_fire_started():
 	self.collision_layer = 0
@@ -67,6 +73,14 @@ func _physics_process(_delta: float) -> void:
 			self.visible = false 
 			print("NPC: Hidden at exit.")
 			
+	elif is_going_to_lunch: # <--- 新加的午餐移动逻辑
+		print("lunch time")
+		_move_to(lunch_target)
+		if global_position.distance_to(lunch_target) < 10.0:
+			_stop_moving()
+			is_going_to_lunch = false # 停止移动状态
+			print("NPC: Arrived at lunch table.")
+					
 	elif is_returning:
 		self.visible = true 
 		_move_to(original_pos)
@@ -77,6 +91,22 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 
+func start_lunch(target_pos: Vector2):
+	print("Lunch time!!!")
+	is_going_to_lunch = true
+	is_returning = false # 确保不冲突
+	lunch_target = target_pos
+	if speech_label:
+		speech_label.text = "I'm hungry, heading to lunch!"
+		speech_label.visible = true
+
+func end_lunch():
+	is_going_to_lunch = false
+	is_returning = true # 让 NPC 走回 original_pos
+	if speech_label:
+		speech_label.visible = false
+		
+		
 func _move_to(target: Vector2):
 	var direction = global_position.direction_to(target)
 	velocity = direction * run_speed
@@ -96,7 +126,7 @@ func _stop_moving():
 	
 	if speech_label: 
 		speech_label.visible = false
-	print("NPC: Movement fully stopped and animations cleared.")
+	#print("NPC: Movement fully stopped and animations cleared.")
 
 func start_fleeing(target_pos: Vector2):
 	if is_fleeing: return 
