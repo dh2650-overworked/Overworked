@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://73opty05pi2b"]
 
 [ext_resource type="Script" uid="uid://bvavhhbwea3ud" path="res://scripts/main.gd" id="1_sd5jr"]
-[ext_resource type="Resource" path="res://assets/days/w1d5-friday.tres" id="2_tuw6i"]
-[ext_resource type="PackedScene" uid="uid://1jnrp1jmclbh" path="res://scenes/ui/UI.tscn" id="3_dy1ru"]
+[ext_resource type="Resource" uid="uid://bw0day1data02" path="res://assets/days/w1d5-friday.tres" id="2_tuw6i"]
+[ext_resource type="PackedScene" uid="uid://csfsy27pqc5fn" path="res://scenes/ui/UI.tscn" id="3_dy1ru"]
 [ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="4_idxsc"]
 [ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="5_xd1jk"]
 [ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="6_nnl3p"]
@@ -18,6 +18,8 @@ height = 40.0
 y_sort_enabled = true
 script = ExtResource("1_sd5jr")
 day_data = ExtResource("2_tuw6i")
+evac_speed = null
+day_report_text = "Day w1d5"
 
 [node name="UI" parent="." unique_id=547110877 instance=ExtResource("3_dy1ru")]
 
