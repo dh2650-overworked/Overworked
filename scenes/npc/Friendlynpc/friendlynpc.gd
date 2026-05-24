@@ -29,6 +29,7 @@ var random_lines = [
 
 func _ready() -> void:
 	await get_tree().process_frame 
+	NpcPhysics.apply_body_collision(self)
 	original_pos = global_position
 	print("!!! NPC SCRIPT IS ALIVE !!!")
 
@@ -51,14 +52,12 @@ func _ready() -> void:
 		main_node.lunch_ended.connect(end_lunch)
 
 func _on_fire_started():
-	self.collision_layer = 0
-	self.collision_mask = 0
+	NpcPhysics.disable_body_collision(self)
 	print("NPC: Received fire signal! Running now!")
 	start_fleeing(Vector2(500, 500)) 
 
 func _on_fire_ended():
-	self.collision_layer = 1
-	self.collision_mask = 1
+	NpcPhysics.apply_body_collision(self)
 	self.visible = true  
 	is_fleeing = false
 	is_returning = true 

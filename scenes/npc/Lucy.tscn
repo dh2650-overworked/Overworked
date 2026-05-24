@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://pwqrvv5ffdf8"]
+[gd_scene format=3 uid="uid://b8aat6uifsist"]
 
 [ext_resource type="Script" uid="uid://4t5vlsfujqd0" path="res://scripts/npc/lunch_npc.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://ctcia6ho1uoyv" path="res://assets/NPCs/Lucy/Idle.png" id="2_idle"]
@@ -53,15 +53,16 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
-radius = 17.333336
-height = 72.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hyx0s"]
+radius = 13.0
+height = 40.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_interact"]
 radius = 47.0
 
 [node name="Lucy" type="CharacterBody2D" unique_id=1348097852]
 scale = Vector2(1.5, 1.5)
+collision_layer = 4
 script = ExtResource("1_script")
 npc_id = "lucy"
 
@@ -71,9 +72,9 @@ sprite_frames = SubResource("SpriteFrames_idle")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1807492274]
-position = Vector2(-7.333333, 0.66666675)
-shape = SubResource("CapsuleShape2D_body")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1194790462]
+position = Vector2(-5.3333335, -2)
+shape = SubResource("CapsuleShape2D_hyx0s")
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=259133175]
 

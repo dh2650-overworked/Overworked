@@ -222,7 +222,7 @@ func _on_nav_requested(instance_id: String) -> void:
 
 func _on_lunch_started() -> void:
 	_lunch_banner.visible = true
-	get_tree().call_group("npc", "start_lunch", Vector2(-5, 412)) 
+	get_tree().call_group("npc", "start_lunch")
 	
 func _on_lunch_ended() -> void:
 	_lunch_banner.visible = false
