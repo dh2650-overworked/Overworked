@@ -14,13 +14,6 @@ collider = SubResource("RectangleShape2D_y1imy")
 scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"
 
-[node name="Water2" parent="." unique_id=975266407 instance=ExtResource("1_mjw44")]
-z_index = 1
-position = Vector2(13, 274)
-collider = SubResource("RectangleShape2D_y1imy")
-scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
-interact_name = "Water plants"
-
 [node name="Water3" parent="." unique_id=1884165891 instance=ExtResource("1_mjw44")]
 z_index = 1
 position = Vector2(-145, 307)
@@ -35,13 +28,6 @@ collider = SubResource("RectangleShape2D_y1imy")
 scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"
 
-[node name="Water5" parent="." unique_id=375014794 instance=ExtResource("1_mjw44")]
-z_index = 1
-position = Vector2(78, 289)
-collider = SubResource("RectangleShape2D_y1imy")
-scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
-interact_name = "Water plants"
-
 [node name="Water6" parent="." unique_id=624674809 instance=ExtResource("1_mjw44")]
 z_index = 1
 position = Vector2(1148, 373)
@@ -50,6 +36,7 @@ scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"
 
 [node name="Water7" parent="." unique_id=1258762792 instance=ExtResource("1_mjw44")]
+visible = false
 z_index = 1
 position = Vector2(1101, 52)
 collider = SubResource("RectangleShape2D_y1imy")

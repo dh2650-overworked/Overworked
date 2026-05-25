@@ -8,3 +8,4 @@ class_name TaskData
 @export var icon: Texture2D
 @export var reward_money: int = 0
 @export var scene_path: String = ""
+@export var max_count: int = 1

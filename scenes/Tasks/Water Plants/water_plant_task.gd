@@ -13,6 +13,7 @@ signal task_finished(success)
 var progress: float = 0.0
 var is_completed: bool = false
 var is_in_range: bool = false
+var source_node: Node = null # set by PoI before opening scene
 
 # Ensure these node names match your Scene Tree exactly!
 @onready var plant = $Plant
@@ -112,8 +113,12 @@ func complete_task():
 	# Wait 2 seconds for player to see the result
 	await get_tree().create_timer(2.0).timeout
 
+	# hide node
+	if source_node != null:
+		source_node.disable()
+
 	# 4. Notify and remove the task scene
-	TaskManager.complete_task_by_type("water_plant")
+	TaskManager.increment_task("water_plant")
 
 	emit_signal("task_finished", false)
 	if get_parent() == get_tree().root: 

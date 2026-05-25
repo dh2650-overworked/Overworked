@@ -50,6 +50,9 @@ func _on_toggle_pressed() -> void:
 
 
 func _on_task_added(task_instance: TaskInstance) -> void:
+	if _items.has(task_instance.instance_id):
+		_items[task_instance.instance_id].setup(task_instance)  # just refresh
+		return
 	# region agent log
 	TaskManager.agent_debug_log("E", "todo_list_ui.gd:_on_task_added", "received", {"instance_id": task_instance.instance_id})
 	# endregion
