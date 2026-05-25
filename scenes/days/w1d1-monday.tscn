@@ -17,7 +17,7 @@ evac_speed = null
 [node name="office" parent="." unique_id=856302002 instance=ExtResource("4_mmfaw")]
 
 [node name="CharacterBody2D" parent="." unique_id=470434658 instance=ExtResource("5_sohr3")]
-position = Vector2(124, 201)
+position = Vector2(380, 460)
 scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=828365990]
