@@ -82,7 +82,7 @@ offset_bottom = 269.0
 mouse_filter = 2
 theme = ExtResource("2_y76c1")
 
-[node name="DialogueRoot" type="Control" parent="Control"]
+[node name="DialogueRoot" type="Control" parent="Control" unique_id=2138211673]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -124,8 +124,7 @@ size_flags_vertical = 0
 theme_override_colors/default_color = Color(0.1764706, 0.1882353, 0.2784314, 1)
 theme_override_constants/line_separation = 1
 theme_override_font_sizes/normal_font_size = 9
-text = "Hey! I need to submit a report, but I'm about to head out for a wedding... 
-Could you take care of it for me?"
+text = "Friday check-in. I need this report finished before the weekend. It's extra work, but good practice. Can you handle it?"
 fit_content = true
 
 [node name="HBoxRow" type="HBoxContainer" parent="Control/DialogueRoot/MarginContainer/PanelContainer/VBoxContainer" unique_id=283770497]
@@ -141,7 +140,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ql3ii")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_y76c1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8iwa3")
 button_mask = 7
-text = "Sure, I'll handle it."
+text = "Yes, boss."
 
 [node name="RejectBtn" type="Button" parent="Control/DialogueRoot/MarginContainer/PanelContainer/VBoxContainer/HBoxRow" unique_id=1977235310]
 layout_mode = 2
@@ -152,7 +151,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ql3ii")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_y76c1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8iwa3")
 button_mask = 7
-text = "Wish I could, but I'm swamped."
+text = "I'd rather focus on what I already have."
 
 [node name="VBoxColumn" type="VBoxContainer" parent="Control/DialogueRoot/MarginContainer/PanelContainer/VBoxContainer" unique_id=424919851]
 visible = false
@@ -168,11 +167,10 @@ offset_left = 21.0
 offset_top = -8.0
 offset_right = 69.0
 offset_bottom = 13.0
-mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
 theme_override_styles/normal = SubResource("StyleBoxFlat_jrsqd")
-text = "Kevin"
+text = "Boss"
 horizontal_alignment = 1
 vertical_alignment = 1
 
