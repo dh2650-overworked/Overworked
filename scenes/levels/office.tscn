@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="2_dmpnx"]
 [ext_resource type="PackedScene" uid="uid://doto3wp3o76o3" path="res://scenes/levels/game_tile_map.tscn" id="2_k1nkb"]
 [ext_resource type="Texture2D" uid="uid://dxxljiuimmwbr" path="res://assets/interactables/Printer.png" id="4_dmpnx"]
+[ext_resource type="Texture2D" uid="uid://coip14dn1y3gf" path="res://assets/office_assets/separately_assets/Sprite-0009.png" id="4_h5xel"]
 [ext_resource type="Texture2D" uid="uid://bh61mw6svsndb" path="res://assets/tasks/Printer/red_light.png" id="5_4m8q4"]
 [ext_resource type="Texture2D" uid="uid://dmhimegnvtpci" path="res://assets/interactables/Whiteboard.png" id="5_uw80i"]
 [ext_resource type="Script" uid="uid://yjtvc6coivww" path="res://scenes/levels/SkyGradient.gd" id="6_ey3sf"]
@@ -31,9 +32,6 @@ load_path = "res://.godot/imported/Watercooler.png-aa30e7955def19804796b2dd53587
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ey3sf"]
 radius = 16.0
 height = 64.0
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uw80i"]
-load_path = "res://.godot/imported/Workstation.png-4dabca2ddcaea7ccee72298e26a89a4f.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ey3sf"]
 size = Vector2(20, 10)
@@ -157,7 +155,7 @@ interact_name = "Change water"
 [node name="Desktop" parent="." unique_id=760676525 instance=ExtResource("2_dmpnx")]
 y_sort_enabled = true
 position = Vector2(976, 317)
-sprite = SubResource("CompressedTexture2D_uw80i")
+sprite = ExtResource("4_h5xel")
 collider = SubResource("RectangleShape2D_ey3sf")
 area = SubResource("CapsuleShape2D_uw80i")
 scene_path = "res://scenes/pc/pc_scene.tscn"
