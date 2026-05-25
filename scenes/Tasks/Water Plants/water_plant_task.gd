@@ -31,6 +31,10 @@ func _ready():
 	update_plant_visuals()
 
 func _process(delta):
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = false
+		
 	# 1. Watering can follows the mouse
 	var mouse_pos = get_viewport().get_mouse_position()
 	watering_can.global_position = mouse_pos
@@ -41,6 +45,7 @@ func _process(delta):
 			water_sound.stop()
 		water_particles.emitting = false
 		watering_can.visible = false
+		if player: player.can_move = true
 		return
 
 	# 2. Range detection
