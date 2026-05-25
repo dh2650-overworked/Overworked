@@ -31,6 +31,7 @@ var is_dialogue_active: bool = false # 防止重复弹窗
 @onready var sprite = $Boss 
 
 func _ready() -> void:
+	NpcPhysics.apply_body_collision(self)
 	original_pos = global_position
 	print("!!! NPC SCRIPT IS ALIVE !!!")
 
@@ -48,15 +49,13 @@ func _ready() -> void:
 		print("NPC: FIRE SIGNALS CONNECTED!")
 
 func _on_fire_started():
-	self.collision_layer = 0
-	self.collision_mask = 0
+	NpcPhysics.disable_body_collision(self)
 	print("NPC: Received fire signal! Running now!")
 	start_fleeing(Vector2(500, 500)) 
 
 func _on_fire_ended():
 	self.visible = true  
-	self.collision_layer = 1
-	self.collision_mask = 1
+	NpcPhysics.apply_body_collision(self)
 	is_fleeing = false
 	is_returning = true 
 	print("NPC: Fire drill over, bouncing back home.")

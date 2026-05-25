@@ -26,7 +26,7 @@ TaskManager="*res://scripts/autoload/task_manager.gd"
 PrinterManager="*uid://csfd7whyds6f7"
 FireManager="*res://scripts/autoload/FireManager.gd"
 WatercoolerManager="*uid://c6ebybhbnnnmx"
-Signals="*uid://datdtg5aqi5ne"
+DialogueManager="*res://scripts/autoload/dialogue_manager.gd"
 
 [display]
 
@@ -77,6 +77,7 @@ interact={
 
 2d_physics/layer_1="world"
 2d_physics/layer_2="interactions"
+2d_physics/layer_3="npc"
 
 [physics]
 

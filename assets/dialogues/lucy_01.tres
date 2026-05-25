@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LunchDialogueData" format=3 uid="uid://bgbhxf8ein8se"]
+
+[ext_resource type="Script" uid="uid://cfiljbox47ovp" path="res://scripts/resources/lunch_dialogue_data.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+speaker_name = "Lucy"
+opening_text = "Hey, you're the new person, right? I'm Lucy. The first few weeks can feel like a lot, honestly. The pace here is pretty crazy. But if you're ever stuck or just feel like talking to someone, seriously, feel free to come find me."
+choice_a_text = "Thanks. I have been feeling a bit stressed."
+choice_b_text = "I'll adjust soon enough, don't worry."
+choice_a_feedback = "That's totally normal. We've all been there."
+choice_b_feedback = "Good to hear. You seem pretty confident."

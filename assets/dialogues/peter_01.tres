@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="LunchDialogueData" format=3 uid="uid://dbtnuwuorsy1q"]
+
+[ext_resource type="Script" uid="uid://cfiljbox47ovp" path="res://scripts/resources/lunch_dialogue_data.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+speaker_name = "Peter"
+opening_text = "Yo, new guy! I'm Peter. There's nothing that goes on in this building that I don't know about. Honestly, the office gossip is way more interesting than the actual work here. Interested in some secrets?"
+choice_a_text = "I'm curious."
+choice_b_text = "I'd rather just focus on my work."
+choice_b_feedback = "Man, you're boring. Good luck!"
+choice_a_has_followup = true
+followup_text = "You see that new restaurant downstairs? Yeah, the owner is a relative of our boss. I feel like all the company dinners are gonna be there from now on. But honestly? The food is terrible."
+followup_a_text = "Really? Hope the boss doesn't force everyone to go there."
+followup_b_text = "Eh, I'm not picky. As long as it's edible."
+followup_a_feedback = "Stick with me and I'll save you from the bad spots."
+followup_b_feedback = "Man, you're so easygoing. No wonder you can handle this job."

@@ -79,7 +79,8 @@ func _ready() -> void:
 		var fallback_day = load("res://assets/days/w0day0.tres")
 		if fallback_day:
 			TaskManager.start_level(fallback_day)
-	
+
+	_apply_lunch_npc_presence()
 	# Initial UI updates
 	_on_money_updated(TaskManager.total_money)
 	_update_level_clock()
@@ -134,7 +135,7 @@ func _process(delta: float) -> void:
 	if not fire_drill_triggered_today and TaskManager.level_time_passed >= 3:
 		# if day_data:
 			# print("Current Day ID: ", day_data.day_id)
-		if day_data.day_id == "w0day1":
+		if day_data.day_id == "w1day5":
 			if FireManager.current_state == FireManager.FireState.NORMAL:
 				fire_drill_triggered_today = true # Mark as done so it doesn't loop
 				FireManager.trigger_fire_drill()
@@ -203,8 +204,26 @@ func _on_overtime_choice_made(accepted: bool) -> void:
 		TaskManager.is_overtime = true
 		TaskManager.is_timer_active = true
 		_overtime_active = true
+		_apply_lunch_npc_presence()
 	else:
 		_show_summary()
+
+
+func _apply_lunch_npc_presence() -> void:
+	var active: Array = []
+	if day_data:
+		var raw: Variant = day_data.get("active_npcs")
+		if raw is Array:
+			active = raw
+
+	DialogueManager.set_active_npcs(active)
+
+	var hide_npcs := TaskManager.is_overtime or _overtime_active
+	for npc in get_tree().get_nodes_in_group("lunch_npcs"):
+		var id: String = str(npc.get("npc_id"))
+		var should_show := (not hide_npcs) and (id in active)
+		npc.visible = should_show
+		npc.process_mode = Node.PROCESS_MODE_INHERIT if should_show else Node.PROCESS_MODE_DISABLED
 
 
 func _on_money_updated(new_total: int) -> void:
@@ -224,7 +243,7 @@ func _on_nav_requested(instance_id: String) -> void:
 
 func _on_lunch_started() -> void:
 	_lunch_banner.visible = true
-	get_tree().call_group("npc", "start_lunch", Vector2(-5, 412)) 
+	get_tree().call_group("npc", "start_lunch")
 	
 func _on_lunch_ended() -> void:
 	_lunch_banner.visible = false

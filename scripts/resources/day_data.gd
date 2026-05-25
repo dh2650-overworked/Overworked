@@ -11,3 +11,5 @@ class_name DayData
 @export var start_tasks: Array = []
 @export var timed_tasks: Dictionary = {}
 @export_file("*.tscn") var next_day_scene_path: String = ""
+## NPC ids present today (e.g. "peter", "lucy", "john"). Others stay hidden.
+@export var active_npcs: Array = []

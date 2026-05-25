@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LunchDialogueData" format=3 uid="uid://b24d8uf1b7wry"]
+
+[ext_resource type="Script" uid="uid://cfiljbox47ovp" path="res://scripts/resources/lunch_dialogue_data.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+speaker_name = "Lucy"
+opening_text = "Hey, do you have any pets? My little Corgi has been causing so much trouble at home lately."
+choice_a_text = "Oh, I love dogs! I'd love to see a picture sometime."
+choice_b_text = "I'm not really an animal person."
+choice_a_feedback = "Oh, I love dogs! I'd love to see a picture sometime."
+choice_b_feedback = "Oh... okay! Let's talk about something else then."

@@ -1,10 +1,11 @@
-[gd_scene format=3 uid="uid://cw8e64v4aygca"]
+[gd_scene format=3 uid="uid://brab8apr70q7l"]
 
 [ext_resource type="Script" uid="uid://bvavhhbwea3ud" path="res://scripts/main.gd" id="1_5ey56"]
-[ext_resource type="PackedScene" uid="uid://csfsy27pqc5fn" path="res://scenes/ui/UI.tscn" id="4_8myrj"]
+[ext_resource type="PackedScene" uid="uid://1jnrp1jmclbh" path="res://scenes/ui/UI.tscn" id="4_8myrj"]
+[ext_resource type="PackedScene" uid="uid://xh8p42e5bb48" path="res://scenes/Tasks/Water Plants/all_plants.tscn" id="5_y1imy"]
 [ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="6_wu5er"]
 [ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="7_cjfph"]
-[ext_resource type="Resource" uid="uid://cgpjnt2sfd5tb" path="res://assets/days/w0d5-friday.tres" id="8_day"]
+[ext_resource type="Resource" uid="uid://cmbubtl0d0am4" path="res://assets/days/w0d5-friday.tres" id="8_day"]
 
 [node name="Main3" type="Node2D" unique_id=951420025]
 y_sort_enabled = true
@@ -15,6 +16,9 @@ day_report_text = "Day w0d5"
 [node name="UI" parent="." unique_id=547110877 instance=ExtResource("4_8myrj")]
 
 [node name="office" parent="." unique_id=856302002 instance=ExtResource("6_wu5er")]
+
+[node name="Plants" parent="." unique_id=216255706 instance=ExtResource("5_y1imy")]
+position = Vector2(380, 460)
 
 [node name="CharacterBody2D" parent="." unique_id=470434658 instance=ExtResource("7_cjfph")]
 position = Vector2(124, 201)
