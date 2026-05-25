@@ -10,11 +10,14 @@ signal request_next_level(scene_path: String)
 @onready var _alarm_sound: AudioStreamPlayer = $AlarmSound
 
 @onready var _overtime_panel: Control = $OvertimePanel
+@onready var _game_over_panel: Control = $"Game over"
 @onready var _day_label: Label = $StartDim/DayLabel
 
 func _ready() -> void:
 	if _overtime_panel:
 		_overtime_panel.visible = false
+	if _game_over_panel:
+		_game_over_panel.visible = false
 
 # 3. public function for main.gd
 func play_start_of_day_cinematic(day_label: String = "") -> void:
@@ -53,6 +56,14 @@ func show_overtime_prompt() -> void:
 func hide_overtime_prompt() -> void:
 	if _overtime_panel:
 		_overtime_panel.visible = false
+
+
+func show_game_over() -> void:
+	if _overtime_panel:
+		_overtime_panel.visible = false
+	if _game_over_panel:
+		_game_over_panel.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+		_game_over_panel.visible = true
 
 func _on_overtime_yes_button_pressed() -> void:
 	_overtime_panel.visible = false
