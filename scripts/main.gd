@@ -105,6 +105,8 @@ func _ready() -> void:
 			day_label = str(day_data.get("day_label"))
 		ui_node.play_start_of_day_cinematic(day_label)
 		await ui_node.cinematic_finished
+		if day_data and str(day_data.get("day_id")) == "w0day0":
+			await _play_mentor_dialogue("res://assets/dialogues/intro_tutorial.tres")
 		TaskManager.is_timer_active = true
 		
 func _process(delta: float) -> void:
@@ -218,6 +220,27 @@ func _on_nav_requested(instance_id: String) -> void:
 		var scene = load(found_path)
 		var task_ui = scene.instantiate()
 		add_child(task_ui)
+
+
+func _play_mentor_dialogue(resource_path: String) -> void:
+	var data: MentorDialogueData = load(resource_path) as MentorDialogueData
+	if data == null:
+		return
+	var pages: Array[String] = data.get_pages()
+	if pages.is_empty():
+		return
+	var ui_scene: PackedScene = load("res://scenes/character/DialogueUI.tscn")
+	var ui: CanvasLayer = ui_scene.instantiate()
+	ui.name = "MentorDialogue"
+	ui.process_mode = Node.PROCESS_MODE_ALWAYS
+	get_tree().root.add_child(ui)
+	await get_tree().process_frame
+	get_tree().paused = true
+	for page in pages:
+		ui.show_tutorial(data.speaker_name, page)
+		await ui.tutorial_advance
+	get_tree().paused = false
+	ui.queue_free()
 
 
 func _on_lunch_started() -> void:
