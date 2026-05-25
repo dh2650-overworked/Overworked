@@ -26,15 +26,15 @@ var source_node: Node = null # set by PoI before opening scene
 @onready var water_particles = $WateringCan/CPUParticles2D
 
 func _ready():
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = false
 	progress = 0.0
 	progress_bar.value = 0.0
 	success_overlay.visible = false
 	update_plant_visuals()
 
 func _process(delta):
-	var player = get_tree().get_first_node_in_group("player")
-	if player:
-		player.can_move = false
 		
 	# 1. Watering can follows the mouse
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -46,6 +46,7 @@ func _process(delta):
 			water_sound.stop()
 		water_particles.emitting = false
 		watering_can.visible = false
+		var player = get_tree().get_first_node_in_group("player")
 		if player: player.can_move = true
 		return
 
@@ -127,6 +128,9 @@ func complete_task():
 		get_parent().get_parent().queue_free()
 
 func _on_exit_button_pressed():
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = true
 	emit_signal("task_finished", false)
 	if get_parent() == get_tree().root: 
 		queue_free()
