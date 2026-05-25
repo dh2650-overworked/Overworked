@@ -9,6 +9,7 @@ const _DAY_DATA_SCRIPT_PATH := "res://scripts/resources/day_data.gd"
 const DAY_START_HOUR: int = TaskManager.DAY_START_HOUR
 const SECONDS_PER_GAME_HOUR: float = TaskManager.SECONDS_PER_GAME_HOUR
 const MIDNIGHT_HOUR: int = 24
+const DAILY_POINTS_GOAL: int = 300
 
 @export var day_data: Resource
 
@@ -229,8 +230,7 @@ func _apply_lunch_npc_presence() -> void:
 
 
 func _on_money_updated(new_total: int) -> void:
-	var quota = 300
-	_money_label.text = str(TaskManager.daily_money) + " / " + str(quota) + " $"
+	_money_label.text = str(TaskManager.daily_money) + " / " + str(DAILY_POINTS_GOAL) + " $"
 
 
 func _on_nav_requested(instance_id: String) -> void:
@@ -325,6 +325,8 @@ func _show_summary() -> void:
 	_salary_val.text = "Salary: " + str(TaskManager.daily_money)
 	_task_count_val.text = "Tasks Completed: " + str(TaskManager.daily_completed_count)
 	_balance_val.text = "Final Balance: " + str(TaskManager.total_money)
+	if _ui.has_method("configure_summary"):
+		_ui.configure_summary(TaskManager.daily_money >= DAILY_POINTS_GOAL)
 	_summary_panel.visible = true
 	if day_data:
 		_ui.set_meta("next_level_path", day_data.next_day_scene_path)

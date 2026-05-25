@@ -12,12 +12,17 @@ signal request_next_level(scene_path: String)
 @onready var _overtime_panel: Control = $OvertimePanel
 @onready var _game_over_panel: Control = $"Game over"
 @onready var _day_label: Label = $StartDim/DayLabel
+@onready var _blank_line: Label = $SummaryPanel/MarginContainer/Stats/BlankLine
+@onready var _warning_label: Label = $SummaryPanel/MarginContainer/Stats/WarningLabel
+@onready var _next_level_button: Button = $SummaryPanel/MarginContainer/Buttons/NextLevelButton
+@onready var _replay_button: Button = $SummaryPanel/MarginContainer/Buttons/ReplayButton
 
 func _ready() -> void:
 	if _overtime_panel:
 		_overtime_panel.visible = false
 	if _game_over_panel:
 		_game_over_panel.visible = false
+	configure_summary(true)
 
 # 3. public function for main.gd
 func play_start_of_day_cinematic(day_label: String = "") -> void:
@@ -65,6 +70,18 @@ func show_game_over() -> void:
 		_game_over_panel.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 		_game_over_panel.visible = true
 
+
+func configure_summary(met_daily_goal: bool) -> void:
+	var show_failed := not met_daily_goal
+	if _blank_line:
+		_blank_line.visible = show_failed
+	if _warning_label:
+		_warning_label.visible = show_failed
+	if _replay_button:
+		_replay_button.visible = show_failed
+	if _next_level_button:
+		_next_level_button.visible = met_daily_goal
+
 func _on_overtime_yes_button_pressed() -> void:
 	_overtime_panel.visible = false
 	overtime_choice_made.emit(true)
@@ -89,3 +106,8 @@ func _on_next_level_button_pressed() -> void:
 func _on_main_menu_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main-menu/MainMenu.tscn")
+
+
+func _on_replay_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()

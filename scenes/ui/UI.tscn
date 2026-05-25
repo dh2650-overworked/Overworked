@@ -317,7 +317,6 @@ theme_override_colors/font_color = Color(0.29411766, 0.29411766, 0.29411766, 1)
 text = "0"
 
 [node name="SummaryPanel" type="PanelContainer" parent="." unique_id=1185459964]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -369,6 +368,19 @@ theme_override_fonts/font = ExtResource("5_q5jec")
 theme_override_font_sizes/font_size = 18
 text = "Final Balance:"
 
+[node name="BlankLine" type="Label" parent="SummaryPanel/MarginContainer/Stats" unique_id=77302351]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_q5jec")
+theme_override_font_sizes/font_size = 18
+
+[node name="WarningLabel" type="Label" parent="SummaryPanel/MarginContainer/Stats" unique_id=141078301]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_q5jec")
+theme_override_font_sizes/font_size = 18
+text = "You didn't reach the goal!"
+
 [node name="Buttons" type="HBoxContainer" parent="SummaryPanel/MarginContainer" unique_id=831800320]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -383,6 +395,16 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_tipki")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_choun")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o6xl0")
 text = "Next Level"
+
+[node name="ReplayButton" type="Button" parent="SummaryPanel/MarginContainer/Buttons" unique_id=1307834056]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_q5jec")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_tipki")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_choun")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o6xl0")
+text = " Replay "
 
 [node name="MainMenuButton" type="Button" parent="SummaryPanel/MarginContainer/Buttons" unique_id=612110403]
 layout_mode = 2
@@ -667,6 +689,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_o6xl0")
 text = "Main Menu"
 
 [connection signal="pressed" from="SummaryPanel/MarginContainer/Buttons/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="SummaryPanel/MarginContainer/Buttons/ReplayButton" to="." method="_on_replay_button_pressed"]
 [connection signal="pressed" from="SummaryPanel/MarginContainer/Buttons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="mouse_entered" from="TextureButton" to="TextureButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="TextureButton" to="TextureButton" method="_on_mouse_exited"]
