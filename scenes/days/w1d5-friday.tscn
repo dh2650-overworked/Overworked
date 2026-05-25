@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://bw0day1data02" path="res://assets/days/w1d5-friday.tres" id="2_tuw6i"]
 [ext_resource type="PackedScene" uid="uid://1jnrp1jmclbh" path="res://scenes/ui/UI.tscn" id="3_dy1ru"]
 [ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="4_idxsc"]
+[ext_resource type="PackedScene" uid="uid://xh8p42e5bb48" path="res://scenes/Tasks/Water Plants/all_plants.tscn" id="5_sd5jr"]
 [ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="5_xd1jk"]
 
 [node name="Main" type="Node2D" unique_id=951420025]
@@ -14,6 +15,8 @@ day_data = ExtResource("2_tuw6i")
 [node name="UI" parent="." unique_id=547110877 instance=ExtResource("3_dy1ru")]
 
 [node name="office" parent="." unique_id=856302002 instance=ExtResource("4_idxsc")]
+
+[node name="Plants" parent="." unique_id=216255706 instance=ExtResource("5_sd5jr")]
 
 [node name="CharacterBody2D" parent="." unique_id=470434658 instance=ExtResource("5_xd1jk")]
 position = Vector2(124, 201)

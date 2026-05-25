@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d3746f648dp1m"]
+[gd_scene format=3 uid="uid://xh8p42e5bb48"]
 
 [ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="1_mjw44"]
 
@@ -9,49 +9,49 @@ size = Vector2(6, 16)
 
 [node name="Water" parent="." unique_id=1489444515 instance=ExtResource("1_mjw44")]
 z_index = 1
-position = Vector2(130, 245)
+position = Vector2(78, 289)
 collider = SubResource("RectangleShape2D_y1imy")
 scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"
 
 [node name="Water2" parent="." unique_id=975266407 instance=ExtResource("1_mjw44")]
 z_index = 1
-position = Vector2(65, 230)
+position = Vector2(13, 274)
 collider = SubResource("RectangleShape2D_y1imy")
 scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"
 
 [node name="Water3" parent="." unique_id=1884165891 instance=ExtResource("1_mjw44")]
 z_index = 1
-position = Vector2(-93, 263)
+position = Vector2(-145, 307)
 collider = SubResource("RectangleShape2D_y1imy")
 scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"
 
 [node name="Water4" parent="." unique_id=1030065569 instance=ExtResource("1_mjw44")]
 z_index = 1
-position = Vector2(546, -2)
+position = Vector2(494, 42)
 collider = SubResource("RectangleShape2D_y1imy")
 scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"
 
 [node name="Water5" parent="." unique_id=375014794 instance=ExtResource("1_mjw44")]
 z_index = 1
-position = Vector2(130, 245)
+position = Vector2(78, 289)
 collider = SubResource("RectangleShape2D_y1imy")
 scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"
 
 [node name="Water6" parent="." unique_id=624674809 instance=ExtResource("1_mjw44")]
 z_index = 1
-position = Vector2(1200, 329)
+position = Vector2(1148, 373)
 collider = SubResource("RectangleShape2D_y1imy")
 scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"
 
 [node name="Water7" parent="." unique_id=1258762792 instance=ExtResource("1_mjw44")]
 z_index = 1
-position = Vector2(1153, 8)
+position = Vector2(1101, 52)
 collider = SubResource("RectangleShape2D_y1imy")
 scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"
