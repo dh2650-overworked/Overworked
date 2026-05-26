@@ -18,10 +18,9 @@ day_report_text = "Day w0d5"
 [node name="office" parent="." unique_id=856302002 instance=ExtResource("6_wu5er")]
 
 [node name="Plants" parent="." unique_id=216255706 instance=ExtResource("5_y1imy")]
-position = Vector2(380, 460)
 
 [node name="CharacterBody2D" parent="." unique_id=470434658 instance=ExtResource("7_cjfph")]
-position = Vector2(124, 201)
+position = Vector2(380, 460)
 scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=828365990]

@@ -73,7 +73,7 @@ func _physics_process(_delta: float) -> void:
 			print("NPC: Hidden at exit.")
 			
 	elif is_going_to_lunch: # <--- 新加的午餐移动逻辑
-		print("lunch time")
+		# print("lunch time")
 		_move_to(lunch_target)
 		if global_position.distance_to(lunch_target) < 10.0:
 			_stop_moving()
@@ -104,7 +104,7 @@ func update_animation():
 		$AnimatedSprite2D.flip_h = true
 
 func start_lunch(target_pos: Vector2):
-	print("Lunch time!!!")
+	# print("Lunch time!!!")
 	is_going_to_lunch = true
 	is_returning = false # 确保不冲突
 	lunch_target = target_pos

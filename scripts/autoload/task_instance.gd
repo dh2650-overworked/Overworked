@@ -10,6 +10,8 @@ var icon: Texture2D
 var reward_money: int = 0
 var scene_path: String = ""
 var is_inherited: bool = false
+var max_count: int = 1
+var current_count: int = 0
 
 static func from_task_data(data: TaskData) -> TaskInstance:
 	var inst := TaskInstance.new()
@@ -20,4 +22,5 @@ static func from_task_data(data: TaskData) -> TaskInstance:
 	inst.icon = data.icon
 	inst.reward_money = data.reward_money
 	inst.scene_path = data.scene_path
+	inst.max_count = data.max_count
 	return inst

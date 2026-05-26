@@ -13,6 +13,7 @@ signal task_finished(success)
 var progress: float = 0.0
 var is_completed: bool = false
 var is_in_range: bool = false
+var source_node: Node = null # set by PoI before opening scene
 
 # Ensure these node names match your Scene Tree exactly!
 @onready var plant = $Plant
@@ -25,12 +26,16 @@ var is_in_range: bool = false
 @onready var water_particles = $WateringCan/CPUParticles2D
 
 func _ready():
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = false
 	progress = 0.0
 	progress_bar.value = 0.0
 	success_overlay.visible = false
 	update_plant_visuals()
 
 func _process(delta):
+		
 	# 1. Watering can follows the mouse
 	var mouse_pos = get_viewport().get_mouse_position()
 	watering_can.global_position = mouse_pos
@@ -41,6 +46,8 @@ func _process(delta):
 			water_sound.stop()
 		water_particles.emitting = false
 		watering_can.visible = false
+		var player = get_tree().get_first_node_in_group("player")
+		if player: player.can_move = true
 		return
 
 	# 2. Range detection
@@ -107,8 +114,12 @@ func complete_task():
 	# Wait 2 seconds for player to see the result
 	await get_tree().create_timer(2.0).timeout
 
+	# hide node
+	if source_node != null:
+		source_node.disable()
+
 	# 4. Notify and remove the task scene
-	TaskManager.complete_task_by_type("water_plant")
+	TaskManager.increment_task("water_plant")
 
 	emit_signal("task_finished", false)
 	if get_parent() == get_tree().root: 
@@ -117,6 +128,9 @@ func complete_task():
 		get_parent().get_parent().queue_free()
 
 func _on_exit_button_pressed():
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = true
 	emit_signal("task_finished", false)
 	if get_parent() == get_tree().root: 
 		queue_free()

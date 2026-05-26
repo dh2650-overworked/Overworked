@@ -8,6 +8,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if button_pressed:
+		var player = get_tree().get_first_node_in_group("player")
+		if player:
+			player.can_move = true
 		hide()
 		Input.set_custom_mouse_cursor(load("res://assets/tasks/Whiteboard/EraserSmall.png"))
 		get_parent().node.has_eraser()

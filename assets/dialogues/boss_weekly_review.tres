@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="BossWeeklyReviewData" format=3 uid="uid://oqdxqbfhw55q"]
+
+[ext_resource type="Script" uid="uid://cs2iy773hsr78" path="res://scripts/resources/boss_weekly_review_data.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+opening_1 = "Let's review your performance this week. 
+
+You've had some ups and downs."
+opening_2 = "You earned %d points this week. 
+
+Thank you for your contribution to the company. You've done a really good job."
+unfinished_first_time = "However, you didn't manage to finish all your tasks by Friday. 
+
+I understand that things happen. But please take this as a first warning. If this happens again, we'll have to let you go."
+unfinished_second_time = "This is the second time you've ended the week with unfinished tasks. 
+
+I'm truly sorry, but we have to let you go. We wish you well."
+all_finished_intro = "All tasks were completed by Friday. That's good."
+with_delay = "But I noticed that some tasks were delayed until the next day. 
+
+Try to plan your time better going forward."
+without_delay = "And everything was done on time. That's great discipline."
+chat_enough = "I also noticed that you've been spending time chatting with your coworkers. That's good for team spirit. 
+
+Building good relationships helps a lot. Keep it up."
+chat_too_few = "I noticed that you haven't spent much time chatting with your coworkers. 
+
+I know you're busy, but don't forget that building good relationships is also important. A little more social interaction would help."
+ending_week0 = "That's it for this week. You're still getting used to everything, but I honestly believe you'll adapt even better next week. 
+
+See you Monday. Have a good weekend."
+ending_week1 = "That's it for this week. Next week is going to be even more demanding, so stay focused and don't let your guard down. 
+
+See you Monday."
