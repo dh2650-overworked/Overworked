@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="4_mmfaw"]
 [ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="5_fit1b"]
 [ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="5_sohr3"]
+[ext_resource type="Texture2D" uid="uid://vrfe75fpcod2" path="res://assets/office_assets/separately_assets/Sprite-notice.png" id="7_ahts4"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ahts4"]
 load_path = "res://.godot/imported/Watercooler.png-aa30e7955def19804796b2dd53587a3b.ctex"
@@ -32,6 +33,14 @@ collider = null
 area = SubResource("CapsuleShape2D_3ar22")
 scene_path = "res://scenes/Tasks/Watercooler/Task_watercooler.tscn"
 interact_name = "Change water"
+
+[node name="Notice" parent="office" unique_id=71672952 instance=ExtResource("5_fit1b")]
+y_sort_enabled = true
+position = Vector2(160, 254)
+sprite = ExtResource("7_ahts4")
+collider = null
+scene_path = "res://scenes/ui/firedrill_notice.tscn"
+interact_name = "Check notice"
 
 [node name="CharacterBody2D" parent="." unique_id=470434658 instance=ExtResource("5_sohr3")]
 position = Vector2(380, 460)
