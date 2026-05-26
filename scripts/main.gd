@@ -106,9 +106,9 @@ func _ready() -> void:
 			day_label = str(day_data.get("day_label"))
 		ui_node.play_start_of_day_cinematic(day_label)
 		await ui_node.cinematic_finished
+		TaskManager.is_timer_active = true
 		if day_data and str(day_data.get("day_id")) == "w0day0":
 			await _play_mentor_dialogue("res://assets/dialogues/intro_tutorial.tres")
-		TaskManager.is_timer_active = true
 		
 func _process(delta: float) -> void:
 	_update_level_clock()
@@ -260,18 +260,24 @@ func _play_mentor_dialogue(resource_path: String) -> void:
 	var pages: Array[String] = data.get_pages()
 	if pages.is_empty():
 		return
+
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = false
+
 	var ui_scene: PackedScene = load("res://scenes/character/DialogueUI.tscn")
 	var ui: CanvasLayer = ui_scene.instantiate()
 	ui.name = "MentorDialogue"
 	ui.process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().root.add_child(ui)
 	await get_tree().process_frame
-	get_tree().paused = true
 	for page in pages:
 		ui.show_tutorial(data.speaker_name, page)
 		await ui.tutorial_advance
-	get_tree().paused = false
 	ui.queue_free()
+
+	if player:
+		player.can_move = true
 
 
 func _on_lunch_started() -> void:
