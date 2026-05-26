@@ -1,11 +1,14 @@
 extends CanvasLayer
 
 @export var _tutorialtext: String = "1. Remove the empty watertank 
-2. Place down the watertank \n 3. Find replacment watertank 
+2. Place down the watertank \n 3. Find replacment watertank near the printer
 4. Place replacment on watercooler"
 # Called when the node enters the scene tree for the first time.
 
 func _ready() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = false
 	_match_current_state(WatercoolerManager.current_state)
 	pass # Replace with function body.
 
@@ -73,3 +76,9 @@ func _find_canvas_layer(node: Node) -> Node:
 			return current
 		current = current.get_parent()
 	return null
+	
+# 只要这个 UI 节点消失（被销毁），就强制恢复玩家移动
+func _exit_tree() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = true

@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://mmbsuuph6u8o" path="res://scenes/pc/start_button.gd" id="9_8ftmv"]
 [ext_resource type="Texture2D" uid="uid://cp62dnbibcn" path="res://assets/pc_assets/email_background.png" id="9_nle26"]
 [ext_resource type="Script" uid="uid://6pky28kitxea" path="res://scenes/pc/email_window.gd" id="10_2u1k8"]
-[ext_resource type="Script" path="res://scenes/pc/email.gd" id="10_hdhhd"]
+[ext_resource type="Script" uid="uid://cpf7vkm7q1g7m" path="res://scenes/pc/email.gd" id="10_hdhhd"]
 [ext_resource type="Texture2D" uid="uid://dkqopoa5sr117" path="res://assets/pc_assets/Email_boarder.png" id="11_5ynnh"]
 [ext_resource type="Texture2D" uid="uid://cjfjjd8rs3ups" path="res://assets/pc_assets/Email_choice_boarder.png" id="11_66ub2"]
 [ext_resource type="Script" path="res://scenes/pc/choices_dialog.gd" id="12_2u1k8"]

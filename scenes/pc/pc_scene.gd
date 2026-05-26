@@ -7,7 +7,21 @@ var pc_mouse_pos:Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = false
+	#anchor_left = 0.0
+	#anchor_top = 0.0
+	#anchor_right = 1.0
+	#anchor_bottom = 1.0
+	#offset_left = 0
+	#offset_top = 0
+	#offset_right = 0
+	#offset_bottom = 0
+
 	# Input.set_custom_mouse_cursor(mouse_cursor)
+
 	
 	if Signals.has_signal("level_time_changed"):
 		Signals.level_time_changed.connect(_on_level_time_changed)
@@ -26,14 +40,9 @@ func play_click_sound():
 		click_sound.pitch_scale = randf_range(0.95, 1.05)
 		click_sound.play()
 
-func _exit_tree() -> void:
-	# the cursor goes back to the default system arrow.
-	Input.set_custom_mouse_cursor(null)
-
 func _on_level_time_changed(formatted_time: String) -> void:
 	if pc_clock_label:
 		pc_clock_label.text = formatted_time
-
 
 func _initialize_clock_on_load() -> void:
 	if pc_clock_label:
@@ -41,10 +50,14 @@ func _initialize_clock_on_load() -> void:
 		var hour_format = current_hour % 24
 		pc_clock_label.text = "%02d:00" % hour_format
 
-
 func update_cursor_pos(): 
 	mouse_cursor.position = pc_mouse_pos 
 
-
 func _on_email_app_icon_pressed() -> void:
 	pass # Replace with function body.
+	
+# 只要这个 UI 节点消失（被销毁），就强制恢复玩家移动
+func _exit_tree() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = true

@@ -136,3 +136,8 @@ func _on_exit_button_pressed():
 		queue_free()
 	elif get_parent().get_parent() is CanvasLayer:
 		get_parent().get_parent().queue_free()
+# 只要这个 UI 节点消失（被销毁），就强制恢复玩家移动
+func _exit_tree() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = true

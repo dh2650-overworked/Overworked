@@ -6,12 +6,20 @@ signal SELECTED(index)
 @onready var choices_prefab: Button = $"MarginContainer/Choices/ChoiceButton"
 
 var correct_choice_index: int = 0 
+var is_solved: bool = false # Tracks if this minigame has been successfully completed
+
 var choices = []:
 	set(value):
 		choices = value
+		is_solved = false # Reset state for a brand new set of choices
 		init_button()
 
 func init_button():
+	# If already solved, don't build or show anything
+	if is_solved:
+		visible = false
+		return
+		
 	# Clean up previous buttons
 	while choices_list.get_child_count() > 1:
 		var btn_to_rem = choices_list.get_child(choices_list.get_child_count() -1)
@@ -24,9 +32,11 @@ func init_button():
 		
 		btn.text = choices[i]
 		
-		# Clear any colors from previous rounds
+		# Reset default colors and interaction states
 		btn.add_theme_color_override("font_color", Color.BLACK)
 		btn.add_theme_color_override("font_hover_color", Color.BLACK)
+		btn.add_theme_color_override("font_pressed_color", Color.BLACK)
+		btn.mouse_filter = Control.MOUSE_FILTER_STOP
 		
 		# Connect signal (ensuring no duplicates)
 		if btn.pressed.is_connected(on_choice):
@@ -34,32 +44,31 @@ func init_button():
 		btn.pressed.connect(on_choice.bind(i))
 
 func on_choice(index: int):
-	# 1. Stop mouse input so player can't click other buttons
-	# This is better than 'disabled' because it won't gray out your colors
-	for child in choices_list.get_children():
-		child.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
 	var selected_button = choices_list.get_child(index) as Button
 	
-	# 2. Apply the color override
+	# Lock input only on the clicked button so they can't spam it while waiting
+	selected_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
 	if index == correct_choice_index:
+		# Correct Answer Sequence
+		is_solved = true
 		selected_button.add_theme_color_override("font_color", Color.GREEN)
-		# Optional: set hover/pressed colors too so it stays green if the mouse is over it
 		selected_button.add_theme_color_override("font_hover_color", Color.GREEN)
 		selected_button.add_theme_color_override("font_pressed_color", Color.GREEN)
+		
+		# Lock ALL buttons now because the minigame is over
+		for child in choices_list.get_children():
+			child.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			
+		await get_tree().create_timer(0.6).timeout
+		
+		visible = false
+		SELECTED.emit(index)
 	else:
+		# 2. Wrong Answer Sequence
 		selected_button.add_theme_color_override("font_color", Color.RED)
 		selected_button.add_theme_color_override("font_hover_color", Color.RED)
 		selected_button.add_theme_color_override("font_pressed_color", Color.RED)
-
-	# 3. Wait for feedback
-	await get_tree().create_timer(0.6).timeout
-	
-	# 4. Clean up
-	visible = false
-	
-	# Reset mouse filter for next time
-	for child in choices_list.get_children():
-		child.mouse_filter = Control.MOUSE_FILTER_STOP
 		
-	SELECTED.emit(index)
+		# Give a small pause for visual feedback, then allow them to keep trying
+		await get_tree().create_timer(0.4).timeout

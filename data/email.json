@@ -1,5 +1,5 @@
 {
-  "Monday_Week_1": {
+  "w0day0": {
 	"options": [
 	  "Can you send me the balance sheet for this month?",
 	  "what's up?",
@@ -7,12 +7,29 @@
 	],
 	"correct_answer": "Can you send me the balance sheet for this month?"
   },
-  "Tuesday_Week_1": {
+  "w0day1": {
 	"options": [
 	  "The report is ready.",
 	  "I forgot to do it.",
       "What report?"
 	],
 	"correct_answer": "The report is ready."
+  },
+	"w1day1": {
+	"options": [
+	  "hello",
+	  "what's up?",
+      "bye"
+	],
+	"correct_answer": "bye"
+  },
+  "w1day5": {
+	"options": [
+	  "1",
+	  "2",
+      "3"
+	],
+	"correct_answer": "3"
   }
+  
 }

@@ -114,7 +114,8 @@ func _ready() -> void:
 			await _play_mentor_dialogue("res://assets/dialogues/intro_tutorial.tres")
 		
 	Signals.text_report_ready.connect(_on_text_report_ready) 
-		
+	# Listen for the email app requesting day tracking information
+	Signals.request_day_config.connect(_on_email_day_requested)
 
 func _on_text_report_ready(report_node: Node2D):
 	
@@ -410,3 +411,16 @@ func _finish_fire_event():
 	_evac_ui.visible = false
 	evac_progress = 0.0
 	FireManager.stop_fire()
+
+func _on_email_day_requested(email_node: Node) -> void:
+	if email_node == null:
+		return
+	# Fallback key case string in case a day data file isn't assigned 
+	var target_day: String = "w0day1"
+	
+	# Fetching the 'day_id' property directly out of your day_data resource file
+	if day_data and "day_id" in day_data and day_data.day_id != "":
+		target_day = day_data.day_id
+		
+	print("MAIN.GD: Sending Day ID down to email: ", target_day)
+	email_node.setup_email_day(target_day)

@@ -4,7 +4,14 @@ extends Node2D
 
 func _ready() -> void:
 	email_choices.SELECTED.connect(_on_email_choice_selected)
-	load_email_day("Monday_Week_1")
+	
+	# Wait 1 frame for the scene tree to settle, then broadcast the request
+	await get_tree().process_frame
+	Signals.emit_signal("request_day_config", self)
+
+func setup_email_day(day_key: String) -> void:
+	print("EMAIL.GD: Dynamically loading layout configuration for: ", day_key)
+	load_email_day(day_key)
 
 func load_email_day(day_key: String):
 	var file_path = "res://data/email.json"
@@ -23,25 +30,27 @@ func load_email_day(day_key: String):
 		return
 
 	var data = json_helper.get_data()
-	var day_data = data[day_key]
+	
+	# Safety check: ensure the day key actually exists inside email.json
+	if not data.has(day_key):
+		print("ERROR: email.json is missing a block for day key: ", day_key)
+		return
+		
+	var day_data_block = data[day_key]
 
-	# 2. Extract and Shuffle
-	var options = day_data["options"].duplicate()
-	var correct_string = day_data["correct_answer"]
+	# Extract and Shuffle
+	var options = day_data_block["options"].duplicate()
+	var correct_string = day_data_block["correct_answer"]
 	
 	options.shuffle() # Randomizes the order
 
-	# 3. Find the new index of the correct answer
+	# Find the new index of the correct answer
 	var new_correct_index = options.find(correct_string)
 
-	# 4. Update the UI
+	# Update the UI
 	email_choices.choices = options
 	email_choices.correct_choice_index = new_correct_index
 	email_choices.visible = true
 
 func _on_email_choice_selected(index: int):
-	if index == email_choices.correct_choice_index:
-		print("Correct! Points added.")
-		TaskManager.complete_task_by_type("respond_email")
-	else:
-		print("Wrong choice.")
+	pass
