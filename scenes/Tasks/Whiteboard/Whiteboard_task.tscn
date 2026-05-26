@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://doq7hk6gddqsj" path="res://scenes/Tasks/Whiteboard/node_2d.gd" id="1_1prki"]
 [ext_resource type="Script" uid="uid://cn4axvydpte5p" path="res://scenes/Tasks/Whiteboard/control.gd" id="1_od77l"]
 [ext_resource type="Script" uid="uid://e8oe55ymwucp" path="res://scenes/Tasks/Whiteboard/whiteboard_task.gd" id="1_qkuyd"]
-[ext_resource type="Texture2D" uid="uid://b2wq47m5yqxcw" path="res://assets/tasks/Whiteboard/Whiteboard.png" id="3_c6swj"]
 [ext_resource type="Script" uid="uid://laqywbgw8shl" path="res://scenes/Tasks/Whiteboard/button.gd" id="5_usjox"]
 [ext_resource type="Texture2D" uid="uid://dcw34jd8snlcm" path="res://assets/tasks/Whiteboard/EraserSmall.png" id="6_sjj4x"]
 [ext_resource type="Script" uid="uid://biw5m4l77lajk" path="res://scenes/Tasks/Whiteboard/eraser_button.gd" id="7_c6swj"]
@@ -56,7 +55,6 @@ offset_top = 4.0
 offset_right = 336.0
 offset_bottom = 196.0
 mouse_filter = 2
-texture = ExtResource("3_c6swj")
 
 [node name="Node2D" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Control2" unique_id=873773862]
 top_level = true

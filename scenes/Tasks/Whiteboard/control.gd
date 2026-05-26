@@ -6,6 +6,7 @@ extends Control
 func _ready() -> void:
 	$Button.disabled = true
 	$Button.visible = false
+	$ColorRect/TextureRect.texture = load(TaskManager._current_day_data_test.get("Whiteboard_image"))
 	pass # Replace with function body.
 
 

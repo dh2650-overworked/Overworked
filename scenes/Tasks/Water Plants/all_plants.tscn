@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1imy"]
 size = Vector2(6, 16)
 
-[node name="Plants" type="Node2D" unique_id=216255706]
+[node name="Plants" type="Node2D" unique_id=321228149]
 
 [node name="Water" parent="." unique_id=1489444515 instance=ExtResource("1_mjw44")]
 z_index = 1
@@ -14,31 +14,30 @@ collider = SubResource("RectangleShape2D_y1imy")
 scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"
 
-[node name="Water3" parent="." unique_id=1884165891 instance=ExtResource("1_mjw44")]
+[node name="Water2" parent="." unique_id=777267868 instance=ExtResource("1_mjw44")]
 z_index = 1
-position = Vector2(-145, 307)
+position = Vector2(48, 41)
 collider = SubResource("RectangleShape2D_y1imy")
 scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"
 
-[node name="Water4" parent="." unique_id=1030065569 instance=ExtResource("1_mjw44")]
+[node name="Water3" parent="." unique_id=1284051672 instance=ExtResource("1_mjw44")]
 z_index = 1
 position = Vector2(494, 42)
 collider = SubResource("RectangleShape2D_y1imy")
 scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"
 
-[node name="Water6" parent="." unique_id=624674809 instance=ExtResource("1_mjw44")]
+[node name="Water4" parent="." unique_id=1546413663 instance=ExtResource("1_mjw44")]
 z_index = 1
-position = Vector2(1148, 373)
+position = Vector2(1152, 398)
 collider = SubResource("RectangleShape2D_y1imy")
 scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"
 
-[node name="Water7" parent="." unique_id=1258762792 instance=ExtResource("1_mjw44")]
-visible = false
+[node name="Water5" parent="." unique_id=1410682035 instance=ExtResource("1_mjw44")]
 z_index = 1
-position = Vector2(1101, 52)
+position = Vector2(1104, 61)
 collider = SubResource("RectangleShape2D_y1imy")
 scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
 interact_name = "Water plants"

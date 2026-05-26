@@ -69,6 +69,7 @@ var _next_uid: int = 0
 var _current_day_id: String = ""
 var _timed_tasks: Dictionary = {}
 var _timed_fired: Dictionary = {}
+var _current_day_data_test
 
 func _process(delta: float) -> void:
 	if not is_timer_active:
@@ -212,13 +213,13 @@ func _day_key(day_data: Resource) -> String:
 
 func _day_start_tasks(day_data: Resource) -> Array:
 	var st: Variant = day_data.get("start_tasks")
+	_current_day_data_test = day_data
 	return st as Array if st is Array else []
 
 
 func _day_timed_tasks(day_data: Resource) -> Dictionary:
 	var td: Variant = day_data.get("timed_tasks")
 	return td as Dictionary if td is Dictionary else {}
-
 
 func _reset_level_timer_and_lunch() -> void:
 	level_time_remaining = LEVEL_DURATION_SECONDS
