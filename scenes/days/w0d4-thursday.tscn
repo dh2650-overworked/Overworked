@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dti5bh1isd7qk"]
 
 [ext_resource type="Script" uid="uid://bvavhhbwea3ud" path="res://scripts/main.gd" id="1_r1e1b"]
-[ext_resource type="PackedScene" uid="uid://csfsy27pqc5fn" path="res://scenes/ui/UI.tscn" id="3_73x1o"]
+[ext_resource type="PackedScene" uid="uid://1jnrp1jmclbh" path="res://scenes/ui/UI.tscn" id="3_73x1o"]
 [ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="5_u5mdh"]
 [ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="6_bg066"]
 [ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="7_x70sf"]
@@ -18,9 +18,7 @@ height = 64.0
 y_sort_enabled = true
 script = ExtResource("1_r1e1b")
 day_data = ExtResource("8_day")
-day_report_text = "Welcome to your new job, someone has to draft the internal communication so best get typing!
-
-We are happy to inform our dear investors that we saw a net profit of 20% last quarter. Further we've projected a profit of at least 10% in Q2."
+day_report_text = "Todo: type a draft for internal communication... We are happy to inform our dear investors that we saw a net profit of 20% last quarter. Further we've projected a profit of at least 10% in Q2."
 
 [node name="UI" parent="." unique_id=547110877 instance=ExtResource("3_73x1o")]
 

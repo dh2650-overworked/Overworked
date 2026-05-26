@@ -155,8 +155,8 @@ func _process(delta: float) -> void:
 	_update_level_clock()
 	
 	# --- 5. Automatic Fire Drill Trigger (Only trigger ONCE) ---
-	if not fire_drill_triggered_today and TaskManager.level_time_passed >= 3:
-	# if not fire_drill_triggered_today and _game_hour_from_passed(TaskManager.level_time_passed) >= 11:
+	# if not fire_drill_triggered_today and TaskManager.level_time_passed >= 3:
+	if not fire_drill_triggered_today and _game_hour_from_passed(TaskManager.level_time_passed) >= 11:
 		# if day_data:
 			# print("Current Day ID: ", day_data.day_id)
 		if day_data.day_id == "w1day5":
