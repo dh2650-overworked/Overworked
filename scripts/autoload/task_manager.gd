@@ -341,6 +341,7 @@ func increment_task(target_task_id: String) -> void:
 		if inst.task_id == target_task_id:
 			inst.current_count += 1
 			if inst.current_count >= inst.max_count:
+				task_added.emit(inst)
 				complete_task(id)
 			else:
 				task_added.emit(inst)  # re-emit to refresh the UI label
