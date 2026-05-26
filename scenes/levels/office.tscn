@@ -132,7 +132,7 @@ script = ExtResource("1_dmpnx")
 
 [node name="Desktop" parent="." unique_id=760676525 instance=ExtResource("2_dmpnx")]
 y_sort_enabled = true
-position = Vector2(994, 330)
+position = Vector2(1008, 316)
 sprite = ExtResource("4_h5xel")
 collider = null
 area = SubResource("CapsuleShape2D_uw80i")
