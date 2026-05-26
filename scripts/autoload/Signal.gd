@@ -1,5 +1,6 @@
 extends Node
 signal text_report_ready(node: Node2D)
+signal level_time_changed(formatted_time: String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
