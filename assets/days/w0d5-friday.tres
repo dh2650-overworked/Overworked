@@ -17,4 +17,5 @@ timed_tasks = {
 150: ExtResource("6_pr")
 }
 next_day_scene_path = "uid://bi8ectophtv4f"
+Whiteboard_image = "uid://k7rq0lj80mwv"
 active_npcs = ["peter", "lucy"]
