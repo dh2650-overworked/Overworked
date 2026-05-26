@@ -53,6 +53,9 @@ func handle_player_click():
 			PrinterManager.fix_jam()
 		PrinterManager.State.FINISHED:
 			# Reset the manager AND close this UI immediately
+			var player = get_tree().get_first_node_in_group("player")
+			if player:
+				player.can_move = true
 			TaskManager.complete_task_by_type("printer")
 			PrinterManager.collect_docs()
 			if get_parent() == get_tree().root: 
