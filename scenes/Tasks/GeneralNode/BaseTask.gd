@@ -25,6 +25,9 @@ func _process(delta: float) -> void:
 
 	
 func complete_task():
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = true
 	success_overlay.visible = true
 	success_overlay.scale = Vector2.ZERO
 	var tween = create_tween()
@@ -53,6 +56,9 @@ func get_tutorial_text() -> String:
 	return tutorial_text
 	
 func _on_exit_button_pressed():
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = true
 	task_completed.emit(false) 
 	queue_free()
 
