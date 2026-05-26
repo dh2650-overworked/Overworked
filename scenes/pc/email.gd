@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var email_choices: PanelContainer = $EmailChoices
+# Adjust this path if your EmailWindow node structure is different
+@onready var email_window: Window = $".." 
 
 func _ready() -> void:
 	email_choices.SELECTED.connect(_on_email_choice_selected)
@@ -20,7 +22,7 @@ func load_email_day(day_key: String):
 		print("JSON file not found!")
 		return
 
-	# 1. Read and Parse JSON
+	# Read and Parse JSON
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	var json_helper = JSON.new()
 	var parse_result = json_helper.parse(file.get_as_text())
@@ -53,4 +55,15 @@ func load_email_day(day_key: String):
 	email_choices.visible = true
 
 func _on_email_choice_selected(index: int):
-	pass
+	# Check if they picked the right choice
+	if index == email_choices.correct_choice_index:
+		# Clear the task from TaskManager's active to-do list
+		TaskManager.complete_task_by_type("respond_email") 
+		
+		# Tell the window to display the success animation/overlay
+		if has_node("..") and $".." is Window:
+			$"..".complete_task()
+		elif email_window:
+			email_window.complete_task()
+	else:
+		print("Wrong choice selected. Dialog remains open.")
