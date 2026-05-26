@@ -29,7 +29,7 @@ func play_start_of_day_cinematic(day_label: String = "") -> void:
 	
 	_start_dim.visible = true
 	_start_dim.modulate.a = 1.0
-	_alarm_sound.volume_db = 0.0
+	_alarm_sound.volume_db = -15.0
 	_alarm_sound.play()
 	
 	if _day_label:
