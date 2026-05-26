@@ -14,12 +14,12 @@ func get_tutorial_text():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#TODO: Add a listener to a node in the scene that updates the state from TANKREMOVED to TANKFOUND
-	match WatercoolerManager.current_state:
-		WatercoolerManager.State.TANKREMOVED:
-			WatercoolerManager.current_state = WatercoolerManager.State.TANKFOUND
-			$Control/PanelContainer/TextureButton.disabled = false
-			$Control/PanelContainer/Label.text = "Place the watertank"
+	#TODO: Comment out this match statement, and place a task_pickup_watertank scene in the office
+	#match WatercoolerManager.current_state:
+		#WatercoolerManager.State.TANKREMOVED:
+			#WatercoolerManager.current_state = WatercoolerManager.State.TANKFOUND
+			#$Control/PanelContainer/TextureButton.disabled = false
+			#$Control/PanelContainer/Label.text = "Place the watertank"
 	pass
 
 func _on_texture_button_pressed() -> void:

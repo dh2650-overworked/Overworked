@@ -1,4 +1,5 @@
 extends Node
+signal request_player_freeze(is_frozen: bool)
 
 # --- Signals ---
 # Emits every second with formatted text (e.g., "01:30")

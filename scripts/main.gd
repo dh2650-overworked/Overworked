@@ -9,6 +9,7 @@ const _DAY_DATA_SCRIPT_PATH := "res://scripts/resources/day_data.gd"
 const DAY_START_HOUR: int = TaskManager.DAY_START_HOUR
 const SECONDS_PER_GAME_HOUR: float = TaskManager.SECONDS_PER_GAME_HOUR
 const MIDNIGHT_HOUR: int = 24
+const DAILY_POINTS_GOAL: int = 300
 
 @export var day_data: Resource
 
@@ -108,6 +109,8 @@ func _ready() -> void:
 			day_label = str(day_data.get("day_label"))
 		ui_node.play_start_of_day_cinematic(day_label)
 		await ui_node.cinematic_finished
+		if day_data and str(day_data.get("day_id")) == "w0day0":
+			await _play_mentor_dialogue("res://assets/dialogues/intro_tutorial.tres")
 		TaskManager.is_timer_active = true
 		
 	Signals.text_report_ready.connect(_on_text_report_ready) 
@@ -190,12 +193,33 @@ func _update_level_clock() -> void:
 
 	if remaining <= 0.0 and not _summary_panel.visible and not _end_of_day_triggered:
 		_end_of_day_triggered = true
-		if not TaskManager.has_unfinished_tasks():
-			_show_summary()
-		else:
-			TaskManager.is_timer_active = false
-			get_tree().paused = true
-			_ui.show_overtime_prompt()
+		TaskManager.is_timer_active = false
+		_run_end_of_day_sequence()
+
+
+func _run_end_of_day_sequence() -> void:
+	var id: String = str(day_data.get("day_id")) if day_data else ""
+	if TaskManager.is_friday(id):
+		var game_over := await BossWeeklyReview.run_if_friday(get_tree(), id)
+		if game_over:
+			_show_game_over()
+			return
+	if not TaskManager.has_unfinished_tasks():
+		_show_summary()
+	else:
+		get_tree().paused = true
+		_ui.show_overtime_prompt()
+
+
+func _show_game_over() -> void:
+	TaskManager.is_timer_active = false
+	TaskManager.is_overtime = false
+	_overtime_active = false
+	if _ui.has_method("hide_overtime_prompt"):
+		_ui.hide_overtime_prompt()
+	_summary_panel.visible = false
+	get_tree().paused = true
+	_ui.show_game_over()
 
 
 func _on_overtime_choice_made(accepted: bool) -> void:
@@ -227,8 +251,7 @@ func _apply_lunch_npc_presence() -> void:
 
 
 func _on_money_updated(new_total: int) -> void:
-	var quota = 300
-	_money_label.text = str(TaskManager.daily_money) + " / " + str(quota) + " $"
+	_money_label.text = str(TaskManager.daily_money) + " / " + str(DAILY_POINTS_GOAL) + " $"
 
 
 func _on_nav_requested(instance_id: String) -> void:
@@ -239,6 +262,37 @@ func _on_nav_requested(instance_id: String) -> void:
 		var scene = load(found_path)
 		var task_ui = scene.instantiate()
 		add_child(task_ui)
+
+
+func _record_task_delay_at_summary() -> void:
+	if not day_data or not TaskManager.has_unfinished_tasks():
+		return
+	var id: String = str(day_data.get("day_id"))
+	if id == "w0day0":
+		TaskManager.week0_had_delay = true
+	elif id == "w1day1":
+		TaskManager.week1_had_delay = true
+
+
+func _play_mentor_dialogue(resource_path: String) -> void:
+	var data: MentorDialogueData = load(resource_path) as MentorDialogueData
+	if data == null:
+		return
+	var pages: Array[String] = data.get_pages()
+	if pages.is_empty():
+		return
+	var ui_scene: PackedScene = load("res://scenes/character/DialogueUI.tscn")
+	var ui: CanvasLayer = ui_scene.instantiate()
+	ui.name = "MentorDialogue"
+	ui.process_mode = Node.PROCESS_MODE_ALWAYS
+	get_tree().root.add_child(ui)
+	await get_tree().process_frame
+	get_tree().paused = true
+	for page in pages:
+		ui.show_tutorial(data.speaker_name, page)
+		await ui.tutorial_advance
+	get_tree().paused = false
+	ui.queue_free()
 
 
 func _on_lunch_started() -> void:
@@ -281,6 +335,7 @@ func _on_firedrill_confirm_pressed() -> void:
 func _show_summary() -> void:
 	if _summary_panel.visible:
 		return
+	_record_task_delay_at_summary()
 	TaskManager.is_timer_active = false
 	TaskManager.is_overtime = false
 	_overtime_active = false
@@ -291,6 +346,8 @@ func _show_summary() -> void:
 	_salary_val.text = "Salary: " + str(TaskManager.daily_money)
 	_task_count_val.text = "Tasks Completed: " + str(TaskManager.daily_completed_count)
 	_balance_val.text = "Final Balance: " + str(TaskManager.total_money)
+	if _ui.has_method("configure_summary"):
+		_ui.configure_summary(TaskManager.daily_money >= DAILY_POINTS_GOAL)
 	_summary_panel.visible = true
 	if day_data:
 		_ui.set_meta("next_level_path", day_data.next_day_scene_path)

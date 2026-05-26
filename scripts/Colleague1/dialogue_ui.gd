@@ -3,6 +3,7 @@ extends CanvasLayer
 signal choice_accepted
 signal choice_rejected
 signal choice_made(picked_a: bool)
+signal tutorial_advance
 
 const INNER_WIDTH := 300.0
 const DEFAULT_PANEL_HEIGHT := 104.0
@@ -29,6 +30,7 @@ const BUTTON_GAP := 8.0
 
 var _using_vertical: bool = false
 var _dynamic_layout: bool = false
+var _tutorial_mode: bool = false
 
 
 func _ready() -> void:
@@ -186,6 +188,24 @@ func _on_accept_btn_pressed() -> void:
 func _on_reject_btn_pressed() -> void:
 	choice_rejected.emit()
 	choice_made.emit(false)
+
+
+func show_tutorial(speaker_name: String, dialogue_text: String) -> void:
+	_tutorial_mode = true
+	name_label.text = speaker_name
+	content_label.text = dialogue_text
+	_hbox_row.hide()
+	_vbox_column.hide()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not _tutorial_mode:
+		return
+	var is_click: bool = event is InputEventMouseButton and event.pressed
+	var is_key: bool = event is InputEventKey and event.pressed and not event.echo
+	if is_click or is_key:
+		tutorial_advance.emit()
+		get_viewport().set_input_as_handled()
 
 
 func show_feedback(feedback_text: String) -> void:

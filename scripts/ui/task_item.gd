@@ -25,7 +25,10 @@ func _ready() -> void:
 func setup(inst: TaskInstance) -> void:
 	_instance = inst
 	_is_completed = false
-	_name_label.text = inst.task_name
+	if inst.max_count > 1:
+		_name_label.text = "%s %d / %d" % [inst.task_name, inst.current_count, inst.max_count]
+	else:
+		_name_label.text = inst.task_name
 	_name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var ink: Color = INHERITED_COLOR if inst.is_inherited else INK_COLOR
 	_name_label.add_theme_color_override("font_color", ink)

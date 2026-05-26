@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="MentorDialogueData" format=3 uid="uid://cw2osj7um85ea"]
+
+[ext_resource type="Script" uid="uid://ck2wtl5x7ase0" path="res://scripts/resources/mentor_dialogue_data.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+page_1 = "Welcome to our company! 
+
+To help you settle in, here are a few basic office survival tips."
+page_2 = "Each day, you'll need to complete the tasks shown in the to do list in the top left corner.
+
+Try to earn at least 300 performance points each day. That's what keeps the company running."
+page_3 = "Working hours are 8:00 to 17:00. 
+
+Do your best, but keep a couple of things in mind:"
+page_4 = "12:00 to 13:00 is lunch break. 
+
+Head to the break room, grab a coffee and chat with colleagues. 
+
+A little kindness goes a long way. They might even help you with tasks later."
+page_5 = "If you finish your daily tasks early, you can click the briefcase icon (bottom-left) to leave early and enjoy some time off."
+page_6 = "If you haven't finished your tasks by the end of the day, you can choose to work overtime and get them done, or leave them for tomorrow.
+
+But don't put things off until next week. Otherwise, you might get fired. "
+page_7 = "Unexpected things can happen in the office. Good time management really helps."
+page_8 = "The big boss isn't around often, but he shows up every Friday.
+If you take the initiative to talk to them, you might receive some extra tasks.
+
+Show that you're reliable and hardworking. It could help you get hired after your internship."
+page_9 = "Controls: WASD to move.
+
+Press E near a colleague or a task point to interact."
+page_10 = "I hope you enjoy your time in the office, good luck!"

@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var report_task: Resource       
 @export var run_speed: float = 180.0    
 var player_in_range = false
+var _friday: bool = false
+var _gone: bool = false
 
 # --- 2. Fire & Panic Logic ---
 var is_fleeing: bool = false
@@ -19,10 +21,12 @@ var rotate_tween: Tween
 
 # --- 3. Overhead Dialogue Settings ---
 var random_lines = [
-	"Deadline is coming, move it!",
-	"Why are you just standing there?",
-	"The boss is watching...",
-	"Did you finish that report?"
+	#"Deadline is coming, move it!",
+	#"Why are you just standing there?",
+	#"The boss is watching...",
+	#"Did you finish that report?"
+	"Got a minute? I may have something for you.",
+	"How's the week going?"
 ]
 
 @onready var speech_label = $Label 
@@ -51,6 +55,12 @@ func _ready() -> void:
 		main_node.lunch_started.connect(start_lunch)
 		main_node.lunch_ended.connect(end_lunch)
 
+	var scene = get_tree().current_scene
+	if scene and scene.get("day_data"):
+		_friday = TaskManager.is_friday(str(scene.day_data.day_id))
+	if not _friday:
+		visible = false
+
 func _on_fire_started():
 	NpcPhysics.disable_body_collision(self)
 	print("NPC: Received fire signal! Running now!")
@@ -73,7 +83,7 @@ func _physics_process(_delta: float) -> void:
 			print("NPC: Hidden at exit.")
 			
 	elif is_going_to_lunch: # <--- 新加的午餐移动逻辑
-		print("lunch time")
+		# print("lunch time")
 		_move_to(lunch_target)
 		if global_position.distance_to(lunch_target) < 10.0:
 			_stop_moving()
@@ -90,22 +100,16 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 
-func start_lunch(target_pos: Vector2 = Vector2(-5, 412)):
-	print("Lunch time!!!")
-	is_going_to_lunch = true
-	is_returning = false # 确保不冲突
-	lunch_target = target_pos
-	if speech_label:
-		speech_label.text = "I'm hungry, heading to lunch!"
-		speech_label.visible = true
-
-func end_lunch():
-	is_going_to_lunch = false
-	is_returning = true # 让 NPC 走回 original_pos
+func start_lunch() -> void:
+	visible = false
 	if speech_label:
 		speech_label.visible = false
-		
-		
+
+func end_lunch() -> void:
+	if _gone or not _friday:
+		return
+	visible = true
+
 func _move_to(target: Vector2):
 	var direction = global_position.direction_to(target)
 	velocity = direction * run_speed
@@ -192,8 +196,10 @@ func start_dialogue():
 func _on_task_accepted(ui):
 	if report_task:
 		TaskManager.add_task(report_task, true)
-	ui.show_feedback("Thank you!")
+	ui.show_feedback("That's what I like to hear.")
 	await ui.tree_exited
+	_gone = true
+	visible = false
 
 func _on_task_rejected(ui):
-	ui.show_feedback("I see...")
+	ui.show_feedback("Understood. Just remember, we look for initiative in interns.")

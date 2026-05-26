@@ -11,7 +11,7 @@ signal task_completed(success: bool)
 @onready var tutorial_label = $TutorialControl/TutorialOverlay/Label
 @onready var tutorial_text: String = ""
 
-
+var source_poi: Node = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,7 +39,10 @@ func complete_task():
 	queue_free()
 
 func open_task(path: String):
-	$GameContent.add_child(load(path).instantiate())
+	var instance = load(path).instantiate()
+	if source_poi != null and "source_node" in instance:
+		instance.source_node = source_poi
+	$GameContent.add_child(instance)
 
 func get_tutorial_text() -> String:
 	if $GameContent.get_child_count():

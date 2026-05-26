@@ -54,10 +54,15 @@ func _on_interact():
 			get_tree().current_scene.add_child(pc_instance)
 		else:
 			var basetask: BaseTask = load("res://scenes/Tasks/GeneralNode/BaseTask.tscn").instantiate()
+			basetask.source_poi = self
 			basetask.open_task(scene_path)
 			get_tree().current_scene.add_child(basetask)
 	else:
 		print("Missing scene")
+
+func disable() -> void:
+	visible = false
+	interactable.is_interactable = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:

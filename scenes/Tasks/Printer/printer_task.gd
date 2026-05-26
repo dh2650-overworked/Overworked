@@ -12,6 +12,9 @@ var original_p_pos: Vector2
 @onready var bar = $ProgressBar
 
 func _ready():
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = false
 	# Store the original position of the sprite
 	original_p_pos = p_closed.position
 	
@@ -77,6 +80,9 @@ func _on_status_changed(new_state):
 			label.text = "DONE! COLLECT DOCUMENTS"
 
 func _on_exit_button_pressed():
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = true
 	if get_parent() == get_tree().root: 
 		queue_free()
 	elif get_parent().get_parent() is CanvasLayer:

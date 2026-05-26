@@ -9,3 +9,4 @@ task_id = "water_plant"
 task_name = "Water Plant"
 reward_money = 50
 scene_path = "res://scenes/Tasks/Water Plants/water_plant_task.tscn"
+max_count = 5

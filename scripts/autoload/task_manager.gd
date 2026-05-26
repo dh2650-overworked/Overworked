@@ -58,6 +58,13 @@ var lunch_message_needs_ack: bool = false
 
 var active_tasks: Dictionary = {}
 
+var week0_money: int = 0
+var week1_money: int = 0
+var week_npc_chat_count: int = 0
+var week0_had_delay: bool = false
+var week1_had_delay: bool = false
+var unfinished_friday_count: int = 0
+
 var _next_uid: int = 0
 var _current_day_id: String = ""
 var _timed_tasks: Dictionary = {}
@@ -122,6 +129,10 @@ func start_level(day_data: Resource) -> void:
 		return
 
 	if not _current_day_id.is_empty():
+		var prev_prefix := _week_prefix(_current_day_id)
+		var new_prefix := _week_prefix(day_key)
+		if prev_prefix != new_prefix:
+			week_npc_chat_count = 0
 		for inst: TaskInstance in active_tasks.values():
 			inst.is_inherited = true
 		inheritance_state_changed.emit()
@@ -307,6 +318,10 @@ func complete_task(instance_id: String) -> void:
 	var inst: TaskInstance = active_tasks[instance_id]
 	daily_money += inst.reward_money
 	total_money += inst.reward_money
+	if _current_day_id.begins_with("w0"):
+		week0_money += inst.reward_money
+	elif _current_day_id.begins_with("w1"):
+		week1_money += inst.reward_money
 	daily_completed_count += 1
 	money_updated.emit(total_money)
 	remove_task(instance_id)
@@ -317,6 +332,17 @@ func complete_task_by_type(target_task_id: String) -> void:
 		var inst = active_tasks[id]
 		if inst.task_id == target_task_id:
 			complete_task(id)
+			return
+
+func increment_task(target_task_id: String) -> void:
+	for id in active_tasks:
+		var inst: TaskInstance = active_tasks[id]
+		if inst.task_id == target_task_id:
+			inst.current_count += 1
+			if inst.current_count >= inst.max_count:
+				complete_task(id)
+			else:
+				task_added.emit(inst)  # re-emit to refresh the UI label
 			return
 
 func request_navigation(instance_id: String) -> void:
@@ -365,7 +391,39 @@ func reset_for_new_game() -> void:
 	_timed_tasks.clear()
 	_timed_fired.clear()
 	_reset_level_timer_and_lunch()
+	week0_money = 0
+	week1_money = 0
+	week_npc_chat_count = 0
+	week0_had_delay = false
+	week1_had_delay = false
+	unfinished_friday_count = 0
 	money_updated.emit(total_money)
+
+
+func record_npc_chat() -> void:
+	week_npc_chat_count += 1
+
+
+func is_friday(day_id: String) -> bool:
+	return day_id == "w0day1" or day_id == "w1day5"
+
+
+func get_week_money_for(day_id: String) -> int:
+	return week0_money if day_id.begins_with("w0") else week1_money
+
+
+func had_task_delay_for(day_id: String) -> bool:
+	if day_id.begins_with("w0"):
+		return week0_had_delay
+	if day_id.begins_with("w1"):
+		return week1_had_delay
+	return false
+
+
+func _week_prefix(day_id: String) -> String:
+	if day_id.length() >= 2:
+		return day_id.substr(0, 2)
+	return ""
 
 
 # region agent log

@@ -100,4 +100,5 @@ func _run_dialogue(npc_id: String, data: LunchDialogueData) -> void:
 		await ui.show_feedback(feedback)
 
 	interaction_counts[npc_id] = int(interaction_counts.get(npc_id, 0)) + 1
+	TaskManager.record_npc_chat()
 	_dialogue_active = false

@@ -8,8 +8,16 @@ extends CharacterBody2D
 # --- 2. 获取子节点引用 (名字必须和你场景里的节点名一模一样) ---
 @onready var sprite = $Sprite2D
 @onready var anim_player = $AnimationPlayer
-
+var can_move: bool = true
 func _physics_process(_delta: float) -> void:
+	if not can_move:
+		# 如果不能移动，强行把速度设为 0，并播放待机动画
+		velocity = Vector2.ZERO
+		move_and_slide()
+		# 如果你有动画控制，可以在这里强制播 idle
+		# $AnimatedSprite2D.play("idle") 
+		return # 跳过后面的 WASD 移动代码
+		
 	# 3. 获取输入方向 (WASD 或 方向键)
 	# 确保你在“项目设置 -> 输入映射”里已经配好了这四个动作
 	var input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
