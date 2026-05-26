@@ -4,6 +4,9 @@ extends Control
 var pc_mouse_pos:Vector2 = Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = false
 	#anchor_left = 0.0
 	#anchor_top = 0.0
 	#anchor_right = 1.0
@@ -30,3 +33,9 @@ func update_cursor_pos():
 
 func _on_email_app_icon_pressed() -> void:
 	pass # Replace with function body.
+	
+# 只要这个 UI 节点消失（被销毁），就强制恢复玩家移动
+func _exit_tree() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = true

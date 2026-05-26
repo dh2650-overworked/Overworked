@@ -16,3 +16,8 @@ func _process(delta: float) -> void:
 func get_tutorial_text():
 	return _tutorialtext
 	
+# 只要这个 UI 节点消失（被销毁），就强制恢复玩家移动
+func _exit_tree() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = true
