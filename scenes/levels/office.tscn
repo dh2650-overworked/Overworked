@@ -13,7 +13,6 @@
 [ext_resource type="AudioStream" uid="uid://dt5yym7yuo6bm" path="res://assets/tasks/Printer/printer_voice.mp3" id="8_3f6fi"]
 [ext_resource type="Script" uid="uid://b680owrtb3nn3" path="res://scenes/levels/work_sound.gd" id="9_d01tv"]
 [ext_resource type="AudioStream" uid="uid://dq0puqlkocngo" path="res://assets/music/background music.wav" id="12_d01tv"]
-[ext_resource type="AudioStream" uid="uid://bav664t7ejtn7" path="res://assets/music/The Sims 4 Create A Sim 7 (Soundtrack) (Get To Work).mp3" id="12_otm"]
 [ext_resource type="PackedScene" uid="uid://c3s4dsuc8hluh" path="res://scenes/character/Colleague1.tscn" id="13_a576x"]
 [ext_resource type="AudioStream" uid="uid://hptjsn3gj04x" path="res://assets/music/FiredrillSoundeffect.mp3" id="13_jbvgb"]
 [ext_resource type="PackedScene" uid="uid://dlhivy8ytf454" path="res://scenes/character/DialogueUI.tscn" id="13_l0kex"]
@@ -23,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://b8aat6uifsist" path="res://scenes/npc/Lucy.tscn" id="18_lucy"]
 [ext_resource type="Texture2D" uid="uid://m7bf3px6fbxe" path="res://assets/office_assets/separately_assets/Sprite-0023.png" id="19_8kfeh"]
 [ext_resource type="PackedScene" uid="uid://kav66niid2cj" path="res://scenes/npc/John.tscn" id="19_john"]
+[ext_resource type="AudioStream" uid="uid://cgt0daehhaq34" path="res://assets/music/overtime.mp3" id="22_h5xel"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uw80i"]
 radius = 20.0
@@ -243,7 +243,7 @@ volume_db = -20.0
 autoplay = true
 
 [node name="OvertimeMusic" type="AudioStreamPlayer" parent="." unique_id=1738350295]
-stream = ExtResource("12_otm")
+stream = ExtResource("22_h5xel")
 volume_db = -20.0
 
 [node name="PoI" parent="." unique_id=438568262 instance=ExtResource("2_dmpnx")]
