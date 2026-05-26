@@ -114,8 +114,6 @@ func _ready() -> void:
 		
 
 func _on_text_report_ready(report_node: Node2D):
-	print("--- DIAGNOSTIC: main.gd successfully detected a text report node! ---")
-	print("--- DIAGNOSTIC: Sending back this saved text: '", typed_progress_backup, "' ---")
 	
 	if day_report_text != "" and report_node != null:
 		report_node.setup_report(day_report_text, typed_progress_backup)
@@ -125,7 +123,6 @@ func _on_text_report_ready(report_node: Node2D):
 
 func _on_progress_updated(current_typed_text: String):
 	typed_progress_backup = current_typed_text
-	print("--- DIAGNOSTIC: main.gd just live-saved progress: '", typed_progress_backup, "' ---")
 	
 
 func _process(delta: float) -> void:
@@ -182,7 +179,9 @@ func _update_level_clock() -> void:
 	var remaining: float = TaskManager.level_time_remaining
 	var current_hour: int = _game_hour_from_passed(passed)
 
-	_time_label.text = _format_clock_text(current_hour)
+	var time_text = _format_clock_text(current_hour)  # Create this variable
+	_time_label.text = time_text
+	Signals.emit_signal("level_time_changed", time_text)
 
 	if current_hour >= MIDNIGHT_HOUR and not _summary_panel.visible:
 		_force_midnight_summary()
