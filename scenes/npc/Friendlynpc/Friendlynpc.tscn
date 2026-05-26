@@ -137,6 +137,7 @@ height = 40.0
 radius = 37.01351
 
 [node name="NewNPC" type="CharacterBody2D" unique_id=236055752 groups=["npc"]]
+collision_layer = 4
 script = ExtResource("1_pnpqs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=762541668]
@@ -156,6 +157,7 @@ offset_bottom = 24.0
 theme_override_font_sizes/font_size = 4
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=917446012]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=574204608]
 position = Vector2(-2, 18)

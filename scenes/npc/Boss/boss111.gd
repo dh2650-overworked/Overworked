@@ -140,16 +140,17 @@ func _on_body_exited(body: Node2D) -> void:
 # --- 5. 打印机卡纸逻辑 (强制对话) ---
 
 func _on_printer_changed(new_state):
-	if is_fleeing or is_returning: return 
-	
-	if new_state == PrinterManager.State.JAMMED:
-		# 变红脸显示愤怒
-		sprite.modulate = Color(1.5, 0.5, 0.5) 
-		# 只有不在说话时才弹窗
-		if not is_dialogue_active:
-			trigger_boss_confrontation()
-	else:
-		sprite.modulate = Color.WHITE
+	#if is_fleeing or is_returning: return 
+	#
+	#if new_state == PrinterManager.State.JAMMED:
+		## 变红脸显示愤怒
+		#sprite.modulate = Color(1.5, 0.5, 0.5) 
+		## 只有不在说话时才弹窗
+		#if not is_dialogue_active:
+			#trigger_boss_confrontation()
+	#else:
+		#sprite.modulate = Color.WHITE
+	pass
 
 func trigger_boss_confrontation():
 	if is_dialogue_active: return
