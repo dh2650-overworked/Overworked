@@ -27,6 +27,7 @@ PrinterManager="*uid://csfd7whyds6f7"
 FireManager="*res://scripts/autoload/FireManager.gd"
 WatercoolerManager="*uid://c6ebybhbnnnmx"
 DialogueManager="*res://scripts/autoload/dialogue_manager.gd"
+Signals="*res://scripts/autoload/Signal.gd"
 
 [display]
 

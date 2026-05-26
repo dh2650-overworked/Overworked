@@ -13,4 +13,5 @@ day_id = "w0day0"
 day_label = "Thursday, May 21st"
 start_tasks = [ExtResource("2_syp7t"), ExtResource("3_dd1nt"), ExtResource("4_grcla"), ExtResource("6_lmuua"), ExtResource("7_syp7t")]
 next_day_scene_path = "res://scenes/days/w0d5-friday.tscn"
+Whiteboard_image = "uid://b2wq47m5yqxcw"
 active_npcs = ["peter"]

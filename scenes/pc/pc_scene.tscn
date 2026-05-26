@@ -4,17 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://chsvpi8ma8kok" path="res://assets/pc_assets/note.png" id="2_0h78p"]
 [ext_resource type="Texture2D" uid="uid://c4fxg5aoki2xv" path="res://assets/pc_assets/hover_effect.png" id="2_wsi6r"]
 [ext_resource type="Script" uid="uid://daj1flfo27h8h" path="res://scenes/pc/DesktopPanel.gd" id="3_rudg7"]
-[ext_resource type="Texture2D" uid="uid://cnf7g2eig3cm5" path="res://assets/pc_assets/Logo_idle.png" id="3_wsi6r"]
 [ext_resource type="Texture2D" uid="uid://bj2dyhdlmur3r" path="res://assets/pc_assets/8_white.png" id="4_2b4ws"]
-[ext_resource type="Script" uid="uid://cew37lw0u7r6a" path="res://scenes/pc/document_window.gd" id="6_nle26"]
+[ext_resource type="Script" uid="uid://cew37lw0u7r6a" path="res://scenes/pc/document_window.gd" id="6_66ub2"]
 [ext_resource type="Texture2D" uid="uid://c3nh3fbiy0fpb" path="res://assets/pc_assets/document_app_background.png" id="7_nf6t2"]
-[ext_resource type="Script" uid="uid://ne1euxo8wihp" path="res://scenes/pc/text_report.gd" id="8_khb6m"]
+[ext_resource type="Script" uid="uid://ne1euxo8wihp" path="res://scenes/pc/text_report.gd" id="8_5ynnh"]
+[ext_resource type="Texture2D" uid="uid://cxy0y4foc1r5t" path="res://assets/pc_assets/Email_icon.png" id="9_5ynnh"]
 [ext_resource type="Script" uid="uid://mmbsuuph6u8o" path="res://scenes/pc/start_button.gd" id="9_8ftmv"]
 [ext_resource type="Texture2D" uid="uid://cp62dnbibcn" path="res://assets/pc_assets/email_background.png" id="9_nle26"]
+[ext_resource type="Script" uid="uid://6pky28kitxea" path="res://scenes/pc/email_window.gd" id="10_2u1k8"]
+[ext_resource type="Script" path="res://scenes/pc/email.gd" id="10_hdhhd"]
 [ext_resource type="Texture2D" uid="uid://dkqopoa5sr117" path="res://assets/pc_assets/Email_boarder.png" id="11_5ynnh"]
 [ext_resource type="Texture2D" uid="uid://cjfjjd8rs3ups" path="res://assets/pc_assets/Email_choice_boarder.png" id="11_66ub2"]
-[ext_resource type="Script" uid="uid://cpf7vkm7q1g7m" path="res://scenes/pc/email.gd" id="11_khb6m"]
-[ext_resource type="Script" uid="uid://ce5e04ua38nwe" path="res://scenes/pc/choices_dialog.gd" id="11_nle26"]
+[ext_resource type="Script" path="res://scenes/pc/choices_dialog.gd" id="12_2u1k8"]
+[ext_resource type="Texture2D" uid="uid://m3q161syjgc" path="res://assets/pc_assets/itchio-pxl-retro-computer-icons-set-110-item2.png" id="14_66ub2"]
+[ext_resource type="AudioStream" uid="uid://d3k55vocoj6pb" path="res://assets/pc_assets/matthewvakaliuk73627-mouse-click-290204.mp3" id="17_hdhhd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6qbwl"]
 
@@ -45,14 +48,14 @@ texture = ExtResource("11_66ub2")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ynnh"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsi6r"]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_err2h"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wsi6r"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2b4ws"]
 texture = ExtResource("2_wsi6r")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsi6r"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_53qcj"]
 
@@ -125,7 +128,7 @@ exclusive = true
 theme_override_colors/title_color = Color(1, 1, 1, 1)
 theme_override_colors/title_outline_modulate = Color(1, 1, 1, 1)
 theme_override_styles/embedded_border = SubResource("StyleBoxTexture_0qnic")
-script = ExtResource("6_nle26")
+script = ExtResource("6_66ub2")
 
 [node name="TextReportBackground" type="Sprite2D" parent="PC_scene/DesktopPanel/DocumentAppIcon/DocumentWindow" unique_id=608758615]
 texture_filter = 1
@@ -134,7 +137,7 @@ texture = ExtResource("7_nf6t2")
 
 [node name="TextReport" type="Node2D" parent="PC_scene/DesktopPanel/DocumentAppIcon/DocumentWindow" unique_id=74912274]
 position = Vector2(-103, -156)
-script = ExtResource("8_khb6m")
+script = ExtResource("8_5ynnh")
 
 [node name="TypeText" type="RichTextLabel" parent="PC_scene/DesktopPanel/DocumentAppIcon/DocumentWindow/TextReport" unique_id=1062130218]
 offset_left = 148.0
@@ -149,7 +152,7 @@ theme_override_fonts/normal_font = SubResource("FontVariation_nf6t2")
 theme_override_font_sizes/normal_font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nle26")
 bbcode_enabled = true
-text = "We are happy to inform our dear investors that we saw a net profit of 20% last quarter. Further we've projected a profit of at least 10% in Q2."
+text = "dog"
 scroll_active = false
 tab_size = 8
 
@@ -210,9 +213,9 @@ offset_right = -501.844
 offset_bottom = 175.72
 theme_override_styles/normal = SubResource("StyleBoxTexture_p0rpn")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_c0lli")
-icon = ExtResource("2_0h78p")
+icon = ExtResource("9_5ynnh")
 flat = true
-icon_alignment = 1
+icon_alignment = 2
 expand_icon = true
 
 [node name="EmailWindow" type="Window" parent="PC_scene/DesktopPanel/EmailAppIcon" unique_id=334134870]
@@ -225,6 +228,7 @@ exclusive = true
 theme_override_colors/title_color = Color(1, 1, 1, 1)
 theme_override_colors/title_outline_modulate = Color(1, 1, 1, 1)
 theme_override_styles/embedded_border = SubResource("StyleBoxTexture_0qnic")
+script = ExtResource("10_2u1k8")
 
 [node name="EmailBackground" type="Sprite2D" parent="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow" unique_id=1963171672]
 texture_filter = 1
@@ -233,7 +237,7 @@ scale = Vector2(1.0000001, 1)
 texture = ExtResource("9_nle26")
 
 [node name="Email" type="Node2D" parent="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow" unique_id=2113368380]
-script = ExtResource("11_khb6m")
+script = ExtResource("10_hdhhd")
 
 [node name="EmailChoices" type="PanelContainer" parent="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow/Email" unique_id=1567702163]
 offset_left = 8.0
@@ -241,7 +245,7 @@ offset_top = 68.0
 offset_right = 271.0
 offset_bottom = 98.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_5ynnh")
-script = ExtResource("11_nle26")
+script = ExtResource("12_2u1k8")
 
 [node name="MarginContainer" type="MarginContainer" parent="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow/Email/EmailChoices" unique_id=803519098]
 layout_mode = 2
@@ -313,14 +317,7 @@ text = "Email"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="TaskbarPanel" type="Panel" parent="PC_scene" unique_id=242645272]
-layout_mode = 0
-offset_top = 256.0
-offset_right = 480.0
-offset_bottom = 270.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_wsi6r")
-
-[node name="Start button" type="Button" parent="PC_scene/TaskbarPanel" unique_id=51549926]
+[node name="Start button" type="Button" parent="PC_scene/DesktopPanel" unique_id=51549926]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.92100006
@@ -328,9 +325,9 @@ anchor_top = -12.929001
 anchor_right = 0.92100006
 anchor_bottom = -12.929001
 offset_left = -171.08002
-offset_top = 147.00601
+offset_top = 3531.8242
 offset_right = -156.08002
-offset_bottom = 164.00601
+offset_bottom = 3548.8242
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -341,29 +338,37 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_wsi6r")
 theme_override_styles/hover = SubResource("StyleBoxTexture_2b4ws")
 text = "
 "
-icon = ExtResource("3_wsi6r")
+icon = ExtResource("14_66ub2")
 expand_icon = true
 script = ExtResource("9_8ftmv")
 
-[node name="Label" type="Label" parent="PC_scene/TaskbarPanel/Start button" unique_id=188372926]
+[node name="Label" type="Label" parent="PC_scene/DesktopPanel/Start button" unique_id=188372926]
 layout_mode = 0
 offset_left = -5.0
 offset_top = 16.0
 offset_right = 21.0
 offset_bottom = 32.0
 theme_override_font_sizes/font_size = 10
-text = "Start"
+text = "exit"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="TaskbarPanel" type="Panel" parent="PC_scene" unique_id=242645272]
+layout_mode = 0
+offset_top = 262.0
+offset_right = 480.0
+offset_bottom = 270.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wsi6r")
 
 [node name="TimePanel" type="Panel" parent="PC_scene/TaskbarPanel" unique_id=243261286]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.90400004
 anchor_right = 0.90400004
-offset_left = 0.07998657
-offset_right = 45.079987
-offset_bottom = 25.0
+offset_left = 4.0799866
+offset_top = -3.0
+offset_right = 40.079987
+offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_53qcj")
@@ -373,15 +378,18 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.356
 anchor_right = 0.356
-offset_left = -12.02
+offset_left = 4.1840076
 offset_top = 0.9999933
-offset_right = 27.98
+offset_right = 28.184008
 offset_bottom = 13.999993
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
-theme_override_font_sizes/font_size = 9
-text = "08:00 AM"
+theme_override_font_sizes/font_size = 7
+text = "08:00"
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="." unique_id=1485821955]
+stream = ExtResource("17_hdhhd")
 
 [connection signal="pressed" from="PC_scene/DesktopPanel/DocumentAppIcon" to="PC_scene/DesktopPanel" method="_on_document_app_pressed"]
 [connection signal="close_requested" from="PC_scene/DesktopPanel/DocumentAppIcon/DocumentWindow" to="PC_scene" method="_on_document_window_close_requested"]

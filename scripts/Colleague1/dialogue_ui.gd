@@ -198,7 +198,7 @@ func show_tutorial(speaker_name: String, dialogue_text: String) -> void:
 	_vbox_column.hide()
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if not _tutorial_mode:
 		return
 	var is_click: bool = event is InputEventMouseButton and event.pressed

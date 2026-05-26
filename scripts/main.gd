@@ -45,6 +45,9 @@ var _overtime_active: bool = false
 var waiting_to_reach_exit: bool = false # 是否正在等待玩家去门口
 var player_in_safe_zone: bool = false   # 玩家是否正站在圈里
 
+@export_multiline var day_report_text: String = ""
+var typed_progress_backup: String = ""
+
 func _is_day_data_resource(res: Resource) -> bool:
 	if res == null:
 		return false
@@ -106,10 +109,25 @@ func _ready() -> void:
 			day_label = str(day_data.get("day_label"))
 		ui_node.play_start_of_day_cinematic(day_label)
 		await ui_node.cinematic_finished
+		TaskManager.is_timer_active = true
 		if day_data and str(day_data.get("day_id")) == "w0day0":
 			await _play_mentor_dialogue("res://assets/dialogues/intro_tutorial.tres")
-		TaskManager.is_timer_active = true
 		
+	Signals.text_report_ready.connect(_on_text_report_ready) 
+		
+
+func _on_text_report_ready(report_node: Node2D):
+	
+	if day_report_text != "" and report_node != null:
+		report_node.setup_report(day_report_text, typed_progress_backup)
+		
+		if not report_node.is_connected("progress_updated", _on_progress_updated):
+			report_node.progress_updated.connect(_on_progress_updated)
+
+func _on_progress_updated(current_typed_text: String):
+	typed_progress_backup = current_typed_text
+	
+
 func _process(delta: float) -> void:
 	_update_level_clock()
 	
@@ -164,7 +182,9 @@ func _update_level_clock() -> void:
 	var remaining: float = TaskManager.level_time_remaining
 	var current_hour: int = _game_hour_from_passed(passed)
 
-	_time_label.text = _format_clock_text(current_hour)
+	var time_text = _format_clock_text(current_hour)  # Create this variable
+	_time_label.text = time_text
+	Signals.emit_signal("level_time_changed", time_text)
 
 	if current_hour >= MIDNIGHT_HOUR and not _summary_panel.visible:
 		_force_midnight_summary()
@@ -260,18 +280,24 @@ func _play_mentor_dialogue(resource_path: String) -> void:
 	var pages: Array[String] = data.get_pages()
 	if pages.is_empty():
 		return
+
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = false
+
 	var ui_scene: PackedScene = load("res://scenes/character/DialogueUI.tscn")
 	var ui: CanvasLayer = ui_scene.instantiate()
 	ui.name = "MentorDialogue"
 	ui.process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().root.add_child(ui)
 	await get_tree().process_frame
-	get_tree().paused = true
 	for page in pages:
 		ui.show_tutorial(data.speaker_name, page)
 		await ui.tutorial_advance
-	get_tree().paused = false
 	ui.queue_free()
+
+	if player:
+		player.can_move = true
 
 
 func _on_lunch_started() -> void:
