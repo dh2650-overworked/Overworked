@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 			player.can_move = true
 		TaskManager.complete_task_by_type("whiteboard")
 		await get_tree().create_timer(1).timeout
-		Input.set_custom_mouse_cursor(load("res://assets/icons/cursor.pngw"))
+		Input.set_custom_mouse_cursor(load("res://assets/icons/cursor.png"))
 		
 		# TODO fix better lmao
 		$"../../../../..".queue_free()

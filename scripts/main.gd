@@ -156,6 +156,7 @@ func _process(delta: float) -> void:
 	
 	# --- 5. Automatic Fire Drill Trigger (Only trigger ONCE) ---
 	if not fire_drill_triggered_today and TaskManager.level_time_passed >= 3:
+	# if not fire_drill_triggered_today and _game_hour_from_passed(TaskManager.level_time_passed) >= 11:
 		# if day_data:
 			# print("Current Day ID: ", day_data.day_id)
 		if day_data.day_id == "w1day5":
@@ -413,6 +414,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_safe_zone_entered(body):
 	# 检查是不是玩家进来了，且当前是否正在等待撤离
 	if body.is_in_group("player") and has_acknowledged_fire:
+	# if body.is_in_group("player"):
 		player_in_safe_zone = true
 		_evac_ui.visible = true # 显示那个进度条 UI
 		print("Player is in SafeZone!")

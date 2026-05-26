@@ -44,7 +44,7 @@ colors = PackedColorArray(0.0052051274, 5.5407636e-05, 0.00014651388, 1, 0.70167
 gradient = SubResource("Gradient_uw80i")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a576x"]
-size = Vector2(116, 79)
+size = Vector2(127, 102.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k1nkb"]
 atlas = ExtResource("15_k1nkb")
@@ -167,6 +167,7 @@ script = ExtResource("9_d01tv")
 y_sort_enabled = true
 position = Vector2(464, 257)
 sprite = ExtResource("5_uw80i")
+collider = null
 area = SubResource("CapsuleShape2D_1gkrr")
 scene_path = "res://scenes/Tasks/Whiteboard/Whiteboard_task.tscn"
 interact_name = "Clear whiteboard"
@@ -220,15 +221,16 @@ stream = ExtResource("13_jbvgb")
 volume_db = -15.822
 
 [node name="SafeZone" type="Area2D" parent="." unique_id=955411409]
-position = Vector2(103, 105)
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZone" unique_id=792323117]
-position = Vector2(372, 359)
+position = Vector2(475.5, 475.75)
 shape = SubResource("RectangleShape2D_a576x")
 
 [node name="EmergencyDoor" type="AnimatedSprite2D" parent="SafeZone" unique_id=2012123950]
 z_index = 1
-position = Vector2(374.99997, 393)
+position = Vector2(480.99997, 497)
 scale = Vector2(2.9576924, 3.0937507)
 sprite_frames = SubResource("SpriteFrames_ao5u7")
 animation = &"open"
