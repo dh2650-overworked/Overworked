@@ -207,9 +207,9 @@ anchor_left = 1.572
 anchor_top = 0.25500003
 anchor_right = 1.572
 anchor_bottom = 0.25500003
-offset_left = -523.56
-offset_top = 153.72
-offset_right = -501.844
+offset_left = -522.56
+offset_top = 156.72
+offset_right = -504.844
 offset_bottom = 175.72
 theme_override_styles/normal = SubResource("StyleBoxTexture_p0rpn")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_c0lli")
@@ -259,6 +259,7 @@ layout_mode = 2
 
 [node name="ChoiceButton" type="Button" parent="PC_scene/DesktopPanel/EmailAppIcon/EmailWindow/Email/EmailChoices/MarginContainer/Choices" unique_id=314895382]
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 7
 theme_override_styles/normal = SubResource("StyleBoxTexture_hdhhd")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_66ub2")

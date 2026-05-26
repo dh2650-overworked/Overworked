@@ -1,35 +1,35 @@
 {
   "w0day0": {
 	"options": [
+	  "hey everyone, i'll be doing my best to do the least",
+	  "Looking forward to working with all of you this summer!",
+      "Can you promise me a full-time position after the internship?"
+	],
+	"correct_answer": "Looking forward to working with all of you this summer!"
+  },
+  "w0day1": {
+	"options": [
 	  "Can you send me the balance sheet for this month?",
 	  "what's up?",
       "Fetch me some coffee to my desk"
 	],
 	"correct_answer": "Can you send me the balance sheet for this month?"
   },
-  "w0day1": {
-	"options": [
-	  "The report is ready.",
-	  "I forgot to do it.",
-      "What report?"
-	],
-	"correct_answer": "The report is ready."
-  },
 	"w1day1": {
 	"options": [
-	  "hello",
-	  "what's up?",
-      "bye"
+		"Can we meet at 2 PM tomorrow? Product has a new bid proposal.",
+		"When is the technical manager available?",
+		"We're not ready yet."
 	],
-	"correct_answer": "bye"
+	"correct_answer": "Can we meet at 2 PM tomorrow? Product has a new bid proposal."
   },
   "w1day5": {
 	"options": [
-	  "1",
-	  "2",
-      "3"
+		"Stepped out for the fire alarm. Can you resend the contract?",
+		"lol alarm went off so I just bounced. fire drills are dumb",
+        "fire drill? took a long break for tacos. don't tell anyone"
 	],
-	"correct_answer": "3"
+	"correct_answer": "Stepped out for the fire alarm. Resend the drafted contract."
   }
   
 }

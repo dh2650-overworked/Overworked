@@ -18,7 +18,9 @@ height = 64.0
 y_sort_enabled = true
 script = ExtResource("1_r1e1b")
 day_data = ExtResource("8_day")
-day_report_text = "Day w0d4"
+day_report_text = "Welcome to your new job, someone has to draft the internal communication so best get typing!
+
+We are happy to inform our dear investors that we saw a net profit of 20% last quarter. Further we've projected a profit of at least 10% in Q2."
 
 [node name="UI" parent="." unique_id=547110877 instance=ExtResource("3_73x1o")]
 

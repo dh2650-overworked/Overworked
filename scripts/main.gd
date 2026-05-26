@@ -117,13 +117,35 @@ func _ready() -> void:
 	# Listen for the email app requesting day tracking information
 	Signals.request_day_config.connect(_on_email_day_requested)
 
-func _on_text_report_ready(report_node: Node2D):
+func _on_text_report_ready(report_node: Node2D) -> void:
+	if report_node == null:
+		return
 	
-	if day_report_text != "" and report_node != null:
-		report_node.setup_report(day_report_text, typed_progress_backup)
-		
+	# Connect our typing monitoring signals safely using strings
+	if report_node.has_signal("progress_updated"):
 		if not report_node.is_connected("progress_updated", _on_progress_updated):
-			report_node.progress_updated.connect(_on_progress_updated)
+			report_node.connect("progress_updated", _on_progress_updated)
+			
+	if report_node.has_signal("report_finished"):
+		if not report_node.is_connected("report_finished", _on_report_finished):
+			report_node.connect("report_finished", _on_report_finished)
+
+	# Ensure a fallback prompt text always exists 
+	var current_prompt = "The report is ready."
+	if day_report_text != "":
+		current_prompt = day_report_text
+		
+	# Pass the prompt text and any existing typed backup string to the UI
+	if report_node.has_method("setup_report"):
+		report_node.setup_report(current_prompt, typed_progress_backup)
+
+
+func _on_report_finished() -> void:
+	print("MAIN.GD: Typing task completed successfully! Resetting progress strings.")
+	
+	# 1. Clear your local scene fallback backup variable so next task starts fresh
+	typed_progress_backup = ""
+
 
 func _on_progress_updated(current_typed_text: String):
 	typed_progress_backup = current_typed_text

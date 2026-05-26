@@ -10,7 +10,6 @@ signal progress_updated(current_text: String)
 
 @onready var prompt: RichTextLabel = $TypeText
 @onready var input_field: TextEdit = $PlayerInput 
-
 var prompt_text: String = ""
 
 func _ready():
@@ -46,17 +45,20 @@ func setup_report(new_text: String, saved_progress: String = "") -> void:
 func _on_text_changed():
 	var new_text = input_field.text
 	
-	# Make sure we don't send blank evaluations up to main if it's processing frames
 	if prompt_text == "": 
 		return
 
 	if prompt_text.begins_with(new_text):
 		update_display(new_text.length())
-		
-		# Send the live update straight to main.gd
 		progress_updated.emit(new_text)
 		
 		if new_text == prompt_text:
+			# Clean out the UI text immediately
+			prompt_text = ""
+			prompt.text = ""
+			input_field.text = ""
+			
+			# Emit the signal up to main.gd
 			report_finished.emit()
 	else:
 		input_field.text = new_text.substr(0, new_text.length() - 1)
