@@ -60,6 +60,7 @@ func _ready() -> void:
 		_friday = TaskManager.is_friday(str(scene.day_data.day_id))
 	if not _friday:
 		visible = false
+		NpcPhysics.disable_body_collision(self)
 
 func _on_fire_started():
 	NpcPhysics.disable_body_collision(self)
@@ -67,7 +68,8 @@ func _on_fire_started():
 	start_fleeing(Vector2(500, 500)) 
 
 func _on_fire_ended():
-	NpcPhysics.apply_body_collision(self)
+	if _friday and not _gone:
+		NpcPhysics.apply_body_collision(self)
 	self.visible = true  
 	is_fleeing = false
 	is_returning = true 
@@ -102,6 +104,7 @@ func _physics_process(_delta: float) -> void:
 
 func start_lunch() -> void:
 	visible = false
+	NpcPhysics.disable_body_collision(self)
 	if speech_label:
 		speech_label.visible = false
 
@@ -109,6 +112,7 @@ func end_lunch() -> void:
 	if _gone or not _friday:
 		return
 	visible = true
+	NpcPhysics.apply_body_collision(self)
 
 func _move_to(target: Vector2):
 	var direction = global_position.direction_to(target)
@@ -200,6 +204,7 @@ func _on_task_accepted(ui):
 	await ui.tree_exited
 	_gone = true
 	visible = false
+	NpcPhysics.disable_body_collision(self)
 
 func _on_task_rejected(ui):
 	ui.show_feedback("Understood. Just remember, we look for initiative in interns.")
