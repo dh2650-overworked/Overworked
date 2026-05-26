@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dpcvt8fvmbcrf"]
+
+[ext_resource type="Texture2D" uid="uid://07uygistl6av" path="res://assets/interactables/Firedrill.png" id="1_tqx4y"]
+[ext_resource type="FontFile" uid="uid://cjxkjihewqeic" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="2_lycj3"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=503044943]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2053823590]
+offset_left = 126.0
+offset_top = 18.0
+offset_right = 264.0
+offset_bottom = 178.0
+scale = Vector2(1.4599391, 1.4599391)
+texture = ExtResource("1_tqx4y")
+
+[node name="Label" type="Label" parent="." unique_id=385694893]
+offset_left = 141.0
+offset_top = 103.0
+offset_right = 248.77838
+offset_bottom = 210.77838
+rotation = -0.11519086
+scale = Vector2(1.276606, 1.276606)
+theme_override_colors/font_color = Color(0.67058825, 0.6156863, 0.6, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = -1
+theme_override_fonts/font = ExtResource("2_lycj3")
+theme_override_font_sizes/font_size = 7
+text = "Friday, May 29th
+
+All staff are required to participate in the drill.
+
+Please do not use the elevators during the drill. Swiftly and calmly make your way to the nearest fire exit.
+
+Follow the instructions of evacuation coordinators
+
+- Management"
+horizontal_alignment = 1
+autowrap_mode = 2
