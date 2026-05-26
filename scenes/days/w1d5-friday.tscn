@@ -5,7 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://1jnrp1jmclbh" path="res://scenes/ui/UI.tscn" id="3_dy1ru"]
 [ext_resource type="PackedScene" uid="uid://2hisqf0xy7uj" path="res://scenes/levels/office.tscn" id="4_idxsc"]
 [ext_resource type="PackedScene" uid="uid://xh8p42e5bb48" path="res://scenes/Tasks/Water Plants/all_plants.tscn" id="5_sd5jr"]
+[ext_resource type="PackedScene" uid="uid://b6amo1328fqee" path="res://assets/interactables/PoI.tscn" id="5_tuw6i"]
 [ext_resource type="PackedScene" uid="uid://pgxtpv3h0107" path="res://scenes/player/Player.tscn" id="5_xd1jk"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dy1ru"]
+load_path = "res://.godot/imported/Watercooler.png-aa30e7955def19804796b2dd53587a3b.ctex"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idxsc"]
+radius = 16.0
+height = 64.0
 
 [node name="Main" type="Node2D" unique_id=951420025]
 y_sort_enabled = true
@@ -15,6 +23,15 @@ day_data = ExtResource("2_tuw6i")
 [node name="UI" parent="." unique_id=547110877 instance=ExtResource("3_dy1ru")]
 
 [node name="office" parent="." unique_id=856302002 instance=ExtResource("4_idxsc")]
+
+[node name="Watercooler" parent="office" unique_id=1489444515 instance=ExtResource("5_tuw6i")]
+y_sort_enabled = true
+position = Vector2(720, 70)
+sprite = SubResource("CompressedTexture2D_dy1ru")
+collider = null
+area = SubResource("CapsuleShape2D_idxsc")
+scene_path = "res://scenes/Tasks/Watercooler/Task_watercooler.tscn"
+interact_name = "Change water"
 
 [node name="Plants" parent="." unique_id=216255706 instance=ExtResource("5_sd5jr")]
 

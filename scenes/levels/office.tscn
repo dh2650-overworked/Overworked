@@ -17,23 +17,11 @@
 [ext_resource type="AudioStream" uid="uid://hptjsn3gj04x" path="res://assets/music/FiredrillSoundeffect.mp3" id="13_jbvgb"]
 [ext_resource type="PackedScene" uid="uid://dlhivy8ytf454" path="res://scenes/character/DialogueUI.tscn" id="13_l0kex"]
 [ext_resource type="Texture2D" uid="uid://cyfuh4uekuwh" path="res://assets/interactables/doors.png" id="15_k1nkb"]
-[ext_resource type="Script" path="res://scenes/levels/emergency_door.gd" id="16_8kfeh"]
+[ext_resource type="Script" uid="uid://dcrpi5l1gf12m" path="res://scenes/levels/emergency_door.gd" id="16_8kfeh"]
 [ext_resource type="PackedScene" uid="uid://dec7l4ftv3c2p" path="res://scenes/npc/Peter.tscn" id="17_peter"]
 [ext_resource type="PackedScene" uid="uid://b8aat6uifsist" path="res://scenes/npc/Lucy.tscn" id="18_lucy"]
 [ext_resource type="Texture2D" uid="uid://m7bf3px6fbxe" path="res://assets/office_assets/separately_assets/Sprite-0023.png" id="19_8kfeh"]
 [ext_resource type="PackedScene" uid="uid://kav66niid2cj" path="res://scenes/npc/John.tscn" id="19_john"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dmpnx"]
-load_path = "res://.godot/imported/Watercooler.png-aa30e7955def19804796b2dd53587a3b.ctex"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw80i"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ey3sf"]
-radius = 16.0
-height = 64.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ey3sf"]
-size = Vector2(20, 10)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uw80i"]
 radius = 20.0
@@ -142,20 +130,11 @@ script = ExtResource("1_dmpnx")
 
 [node name="GameTileMap" parent="." unique_id=356627738 instance=ExtResource("2_k1nkb")]
 
-[node name="Watercooler" parent="." unique_id=1489444515 instance=ExtResource("2_dmpnx")]
-y_sort_enabled = true
-position = Vector2(736, 62)
-sprite = SubResource("CompressedTexture2D_dmpnx")
-collider = SubResource("RectangleShape2D_uw80i")
-area = SubResource("CapsuleShape2D_ey3sf")
-scene_path = "res://scenes/Tasks/Watercooler/Task_watercooler.tscn"
-interact_name = "Change water"
-
 [node name="Desktop" parent="." unique_id=760676525 instance=ExtResource("2_dmpnx")]
 y_sort_enabled = true
-position = Vector2(976, 317)
+position = Vector2(994, 330)
 sprite = ExtResource("4_h5xel")
-collider = SubResource("RectangleShape2D_ey3sf")
+collider = null
 area = SubResource("CapsuleShape2D_uw80i")
 scene_path = "res://scenes/pc/pc_scene.tscn"
 interact_name = "Get to work"
@@ -167,7 +146,7 @@ sprite = ExtResource("4_dmpnx")
 collider = SubResource("RectangleShape2D_4m8q4")
 area = SubResource("CapsuleShape2D_tuhfx")
 scene_path = "res://scenes/Tasks/Printer/printer.tscn"
-interact_name = "printer"
+interact_name = "Check on printer"
 
 [node name="WarningLight" type="Sprite2D" parent="Printer" unique_id=1641247093]
 visible = false
