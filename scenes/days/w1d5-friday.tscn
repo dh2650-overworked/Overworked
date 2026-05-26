@@ -20,6 +20,8 @@ height = 64.0
 y_sort_enabled = true
 script = ExtResource("1_sd5jr")
 day_data = ExtResource("2_tuw6i")
+evac_speed = null
+day_report_text = "Day w1d5"
 
 [node name="UI" parent="." unique_id=547110877 instance=ExtResource("3_dy1ru")]
 

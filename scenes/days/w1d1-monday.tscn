@@ -20,6 +20,7 @@ y_sort_enabled = true
 script = ExtResource("1_202iy")
 day_data = ExtResource("2_sdoc7")
 evac_speed = null
+day_report_text = "Day w1d1"
 
 [node name="UI" parent="." unique_id=547110877 instance=ExtResource("3_drl5u")]
 
