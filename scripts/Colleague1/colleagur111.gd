@@ -208,3 +208,8 @@ func _on_task_accepted(ui):
 
 func _on_task_rejected(ui):
 	ui.show_feedback("Understood. Just remember, we look for initiative in interns.")
+
+
+func hide_for_overtime() -> void:
+	visible = false
+	NpcPhysics.disable_body_collision(self)

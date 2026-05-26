@@ -13,11 +13,12 @@
 [ext_resource type="AudioStream" uid="uid://dt5yym7yuo6bm" path="res://assets/tasks/Printer/printer_voice.mp3" id="8_3f6fi"]
 [ext_resource type="Script" uid="uid://b680owrtb3nn3" path="res://scenes/levels/work_sound.gd" id="9_d01tv"]
 [ext_resource type="AudioStream" uid="uid://dq0puqlkocngo" path="res://assets/music/background music.wav" id="12_d01tv"]
+[ext_resource type="AudioStream" uid="uid://bav664t7ejtn7" path="res://assets/music/The Sims 4 Create A Sim 7 (Soundtrack) (Get To Work).mp3" id="12_otm"]
 [ext_resource type="PackedScene" uid="uid://c3s4dsuc8hluh" path="res://scenes/character/Colleague1.tscn" id="13_a576x"]
 [ext_resource type="AudioStream" uid="uid://hptjsn3gj04x" path="res://assets/music/FiredrillSoundeffect.mp3" id="13_jbvgb"]
 [ext_resource type="PackedScene" uid="uid://dlhivy8ytf454" path="res://scenes/character/DialogueUI.tscn" id="13_l0kex"]
 [ext_resource type="Texture2D" uid="uid://cyfuh4uekuwh" path="res://assets/interactables/doors.png" id="15_k1nkb"]
-[ext_resource type="Script" uid="uid://dcrpi5l1gf12m" path="res://scenes/levels/emergency_door.gd" id="16_8kfeh"]
+[ext_resource type="Script" path="res://scenes/levels/emergency_door.gd" id="16_8kfeh"]
 [ext_resource type="PackedScene" uid="uid://dec7l4ftv3c2p" path="res://scenes/npc/Peter.tscn" id="17_peter"]
 [ext_resource type="PackedScene" uid="uid://b8aat6uifsist" path="res://scenes/npc/Lucy.tscn" id="18_lucy"]
 [ext_resource type="Texture2D" uid="uid://m7bf3px6fbxe" path="res://assets/office_assets/separately_assets/Sprite-0023.png" id="19_8kfeh"]
@@ -240,6 +241,10 @@ script = ExtResource("16_8kfeh")
 stream = ExtResource("12_d01tv")
 volume_db = -20.0
 autoplay = true
+
+[node name="OvertimeMusic" type="AudioStreamPlayer" parent="." unique_id=1738350295]
+stream = ExtResource("12_otm")
+volume_db = -20.0
 
 [node name="PoI" parent="." unique_id=438568262 instance=ExtResource("2_dmpnx")]
 position = Vector2(1168, 236)

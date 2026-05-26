@@ -252,6 +252,15 @@ func _on_overtime_choice_made(accepted: bool) -> void:
 		TaskManager.is_timer_active = true
 		_overtime_active = true
 		_apply_lunch_npc_presence()
+		var boss = get_node_or_null("office/Boss")
+		if boss:
+			boss.hide_for_overtime()
+		var day_music = get_node_or_null("office/AudioStreamPlayer")
+		if day_music:
+			day_music.stop()
+		var overtime_music = get_node_or_null("office/OvertimeMusic")
+		if overtime_music:
+			overtime_music.play()
 	else:
 		_show_summary()
 
@@ -361,9 +370,19 @@ func _on_firedrill_confirm_pressed() -> void:
 	print("Firedrill UI closed by player.")
 	has_acknowledged_fire = true
 
+func stop_level_music() -> void:
+	var day_music := get_node_or_null("office/AudioStreamPlayer") as AudioStreamPlayer
+	if day_music:
+		day_music.stop()
+	var overtime_music := get_node_or_null("office/OvertimeMusic") as AudioStreamPlayer
+	if overtime_music:
+		overtime_music.stop()
+
+
 func _show_summary() -> void:
 	if _summary_panel.visible:
 		return
+	stop_level_music()
 	_record_task_delay_at_summary()
 	TaskManager.is_timer_active = false
 	TaskManager.is_overtime = false
