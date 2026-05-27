@@ -211,7 +211,7 @@ lunch_spot = Vector2(-27, 383)
 
 [node name="John" parent="." unique_id=1513150389 instance=ExtResource("19_john")]
 y_sort_enabled = true
-position = Vector2(342, 362)
+position = Vector2(342, 390)
 scale = Vector2(1.2, 1.2)
 lunch_spot = Vector2(54, 376)
 

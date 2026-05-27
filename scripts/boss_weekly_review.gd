@@ -9,6 +9,8 @@ static func run_if_friday(scene_tree: SceneTree, day_id: String) -> bool:
 	if not TaskManager.is_friday(day_id):
 		return false
 
+	_close_open_task_uis(scene_tree)
+
 	var game_over := false
 	if TaskManager.has_unfinished_tasks():
 		TaskManager.unfinished_friday_count += 1
@@ -71,3 +73,17 @@ static func _build_pages(day_id: String) -> Array[String]:
 static func _append_nonempty(pages: Array[String], text: String) -> void:
 	if text.strip_edges() != "":
 		pages.append(text)
+
+
+static func _close_open_task_uis(scene_tree: SceneTree) -> void:
+	var scene := scene_tree.current_scene
+	if scene == null:
+		return
+	for child in scene.get_children():
+		if child is BaseTask:
+			child.queue_free()
+		elif child is CanvasLayer and child.name != "UI" and child.get_node_or_null("PC_scene"):
+			child.queue_free()
+	var player := scene_tree.get_first_node_in_group("player")
+	if player:
+		player.can_move = true
