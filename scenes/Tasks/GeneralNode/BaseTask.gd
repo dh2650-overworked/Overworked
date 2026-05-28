@@ -70,3 +70,9 @@ func _on_tutorial_button_pressed() -> void:
 		tutorial_overlay.visible = true
 	else: 
 		tutorial_overlay.visible = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		match event.keycode:
+			KEY_ESCAPE:
+				_on_exit_button_pressed()

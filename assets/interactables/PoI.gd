@@ -44,6 +44,10 @@ func _ready() -> void:
 
 func _on_interact():
 	if scene:
+		var player = get_tree().get_first_node_in_group("player")
+		if player and not player.can_move:
+			return
+		
 		print(scene_path)
 		print("Opening:" + interact_name)
 		
@@ -63,7 +67,3 @@ func _on_interact():
 func disable() -> void:
 	visible = false
 	interactable.is_interactable = false
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass

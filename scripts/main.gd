@@ -429,11 +429,13 @@ func _unhandled_input(event: InputEvent) -> void:
 						TaskManager.active_tasks.size(),
 					]
 				)
+			KEY_TAB:
+				$UI/TodoListUI._on_toggle_pressed()
 				
 func _on_safe_zone_entered(body):
 	# 检查是不是玩家进来了，且当前是否正在等待撤离
 	if body.is_in_group("player") and has_acknowledged_fire:
-	# if body.is_in_group("player"):
+	#if body.is_in_group("player"):
 		player_in_safe_zone = true
 		_evac_ui.visible = true # 显示那个进度条 UI
 		print("Player is in SafeZone!")

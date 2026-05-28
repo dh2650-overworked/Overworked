@@ -138,6 +138,8 @@ texture = ExtResource("7_nf6t2")
 [node name="TextReport" type="Node2D" parent="PC_scene/DesktopPanel/DocumentAppIcon/DocumentWindow" unique_id=74912274]
 position = Vector2(-103, -156)
 script = ExtResource("8_5ynnh")
+green = Color(8.1822276e-07, 0.47421402, 6.738305e-07, 1)
+red = Color(0.4548279, 0.09533911, 0.08225415, 1)
 
 [node name="TypeText" type="RichTextLabel" parent="PC_scene/DesktopPanel/DocumentAppIcon/DocumentWindow/TextReport" unique_id=1062130218]
 offset_left = 148.0
@@ -152,7 +154,7 @@ theme_override_fonts/normal_font = SubResource("FontVariation_nf6t2")
 theme_override_font_sizes/normal_font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nle26")
 bbcode_enabled = true
-text = "dog"
+text = "Here's the test text for running the PC scene only"
 scroll_active = false
 tab_size = 8
 

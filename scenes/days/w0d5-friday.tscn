@@ -19,7 +19,7 @@ height = 64.0
 y_sort_enabled = true
 script = ExtResource("1_5ey56")
 day_data = ExtResource("8_day")
-day_report_text = "Onboarding is running 15% ahead of schedule per -SOURCE-. However, the new employee caused multiple spills on day one, damaging electronics, so drinks are now banned near any devices. Also, do NOT let them operate the coffee machine."
+day_report_text = "Onboarding is running 15% ahead of schedule. However, the new employee caused multiple spills on day one, damaging electronics, so drinks are now banned near any devices. Also, do NOT let them operate the coffee machine."
 
 [node name="UI" parent="." unique_id=547110877 instance=ExtResource("4_8myrj")]
 
